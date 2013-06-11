@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="list" extends="defaultLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/list.jsp" />
+	</definition>
+	
+	<definition name="listOne" extends="defaultLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/listOne.jsp" />
+	</definition>
+	
+	<definition name="listOneNotLogin" extends="defaultLayout">
+		<put-attribute name="top" value="/WEB-INF/view/layout/fragment/topNotLogin.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/list/listOne.jsp" />
+	</definition>
+	
+	<definition name="documents" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/documents.jsp" />
+	</definition>
+	
+	<definition name="document" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/document.jsp" />
+	</definition>
+	
+	<definition name="comment" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/comment.jsp" />
+	</definition>
+	
+	<definition name="postAlert" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/postAlert.jsp" />
+	</definition>
+	
+	<definition name="like" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/like.jsp" />
+	</definition>
+	
+	<definition name="dislike" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/dislike.jsp" />
+	</definition>
+	
+	<definition name="null" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/list/null.jsp" />
+	</definition>
+</tiles-definitions>

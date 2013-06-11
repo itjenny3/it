@@ -1,0 +1,93 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tiny.dao.CommentDao">
+	<resultMap id="result" type="comment">
+		<result property="commentId" column="commentId" />
+		<result property="documentId" column="documentId" />
+		<result property="content" column="content" />
+		<result property="providerUserId" column="providerUserId" />
+		<result property="name" column="name" />
+		<result property="isMyDoc" column="isMyDoc" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
+	
+	<insert id="save" parameterType="comment">
+		INSERT
+		INTO comment 
+				(`documentId`,
+				`content`,
+				`providerUserId`,
+				`name`,
+				`isMyDoc`,
+				`regDate`)
+		VALUES (#{documentId},
+				#{content},
+				#{providerUserId},
+				#{name},
+				#{isMyDoc},
+				NOW());
+	</insert>
+	
+	<select id="get" parameterType="int" resultMap="result">
+		SELECT *
+		FROM `comment`
+		WHERE `documentId` = #{documentId};
+	</select>
+	
+	<select id="getCommentId" parameterType="int" resultType="comment">
+		SELECT *
+		FROM `comment`
+		WHERE `commentId` = #{commentId}
+	</select>
+	
+	<select id="getLast" parameterType="int" resultMap="result">
+		SELECT *
+		FROM `comment`
+		WHERE `commentId` = LAST_INSERT_ID();
+	</select>
+	
+	<select id="getLastCommentId" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM `comment`;
+	</select>
+	
+	<select id="countByDocumentId" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM `comment`
+		WHERE `documentId` = #{documentId};
+	</select>
+	
+	<select id="countCommentForLast1Hour" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM `comment`
+		WHERE `providerUserId` = #{providerUserId}
+		AND `regDate` > DATE_ADD(NOW(), INTERVAL -1 HOUR)
+		AND `isMyDoc` = false;
+	</select>
+	
+	<update id="update" parameterType="comment">
+  		UPDATE `comment`
+  		SET
+  			`documentId` = #{documentId},
+			`content` = #{content},
+			`name` = #{name},
+			`providerUserId` = #{providerUserId}
+  		WHERE `commentId` = #{commentId};
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM `comment`
+		WHERE `commentId` = #{commentId};
+	</delete>
+	
+	<delete id="deleteWithDocumentId" parameterType="int">
+		DELETE
+		FROM `comment`
+		WHERE `documentId` = #{documentId};
+	</delete>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.tiny.model.Member" alias="member" />
+		<typeAlias type="com.tiny.model.Document" alias="document" />
+		<typeAlias type="com.tiny.model.Comment" alias="comment" />
+		<typeAlias type="com.tiny.model.UserConnection" alias="userConnection" />
+		<typeAlias type="com.tiny.model.Like" alias="like" />
+		<typeAlias type="com.tiny.model.Item" alias="item" />
+		<typeAlias type="com.tiny.model.Mission" alias="mission" />
+		<typeAlias type="com.tiny.model.ItemOnMember" alias="itemOnMember" />
+		<typeAlias type="com.tiny.model.MissionOnMember" alias="missionOnMember" />
+		<typeAlias type="com.tiny.model.DocOnMember" alias="docOnMember" />
+		<typeAlias type="com.tiny.model.MyDoc" alias="myDoc" />
+	</typeAliases>
+</configuration>

@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tiny.dao.ItemOnMemberDao">
+	<resultMap id="result" type="itemOnMember">
+		<result property="providerUserId" column="providerUserId" />
+		<result property="itemId" column="itemId" />
+	</resultMap>
+	
+	<insert id="save" parameterType="itemOnMember">
+		INSERT
+		INTO `itemOnMember`
+				(`providerUserId`,
+				`itemId`)
+		VALUES (#{providerUserId},
+				#{itemId});
+	</insert>
+	
+	<select id="get" resultMap="result">
+		SELECT *
+		FROM `itemOnMember`
+		WHERE `providerUserId` = #{providerUserId};
+	</select>
+</mapper>

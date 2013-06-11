@@ -1,0 +1,29 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tiny.dao.DocOnMemberDao">
+	<resultMap id="result" type="docOnMember">
+		<result property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="providerUserId" column="providerUserId" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
+	
+	<insert id="save" parameterType="docOnMember">
+		INSERT
+		INTO `docOnMember`
+				(`id`,
+				`content`,
+				`providerUserId`,
+				`regDate`)
+		VALUES (#{id},
+				#{content},
+				#{providerUserId},
+				#{regDate});
+	</insert>
+	
+	<select id="get" resultMap="result">
+		SELECT *
+		FROM `docOnMember`
+		WHERE `providerUserId` = #{providerUserId};
+	</select>
+</mapper>

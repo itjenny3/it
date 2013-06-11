@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="signin" extends="defaultLayout">
+		<put-attribute name="top" value="/WEB-INF/view/layout/fragment/topNotLogin.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/signin/signin.jsp" />
+	</definition>
+</tiles-definitions>

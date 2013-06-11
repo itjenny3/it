@@ -1,0 +1,89 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tiny.dao.MyDocDao">
+	<resultMap id="result" type="myDoc">
+		<result property="myDocId" column="myDocId" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="providerUserId" column="providerUserId" />
+		<result property="tag" column="tag" />
+		<result property="isGoal" column="isGoal" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
+	
+	<insert id="save" parameterType="myDoc">
+		INSERT
+		INTO myDoc 
+				(`title`,
+				`content`,
+				`providerUserId`,
+				`tag`,
+				`isGoal`,
+				`regDate`)
+		VALUES (#{title},
+				#{content},
+				#{providerUserId},
+				#{tag},
+				#{isGoal},
+				NOW());
+	</insert>
+	
+	<select id="getAll" resultMap="result">
+		SELECT *
+		FROM `myDoc`
+		ORDER BY `myDocId` DESC;
+	</select>
+	
+	<select id="get" parameterType="int" resultType="myDoc">
+		SELECT *
+		FROM `myDoc`
+		WHERE `myDocId` = #{myDocId};
+	</select>
+	
+	<select id="getList" parameterType="map" resultMap="result">
+		SELECT *
+		FROM `myDoc`
+		WHERE `myDocId` <![CDATA[<]]> #{myDocId}
+		ORDER BY `myDocId` DESC
+		LIMIT #{limit};
+	</select>
+	
+	<select id="getRecently" parameterType="int" resultMap="result">
+		SELECT *
+		FROM `myDoc`
+		WHERE `myDocId` <![CDATA[>]]> #{myDocId}
+		ORDER BY `myDocId` DESC;
+	</select>
+	
+	<select id="getProviderUserId" parameterType="int" resultType="String">
+		SELECT providerUserId
+		FROM `myDoc`
+		WHERE `myDocId` = #{myDocId};
+	</select>
+	
+	<select id="getLast" resultType="myDoc">
+		SELECT *
+		FROM `myDoc`
+		WHERE `myDocId` = LAST_INSERT_ID();
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM `myDoc`;
+	</select>
+	
+	<update id="update" parameterType="myDoc">
+  		UPDATE `myDoc`
+  		SET
+			`title` = #{title},
+			`content` = #{content},
+			`regDate` = NOW()
+  		WHERE `myDocId` = #{myDocId};
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE
+		FROM `myDoc`
+		WHERE `myDocId` = #{myDocId};
+	</delete>
+</mapper>

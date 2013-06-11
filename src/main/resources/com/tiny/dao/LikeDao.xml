@@ -1,0 +1,71 @@
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.tiny.dao.LikeDao">
+	<resultMap id="result" type="like">
+		<result property="providerUserId" column="providerUserId" />
+		<result property="documentId" column="documentId" />
+		<result property="isLike" column="isLike" />
+		<result property="regDate" column="regDate" />
+	</resultMap>
+	
+	<insert id="save" parameterType="like">
+		INSERT
+		INTO `like` 
+				(`providerUserId`,
+				`documentId`,
+				`isLike`,
+				`regDate`)
+		VALUES (#{providerUserId},
+				#{documentId},
+				#{isLike},
+				NOW());
+	</insert>
+	
+	<select id="getByProviderUserId" parameterType="String" resultMap="result">
+		SELECT *
+		FROM `like`
+		WHERE `providerUserId` = #{providerUserId};
+	</select>
+	
+	<select id="getByDocumentId" parameterType="int" resultMap="result">
+		SELECT *
+		FROM `like`
+		WHERE `documentId` = #{documentId};
+	</select>
+	
+	<select id="get" parameterType="map" resultType="like">
+		SELECT *
+		FROM `like`
+		WHERE `providerUserId` = #{providerUserId}
+		AND `documentId` = #{documentId}
+		LIMIT 1;
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*)
+		FROM `like`;
+	</select>
+	
+	<select id="countLikeForLast1Hour" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM `like`
+		WHERE providerUserId = #{providerUserId}
+		AND `regDate` > DATE_ADD(NOW(), INTERVAL -1 HOUR)
+		AND isLike = true;
+	</select>
+	
+	<select id="countDislikeForLast1Hour" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM `like`
+		WHERE providerUserId = #{providerUserId}
+		AND `regDate` > DATE_ADD(NOW(), INTERVAL -1 HOUR)
+		AND isLike = false;
+	</select>
+	
+	<delete id="delete" parameterType="map">
+		DELETE
+		FROM `like`
+		WHERE `providerUserId` = #{providerUserId}
+		AND `documentId` = #{documentId};
+	</delete>
+</mapper>
