@@ -424,9 +424,10 @@
 				</executions>
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
-					<url>jdbc:mysql://localhost:3306</url>
+					<url>jdbc:mysql://localhost:3306?characterEncoding=UTF-8</url>
 					<username>root</username>
 					<password></password>
+					<encoding>utf-8</encoding>
 					<autocommit>true</autocommit>
 					<sqlCommand>CREATE DATABASE IF NOT EXISTS template</sqlCommand>
 				</configuration>
@@ -454,8 +455,10 @@
 		</resources>
 		<pluginManagement>
 			<plugins>
-				<!-- sql-maven-plugin 사용 시 eclipse에 <phase>에서 error가 발생하는 것 display하지 않게 함 -->
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
+				<!-- sql-maven-plugin 사용 시 eclipse에 <phase>에서 error가 발생하는 것 display하지 
+					않게 함 -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
