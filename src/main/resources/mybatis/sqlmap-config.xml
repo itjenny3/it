@@ -18,5 +18,6 @@
 		<typeAlias type="com.tiny.model.MissionOnMember" alias="missionOnMember" />
 		<typeAlias type="com.tiny.model.DocOnMember" alias="docOnMember" />
 		<typeAlias type="com.tiny.model.MyDoc" alias="myDoc" />
+		<typeAlias type="com.tiny.model.Article" alias="article" />
 	</typeAliases>
 </configuration>

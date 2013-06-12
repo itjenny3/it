@@ -19,6 +19,8 @@ public class Constants {
 	public static final String MARKET = "market";
 	public static final String BUY = "buy";
 	
+	public static final String ARTICLE = "article";
+	
 	// ETC
 	public static final Integer ONEPAGELIMIT = 3;
 }

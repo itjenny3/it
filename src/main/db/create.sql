@@ -10,6 +10,10 @@ DROP TABLE IF EXISTS `mission`;
 DROP TABLE IF EXISTS `item`;
 DROP TABLE IF EXISTS `myDoc`;
 
+DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `paragraph`;
+DROP TABLE IF EXISTS `qa`;
+
 CREATE TABLE IF NOT EXISTS `UserConnection` (
 	`userId` CHAR(255) NOT NULL,
     `providerId` CHAR(255) NOT NULL,
@@ -140,6 +144,25 @@ CREATE TABLE `myDoc` (
 	INDEX (`providerUserId`, `regDate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
+CREATE TABLE IF NOT EXISTS `article` (
+	`title` CHAR(255),
+	`content` TEXT,
+    PRIMARY KEY (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE IF NOT EXISTS `paragraph` (
+	`pid` CHAR(10),
+	`content` TEXT,
+    PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE IF NOT EXISTS `qa` (
+	`qid` CHAR(10),
+	`q` TEXT,
+	`a` TEXT,
+    PRIMARY KEY (`qid`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
 INSERT
 INTO `item` 
 	(`itemId`,
@@ -178,3 +201,27 @@ VALUES (3,
 		3,
 		100,
 		"what's this?");
+		
+INSERT
+INTO `article` 
+	(`title`,
+	`content`)
+VALUES ("git",
+		"# 작업의 흐름 여러 줄로 입력해야 되는데.");
+		
+INSERT
+INTO `paragraph` 
+	(`pid`,
+	`content`)
+VALUES ("c1",
+		"content1");
+		
+INSERT
+INTO `qa` 
+	(`qid`,
+	`q`,
+	`a`)
+VALUES ("q1",
+		"question1",
+		"answer1");
+		
