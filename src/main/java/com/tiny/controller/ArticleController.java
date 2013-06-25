@@ -26,6 +26,7 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		Article article = articleService.get(title);
+		article.setContent(article.getContent().replace("\n", "<br/>"));
 		model.addAttribute("article", article);
 		mav.setViewName("article");
 		mav.addAllObjects(model);

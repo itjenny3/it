@@ -1,3 +1,336 @@
+body {
+	font-size: 30px;
+	line-height: 40px;
+	text-align: center;
+}
 .current {
 	cursor: pointer;
+}
+
+h2 {
+	font-size: 70px;
+}
+
+
+.color1 {
+	color: #ffffff;
+	background-color: #1ABC9C;	
+}
+
+.color2 {
+	color: #ffffff;
+	background-color: #16A085;	
+}
+
+.color3 {
+	color: #ffffff;
+	background-color: #2ECC71;	
+}
+
+.color4 {
+	color: #ffffff;
+	background-color: #27AE60;	
+}
+
+.color5 {
+	color: #ffffff;
+	background-color: #3498DB;	
+}
+
+.color6 {
+	color: #ffffff;
+	background-color: #2980B9;	
+}
+
+.color7 {
+	color: #ffffff;
+	background-color: #9B59B6;	
+}
+
+.color8 {
+	color: #ffffff;
+	background-color: #8E44AD;	
+}
+
+.color9 {
+	color: #ffffff;
+	background-color: #34495E;	
+}
+
+.color10 {
+	color: #ffffff;	
+	background-color: #2C3E50;	
+}
+
+.color11 {
+	color: #ffffff;
+	background-color: #F1C40F;	
+}
+
+.color12 {
+	color: #ffffff;
+	background-color: #F39C12;	
+}
+
+.color13 {
+	color: #ffffff;
+	background-color: #E67E22;	
+}
+
+.color14 {
+	color: #ffffff;
+	background-color: #D35400;	
+}
+
+.color15 {
+	color: #ffffff;
+	background-color: #E74C3C;	
+}
+
+.color16 {
+	color: #ffffff;
+	background-color: #C0392B;	
+}
+
+.color17 {
+	color: #000000;
+	background-color: #ECF0F1;	
+}
+
+.color18 {
+	color: #000000;
+	background-color: #BDC3C7;	
+}
+
+.color19 {
+	color: #000000;
+	background-color: #95A5A6;	
+}
+
+.color20 {
+	color: #000000;
+	background-color: #7F8C8D;	
+}
+
+.color21 {
+	color: #06406c;
+	background-color: #348fd4;;	
+}
+
+.color22 {
+	color: #ffffff;
+	background-color: #06406c;	
+}
+
+.color22 h4 {
+	color: #ffffff;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #000000;
+}
+
+.color23 {
+	color: #000000;
+	background-color: #ffffff;	
+}
+
+.color24 {
+	color: #d3b2af;
+	background-color: #4c0d09;	
+}
+
+.color25 {
+	color: #4c0d09;
+	background-color: #cc4037;	
+}
+
+.color26 {
+	color: #cc4037;
+	background-color: #ffc19f;	
+}
+
+.color27 {
+	color: #ffffff;	
+	background-color: #dd2588;	
+}
+
+.color28 {
+	color: #ffffff;	
+	background-color: #EE4A3E;	
+}
+
+.color29 {
+	color: #ffffff;	
+	background-color: #0683be;	
+}
+
+.color30 {
+	color: #000000;	
+	background-color: #fffcf5;	
+}
+
+.color31 {
+	color: #ffffff;	
+	background-color: #043d5d;	
+}
+
+.color32 {
+	color: #449bb5;	
+	background-color: #fffcf5;	
+}
+
+.color33 {
+	color: #25a278;	
+	background-color: #fffcf5;	
+}
+
+.color34 {
+	color: #eb5055;	
+	background-color: #fffcf5;	
+}
+
+.color35 {
+	color: #000000;	
+	background-color: #F2F2F2;	
+}
+
+.color36 {
+	color: #dddddd;	
+	background-color: #000000;	
+}
+
+.color36 h4 {
+	color: #000000;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #ffffff;
+}
+
+.color37 {
+	color: #ffffff;	
+	background-color: #457AA7;	
+}
+
+.color38 {
+	color: #ffffff;	
+	background-color: #BA423F;	
+}
+
+.color39 {
+	color: #485858;	
+	background-color: #E7F9FB;	
+}
+
+.color40 {
+	color: #ffffff;	
+	background-color: #20242F;	
+}
+
+.color41 {
+	color: #F6931E;	
+	background-color: #422503;	
+}
+
+.color42 {
+	color: #EFF0ED;	
+	background-color: #39431F;	
+}
+
+.color43 {
+	color: #470F0A;	
+	background-color: #FFDE73;	
+}
+
+.color44 {
+	color: #fafafa;	
+	background-color: #eb0000;	
+}
+
+.color45 {
+	color: #fafafa;	
+	background-color: #e98e3d;	
+}
+
+.color46 {
+	color: #fafafa;	
+	background-color: #0092c6;	
+}
+
+.color47 {
+	color: #fafafa;	
+	background-color: #d7496a;	
+}
+
+.color48 {
+	color: #fafafa;	
+	background-color: #d7496a;	
+}
+
+.color49 {
+	color: #fafafa;	
+	background-color: #e02e4b;	
+}
+.color50 {
+	color: #fafafa;	
+	background-color: #1abb9b;	
+}
+.color51 {
+	color: #fafafa;	
+	background-color: #2dc76e;	
+}
+.color52 {
+	color: #fafafa;	
+	background-color: #8ba50c;	
+}
+.color53 {
+	color: #ffffff;	
+	background-color: #4a8bc2;	
+}
+.color54 {
+	color: #ffffff;	
+	background-color: #b94b6f;	
+}
+.color55 {
+	color: #ffffff;	
+	background-color: #ff0052;	
+}
+.color56 {
+	color: #ffffff;	
+	background-color: #4b061b;	
+}
+
+.color56 h4 {
+	color: #000000;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #ffffff;
+}
+
+.color57 {
+	color: #ffffff;	
+	background-color: #a00235;	
+}
+.color58 {
+	color: #ffffff;	
+	background-color: #0f5822;
+}
+
+.color58 h4 {
+	color: #000000;
+	display: inline;	
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #ffffff;
+}
+
+.color59 {
+	color: #ffffff;	
+	background-color: #242529;
 }
