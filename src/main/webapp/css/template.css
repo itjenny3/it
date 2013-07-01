@@ -2,7 +2,17 @@ body {
 	font-size: 30px;
 	line-height: 40px;
 	text-align: center;
+	font-family: '1HoonWhitecat R';
 }
+
+@font-face {
+  font-family: '1HoonWhitecat R';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/font/template.eot');
+  src: url('/font/template.eot?#iefix') format('embedded-opentype'), url('/font/template.woff') format('woff'), url('/font/template.ttf') format('truetype');
+}
+
 .current {
 	cursor: pointer;
 }

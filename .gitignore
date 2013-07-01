@@ -4,6 +4,9 @@
 .settings/
 target/
 *.class
+*.eot
+*.woff
+*.ttf
 
 # Package Files #
 *.war
