@@ -78,21 +78,21 @@
 
 	<!-- SPRING SOCIAL -->
 	<!-- INTERCEPTORS -->
-	<mvc:interceptors>
+<!-- 	<mvc:interceptors>
 		<bean class="com.tiny.social.UserInterceptor">
 			<constructor-arg ref="usersConnectionRepository" />
 		</bean>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
 	<!-- Configures Spring Social -->
-	<bean class="org.springframework.social.connect.web.ProviderSignInController">
+<!--  	<bean class="org.springframework.social.connect.web.ProviderSignInController">
 		<constructor-arg ref="connectionFactoryLocator" />
 		<constructor-arg ref="usersConnectionRepository" />
 		<constructor-arg>
 			<bean class="com.tiny.social.SimpleSignInAdapter" />
 		</constructor-arg>
-	</bean>
+	</bean> -->
 
-	<mvc:view-controller path="/signin" />
-	<mvc:view-controller path="/signout" />
+<!-- 	<mvc:view-controller path="/signin" /> -->
+<!-- 	<mvc:view-controller path="/signout" /> -->
 </beans>
