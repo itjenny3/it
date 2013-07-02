@@ -7,6 +7,7 @@ body {
 }
 </style>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-2.1.0.css?20120904" />
+<link href='http://api.mobilis.co.kr/webfonts/v2/css/HeummStyleWeb' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" type="text/css" href="/css/template.css?20121016" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive-2.1.0.css?20120904" />
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
