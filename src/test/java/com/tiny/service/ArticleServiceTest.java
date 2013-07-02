@@ -38,26 +38,26 @@ public class ArticleServiceTest extends CommonTest {
 		String number = "1. with\n1. number";
 
 		// When
-		h1 = articleService.parse(h1);
-		h1_2 = articleService.parse(h1_2);
-		h2 = articleService.parse(h2);
-		h2_2 = articleService.parse(h2_2);
-		h3 = articleService.parse(h3);
-		h4 = articleService.parse(h4);
-		h5 = articleService.parse(h5);
-		h6 = articleService.parse(h6);
-		indent = articleService.parse(indent);
-		indent2 = articleService.parse(indent2);
-		indent3 = articleService.parse(indent3);
-		italic = articleService.parse(italic);
-		italic2 = articleService.parse(italic2);
-		bold = articleService.parse(bold);
-		bold2 = articleService.parse(bold2);
-		link = articleService.parse(link);
-		imageLink = articleService.parse(imageLink);
-		quote = articleService.parse(quote);
-		line = articleService.parse(line);
-		number = articleService.parse(number);
+		h1 = articleService.parseMarkdown(h1);
+		h1_2 = articleService.parseMarkdown(h1_2);
+		h2 = articleService.parseMarkdown(h2);
+		h2_2 = articleService.parseMarkdown(h2_2);
+		h3 = articleService.parseMarkdown(h3);
+		h4 = articleService.parseMarkdown(h4);
+		h5 = articleService.parseMarkdown(h5);
+		h6 = articleService.parseMarkdown(h6);
+		indent = articleService.parseMarkdown(indent);
+		indent2 = articleService.parseMarkdown(indent2);
+		indent3 = articleService.parseMarkdown(indent3);
+		italic = articleService.parseMarkdown(italic);
+		italic2 = articleService.parseMarkdown(italic2);
+		bold = articleService.parseMarkdown(bold);
+		bold2 = articleService.parseMarkdown(bold2);
+		link = articleService.parseMarkdown(link);
+		imageLink = articleService.parseMarkdown(imageLink);
+		quote = articleService.parseMarkdown(quote);
+		line = articleService.parseMarkdown(line);
+		number = articleService.parseMarkdown(number);
 
 		// Then
 		assertThat(h1, is("<h1>title</h1>\n"));

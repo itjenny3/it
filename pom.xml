@@ -322,6 +322,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Markdown4j -->
+		<dependency>
+			<groupId>org.markdown4j</groupId>
+			<artifactId>markdown4jprocessor</artifactId>
+			<version>2.2</version>
+		</dependency>
+		
 		<!-- LOMBOK -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

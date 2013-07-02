@@ -88,6 +88,12 @@ Package Explorer에서 template 우클릭 > Configure > Convert To Maven Project
 
 	$ mvn eclipse:eclipse
 
+### markdown4j 추가 ###
+
+markdown4j.jar 파일을 로컬 저장소에 아래 스크립트를 수행하여 저장한다.
+
+	$ ./src/main/lib/deploy-lib.sh
+
 ### 브라우저 설치 ###
 
 Selenium 테스트를 위해 아래 브라우저 설치한다.

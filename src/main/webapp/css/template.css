@@ -1,18 +1,13 @@
 body {
-	font-size: 30px;
-	line-height: 40px;
 	text-align: center;
 	font-family: 'HeummStyleWeb';
+	font-size: 30px;
+	line-height: 200%;
 }
 
 .current {
 	cursor: pointer;
 }
-
-h2 {
-	font-size: 70px;
-}
-
 
 .color1 {
 	color: #ffffff;
@@ -119,20 +114,6 @@ h2 {
 	background-color: #348fd4;;	
 }
 
-.color22 {
-	color: #ffffff;
-	background-color: #06406c;	
-}
-
-.color22 h4 {
-	color: #ffffff;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #000000;
-}
-
 .color23 {
 	color: #000000;
 	background-color: #ffffff;	
@@ -196,20 +177,6 @@ h2 {
 .color35 {
 	color: #000000;	
 	background-color: #F2F2F2;	
-}
-
-.color36 {
-	color: #dddddd;	
-	background-color: #000000;	
-}
-
-.color36 h4 {
-	color: #000000;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #ffffff;
 }
 
 .color37 {
@@ -300,12 +267,61 @@ h2 {
 	color: #ffffff;	
 	background-color: #ff0052;	
 }
-.color56 {
+.color57 {
+	color: #ffffff;	
+	background-color: #a00235;	
+}
+.color59 {
+	color: #ffffff;	
+	background-color: #242529;
+}
+
+.color99 {
+	padding: 10px 0;
+	color: #06406c;
+	background-color: #348fd4;	
+}
+
+.color99 h4 {
+	color: #ffffff;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #06406c;
+}
+
+.color100 h4 {
+	color: #ffffff;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #000000;
+}
+
+.color100 {
+	padding: 10px 0;
+	color: #ffffff;
+	background-color: #06406c;	
+}
+
+.color100 h4 {
+	color: #ffffff;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #000000;
+}
+
+.color110 {
+	padding: 10px 0;
 	color: #ffffff;	
 	background-color: #4b061b;	
 }
 
-.color56 h4 {
+.color110 h4 {
 	color: #000000;
 	display: inline;
 	font: 30px;
@@ -314,16 +330,13 @@ h2 {
 	background-color: #ffffff;
 }
 
-.color57 {
-	color: #ffffff;	
-	background-color: #a00235;	
-}
-.color58 {
+.color120 {
+	padding: 10px 0;
 	color: #ffffff;	
 	background-color: #0f5822;
 }
 
-.color58 h4 {
+.color120 h4 {
 	color: #000000;
 	display: inline;	
 	font: 30px;
@@ -332,7 +345,17 @@ h2 {
 	background-color: #ffffff;
 }
 
-.color59 {
-	color: #ffffff;	
-	background-color: #242529;
+.color130 {
+	padding: 10px 0;
+	color: #dddddd;	
+	background-color: #000000;	
+}
+
+.color130 h4 {
+	color: #000000;
+	display: inline;
+	font: 30px;
+	border-radius: 10px;
+	padding: 5px 15px;
+	background-color: #ffffff;
 }
