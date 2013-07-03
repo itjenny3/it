@@ -36,7 +36,7 @@
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>servlet</servlet-name>
@@ -47,7 +47,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/list</location>

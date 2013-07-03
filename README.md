@@ -1,7 +1,3 @@
-Template
---------
-[![travis-ci](https://secure.travis-ci.org/tiny657/template.png?branch=master)](http://travis-ci.org//tiny657/template)
-
 Skill Set
 ---------
  - Spring : Java Framework
@@ -38,6 +34,19 @@ Skill Set
 설치하기
 
 	$ yum install mysql-server
+
+/etc/my.cnf 파일에 다음 내용 추가하여 한글 지원
+	
+	[mysqld]
+	character-set-server=utf8
+	collation-server=utf8_general_ci
+
+	init_connect=SET collation_connection=utf8_general_ci
+	init_connect=SET NAMES utf8
+	[client]
+	default-character-set=utf8
+	[mysql]
+	default-character-set=utf8
 	
 참고 : http://dev.mysql.com/downloads/mysql
 
@@ -93,6 +102,12 @@ Package Explorer에서 template 우클릭 > Configure > Convert To Maven Project
 markdown4j.jar 파일을 로컬 저장소에 아래 스크립트를 수행하여 저장한다.
 
 	$ ./src/main/lib/deploy-lib.sh
+
+### 한글 처리 ###
+	
+TC server를 사용하는 경우 Spring으로 유입되는 parameter의 한글을 UTF-8로 처리하기 위해서는 server.xml을 다음과 같이 수정한다.
+
+	<Connector ... useBodyEncodingForURI="true" URIEncoding="UTF-8"/>
 
 ### 브라우저 설치 ###
 
@@ -263,7 +278,3 @@ pom.xml 파일에 AWS 배포 서버 IP 설정
 /etc/sudoers 파일에 아래 부분 주석 처리한다.
 
 	Defaults    requiretty
-
-빌드 서버
---------
-- [http://travis-ci.org/#!/tiny657/template](http://travis-ci.org/#!/tiny657/template)

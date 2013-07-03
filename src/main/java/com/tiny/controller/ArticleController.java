@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tiny.common.util.Constants;
@@ -28,6 +29,19 @@ public class ArticleController {
 		Article article = articleService.get(title);
 		article.setContent(articleService.parseMarkdown(article.getContent()));
 		model.addAttribute("article", article);
+		mav.setViewName("article");
+		mav.addAllObjects(model);
+		return mav;
+	}
+	
+	@RequestMapping(value = Constants.ARTICLE + "/{title}", method = RequestMethod.POST)
+	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
+		ModelAndView mav = new ModelAndView();
+		ModelMap model = new ModelMap();
+		Article article = new Article();
+		article.setTitle(title);
+		article.setContent(content);
+		articleService.save(article);
 		mav.setViewName("article");
 		mav.addAllObjects(model);
 		return mav;

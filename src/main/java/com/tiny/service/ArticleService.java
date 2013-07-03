@@ -39,7 +39,7 @@ public class ArticleService {
 		articleRepository.delete(title);
 	}
 
-	public String parseMarkdown(String data)  {
+	public String parseMarkdown(String data) {
 		String output = "";
 		try {
 			if (StringUtils.isNotEmpty(data)) {
