@@ -46,8 +46,10 @@ public class ArticleService {
 			if (StringUtils.isNotEmpty(markdown)) {
 				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("(?=(<h1>|<h2>))");
 				for (int i = 0; i < paragraphs.length; i++) {
-					html.append("<div class=").append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">")
-							.append(paragraphs[i]).append("</div>");
+					if (!"".equals(paragraphs[i])) {
+						html.append("<div class=").append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">")
+								.append(paragraphs[i]).append("</div>");
+					}
 				}
 			}
 		} catch (IOException e) {
