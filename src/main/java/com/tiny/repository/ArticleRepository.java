@@ -24,11 +24,11 @@ public class ArticleRepository {
 	public List<Article> getAll() {
 		return articleDao.getAll();
 	}
-	
+
 	public Article get(String title) {
 		return articleDao.get(title);
 	}
-	
+
 	public void delete(String title) {
 		articleDao.delete(title);
 	}

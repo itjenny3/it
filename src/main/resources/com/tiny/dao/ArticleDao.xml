@@ -12,7 +12,8 @@
 				(`title`,
 				`content`)
 		VALUES (#{title},
-				#{content});
+				#{content})
+		ON DUPLICATE KEY UPDATE `content` = #{content};
 	</insert>
 	
 	<select id="get" parameterType="map" resultType="article">

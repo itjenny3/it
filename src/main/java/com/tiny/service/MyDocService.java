@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.MyDoc;
 import com.tiny.repository.MyDocRepository;
@@ -54,7 +54,7 @@ public class MyDocService {
 	}
 
 	public List<MyDoc> getList(Integer from) {
-		List<MyDoc> mydocs = myDocRepository.getList(from, Constants.ONEPAGELIMIT);
+		List<MyDoc> mydocs = myDocRepository.getList(from, Constant.ONEPAGELIMIT);
 
 		return mydocs;
 	}

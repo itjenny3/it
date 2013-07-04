@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Article;
 import com.tiny.service.ArticleService;
 
@@ -22,7 +22,7 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
-	@RequestMapping(value = Constants.ARTICLE + "/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.GET)
 	public ModelAndView get(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -34,7 +34,7 @@ public class ArticleController {
 		return mav;
 	}
 	
-	@RequestMapping(value = Constants.ARTICLE + "/{title}", method = RequestMethod.POST)
+	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();

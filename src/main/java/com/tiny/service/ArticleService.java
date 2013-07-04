@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.Article;
 import com.tiny.repository.ArticleRepository;
@@ -46,7 +46,7 @@ public class ArticleService {
 			if (StringUtils.isNotEmpty(markdown)) {
 				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("(?=(<h1>|<h2>))");
 				for (int i = 0; i < paragraphs.length; i++) {
-					html.append("<div class=").append(Constants.CSSLIST[i % Constants.CSSLIST.length]).append(">")
+					html.append("<div class=").append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">")
 							.append(paragraphs[i]).append("</div>");
 				}
 			}

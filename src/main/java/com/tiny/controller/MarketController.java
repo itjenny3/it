@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Checkbox;
 import com.tiny.model.Item;
 import com.tiny.service.MarketService;
@@ -25,7 +25,7 @@ public class MarketController {
 	@Autowired
 	private MarketService marketService;
 
-	@RequestMapping(value = Constants.MARKET, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.MARKET, method = RequestMethod.GET)
 	public ModelAndView getFriends() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -38,13 +38,13 @@ public class MarketController {
 		checkbox.setCheckboxs(checkboxs);
 		model.addAttribute("items", items);
 		model.addAttribute("checkbox", checkbox);
-		model.addAttribute("url", Constants.MARKET);
+		model.addAttribute("url", Constant.MARKET);
 		mav.addAllObjects(model);
 		mav.setViewName("market");
 		return mav;
 	}
 
-	@RequestMapping(value = Constants.MARKET + "/" + Constants.BUY, method = RequestMethod.POST)
+	@RequestMapping(value = Constant.MARKET + "/" + Constant.BUY, method = RequestMethod.POST)
 	public ModelAndView buy(@ModelAttribute Checkbox checkbox) {
 		for (Boolean i : checkbox.getCheckboxs()) {
 			System.out.println(i);

@@ -3,12 +3,9 @@ package com.tiny.service;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
-import java.util.StringTokenizer;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.google.common.base.Splitter;
 import com.tiny.common.CommonTest;
 
 public class ArticleServiceTest extends CommonTest {

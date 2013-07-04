@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.Comment;
 import com.tiny.model.Document;
@@ -49,7 +49,7 @@ public class ListController {
 	@Autowired
 	private XssFilter xssFilter;
 
-	@RequestMapping(value = Constants.LIST, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.LIST, method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam(defaultValue = "2147483647", required = false) int documentId,
 			@RequestParam(defaultValue = "false", required = false) boolean viewRecently) {
 		if (!memberService.isExisted()) {
@@ -89,7 +89,7 @@ public class ListController {
 		model.addAttribute("newDocument", new Document());
 		model.addAttribute("documents", documents);
 		model.addAttribute("comments", comments);
-		model.addAttribute("url", Constants.LIST);
+		model.addAttribute("url", Constant.LIST);
 
 		// for posting
 		model.addAttribute("providerUserId", securityContext.getProviderUserId());
@@ -98,7 +98,7 @@ public class ListController {
 		model.addAttribute("member", memberService.getByProviderUserId());
 
 		// more
-		if (viewRecently || documents.size() != Constants.ONEPAGELIMIT) {
+		if (viewRecently || documents.size() != Constant.ONEPAGELIMIT) {
 			model.addAttribute("more", false);
 		} else {
 			model.addAttribute("more", true);
@@ -113,7 +113,7 @@ public class ListController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constants.LIST + "/{documentId}", method = RequestMethod.GET)
+	@RequestMapping(value = Constant.LIST + "/{documentId}", method = RequestMethod.GET)
 	public ModelAndView listOne(@PathVariable Integer documentId) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -135,7 +135,7 @@ public class ListController {
 		}
 		model.addAttribute("document", document);
 		model.addAttribute("comments", comments);
-		model.addAttribute("url", Constants.LIST);
+		model.addAttribute("url", Constant.LIST);
 
 		try {
 			// for posting

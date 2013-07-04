@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.MyDoc;
 import com.tiny.service.MemberService;
@@ -35,7 +35,7 @@ public class MainController {
 	@Autowired
 	private XssFilter xssFilter;
 
-	@RequestMapping(value = Constants.MAIN, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.MAIN, method = RequestMethod.GET)
 	public ModelAndView main(@RequestParam(defaultValue = "2147483647", required = false) int myDocId,
 			@RequestParam(defaultValue = "false", required = false) boolean viewRecently) {
 		memberService.updateLastLoginTime();
@@ -56,13 +56,13 @@ public class MainController {
 		}
 		model.addAttribute("newMyDoc", new MyDoc());
 		model.addAttribute("myDocs", myDocs);
-		model.addAttribute("url", Constants.MAIN);
+		model.addAttribute("url", Constant.MAIN);
 
 		// for posting
 		model.addAttribute("providerUserId", securityContext.getProviderUserId());
 
 		// more
-		if (viewRecently || myDocs.size() != Constants.ONEPAGELIMIT) {
+		if (viewRecently || myDocs.size() != Constant.ONEPAGELIMIT) {
 			model.addAttribute("more", false);
 		} else {
 			model.addAttribute("more", true);

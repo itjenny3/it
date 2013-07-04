@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Member;
 import com.tiny.service.MemberService;
 
@@ -22,20 +22,20 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(value = Constants.MEMBER, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.MEMBER, method = RequestMethod.GET)
 	public ModelAndView member() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		Member member = memberService.get();
 		memberService.setUsage(member);
 		model.addAttribute("member", member);
-		model.addAttribute("url", Constants.MEMBER);
+		model.addAttribute("url", Constant.MEMBER);
 		mav.addAllObjects(model);
 		mav.setViewName("member");
 		return mav;
 	}
 	
-	@RequestMapping(value = Constants.MEMBER, method = RequestMethod.POST)
+	@RequestMapping(value = Constant.MEMBER, method = RequestMethod.POST)
 	public ModelAndView memberUpdate(@ModelAttribute Member member) {
 		memberService.updateName(member.getName());
 		return new ModelAndView(new RedirectView("/list"));

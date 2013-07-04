@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Document;
 import com.tiny.service.CommentService;
 import com.tiny.service.DocumentService;
@@ -40,7 +40,7 @@ public class DocumentController {
 	@Autowired
 	private SecurityContext securityContext;
 
-	@RequestMapping(value = Constants.DOCUMENT, method = RequestMethod.POST)
+	@RequestMapping(value = Constant.DOCUMENT, method = RequestMethod.POST)
 	public ModelAndView saveDocument(@RequestParam Integer documentId,
 			@RequestParam String rawContent) {
 		ModelAndView mav = new ModelAndView();
@@ -62,7 +62,7 @@ public class DocumentController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constants.DOCUMENT, method = RequestMethod.PUT)
+	@RequestMapping(value = Constant.DOCUMENT, method = RequestMethod.PUT)
 	public @ResponseBody
 	String updateDocument(@RequestParam Integer documentId, @RequestParam String rawContent) {
 		Document document = documentService.get(documentId);
@@ -70,7 +70,7 @@ public class DocumentController {
 		return documentService.updateAndGet(document).getContent();
 	}
 
-	@RequestMapping(value = Constants.DOCUMENT, method = RequestMethod.DELETE)
+	@RequestMapping(value = Constant.DOCUMENT, method = RequestMethod.DELETE)
 	public void delete(@RequestParam Integer documentId) {
 		pointService.calculatePointToDeleteDocument(documentId);
 		commentService.deleteWithDocumentId(documentId);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Comment;
 import com.tiny.service.CommentService;
 import com.tiny.service.DocumentService;
@@ -38,7 +38,7 @@ public class CommentController {
 	@Autowired
 	private SecurityContext securityContext;
 
-	@RequestMapping(value = Constants.COMMENT, method = RequestMethod.POST)
+	@RequestMapping(value = Constant.COMMENT, method = RequestMethod.POST)
 	public ModelAndView save(@RequestParam Integer documentId, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 
@@ -62,7 +62,7 @@ public class CommentController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constants.COMMENT, method = RequestMethod.DELETE)
+	@RequestMapping(value = Constant.COMMENT, method = RequestMethod.DELETE)
 	public @ResponseBody
 	boolean delete(@RequestParam Integer documentId, @RequestParam Integer commentId) {
 		if (!documentService.isMyDoc(documentId)) {

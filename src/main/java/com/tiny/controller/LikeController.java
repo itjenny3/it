@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.tiny.common.util.Constants;
+import com.tiny.common.util.Constant;
 import com.tiny.model.Document;
 import com.tiny.service.DocumentService;
 import com.tiny.service.LikeService;
@@ -41,7 +41,7 @@ public class LikeController {
 	@Autowired
 	private PostService postService;
 
-	@RequestMapping(value = Constants.POST, method = RequestMethod.POST)
+	@RequestMapping(value = Constant.POST, method = RequestMethod.POST)
 	public ModelAndView post(@RequestParam Integer documentId, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -70,7 +70,7 @@ public class LikeController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constants.LIKE, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.LIKE, method = RequestMethod.GET)
 	public @ResponseBody
 	boolean like(@RequestParam Integer documentId) {
 		if (documentService.isMyDoc(documentId)) {
@@ -90,7 +90,7 @@ public class LikeController {
 		}
 	}
 
-	@RequestMapping(value = Constants.CANCELLIKE, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.CANCELLIKE, method = RequestMethod.GET)
 	public @ResponseBody
 	boolean cancelLike(@RequestParam Integer documentId) {
 		if (documentService.isMyDoc(documentId)) {
@@ -102,7 +102,7 @@ public class LikeController {
 		return true;
 	}
 
-	@RequestMapping(value = Constants.DISLIKE, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.DISLIKE, method = RequestMethod.GET)
 	public @ResponseBody
 	boolean dislike(@RequestParam Integer documentId) {
 		if (documentService.isMyDoc(documentId)) {
@@ -122,7 +122,7 @@ public class LikeController {
 		}
 	}
 
-	@RequestMapping(value = Constants.CANCELDISLIKE, method = RequestMethod.GET)
+	@RequestMapping(value = Constant.CANCELDISLIKE, method = RequestMethod.GET)
 	public @ResponseBody
 	boolean cancelDislike(@RequestParam Integer documentId) {
 		if (documentService.isMyDoc(documentId)) {

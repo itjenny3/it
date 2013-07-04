@@ -1,6 +1,6 @@
 package com.tiny.common.util;
 
-public class Constants {
+public class Constant {
 	// URL
 	public static final String MAIN = "";
 	
