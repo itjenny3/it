@@ -21,6 +21,8 @@ public class Constants {
 	
 	public static final String ARTICLE = "article";
 	
+	public static final String[] CSSLIST = {"color99", "color100", "color110", "color120", "color130"};
+	
 	// ETC
 	public static final Integer ONEPAGELIMIT = 3;
 }

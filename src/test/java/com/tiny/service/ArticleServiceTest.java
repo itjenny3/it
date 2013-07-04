@@ -1,11 +1,14 @@
 package com.tiny.service;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
+
+import java.util.StringTokenizer;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.common.base.Splitter;
 import com.tiny.common.CommonTest;
 
 public class ArticleServiceTest extends CommonTest {
@@ -14,7 +17,7 @@ public class ArticleServiceTest extends CommonTest {
 	private ArticleService articleService;
 
 	@Test
-	public void testParse() {
+	public void testConvert() {
 		// Given
 		String h1 = "# title";
 		String h1_2 = "title\n===";
@@ -36,49 +39,56 @@ public class ArticleServiceTest extends CommonTest {
 		String quote = ">quote";
 		String line = "----";
 		String number = "1. with\n1. number";
+		String br = "first\nsecond";
+		String p = "first\n\nsecond";
 
 		// When
-		h1 = articleService.parseMarkdown(h1);
-		h1_2 = articleService.parseMarkdown(h1_2);
-		h2 = articleService.parseMarkdown(h2);
-		h2_2 = articleService.parseMarkdown(h2_2);
-		h3 = articleService.parseMarkdown(h3);
-		h4 = articleService.parseMarkdown(h4);
-		h5 = articleService.parseMarkdown(h5);
-		h6 = articleService.parseMarkdown(h6);
-		indent = articleService.parseMarkdown(indent);
-		indent2 = articleService.parseMarkdown(indent2);
-		indent3 = articleService.parseMarkdown(indent3);
-		italic = articleService.parseMarkdown(italic);
-		italic2 = articleService.parseMarkdown(italic2);
-		bold = articleService.parseMarkdown(bold);
-		bold2 = articleService.parseMarkdown(bold2);
-		link = articleService.parseMarkdown(link);
-		imageLink = articleService.parseMarkdown(imageLink);
-		quote = articleService.parseMarkdown(quote);
-		line = articleService.parseMarkdown(line);
-		number = articleService.parseMarkdown(number);
+		h1 = articleService.convertToHtml(h1);
+		h1_2 = articleService.convertToHtml(h1_2);
+		h2 = articleService.convertToHtml(h2);
+		h2_2 = articleService.convertToHtml(h2_2);
+		h3 = articleService.convertToHtml(h3);
+		h4 = articleService.convertToHtml(h4);
+		h5 = articleService.convertToHtml(h5);
+		h6 = articleService.convertToHtml(h6);
+		indent = articleService.convertToHtml(indent);
+		indent2 = articleService.convertToHtml(indent2);
+		indent3 = articleService.convertToHtml(indent3);
+		italic = articleService.convertToHtml(italic);
+		italic2 = articleService.convertToHtml(italic2);
+		bold = articleService.convertToHtml(bold);
+		bold2 = articleService.convertToHtml(bold2);
+		link = articleService.convertToHtml(link);
+		imageLink = articleService.convertToHtml(imageLink);
+		quote = articleService.convertToHtml(quote);
+		line = articleService.convertToHtml(line);
+		number = articleService.convertToHtml(number);
+		br = articleService.convertToHtml(br);
+		p = articleService.convertToHtml(p);
 
 		// Then
-		assertThat(h1, is("<h1>title</h1>\n"));
-		assertThat(h1_2, is("<h1>title</h1>\n"));
-		assertThat(h2, is("<h2>title</h2>\n"));
-		assertThat(h2_2, is("<h2>title</h2>\n"));
-		assertThat(h3, is("<h3>title</h3>\n"));
-		assertThat(h4, is("<h4>title</h4>\n"));
-		assertThat(h5, is("<h5>title</h5>\n"));
-		assertThat(h6, is("<h6>title</h6>\n"));
-		assertThat(indent, is("<ul>\n<li>indent</li>\n</ul>\n"));
-		assertThat(indent2, is("<ul>\n<li>indent</li>\n</ul>\n"));
-		assertThat(indent3, is("<ul>\n<li>indent</li>\n</ul>\n"));
-		assertThat(italic, is("<p><em>italic</em></p>\n"));
-		assertThat(italic2, is("<p><em>italic</em></p>\n"));
-		assertThat(bold, is("<p><strong>bold</strong></p>\n"));
-		assertThat(bold2, is("<p><strong>bold</strong></p>\n"));
-		assertThat(link, is("<p><a href=\"http://link.url\">title</a></p>\n"));
-		assertThat(imageLink, is("<p><a href=\"http://link.url\"><img src=\"http://image.url\" alt=\"alt\" /></a></p>\n"));
-		assertThat(quote, is("<blockquote><p>quote</p>\n</blockquote>\n"));
-		assertThat(line, is("<hr />\n"));
-		assertThat(number, is("<ol>\n<li>with</li>\n<li>number</li>\n</ol>\n"));
+		assertThat(h1, containsString("<h1>title</h1>\n"));
+		assertThat(h1_2, containsString("<h1>title</h1>\n"));
+		assertThat(h2, containsString("<h2>title</h2>\n"));
+		assertThat(h2_2, containsString("<h2>title</h2>\n"));
+		assertThat(h3, containsString("<h3>title</h3>\n"));
+		assertThat(h4, containsString("<h4>title</h4>\n"));
+		assertThat(h5, containsString("<h5>title</h5>\n"));
+		assertThat(h6, containsString("<h6>title</h6>\n"));
+		assertThat(indent, containsString("<ul>\n<li>indent</li>\n</ul>\n"));
+		assertThat(indent2, containsString("<ul>\n<li>indent</li>\n</ul>\n"));
+		assertThat(indent3, containsString("<ul>\n<li>indent</li>\n</ul>\n"));
+		assertThat(italic, containsString("<p><em>italic</em></p>\n"));
+		assertThat(italic2, containsString("<p><em>italic</em></p>\n"));
+		assertThat(bold, containsString("<p><strong>bold</strong></p>\n"));
+		assertThat(bold2, containsString("<p><strong>bold</strong></p>\n"));
+		assertThat(link, containsString("<p><a href=\"http://link.url\">title</a></p>\n"));
+		assertThat(imageLink,
+				containsString("<p><a href=\"http://link.url\"><img src=\"http://image.url\" alt=\"alt\" /></a></p>\n"));
+		assertThat(quote, containsString("<blockquote><p>quote</p>\n</blockquote>\n"));
+		assertThat(line, containsString("<hr />\n"));
+		assertThat(number, containsString("<ol>\n<li>with</li>\n<li>number</li>\n</ol>\n"));
+		assertThat(br, containsString("<p>first\n<br  />second</p>\n"));
+		assertThat(p, containsString("<p>first</p>\n<p>second</p>\n"));
 	}
 }

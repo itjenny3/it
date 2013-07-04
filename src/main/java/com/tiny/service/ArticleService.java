@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tiny.common.util.Constants;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.Article;
 import com.tiny.repository.ArticleRepository;
@@ -39,15 +40,19 @@ public class ArticleService {
 		articleRepository.delete(title);
 	}
 
-	public String parseMarkdown(String data) {
-		String output = "";
+	public String convertToHtml(String markdown) {
+		StringBuilder html = new StringBuilder();
 		try {
-			if (StringUtils.isNotEmpty(data)) {
-				output = new Markdown4jProcessor().process(data);
+			if (StringUtils.isNotEmpty(markdown)) {
+				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("(?=(<h1>|<h2>))");
+				for (int i = 0; i < paragraphs.length; i++) {
+					html.append("<div class=").append(Constants.CSSLIST[i % Constants.CSSLIST.length]).append(">")
+							.append(paragraphs[i]).append("</div>");
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return output;
+		return html.toString();
 	}
 }
