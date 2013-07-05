@@ -5,6 +5,14 @@ body {
 	line-height: 200%;
 }
 
+code,
+pre {
+	text-align: left;
+	font-family: 'HeummStyleWeb';
+	font-size: 25px;
+	line-height: 200%;
+}
+
 .current {
 	cursor: pointer;
 }
@@ -277,85 +285,33 @@ body {
 }
 
 .color99 {
-	padding: 10px 0;
+	padding: 0 0 50px 0;
 	color: #06406c;
 	background-color: #348fd4;	
 }
 
-.color99 h4 {
-	color: #ffffff;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #06406c;
-}
-
-.color100 h4 {
-	color: #ffffff;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #000000;
-}
-
 .color100 {
-	padding: 10px 0;
+	padding: 0 0 50px 0;
 	color: #ffffff;
 	background-color: #06406c;	
 }
 
-.color100 h4 {
-	color: #ffffff;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #000000;
-}
-
 .color110 {
-	padding: 10px 0;
+	padding: 0 0 50px 0;
 	color: #ffffff;	
 	background-color: #4b061b;	
 }
 
-.color110 h4 {
-	color: #000000;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #ffffff;
-}
-
 .color120 {
-	padding: 10px 0;
+	padding: 0 0 50px 0;
 	color: #ffffff;	
 	background-color: #0f5822;
 }
 
-.color120 h4 {
-	color: #000000;
-	display: inline;	
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #ffffff;
-}
-
 .color130 {
+	padding: 0 0 50px 0;
+	text-align: center;
 	padding: 10px 0;
 	color: #dddddd;	
 	background-color: #000000;	
-}
-
-.color130 h4 {
-	color: #000000;
-	display: inline;
-	font: 30px;
-	border-radius: 10px;
-	padding: 5px 15px;
-	background-color: #ffffff;
 }

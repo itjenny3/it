@@ -577,8 +577,9 @@ a:hover {
   clear: both;
 }
 
+// itjenny
 p {
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 .lead {
@@ -608,13 +609,15 @@ cite {
   color: #999999;
 }
 
+// itjenny
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: 10px 0;
+  margin: 0;
+  padding: 50px 0 40px 0;
   font-family: inherit;
   font-weight: bold;
   line-height: 1;
@@ -633,6 +636,7 @@ h6 small {
   color: #999999;
 }
 
+// itjenny
 h1 {
   font-size: 90px;
   line-height: 100px;
@@ -644,39 +648,39 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 60px;
+  line-height: 70px;
 }
 
 h4 {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 50px;
+  line-height: 60px;
 }
 
 h5 {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 40px;
+  line-height: 50px;
 }
 
 h6 {
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 30px;
+  line-height: 40px;
 }
 
 h1 small {
-  font-size: 24px;
+  font-size: 80px;
 }
 
 h2 small {
-  font-size: 18px;
+  font-size: 70px;
 }
 
 h3 small {
-  font-size: 14px;
+  font-size: 60px;
 }
 
 h4 small {
-  font-size: 14px;
+  font-size: 50px;
 }
 
 .page-header {
@@ -685,10 +689,13 @@ h4 small {
   border-bottom: 1px solid #eeeeee;
 }
 
+// itjenny
 ul,
 ol {
   padding: 0;
   margin: 0 0 10px 25px;
+  display: inline-block;
+  text-align: left;
 }
 
 ul ul,
@@ -698,8 +705,10 @@ ol ul {
   margin-bottom: 0;
 }
 
+// itjenny
 li {
-  line-height: 20px;
+  text-align: center;
+  line-height: 40px;
 }
 
 ul.unstyled,
@@ -814,10 +823,10 @@ address {
   line-height: 20px;
 }
 
+// itjenny
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 12px;
   color: #333333;
   -webkit-border-radius: 3px;
@@ -832,12 +841,12 @@ code {
   border: 1px solid #e1e1e8;
 }
 
+// itjenny
 pre {
-  display: block;
+  display: inline-block;
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 20px;
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
