@@ -116,6 +116,18 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
  - Chrome
  - Firefox
 
+### 타켓 서버에 publickey 설정 ###
+
+ - 타켓 서버에 ~/.ssh 폴더를 700 권한으로 생성한다.
+ - ssh-keygen -t rsa -C "이메일" : 인증키 생성한다.
+ - 생성된 id_rsa.pub파일을 ~/.ssh/authorized_keys로 이름을 변경하여 타켓 서버가 복사한다.
+
+### Python 배포용 fabric 설치 ###
+
+ - Python 2.5 이상 설치한다.
+ - sudo easy_install pip : easy_install을 이용하여 pip 설치한다.
+ - sudo pip install fabric : pip를 이용하여 fabric을 설치한다.
+
 
 STS Setting
 -----------

@@ -4,6 +4,7 @@
 .settings/
 target/
 *.class
+*.pyc
 
 # Package Files #
 *.war
