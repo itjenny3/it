@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
-<tiles-definitions>
-	<definition name="member" extends="defaultLayout">
-		<put-attribute name="body" value="/WEB-INF/view/member/member.jsp" />
-	</definition>
-</tiles-definitions>
