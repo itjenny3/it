@@ -11,9 +11,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<import resource="jdbc-context.xml" />
-	<import resource="applicationContext-ehcache.xml" />
-
-	<!-- Configures Spring Social -->
-	<bean class="com.tiny.social.config.SocialConfig" />
+	<import resource="applicationContext-transaction.xml" />
+	<import resource="applicationContext-jpa.xml" />
+	<import resource="infrastructure.xml" />
 </beans>

@@ -13,7 +13,6 @@ import com.tiny.common.util.Constant;
 import com.tiny.common.util.XssFilter;
 import com.tiny.model.Article;
 import com.tiny.repository.ArticleRepository;
-import com.tiny.social.SecurityContext;
 
 @Service
 public class ArticleService {
@@ -25,15 +24,12 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
 
-	@Autowired
-	private SecurityContext securityContext;
-
 	public void save(Article article) {
 		articleRepository.save(article);
 	}
 
 	public Article get(String title) {
-		return articleRepository.get(title);
+		return articleRepository.findOne(title);
 	}
 
 	public void delete(String title) {

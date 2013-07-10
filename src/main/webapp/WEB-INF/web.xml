@@ -27,7 +27,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- DELTE, PUT method 사용 가능하게 해줌 -->
+	<!-- DELETE, PUT method 사용 가능하게 해줌 -->
 	<filter>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -50,7 +50,7 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/list</location>
+		<location>/article</location>
 	</error-page>
 
 	<servlet-mapping>
