@@ -1,16 +1,30 @@
 from fabric.api import *
 
-env.roledefs = {
-	'tiny' : ['itjenny.com'],
-}
 env.hosts = ['itjenny.com']
+
+TOMCAT = "/usr/share/tomcat6"
+WARFILE = "ROOT"
 
 def deploy():
 	""" deploy """
 	print
 	print " * deploy"
-	local("scp ./target/ROOT.war root@itjenny.com:/usr/share/tomcat6/webapps/")
+	build()
+	copyWar()
+	deleteWebappsFolder()
 	tomcatRestart()
+
+def deleteWebappsFolder():
+	with settings(user = 'root'):
+		run("rm -rf %s/webapps/%s" % (TOMCAT, WARFILE))
+
+def copyWar():
+	local("scp ./target/%s.war root@itjenny.com:%s/webapps/" % (WARFILE, TOMCAT))
+
+def build():
+	print
+	print " * maven packge"
+	local('mvn package')
 
 def tomcatRestart():
 	""" tomcat restart """
