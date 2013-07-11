@@ -1,5 +1,7 @@
 package com.tiny.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +24,32 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
+	@RequestMapping(value = Constant.ARTICLE, method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView mav = new ModelAndView();
+		ModelMap model = new ModelMap();
+		List<Article> articles = articleService.getAll();
+		model.addAttribute("articles", articles);
+		mav.setViewName("articles");
+		mav.addAllObjects(model);
+		return mav;
+	}
+
 	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.GET)
-	public ModelAndView get(@PathVariable String title) {
+	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		Article article = articleService.get(title);
+		if (article == null) {
+			return new ModelAndView("redirect:/article");
+		}
 		article.setHtml(articleService.convertToHtml(article.getContent()));
 		model.addAttribute("article", article);
 		mav.setViewName("article");
 		mav.addAllObjects(model);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();

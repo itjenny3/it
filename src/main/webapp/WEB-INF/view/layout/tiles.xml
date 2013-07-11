@@ -9,7 +9,6 @@
 
 		<put-list-attribute name="lazyloadingScripts">
 			<add-attribute value="/js/bootstrap-2.1.0.js?20120904" />
-			<add-attribute value="/js/list.js?20121017" />
 		</put-list-attribute>
 	</definition>
 

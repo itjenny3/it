@@ -15,7 +15,6 @@
 </head>
 
 <body>
-<%-- 	<tiles:insertAttribute name="top" /> --%>
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
 	<tiles:useAttribute id="lazyloadingScripts" name="lazyloadingScripts" classname="java.util.List" />

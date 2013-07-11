@@ -4,4 +4,7 @@
 	<definition name="article" extends="defaultLayout">
 		<put-attribute name="body" value="/WEB-INF/view/article/article.jsp" />
 	</definition>
+	<definition name="articles" extends="defaultLayout">
+		<put-attribute name="body" value="/WEB-INF/view/article/articles.jsp" />
+	</definition>
 </tiles-definitions>

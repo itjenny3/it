@@ -1,6 +1,7 @@
 package com.tiny.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.markdown4j.Markdown4jProcessor;
@@ -28,8 +29,16 @@ public class ArticleService {
 		articleRepository.save(article);
 	}
 
+	public List<Article> getAll() {
+		return articleRepository.findAll();
+	}
+
 	public Article get(String title) {
-		return articleRepository.findOne(title);
+		Article article = null;
+		if (articleRepository.exists(title)) {
+			article = articleRepository.findOne(title);
+		}
+		return article;
 	}
 
 	public void delete(String title) {
