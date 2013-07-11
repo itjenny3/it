@@ -577,7 +577,7 @@ a:hover {
   clear: both;
 }
 
-// itjenny
+/* itjenny */
 p {
   margin: 0;
 }
@@ -609,7 +609,7 @@ cite {
   color: #999999;
 }
 
-// itjenny
+/* itjenny */
 h1,
 h2,
 h3,
@@ -636,7 +636,7 @@ h6 small {
   color: #999999;
 }
 
-// itjenny
+/* itjenny */
 h1 {
   font-size: 90px;
   line-height: 100px;
@@ -689,7 +689,7 @@ h4 small {
   border-bottom: 1px solid #eeeeee;
 }
 
-// itjenny
+/* itjenny */
 ul,
 ol {
   padding: 0;
@@ -705,7 +705,7 @@ ol ul {
   margin-bottom: 0;
 }
 
-// itjenny
+/* itjenny */
 li {
   text-align: center;
   line-height: 40px;
@@ -823,7 +823,7 @@ address {
   line-height: 20px;
 }
 
-// itjenny
+/* itjenny */
 code,
 pre {
   padding: 0 3px 2px;
@@ -841,7 +841,7 @@ code {
   border: 1px solid #e1e1e8;
 }
 
-// itjenny
+/* itjenny */
 pre {
   display: inline-block;
   padding: 9.5px;
