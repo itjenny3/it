@@ -7,11 +7,11 @@
 }
 
 @font-face {
-	font-family: 'HU젠140';
+	font-family: 'HU젠120';
 	font-style: normal;
 	font-weight: normal;
-	src: url('/font/HU젠140.eot');
-	src: url('/font/HU젠140.eot?#iefix') format('embedded-opentype'), url('/font/HU젠140.woff') format('woff'), url('/font/HU젠140.ttf') format('truetype');
+	src: url('/font/HU젠120.eot');
+	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'), url('/font/HU젠120.woff') format('woff'), url('/font/HU젠120.ttf') format('truetype');
 }
 
 body {
@@ -22,7 +22,7 @@ body {
 }
 
 h1, h2 {
-	font-family: 'HU젠140';
+	font-family: 'HU젠120';
 }
 
 code,pre {
