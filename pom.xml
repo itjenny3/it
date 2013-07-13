@@ -33,7 +33,7 @@
 
 		<!-- JPA -->
 		<spring-data-jpa.version>1.3.2.RELEASE</spring-data-jpa.version>
-		<hibernate-jpa.version>1.0.1.FINAL</hibernate-jpa.version>
+		<hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
 		<!-- HIBERNATE -->
 		<hibernate.version>4.2.2.Final</hibernate.version>
 
@@ -69,14 +69,6 @@
 		<!-- TOMCAT-MAVEN -->
 		<tomcat-maven-plugin.version>1.1</tomcat-maven-plugin.version>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>repository.jboss.org-public</id>
-			<name>JBoss repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<!-- SPRING -->
@@ -184,7 +176,7 @@
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>${hibernate-jpa.version}</version>
 		</dependency>
-		
+
 		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
