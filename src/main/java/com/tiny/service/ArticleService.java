@@ -11,16 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tiny.common.util.Constant;
-import com.tiny.common.util.XssFilter;
 import com.tiny.model.Article;
 import com.tiny.repository.ArticleRepository;
 
 @Service
 public class ArticleService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
-
-	@Autowired
-	private XssFilter xssFilter;
 
 	@Autowired
 	private ArticleRepository articleRepository;
