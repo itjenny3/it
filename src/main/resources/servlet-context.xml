@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<!-- @Controller만 빈으로 등록함 -->
-	<context:component-scan base-package="com.tiny.controller">
+	<context:component-scan base-package="com.itjenny.controller">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<context:annotation-config />

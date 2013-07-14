@@ -7,7 +7,7 @@
 
 	<!-- 어플리케이션 에서는 Controller를 제외하고 컴포넌트 스캔 -->
 	<!-- Controller 설정은 servlet-context.xml 에 정의함 -->
-	<context:component-scan base-package="com.tiny">
+	<context:component-scan base-package="com.itjenny">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 

@@ -1,4 +1,4 @@
-package com.tiny.common.util;
+package com.itjenny.common.util;
 
 public class Constant {
 	// URL

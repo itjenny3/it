@@ -1,4 +1,4 @@
-package com.tiny.model;
+package com.itjenny.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

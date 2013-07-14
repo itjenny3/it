@@ -1,15 +1,14 @@
-package com.tiny.service;
+package com.itjenny.service;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
+import static org.junit.matchers.JUnitMatchers.containsString;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tiny.common.CommonTest;
+import com.itjenny.common.CommonTest;
 
 public class ArticleServiceTest extends CommonTest {
-
 	@Autowired
 	private ArticleService articleService;
 

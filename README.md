@@ -290,3 +290,10 @@ pom.xml 파일에 AWS 배포 서버 IP 설정
 /etc/sudoers 파일에 아래 부분 주석 처리한다.
 
 	Defaults    requiretty
+
+CloudBees 연동
+-----------------------------------
+
+### MySQL 연동 ###
+
+	https://developer.cloudbees.com/bin/view/DEV/MySQL

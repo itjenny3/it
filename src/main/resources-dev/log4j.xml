@@ -10,7 +10,7 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="com.tiny" additivity="false">
+	<logger name="com.itjenny" additivity="false">
 		<level value="info" />
 		<appender-ref ref="console" />
 	</logger>

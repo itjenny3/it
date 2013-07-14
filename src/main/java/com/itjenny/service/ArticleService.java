@@ -1,4 +1,4 @@
-package com.tiny.service;
+package com.itjenny.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiny.common.util.Constant;
-import com.tiny.model.Article;
-import com.tiny.repository.ArticleRepository;
+import com.itjenny.common.util.Constant;
+import com.itjenny.model.Article;
+import com.itjenny.repository.ArticleRepository;
 
 @Service
 public class ArticleService {

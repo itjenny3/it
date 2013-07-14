@@ -1,4 +1,4 @@
-package com.tiny.common;
+package com.itjenny.common;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS template;
-USE template;
+CREATE DATABASE IF NOT EXISTS itjenny;
+USE itjenny;
 DROP TABLE IF EXISTS `article`;
 
 CREATE TABLE IF NOT EXISTS `article` (
