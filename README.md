@@ -95,7 +95,7 @@ Package Explorer에서 template 우클릭 > Configure > Convert To Maven Project
 
 다운로드 받아진 template project에서 경로에서 아래와 같이 입력하여 eclipse project를 생성한다.
 
-	$ mvn eclipse:eclipse
+	$ mvn eclipse:clean eclipse:eclipse
 
 ### markdown4j 추가 ###
 
@@ -125,8 +125,13 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
 ### Python 배포용 fabric 설치 ###
 
  - Python 2.5 이상 설치한다.
- - sudo easy_install pip : easy_install을 이용하여 pip 설치한다.
- - sudo pip install fabric : pip를 이용하여 fabric을 설치한다.
+ - easy_install을 이용하여 pip 설치한다.
+
+	sudo easy_install pip
+
+ - pip를 이용하여 fabric을 설치한다.
+
+	 sudo pip install fabric
 
 
 STS Setting
@@ -296,4 +301,22 @@ CloudBees 연동
 
 ### MySQL 연동 ###
 
-	https://developer.cloudbees.com/bin/view/DEV/MySQL
+Build의 Execute shell에 아래 두 개 항목을 추가한다.
+Execute shell
+
+	mkdir -p ~/mysql
+	cat > ~/.my.cnf <<EOF
+	[mysqld]
+	datadir=/home/jenkins/mysql/data
+	user=jenkins
+	socket=/home/jenkins/mysql/mysql.sock
+	EOF
+
+	export MYSQL_HOME=~/mysql
+	mysql_install_db
+	/usr/libexec/mysqld &
+
+Execute shell
+
+	mvn clean install:install-file -Dfile=./src/main/lib/markdown4j-2.2.jar -DgroupId=org.markdown4j -DartifactId=markdown4jprocessor -Dversion=2.2 -Dpackaging=jar test
+
