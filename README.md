@@ -301,7 +301,7 @@ CloudBees 연동
 
 ### MySQL 연동 ###
 
-Build의 Execute shell에 아래 두 개 항목을 추가한다.
+Build의 Execute shell에 아래 두 개 항목을 추가한다.  
 Execute shell
 
 	mkdir -p ~/mysql
@@ -320,3 +320,7 @@ Execute shell
 
 	mvn clean install:install-file -Dfile=./src/main/lib/markdown4j-2.2.jar -DgroupId=org.markdown4j -DartifactId=markdown4jprocessor -Dversion=2.2 -Dpackaging=jar test
 
+
+### github 연동 ###
+
+	http://developer.cloudbees.com/bin/view/DEV/GitHub+Commit+Hooks+HOWTO
