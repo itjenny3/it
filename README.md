@@ -27,7 +27,7 @@ Skill Set
 
 	$ yum install java-1.6.0-openjdk.x86_64 java-1.6.0-openjdk-devel.x86_64
 	
-참고 : http://www.oracle.com/technetwork/java/javaee/downloads/index.html
+[Java 다운로드 참조](http://www.oracle.com/technetwork/java/javaee/downloads/index.html)
 
 ### MySQL ###
 
@@ -40,15 +40,16 @@ Skill Set
 	[mysqld]
 	character-set-server=utf8
 	collation-server=utf8_general_ci
-
 	init_connect=SET collation_connection=utf8_general_ci
 	init_connect=SET NAMES utf8
+
 	[client]
 	default-character-set=utf8
+
 	[mysql]
 	default-character-set=utf8
 	
-참고 : http://dev.mysql.com/downloads/mysql
+[MySQL 다운로드 참고](http://dev.mysql.com/downloads/mysql)
 
 시작하기
 
@@ -58,23 +59,17 @@ Skill Set
 
 	$ mysql -u root < src/main/db/create.sql
 
-### SpringSource Tool Suite ###
+### Spring Tool Suite ###
 
-설치하기
-
-	http://www.springsource.org/downloads/sts
+[다운로드](http://www.springsource.org/downloads/sts)
  
 ### Maven ###
 
-설치하기
-
-	http://maven.apache.org/download.html
+[다운로드](http://maven.apache.org/download.html)
 
 ### Lombok ###
 
-설치하기
-
-	http://projectlombok.org/mavenrepo/index.html
+[다운로드](http://projectlombok.org/mavenrepo/index.html)
 
 ### Project clone ###
 
@@ -127,53 +122,44 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
  - Python 2.5 이상 설치한다.
  - easy_install을 이용하여 pip 설치한다.
 
-	sudo easy_install pip
+		sudo easy_install pip
 
  - pip를 이용하여 fabric을 설치한다.
 
-	 sudo pip install fabric
+		 sudo pip install fabric
 
 
 STS Setting
 -----------
 ### Eclipse Plugin 설치 ###
 
- - STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plugin URL을 입력한다.
+STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plugin URL을 입력한다.
 
-MoreUnit : http://moreunit.sourceforge.net/update-site
+ - MoreUnit
+ 
+ 		URL : http://moreunit.sourceforge.net/update-site
 
-	Ctrl + j : 구현 코드와 테스트 코드 간 이동한다.
-	Ctrl + r : 구현 코드에서 테스트코드를 수행한다.
+		[사용법]
+		Ctrl + j : 구현 코드와 테스트 코드 간 이동한다.
+		Ctrl + r : 구현 코드에서 테스트코드를 수행한다.
 		
-Checkstyle : http://eclipse-cs.sf.net/update
+ - Checkstyle
 
- - Checkstyle 활성화
- 
-		프로젝트 이름을 우클릭 후 Checkstyle > Activate Checkstyle
- 
- - View
- 
-		Window > Show View > Others > Checkstyle > Checkstyle violations
+		URL : http://eclipse-cs.sf.net/update
+		활성화 : 프로젝트 이름을 우클릭 후 Checkstyle > Activate Checkstyle
+		View : Window > Show View > Others > Checkstyle > Checkstyle violations
 	
-Emma : http://update.eclemma.org/
+ - Emma
+ 	
+		URL : http://update.eclemma.org/
+		검사 : 프로젝트 이름을 우클릭 후 Coverage As > Junit Test 수행 후 아래 view에서 결과 확인한다.
+		View : Window > Show View > Others > Java > Coverage
 
- - 커버리지 검사
+ - FindBugs
  
-		프로젝트 이름을 우클릭 후 Coverage As > Junit Test 수행 후 아래 view에서 결과 확인한다.
- 
- - View
- 
-		Window > Show View > Others > Java > Coverage
-
-FindBugs : http://findbugs.cs.umd.edu/eclipse
-
- - 정적 분석
-
-		프로젝트 명 우클릭 > Find bugs > Find bugs 수행 후 아래 view에서 결과 확인한다.
-		
- - View
-
-		Window > Show View > Find Bugs > Bug Explorer	
+ 		URL : http://findbugs.cs.umd.edu/eclipse
+		분석 : 프로젝트 명 우클릭 > Find bugs > Find bugs 수행 후 아래 view에서 결과 확인한다.
+		View : Window > Show View > Find Bugs > Bug Explorer	
 
 ### Java Convention을 기본 템플릿으로 사용함 ###
 
@@ -187,7 +173,7 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
 	Name : tinyCheckstyle
 	Location : tinyCheckstyle.xml
 
-### Line Width : 120 ###
+### Line Width : 120 설정 ###
 
  - Preference > Java > Code Style > Formatter > Edit > Line Wrapping > Maximum line width : 120
  - Preference > XML > XML Files > Editor > Line width : 120
@@ -198,7 +184,7 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
  - Preference > Java > Code Style > Formatter > edit > Indentation > 4
  - Preference > Java > Code Style > Formatter > edit > Indentation > Tab policy > Tabs only
 
-### Encoding 수정 ###
+### Encoding 설정 ###
 
  - Preference > Web > CSS Files > Encoding : ISO 10646/Unicode(UTF-8)
  - Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
@@ -242,7 +228,7 @@ Project Properties > Java Build Path > Order and Export 에서 아래와 같은 
 	src/main/resources-dev
 	src/main/resources-release
 	
-AWS 운영 서버 설치 (Amazon Linux AMI)
+운영 서버 설치
 -----------------------------------
 ### Tomcat ###
 
@@ -320,7 +306,4 @@ Execute shell
 
 	mvn clean install:install-file -Dfile=./src/main/lib/markdown4j-2.2.jar -DgroupId=org.markdown4j -DartifactId=markdown4jprocessor -Dversion=2.2 -Dpackaging=jar test
 
-
-### github 연동 ###
-
-	http://developer.cloudbees.com/bin/view/DEV/GitHub+Commit+Hooks+HOWTO
+### Jenkins plugin 설치 ###

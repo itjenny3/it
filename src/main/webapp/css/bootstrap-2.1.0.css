@@ -707,6 +707,7 @@ ol ul {
 
 /* itjenny */
 li {
+  list-style-position: inside;
   text-align: center;
   line-height: 40px;
 }
@@ -769,13 +770,17 @@ blockquote {
   padding: 0 0 0 15px;
   margin: 0 0 20px;
   border-left: 5px solid #eeeeee;
+  margin:0 auto;
+  width:auto;
+  display:table
 }
 
+/* itjenny */
 blockquote p {
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 30px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 40px;
 }
 
 blockquote small {
@@ -844,8 +849,8 @@ code {
 /* itjenny */
 pre {
   display: inline-block;
-  padding: 9.5px;
-  margin: 0 0 10px;
+  padding: 6px 15px;
+  margin: 15x 0;
   font-size: 13px;
   word-break: break-all;
   word-wrap: break-word;
