@@ -693,8 +693,7 @@ h4 small {
 ul,
 ol {
   padding: 0;
-  margin: 0 0 10px 25px;
-  display: inline-block;
+  display: inline;
   text-align: left;
 }
 
@@ -709,7 +708,6 @@ ol ul {
 li {
   list-style-position: inside;
   text-align: center;
-  line-height: 40px;
 }
 
 ul.unstyled,
