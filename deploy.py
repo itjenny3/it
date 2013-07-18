@@ -19,7 +19,7 @@ def deleteWebappsFolder():
 		run("rm -rf %s/webapps/%s" % (TOMCAT, WARFILE))
 
 def copyWar():
-	local("scp ./target/%s.war root@itjenny.com:%s/webapps/" % (WARFILE, TOMCAT))
+	local("scp ./target/%s.war root@14.33.43.57:%s/webapps/" % (WARFILE, TOMCAT))
 
 def build():
 	print
