@@ -9,17 +9,11 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title id="browserTitleArea"><tiles:insertAttribute name="title" ignore="true" defaultValue="itJenny" /></title>
-
 <tiles:insertAttribute name="header" />
-<script type="text/javascript" src="/js/jquery-1.8.0.js?20120904"></script>
 </head>
 
 <body>
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
-	<tiles:useAttribute id="lazyloadingScripts" name="lazyloadingScripts" classname="java.util.List" />
-	<c:forEach var="script" items="${lazyloadingScripts}">
-		<script type="text/javascript" src="<c:url value='${script}'/>"></script>
-	</c:forEach>
 </body>
 </html>
