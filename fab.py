@@ -1,9 +1,9 @@
 from fabric.api import *
 
-env.hosts = ['itjenny.com']
+env.hosts = ['14.33.43.57']
 
 TOMCAT = "/usr/share/tomcat6"
-WARFILE = "ROOT"
+WARFILE = "ROOT.war"
 
 def deploy():
 	""" deploy """
@@ -19,16 +19,15 @@ def deleteWebappsFolder():
 		run("rm -rf %s/webapps/%s" % (TOMCAT, WARFILE))
 
 def copyWar():
-	local("scp ./target/%s.war root@14.33.43.57:%s/webapps/" % (WARFILE, TOMCAT))
+	local("scp ./target/%s root@%s:%s/webapps/" % (WARFILE, env.host, TOMCAT))
 
 def build():
 	print
 	print " * maven packge"
 	local('mvn package')
 
-def tomcatRestart():
+def restart():
 	""" tomcat restart """
 	print " * tomcat restart"
 	with settings(user = 'root'):
-		run("service tomcat6 restart")
-	
+		run("/etc/init.d/tomcat6 restart", pty = False)
