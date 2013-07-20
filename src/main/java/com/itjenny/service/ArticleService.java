@@ -45,11 +45,12 @@ public class ArticleService {
 		StringBuilder html = new StringBuilder();
 		try {
 			if (StringUtils.isNotEmpty(markdown)) {
+				int i = 0;
 				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("(?=(<h1>|<h2>))");
-				for (int i = 0; i < paragraphs.length; i++) {
-					if (!"".equals(paragraphs[i])) {
-						html.append("<div class=").append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">")
-								.append(paragraphs[i]).append("</div>");
+				for (String paragraph : paragraphs) {
+					if (!"".equals(paragraph)) {
+						html.append("<div class=").append(Constant.CSSLIST[(i++) % Constant.CSSLIST.length])
+								.append(">").append(paragraph).append("</div>");
 					}
 				}
 			}

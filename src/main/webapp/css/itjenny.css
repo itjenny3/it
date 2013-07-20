@@ -342,3 +342,143 @@ code,pre {
 	color: #dddddd;
 	background-color: #000000;
 }
+
+.background1 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #D82546;
+}
+
+.background1 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #B71735;
+}
+
+.background2 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #B71735;
+}
+
+.background2 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #D82546;
+}
+
+.background3 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #0b9be1;
+}
+
+.background3 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #066c9e;
+}
+
+.background4 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #066c9e;
+}
+
+.background4 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #0A4763;
+}
+
+.background5 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #B72256;
+}
+
+.background5 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #911D43;
+}
+
+.background6 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #911D43;
+}
+
+.background6 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #5B0B26;
+}
+
+.background7 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #26B1AA;
+}
+
+.background7 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #0F9B92;
+}
+
+.background8 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #0F9B92;
+}
+
+.background8 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #14726C;
+}
+
+.background9 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #FD6632;
+}
+
+.background9 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #D64F21;
+}
+
+.background10 {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #FFF;
+	background-color: #D64F21;
+}
+
+.background10 pre {
+	border:0px;
+	color: #FFF;
+	background-color: #FD6632;
+}
