@@ -137,6 +137,7 @@ STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plu
 
  - MoreUnit
  
+ 		검색 : Help > Eclipse Marketplace > MoreUnit 검색 후 설치
  		URL : http://moreunit.sourceforge.net/update-site
 
 		[사용법]
@@ -146,20 +147,27 @@ STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plu
  - Checkstyle
 
 		URL : http://eclipse-cs.sf.net/update
+		Help > Eclipse Marketplace > FindBugs 검색 후 설치
 		활성화 : 프로젝트 이름을 우클릭 후 Checkstyle > Activate Checkstyle
 		View : Window > Show View > Others > Checkstyle > Checkstyle violations
 	
  - Emma
  	
-		URL : http://update.eclemma.org/
+		Help > Eclipse Marketplace > Emma 검색 후 설치
 		검사 : 프로젝트 이름을 우클릭 후 Coverage As > Junit Test 수행 후 아래 view에서 결과 확인한다.
 		View : Window > Show View > Others > Java > Coverage
 
  - FindBugs
  
- 		URL : http://findbugs.cs.umd.edu/eclipse
+		Help > Eclipse Marketplace > FindBugs 검색 후 설치
 		분석 : 프로젝트 명 우클릭 > Find bugs > Find bugs 수행 후 아래 view에서 결과 확인한다.
 		View : Window > Show View > Find Bugs > Bug Explorer	
+
+ - Terminal
+
+		Help > Eclipse Marketplace > terminal 검색 후 설치
+		Project 우클릭 > Open Terminal Here
+ 		
 
 ### Java Convention을 기본 템플릿으로 사용함 ###
 
@@ -176,6 +184,7 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
 ### Line Width : 120 설정 ###
 
  - Preference > Java > Code Style > Formatter > Edit > Line Wrapping > Maximum line width : 120
+ - Preference > JavaScript > Code Style > Formatter > Line width : 120
  - Preference > XML > XML Files > Editor > Line width : 120
  - Preference > Web > JSP Files > Editor > Line Width : 120 
 
