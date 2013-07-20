@@ -24,6 +24,19 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
+	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.POST)
+	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
+		ModelAndView mav = new ModelAndView();
+		ModelMap model = new ModelMap();
+		Article article = new Article();
+		article.setTitle(title);
+		article.setContent(content);
+		articleService.save(article);
+		mav.setViewName("article");
+		mav.addAllObjects(model);
+		return mav;
+	}
+
 	@RequestMapping(value = Constant.ARTICLE, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
@@ -50,15 +63,13 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.POST)
-	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
+	@RequestMapping(value = Constant.ARTICLE + "/{title}/license", method = RequestMethod.GET)
+	public ModelAndView completed(@PathVariable String title, @RequestParam String id) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		Article article = new Article();
-		article.setTitle(title);
-		article.setContent(content);
-		articleService.save(article);
-		mav.setViewName("article");
+		model.addAttribute("title", title);
+		// model.addAttribute("id", id);
+		mav.setViewName("license");
 		mav.addAllObjects(model);
 		return mav;
 	}

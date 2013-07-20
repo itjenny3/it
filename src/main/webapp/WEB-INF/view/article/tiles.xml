@@ -7,4 +7,7 @@
 	<definition name="articles" extends="defaultLayout">
 		<put-attribute name="body" value="/WEB-INF/view/article/articles.jsp" />
 	</definition>
+	<definition name="license" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/article/license.jsp" />
+	</definition>
 </tiles-definitions>
