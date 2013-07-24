@@ -56,7 +56,7 @@ public class ArticleController {
 		if (article == null) {
 			return new ModelAndView("redirect:/article");
 		}
-		article.setHtml(articleService.convertToHtml(article.getContent()));
+		article.setHtml(articleService.convertToHtml(title, article.getContent()));
 		model.addAttribute("article", article);
 		mav.setViewName("article");
 		mav.addAllObjects(model);

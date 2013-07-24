@@ -39,28 +39,28 @@ public class ArticleServiceTest extends CommonTest {
 		String p = "first\n\nsecond";
 
 		// When
-		h1 = articleService.convertToHtml(h1);
-		h1_2 = articleService.convertToHtml(h1_2);
-		h2 = articleService.convertToHtml(h2);
-		h2_2 = articleService.convertToHtml(h2_2);
-		h3 = articleService.convertToHtml(h3);
-		h4 = articleService.convertToHtml(h4);
-		h5 = articleService.convertToHtml(h5);
-		h6 = articleService.convertToHtml(h6);
-		indent = articleService.convertToHtml(indent);
-		indent2 = articleService.convertToHtml(indent2);
-		indent3 = articleService.convertToHtml(indent3);
-		italic = articleService.convertToHtml(italic);
-		italic2 = articleService.convertToHtml(italic2);
-		bold = articleService.convertToHtml(bold);
-		bold2 = articleService.convertToHtml(bold2);
-		link = articleService.convertToHtml(link);
-		imageLink = articleService.convertToHtml(imageLink);
-		quote = articleService.convertToHtml(quote);
-		line = articleService.convertToHtml(line);
-		number = articleService.convertToHtml(number);
-		br = articleService.convertToHtml(br);
-		p = articleService.convertToHtml(p);
+		h1 = articleService.convertToHtml("", h1);
+		h1_2 = articleService.convertToHtml("", h1_2);
+		h2 = articleService.convertToHtml("", h2);
+		h2_2 = articleService.convertToHtml("", h2_2);
+		h3 = articleService.convertToHtml("", h3);
+		h4 = articleService.convertToHtml("", h4);
+		h5 = articleService.convertToHtml("", h5);
+		h6 = articleService.convertToHtml("", h6);
+		indent = articleService.convertToHtml("", indent);
+		indent2 = articleService.convertToHtml("", indent2);
+		indent3 = articleService.convertToHtml("", indent3);
+		italic = articleService.convertToHtml("", italic);
+		italic2 = articleService.convertToHtml("", italic2);
+		bold = articleService.convertToHtml("", bold);
+		bold2 = articleService.convertToHtml("", bold2);
+		link = articleService.convertToHtml("", link);
+		imageLink = articleService.convertToHtml("", imageLink);
+		quote = articleService.convertToHtml("", quote);
+		line = articleService.convertToHtml("", line);
+		number = articleService.convertToHtml("", number);
+		br = articleService.convertToHtml("", br);
+		p = articleService.convertToHtml("", p);
 
 		// Then
 		assertThat(h1, containsString("<h1>title</h1>\n"));

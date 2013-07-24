@@ -41,8 +41,13 @@ public class ArticleService {
 		articleRepository.delete(title);
 	}
 
-	public String convertToHtml(String markdown) {
+	public void convertTitle(StringBuilder html, String title) {
+		html.append("<div class=backgroundTitle><h1>").append(title).append("</h1></div>");
+	}
+
+	public String convertToHtml(String title, String markdown) {
 		StringBuilder html = new StringBuilder();
+		convertTitle(html, title);
 		try {
 			if (StringUtils.isNotEmpty(markdown)) {
 				int i = 0;

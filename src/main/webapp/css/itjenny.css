@@ -343,6 +343,14 @@ code,pre {
 	background-color: #000000;
 }
 
+.backgroundTitle {
+	padding: 0 0 50px 0;
+	text-align: center;
+	padding: 10px 0;
+	color: #000;
+	background-color: #FFF;
+}
+
 .background1 {
 	padding: 0 0 50px 0;
 	text-align: center;
