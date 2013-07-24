@@ -68,7 +68,7 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		model.addAttribute("title", title);
-		// model.addAttribute("id", id);
+		model.addAttribute("id", id);
 		mav.setViewName("license");
 		mav.addAllObjects(model);
 		return mav;
