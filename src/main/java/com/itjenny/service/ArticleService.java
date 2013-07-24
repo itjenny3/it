@@ -41,21 +41,38 @@ public class ArticleService {
 		articleRepository.delete(title);
 	}
 
-	public void convertTitle(StringBuilder html, String title) {
-		html.append("<div class=backgroundTitle><h1>").append(title).append("</h1></div>");
+	public void makeTitle(StringBuilder html, String title) {
+		html.append("<div class=backgroundTitle><a href=#div1 class=anchorLink><h1>").append(title)
+				.append("</h1></a></div>");
+	}
+
+	public void makeSubtitle(StringBuilder html, String title, int i, int length) {
+		if (i == length) {
+			html.append("<a href=#license class=anchorLink><h1>").append(title).append("</h1></a>");
+		} else {
+			html.append("<a href=#div").append(i + 1).append(" class=anchorLink><h1>").append(title)
+					.append("</h1></a>");
+		}
 	}
 
 	public String convertToHtml(String title, String markdown) {
 		StringBuilder html = new StringBuilder();
-		convertTitle(html, title);
+		makeTitle(html, title);
 		try {
 			if (StringUtils.isNotEmpty(markdown)) {
-				int i = 0;
-				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("(?=(<h1>|<h2>))");
-				for (String paragraph : paragraphs) {
-					if (!"".equals(paragraph)) {
-						html.append("<div class=").append(Constant.CSSLIST[(i++) % Constant.CSSLIST.length])
-								.append(">").append(paragraph).append("</div>");
+				String[] paragraphs = new Markdown4jProcessor().process(markdown).split("<h1>|<h2>");
+				for (int i = 0; i < paragraphs.length; i++) {
+					if (!"".equals(paragraphs[i])) {
+						html.append("<div id=div").append(i).append(" class=")
+								.append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">");
+						String[] split = paragraphs[i].split("</h1>|</h2>");
+						if (split.length == 2) {
+							makeSubtitle(html, split[0], i, paragraphs.length - 1);
+							html.append(split[1]).append("</div>");
+						} else {
+							// no title
+							html.append(split[0]).append("</div>");
+						}
 					}
 				}
 			}
