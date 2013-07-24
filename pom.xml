@@ -423,7 +423,8 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>${tomcat-maven-plugin.version}</version>
 				<configuration>
-					<url>http://54.248.89.221:8080/manager</url>
+					<server>tomcat6</server>
+					<url>http://14.33.43.57:8080/manager</url>
 					<path>/ROOT</path>
 				</configuration>
 			</plugin>

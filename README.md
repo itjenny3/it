@@ -253,17 +253,17 @@ mvn으로 tomcat에 배포하기 위해서 /usr/share/tomcat6/conf/tomcat-users.
 
 	<tomcat-users>
 	    <role rolename="manager"/>
-	    <user username="admin" password="" roles="manager"/>
+	    <user username="admin" password="암호" roles="manager"/>
 	</tomcat-users>
 
-UTF-8을 지원하기 위해 아래 내용 중 가장 아래 줄을 추가한다.
+UTF-8을 지원하기 위해 server.xml파일에 아래 내용 중 가장 아래 줄을 추가한다.
 
 	<Connector port="8080" protocol="HTTP/1.1" 
 		connectionTimeout="20000" 
 		redirectPort="8443" 
 		URIEncoding="UTF-8" />
 	
-pom.xml 파일에 AWS 배포 서버 IP 설정
+pom.xml 파일에 배포 서버 IP 설정
 
 	!-- mvn tomcat:deploy 배포 가능 -->
 	<plugin>
@@ -271,10 +271,20 @@ pom.xml 파일에 AWS 배포 서버 IP 설정
 		<artifactId>tomcat-maven-plugin</artifactId>
 		<version>${tomcat-maven-plugin.version}</version>
 		<configuration>
+			<server>tomcat6</server>
 			<url>http://54.248.89.221:8080/manager</url>
 			<path>/ROOT</path>
 		</configuration>
 	</plugin>
+	
+local의 maven폴더/conf/settings.xml에 아래 내용 추가한다.
+
+	<server>
+		<id>tomcat6</id>
+		<username>admin</username>
+		<password>암호</password>
+	</server>
+
 
 최초 배포 시 아래 명령어를 이용한다.
 
