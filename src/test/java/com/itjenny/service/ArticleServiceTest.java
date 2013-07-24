@@ -63,10 +63,10 @@ public class ArticleServiceTest extends CommonTest {
 		p = articleService.convertToHtml("", p);
 
 		// Then
-		assertThat(h1, containsString("<h1>title</h1>\n"));
-		assertThat(h1_2, containsString("<h1>title</h1>\n"));
-		assertThat(h2, containsString("<h2>title</h2>\n"));
-		assertThat(h2_2, containsString("<h2>title</h2>\n"));
+		assertThat(h1, containsString("<h1>title</h1>"));
+		assertThat(h1_2, containsString("<h1>title</h1>"));
+		assertThat(h2, containsString("<h1>title</h1>"));
+		assertThat(h2_2, containsString("<h1>title</h1>"));
 		assertThat(h3, containsString("<h3>title</h3>\n"));
 		assertThat(h4, containsString("<h4>title</h4>\n"));
 		assertThat(h5, containsString("<h5>title</h5>\n"));
