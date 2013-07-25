@@ -3,26 +3,11 @@ package com.itjenny.service;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.itjenny.common.CommonTest;
+import com.itjenny.model.HtmlArticle;
 
 public class ArticleServiceTest extends CommonTest {
-	@Autowired
-	private ArticleService articleService;
-
-	@Test
-	public void quiz() {
-		// Given
-		String quiz = "# quiz\nthis is question\nAnswer> answer2\nHint> this is hint.";
-
-		// When
-		quiz = articleService.convertToHtml("", quiz);
-
-		// Then
-		System.out.println(quiz);
-	}
+	private HtmlArticle htmlArticle = new HtmlArticle();
 
 	public void convert() {
 		// Given
@@ -50,28 +35,28 @@ public class ArticleServiceTest extends CommonTest {
 		String p = "first\n\nsecond";
 
 		// When
-		h1 = articleService.convertToHtml("", h1);
-		h1_2 = articleService.convertToHtml("", h1_2);
-		h2 = articleService.convertToHtml("", h2);
-		h2_2 = articleService.convertToHtml("", h2_2);
-		h3 = articleService.convertToHtml("", h3);
-		h4 = articleService.convertToHtml("", h4);
-		h5 = articleService.convertToHtml("", h5);
-		h6 = articleService.convertToHtml("", h6);
-		indent = articleService.convertToHtml("", indent);
-		indent2 = articleService.convertToHtml("", indent2);
-		indent3 = articleService.convertToHtml("", indent3);
-		italic = articleService.convertToHtml("", italic);
-		italic2 = articleService.convertToHtml("", italic2);
-		bold = articleService.convertToHtml("", bold);
-		bold2 = articleService.convertToHtml("", bold2);
-		link = articleService.convertToHtml("", link);
-		imageLink = articleService.convertToHtml("", imageLink);
-		quote = articleService.convertToHtml("", quote);
-		line = articleService.convertToHtml("", line);
-		number = articleService.convertToHtml("", number);
-		br = articleService.convertToHtml("", br);
-		p = articleService.convertToHtml("", p);
+//		h1 = htmlArticle.makeChapters("", h1);
+//		h1_2 = htmlArticle.makeChapters("", h1_2);
+//		h2 = htmlArticle.makeChapters("", h2);
+//		h2_2 = htmlArticle.makeChapters("", h2_2);
+//		h3 = htmlArticle.makeChapters("", h3);
+//		h4 = htmlArticle.makeChapters("", h4);
+//		h5 = htmlArticle.makeChapters("", h5);
+//		h6 = htmlArticle.makeChapters("", h6);
+//		indent = htmlArticle.makeChapters("", indent);
+//		indent2 = htmlArticle.makeChapters("", indent2);
+//		indent3 = htmlArticle.makeChapters("", indent3);
+//		italic = htmlArticle.makeChapters("", italic);
+//		italic2 = htmlArticle.makeChapters("", italic2);
+//		bold = htmlArticle.makeChapters("", bold);
+//		bold2 = htmlArticle.makeChapters("", bold2);
+//		link = htmlArticle.makeChapters("", link);
+//		imageLink = htmlArticle.makeChapters("", imageLink);
+//		quote = htmlArticle.makeChapters("", quote);
+//		line = htmlArticle.makeChapters("", line);
+//		number = htmlArticle.makeChapters("", number);
+//		br = htmlArticle.makeChapters("", br);
+//		p = htmlArticle.makeChapters("", p);
 
 		// Then
 		assertThat(h1, containsString("<h1>title</h1>"));

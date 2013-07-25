@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
+import com.itjenny.model.HtmlArticle;
 import com.itjenny.service.ArticleService;
 
 @Controller
@@ -56,8 +57,9 @@ public class ArticleController {
 		if (article == null) {
 			return new ModelAndView("redirect:/article");
 		}
-		article.setHtml(articleService.convertToHtml(title, article.getContent()));
-		model.addAttribute("article", article);
+		HtmlArticle htmlArticle = new HtmlArticle();
+		htmlArticle.makeChapters(title, article.getContent());
+		model.addAttribute("htmlArticle", htmlArticle);
 		mav.setViewName("article");
 		mav.addAllObjects(model);
 		return mav;

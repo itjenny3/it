@@ -55,10 +55,6 @@ public class ArticleService {
 		}
 	}
 	
-	public String convertQuiz(String markdown) {
-		LOGGER.info("quiz");
-		return "!";
-	}
 
 	public String convertToHtml(String title, String markdown) {
 		StringBuilder html = new StringBuilder();
@@ -75,7 +71,6 @@ public class ArticleService {
 							makeSubtitle(html, split[0], i, paragraphs.length - 1);
 							html.append(split[1]).append("</div>");
                     		if (split[0].equalsIgnoreCase(Const.QUIZ)) {
-                    			convertQuiz(markdown);
                     		}
 						} else {
 							// no title
