@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itjenny.common.util.Constant;
+import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
 import com.itjenny.repository.ArticleRepository;
 
@@ -64,7 +64,7 @@ public class ArticleService {
 				for (int i = 0; i < paragraphs.length; i++) {
 					if (!"".equals(paragraphs[i])) {
 						html.append("<div id=div").append(i).append(" class=")
-								.append(Constant.CSSLIST[i % Constant.CSSLIST.length]).append(">");
+								.append(Const.CSSLIST[i % Const.CSSLIST.length]).append(">");
 						String[] split = paragraphs[i].split("</h1>|</h2>");
 						if (split.length == 2) {
 							makeSubtitle(html, split[0], i, paragraphs.length - 1);

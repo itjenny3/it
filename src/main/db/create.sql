@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
 	`content` TEXT,
-	`published` BOOLEAN DEFAULT 0,
+	`published` INTEGER DEFAULT 0,
     PRIMARY KEY (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 

@@ -14,8 +14,7 @@ public class Article {
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
-	@Column(columnDefinition = "BIT", length = 1)
-	private Boolean published;
+	private Integer published;
 
 	@Transient
 	private String html;

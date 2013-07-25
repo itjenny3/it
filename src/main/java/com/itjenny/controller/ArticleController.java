@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itjenny.common.util.Constant;
+import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
 import com.itjenny.service.ArticleService;
 
@@ -24,7 +24,7 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 
-	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.POST)
+	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -37,7 +37,7 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constant.ARTICLE, method = RequestMethod.GET)
+	@RequestMapping(value = Const.ARTICLE, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -48,7 +48,7 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constant.ARTICLE + "/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.GET)
 	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -63,7 +63,7 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = Constant.ARTICLE + "/{title}/license", method = RequestMethod.GET)
+	@RequestMapping(value = Const.ARTICLE + "/{title}/license", method = RequestMethod.GET)
 	public ModelAndView completed(@PathVariable String title, @RequestParam String id) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
