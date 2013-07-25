@@ -16,24 +16,24 @@ public class ArticleTest extends CommonTest {
 	private Article article = new Article();
 
 	@Test
-	public void quiz() {
+	public void checkQuiz() {
 		// Given
-		String quiz = "# quiz\nthis is question\nAnswer> answer2\nHint> this is hint.";
+		String quiz = "# QUIZ\nquestion1\nanswer>answer1\nhint>hint1";
 		article.setContent(quiz);
 
 		// When
-		article.setSentence();
+		article.makeParagraphs();
 
 		// Then
-		assertThat(article.getSentences().size(), is(1));
-		List<Sentence> sentences = article.getSentences();
-		for (int i = 0; i < article.getSentences().size(); i++) {
-			assertThat(sentences.get(i).getSubtitle(), is("quiz"));
-			assertThat(sentences.get(i).getContent(), containsString("this is question"));
+		assertThat(article.getParagraphs().size(), is(1));
+		List<Paragraph> sentences = article.getParagraphs();
+		for (int i = 0; i < article.getParagraphs().size(); i++) {
+			assertThat(sentences.get(i).getSubtitle(), is(Const.QUIZ));
+			assertThat(sentences.get(i).getContent(), containsString("question1"));
 			assertThat(sentences.get(i).getId(), is("div" + i));
 			assertThat(sentences.get(i).getCss(), is(Const.CSS[i % Const.CSS.length]));
-			assertThat(sentences.get(i).getAnswer(), containsString("answer2"));
-			assertThat(sentences.get(i).getHint(), containsString("this is hint."));
+			assertThat(sentences.get(i).getAnswer(), is("answer1"));
+			assertThat(sentences.get(i).getHint(), is("hint1"));
 		}
 	}
 
@@ -44,12 +44,12 @@ public class ArticleTest extends CommonTest {
 		article.setContent(quiz);
 
 		// When
-		article.setSentence();
+		article.makeParagraphs();
 
 		// Then
-		assertThat(article.getSentences().size(), is(2));
-		List<Sentence> sentences = article.getSentences();
-		for (int i = 0; i < article.getSentences().size(); i++) {
+		assertThat(article.getParagraphs().size(), is(2));
+		List<Paragraph> sentences = article.getParagraphs();
+		for (int i = 0; i < article.getParagraphs().size(); i++) {
 			assertThat(sentences.get(i).getSubtitle(), is("title" + i));
 			assertThat(sentences.get(i).getContent(), containsString("this is first"));
 			assertThat(sentences.get(i).getId(), is("div" + i));

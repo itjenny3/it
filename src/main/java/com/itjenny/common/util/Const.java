@@ -7,8 +7,8 @@ public class Const {
 
 	// Q&A
 	public static final String QUIZ = "QUIZ";
-	public static final String ANSWER = "Answer>";
-	public static final String HINT = "Hint>";
+	public static final String ANSWER = "answer>";
+	public static final String HINT = "hint>";
 
 	// CSS
 	public static final String[] CSS = { "background1", "background2", "background3", "background4", "background5",

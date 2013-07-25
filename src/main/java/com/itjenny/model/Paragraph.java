@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 import lombok.Data;
 
 @Data
-public class Sentence {
+public class Paragraph {
 	private String id = StringUtils.EMPTY;
 	private String css = StringUtils.EMPTY;
 	private String subtitle = StringUtils.EMPTY;
