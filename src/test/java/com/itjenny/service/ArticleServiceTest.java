@@ -13,7 +13,18 @@ public class ArticleServiceTest extends CommonTest {
 	private ArticleService articleService;
 
 	@Test
-	public void testConvert() {
+	public void quiz() {
+		// Given
+		String quiz = "# quiz\nthis is question\nAnswer> answer2\nHint> this is hint.";
+
+		// When
+		quiz = articleService.convertToHtml("", quiz);
+
+		// Then
+		System.out.println(quiz);
+	}
+
+	public void convert() {
 		// Given
 		String h1 = "# title";
 		String h1_2 = "title\n===";

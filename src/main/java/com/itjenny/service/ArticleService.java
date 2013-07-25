@@ -54,6 +54,11 @@ public class ArticleService {
 					.append("</h1></a>");
 		}
 	}
+	
+	public String convertQuiz(String markdown) {
+		LOGGER.info("quiz");
+		return "!";
+	}
 
 	public String convertToHtml(String title, String markdown) {
 		StringBuilder html = new StringBuilder();
@@ -64,11 +69,14 @@ public class ArticleService {
 				for (int i = 0; i < paragraphs.length; i++) {
 					if (!"".equals(paragraphs[i])) {
 						html.append("<div id=div").append(i).append(" class=")
-								.append(Const.CSSLIST[i % Const.CSSLIST.length]).append(">");
+								.append(Const.CSS[i % Const.CSS.length]).append(">");
 						String[] split = paragraphs[i].split("</h1>|</h2>");
 						if (split.length == 2) {
 							makeSubtitle(html, split[0], i, paragraphs.length - 1);
 							html.append(split[1]).append("</div>");
+                    		if (split[0].equalsIgnoreCase(Const.QUIZ)) {
+                    			convertQuiz(markdown);
+                    		}
 						} else {
 							// no title
 							html.append(split[0]).append("</div>");
