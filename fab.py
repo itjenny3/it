@@ -26,7 +26,7 @@ def build():
 	print " * maven packge"
 	local('mvn package')
 
-def restart():
+def tomcatRestart():
 	""" tomcat restart """
 	print " * tomcat restart"
 	with settings(user = 'root'):
