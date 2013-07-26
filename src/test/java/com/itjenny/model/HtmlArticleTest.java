@@ -26,7 +26,7 @@ public class HtmlArticleTest extends CommonTest {
 		for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
 			assertThat(sections.get(i).getSubtitle(), is("title" + i));
 			assertThat(sections.get(i).getContent(), containsString("this is first"));
-			assertThat(sections.get(i).getId(), is("div" + i));
+			assertThat(sections.get(i).getId(), is(Const.SECTION + i));
 			assertThat(sections.get(i).getCss(), is(Const.CSS[i % Const.CSS.length]));
 		}
 	}
@@ -45,7 +45,7 @@ public class HtmlArticleTest extends CommonTest {
 		for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
 			assertThat(chapters.get(i).getQuiz().getSubtitle(), is(Const.QUIZ));
 			assertThat(chapters.get(i).getQuiz().getContent(), containsString("question1"));
-			assertThat(chapters.get(i).getQuiz().getId(), is("div" + i));
+			assertThat(chapters.get(i).getQuiz().getId(), is(Const.SECTION + i));
 			assertThat(chapters.get(i).getQuiz().getCss(), is(Const.CSS[i % Const.CSS.length]));
 			assertThat(chapters.get(i).getQuiz().getAnswer(), is("answer1"));
 		}
