@@ -16,7 +16,7 @@ public class HtmlArticle {
 	List<Chapter> chapters = new ArrayList<Chapter>();
 	Chapter chapter = null;
 
-	public void makeChapters(String title, String content) {
+	public HtmlArticle(String title, String content) {
 		this.title = title;
 		try {
 			String[] parts = new Markdown4jProcessor().process(content).split("<h1>|<h2>");
@@ -27,8 +27,8 @@ public class HtmlArticle {
 					if (subtitleAndContent.length == 2) {
 						if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
 							Quiz quiz = new Quiz();
-							quiz.setId("div" + i);
-							quiz.setNextid("div" + (i + 1));
+							quiz.setId(Const.SECTION + i);
+							quiz.setNextid(Const.SECTION + (i + 1));
 							quiz.setCss(Const.CSS[i % Const.CSS.length]);
 							quiz.setSubtitle(subtitleAndContent[0]);
 							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER);
@@ -44,8 +44,8 @@ public class HtmlArticle {
 							setQuiz(quiz);
 						} else {
 							Section section = new Section();
-							section.setId("div" + i);
-							section.setNextid("div" + (i + 1));
+							section.setId(Const.SECTION + i);
+							section.setNextid(Const.SECTION + (i + 1));
 							section.setCss(Const.CSS[i % Const.CSS.length]);
 							section.setSubtitle(subtitleAndContent[0]);
 							section.setContent(subtitleAndContent[1]);
@@ -63,9 +63,18 @@ public class HtmlArticle {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		addChapter(chapter);
+	}
+
+	public void addChapter(Chapter chapter) {
 		if (chapter != null) {
+			chapter.setId(Const.CHAPTER + chapters.size());
 			chapters.add(chapter);
 		}
+	}
+
+	public Chapter getChapter(Integer chapter) {
+		return chapters.get(chapter);
 	}
 
 	private void addSection(Section section) {
@@ -80,7 +89,7 @@ public class HtmlArticle {
 			chapter = new Chapter();
 		}
 		chapter.setQuiz(quiz);
-		chapters.add(chapter);
+		addChapter(chapter);
 		chapter = null;
 	}
 }

@@ -5,8 +5,10 @@ function isEndPosition() {
 			$.ajax({
 				type : "GET",
 				url : location.pathname + "/license",
-				dataType: "text",
-				data: {"id": "social_id"},
+				dataType : "text",
+				data : {
+					"id" : "social_id"
+				},
 				success : function(content) {
 					$("#license").text(content);
 				}
@@ -14,31 +16,51 @@ function isEndPosition() {
 		}
 	});
 }
-
 isEndPosition();
 
 $(document).ready(function() {
-    $("a.anchorLink").anchorAnimate()
+	$("a.anchorLink").anchorAnimate()
 });
 
 jQuery.fn.anchorAnimate = function(settings) {
+	settings = jQuery.extend({
+		speed : 1100
+	}, settings);
 
-     settings = jQuery.extend({
-        speed : 1100
-    }, settings);    
-    
-    return this.each(function(){
-        var caller = this
-        $(caller).click(function (event) {    
-            event.preventDefault()
-            var locationHref = window.location.href
-            var elementClick = $(caller).attr("href")
-            
-            var destination = $(elementClick).offset().top;
-            $("html:not(:animated),body:not(:animated)").animate({ scrollTop: destination}, settings.speed, function() {
-                window.location.hash = elementClick
-            });
-              return false;
-        })
-    })
+	return this.each(function() {
+		var caller = this
+		$(caller).click(function(event) {
+			event.preventDefault()
+			var locationHref = window.location.href
+			var elementClick = $(caller).attr("href")
+
+			var destination = $(elementClick).offset().top;
+			$("html:not(:animated),body:not(:animated)").animate({
+				scrollTop : destination
+			}, settings.speed, function() {
+				window.location.hash = elementClick
+			});
+			return false;
+		})
+	})
+}
+
+function sendAnswer(id) {
+	if (event.keyCode == 13) {
+		if ($("#answer").val() === "") {
+			return;
+		}
+
+		$.ajax({
+			type : "POST",
+			url : $("#title").text() + "/" + id,
+			dataType : "text",
+			data : {
+				answer : $("#answer").val()
+			},
+			success : function(content) {
+				$("#nextChapter").text(content);
+			}
+		});
+	}
 }

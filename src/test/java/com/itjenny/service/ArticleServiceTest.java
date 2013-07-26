@@ -7,8 +7,6 @@ import com.itjenny.common.CommonTest;
 import com.itjenny.model.HtmlArticle;
 
 public class ArticleServiceTest extends CommonTest {
-	private HtmlArticle htmlArticle = new HtmlArticle();
-
 	public void convert() {
 		// Given
 		String h1 = "# title";

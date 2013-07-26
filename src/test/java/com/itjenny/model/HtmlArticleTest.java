@@ -12,15 +12,13 @@ import com.itjenny.common.CommonTest;
 import com.itjenny.common.util.Const;
 
 public class HtmlArticleTest extends CommonTest {
-	private HtmlArticle htmlArticle = new HtmlArticle();
-
 	@Test
 	public void testSection() {
 		// Given
 		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.";
 
 		// When
-		htmlArticle.makeChapters("", content);
+		HtmlArticle htmlArticle = new HtmlArticle("", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -39,7 +37,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content = "# QUIZ\nquestion1\n>answer1\n";
 
 		// When
-		htmlArticle.makeChapters("", content);
+		HtmlArticle htmlArticle = new HtmlArticle("", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -59,7 +57,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
 
 		// When
-		htmlArticle.makeChapters("", content);
+		HtmlArticle htmlArticle = new HtmlArticle("", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -72,7 +70,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content2 = content + content;
 
 		// When
-		htmlArticle.makeChapters("", content2);
+		HtmlArticle htmlArticle = new HtmlArticle("", content2);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(2));

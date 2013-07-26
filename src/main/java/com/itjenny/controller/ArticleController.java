@@ -16,14 +16,22 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
 import com.itjenny.model.HtmlArticle;
+import com.itjenny.service.AnswerService;
 import com.itjenny.service.ArticleService;
+import com.itjenny.service.HtmlArticleService;
 
 @Controller
 public class ArticleController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
 
 	@Autowired
+	private HtmlArticleService htmlArticleService;
+
+	@Autowired
 	private ArticleService articleService;
+
+	@Autowired
+	private AnswerService answerService;
 
 	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
@@ -53,14 +61,28 @@ public class ArticleController {
 	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		Article article = articleService.get(title);
-		if (article == null) {
+		HtmlArticle htmlArticle = htmlArticleService.get(title);
+		if (htmlArticle == null) {
 			return new ModelAndView("redirect:/article");
 		}
-		HtmlArticle htmlArticle = new HtmlArticle();
-		htmlArticle.makeChapters(title, article.getContent());
 		model.addAttribute("htmlArticle", htmlArticle);
 		mav.setViewName("article");
+		mav.addAllObjects(model);
+		return mav;
+	}
+
+	@RequestMapping(value = Const.ARTICLE + "/{title}/{chapter}", method = RequestMethod.POST)
+	public ModelAndView answer(@PathVariable String title, @PathVariable String chapter, @RequestParam String answer) {
+		answerService.check(title, chapter, answer);
+
+		ModelAndView mav = new ModelAndView();
+		ModelMap model = new ModelMap();
+		HtmlArticle htmlArticle = htmlArticleService.get(title);
+		if (htmlArticle == null) {
+			return new ModelAndView("redirect:/article");
+		}
+		model.addAttribute("htmlArticle", htmlArticle);
+		mav.setViewName("chapter");
 		mav.addAllObjects(model);
 		return mav;
 	}

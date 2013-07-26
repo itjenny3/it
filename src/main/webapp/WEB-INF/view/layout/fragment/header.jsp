@@ -3,5 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-2.1.0.css?20130702" />
 <link rel="stylesheet" type="text/css" href="/css/itjenny.css?20130720" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive-2.1.0.css?20120904" />
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="/js/itjenny.js?20130726"></script>
 <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 

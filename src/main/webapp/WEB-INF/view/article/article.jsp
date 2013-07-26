@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
 <div class=backgroundTitle>
-	<a href=#div0 class=anchorLink><h1>${htmlArticle.title}</h1></a>
+	<a href=#section0 class=anchorLink><h1 id=title>${htmlArticle.title}</h1></a>
 </div>
 
 <c:forEach var="chapter" items="${htmlArticle.chapters}">
@@ -13,9 +13,12 @@
 	</c:forEach>
 	<c:if test="${not empty chapter.quiz}">
 		<div id=${chapter.quiz.id } class=${chapter.quiz.css}>
-			<a href=#${chapter.quiz.nextid} class=anchorLink><h1>${chapter.quiz.subtitle}</h1></a> ${chapter.quiz.content}
+			<a href=#${chapter.quiz.nextid} class=anchorLink><h1>${chapter.quiz.subtitle}</h1></a> ${chapter.quiz.content} <input
+				id="answer" type="text" onKeyDown="sendAnswer('${chapter.id }')">
 		</div>
 	</c:if>
 </c:forEach>
+
+<div id="nextChapter"></div>
 
 <div id="license"></div>
