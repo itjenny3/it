@@ -3,7 +3,9 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url('/font/HU엣지고딕110.eot');
-	src: url('/font/HU엣지고딕110.eot?#iefix') format('embedded-opentype'), url('/font/HU엣지고딕110.woff') format('woff'), url('/font/HU엣지고딕110.ttf') format('truetype');
+	src: url('/font/HU엣지고딕110.eot?#iefix') format('embedded-opentype'),
+		url('/font/HU엣지고딕110.woff') format('woff'), url('/font/HU엣지고딕110.ttf')
+		format('truetype');
 }
 
 @font-face {
@@ -11,7 +13,9 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url('/font/HU젠120.eot');
-	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'), url('/font/HU젠120.woff') format('woff'), url('/font/HU젠120.ttf') format('truetype');
+	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'),
+		url('/font/HU젠120.woff') format('woff'), url('/font/HU젠120.ttf')
+		format('truetype');
 }
 
 html {
@@ -26,7 +30,7 @@ body {
 	line-height: 200%;
 }
 
-h1, h2 {
+h1,h2 {
 	font-family: 'HU젠120';
 }
 
@@ -41,6 +45,27 @@ code,pre {
 	cursor: pointer;
 }
 
+.backgroundTitle a {
+	color: #000;
+}
+
+.backgroundTitle a:link {
+	text-decoration: none color:  #000;
+}
+
+.backgroundTitle a:visited {
+	text-decoration: none color:  #000;
+}
+
+.backgroundTitle a:active {
+	text-decoration: none color:  #000;
+}
+
+.backgroundTitle a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
 .backgroundTitle {
 	min-height: 100%;
 	padding: 0 0 50px 0;
@@ -48,6 +73,27 @@ code,pre {
 	padding: 10px 0;
 	color: #000;
 	background-color: #FFF;
+}
+
+a {
+	color: #fff;
+}
+
+a:link {
+	text-decoration: none color:  #fff;
+}
+
+a:visited {
+	text-decoration: none color:  #fff;
+}
+
+a:active {
+	text-decoration: none color:  #fff;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #fff;
 }
 
 .background1 {
@@ -60,7 +106,7 @@ code,pre {
 }
 
 .background1 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #B71735;
 }
@@ -75,7 +121,7 @@ code,pre {
 }
 
 .background2 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #D82546;
 }
@@ -90,7 +136,7 @@ code,pre {
 }
 
 .background3 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #066c9e;
 }
@@ -105,7 +151,7 @@ code,pre {
 }
 
 .background4 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #0A4763;
 }
@@ -120,7 +166,7 @@ code,pre {
 }
 
 .background5 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #911D43;
 }
@@ -135,7 +181,7 @@ code,pre {
 }
 
 .background6 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #5B0B26;
 }
@@ -150,7 +196,7 @@ code,pre {
 }
 
 .background7 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #0F9B92;
 }
@@ -165,7 +211,7 @@ code,pre {
 }
 
 .background8 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #14726C;
 }
@@ -180,7 +226,7 @@ code,pre {
 }
 
 .background9 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #D64F21;
 }
@@ -195,7 +241,7 @@ code,pre {
 }
 
 .background10 pre {
-	border:0px;
+	border: 0px;
 	color: #FFF;
 	background-color: #FD6632;
 }

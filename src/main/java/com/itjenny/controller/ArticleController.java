@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
 import com.itjenny.model.Chapter;
-import com.itjenny.model.HtmlArticle;
 import com.itjenny.service.AnswerService;
 import com.itjenny.service.ArticleService;
 import com.itjenny.service.AuthService;
