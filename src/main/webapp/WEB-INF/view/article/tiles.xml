@@ -13,4 +13,7 @@
 	<definition name="license" extends="fragmentLayout">
 		<put-attribute name="body" value="/WEB-INF/view/article/license.jsp" />
 	</definition>
+	<definition name="wrong" extends="fragmentLayout">
+		<put-attribute name="body" value="/WEB-INF/view/article/wrong.jsp" />
+	</definition>
 </tiles-definitions>

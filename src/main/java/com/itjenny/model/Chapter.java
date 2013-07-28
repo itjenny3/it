@@ -11,7 +11,7 @@ public class Chapter {
 	private List<Section> sections = new ArrayList<Section>();
 	private Quiz quiz;
 	
-	public void addSection(Section section) {
+	public void add(Section section) {
 		sections.add(section);
 	}
 }

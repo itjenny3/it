@@ -257,8 +257,9 @@ mvn으로 tomcat에 배포하기 위해서 /usr/share/tomcat6/conf/tomcat-users.
 	</tomcat-users>
 
 UTF-8을 지원하기 위해 server.xml파일에 아래 내용 중 가장 아래 줄을 추가한다.
+맨 위에 Port를 8080에서 80으로 변경한다.
 
-	<Connector port="8080" protocol="HTTP/1.1" 
+	<Connector port="80" protocol="HTTP/1.1" 
 		connectionTimeout="20000" 
 		redirectPort="8443" 
 		URIEncoding="UTF-8" />

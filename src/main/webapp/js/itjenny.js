@@ -1,23 +1,3 @@
-function isEndPosition() {
-	$(window).scroll(function() {
-		if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-			$(window).unbind('scroll');
-			$.ajax({
-				type : "GET",
-				url : location.pathname + "/license",
-				dataType : "text",
-				data : {
-					"id" : "social_id"
-				},
-				success : function(content) {
-					$("#license").text(content);
-				}
-			});
-		}
-	});
-}
-isEndPosition();
-
 $(document).ready(function() {
 	$("a.anchorLink").anchorAnimate()
 });
@@ -59,7 +39,7 @@ function sendAnswer(id) {
 				answer : $("#answer").val()
 			},
 			success : function(content) {
-				$("#nextChapter").text(content);
+				$("#nextChapter").replaceWith(content);
 			}
 		});
 	}

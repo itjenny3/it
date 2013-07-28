@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 

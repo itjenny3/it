@@ -15,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itjenny.common.util.Const;
 import com.itjenny.model.Article;
+import com.itjenny.model.Chapter;
 import com.itjenny.model.HtmlArticle;
 import com.itjenny.service.AnswerService;
 import com.itjenny.service.ArticleService;
+import com.itjenny.service.AuthService;
 import com.itjenny.service.HtmlArticleService;
 
 @Controller
@@ -29,6 +31,9 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+
+	@Autowired
+	private AuthService authService;
 
 	@Autowired
 	private AnswerService answerService;
@@ -61,29 +66,31 @@ public class ArticleController {
 	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		HtmlArticle htmlArticle = htmlArticleService.get(title);
-		if (htmlArticle == null) {
+		List<Chapter> chapters = htmlArticleService.getToChapter(title, authService.getPage("loginId"));
+		if (chapters == null) {
+			LOGGER.info("title isn't existed");
 			return new ModelAndView("redirect:/article");
 		}
-		model.addAttribute("htmlArticle", htmlArticle);
+		model.addAttribute("title", title);
+		model.addAttribute("chapters", chapters);
 		mav.setViewName("article");
 		mav.addAllObjects(model);
 		return mav;
 	}
 
-	@RequestMapping(value = Const.ARTICLE + "/{title}/{chapter}", method = RequestMethod.POST)
-	public ModelAndView answer(@PathVariable String title, @PathVariable String chapter, @RequestParam String answer) {
-		answerService.check(title, chapter, answer);
-
+	@RequestMapping(value = Const.ARTICLE + "/{title}/{chapterId}", method = RequestMethod.POST)
+	public ModelAndView answer(@PathVariable String title, @PathVariable String chapterId, @RequestParam String answer) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		HtmlArticle htmlArticle = htmlArticleService.get(title);
-		if (htmlArticle == null) {
-			return new ModelAndView("redirect:/article");
+		Chapter chapter = htmlArticleService.getChapter(title, Integer.parseInt(chapterId.replace(Const.CHAPTER, "")));
+		if (answerService.check(chapter, answer)) {
+			model.addAttribute("chapter", chapter);
+			mav.setViewName("chapter");
+			mav.addAllObjects(model);
+		} else {
+			mav.setViewName("wrong");
+			mav.addAllObjects(model);
 		}
-		model.addAttribute("htmlArticle", htmlArticle);
-		mav.setViewName("chapter");
-		mav.addAllObjects(model);
 		return mav;
 	}
 

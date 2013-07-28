@@ -49,13 +49,13 @@ public class HtmlArticle {
 							section.setCss(Const.CSS[i % Const.CSS.length]);
 							section.setSubtitle(subtitleAndContent[0]);
 							section.setContent(subtitleAndContent[1]);
-							addSection(section);
+							add(section);
 						}
 					} else {
 						// no title
 						Section section = new Section();
 						section.setContent(subtitleAndContent[0]);
-						addSection(section);
+						add(section);
 					}
 					i++;
 				}
@@ -63,25 +63,26 @@ public class HtmlArticle {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		addChapter(chapter);
+		add(chapter);
 	}
 
-	public void addChapter(Chapter chapter) {
+	public void add(Chapter chapter) {
 		if (chapter != null) {
 			chapter.setId(Const.CHAPTER + chapters.size());
 			chapters.add(chapter);
+//			chapters.put(chapter.getId(), chapter);
 		}
 	}
 
-	public Chapter getChapter(Integer chapter) {
-		return chapters.get(chapter);
+	public Chapter get(Integer index) {
+		return chapters.get(index);
 	}
 
-	private void addSection(Section section) {
+	private void add(Section section) {
 		if (chapter == null) {
 			chapter = new Chapter();
 		}
-		chapter.addSection(section);
+		chapter.add(section);
 	}
 
 	private void setQuiz(Quiz quiz) {
@@ -89,7 +90,7 @@ public class HtmlArticle {
 			chapter = new Chapter();
 		}
 		chapter.setQuiz(quiz);
-		addChapter(chapter);
+		add(chapter);
 		chapter = null;
 	}
 }
