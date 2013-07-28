@@ -70,7 +70,6 @@ public class HtmlArticle {
 		if (chapter != null) {
 			chapter.setId(Const.CHAPTER + chapters.size());
 			chapters.add(chapter);
-//			chapters.put(chapter.getId(), chapter);
 		}
 	}
 
