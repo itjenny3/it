@@ -171,7 +171,11 @@ STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plu
 
 ### Java Convention을 기본 템플릿으로 사용함 ###
 
- - Preference > Java > Code Style > Formatter > New > Java Convention를 기반으로 기본 템플릿 생성한다.
+Preference > Java > Code Style > Formatter > Java Convention를 선택 후 New를 클릭 후 아래와 같이 설정한다.  
+
+	Tab policy: Tabs only
+	Indentation/Tab size : 4
+	Line Wrapping/Maximum line width : 120
 
 ### Checkstyle 설정파일 불러오기 ###
 
@@ -198,7 +202,10 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
  - Preference > Web > CSS Files > Encoding : ISO 10646/Unicode(UTF-8)
  - Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
  - Preference > Web > JSP Files > Encoding : ISO 10646/Unicode(UTF-8)
- - Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 선택 후 Update
+ - Preference > General > Content Types > Text > *.txt 선택 후 UTF-8을 입력 후 Update
+ - Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 입력 후 Update
+ - Preference > General > Content Types > Text > Javascript Source File > *.js > UTF-8을 입력 후 Update
+ - Project 우클릭 > properties > Resource > Text file encoding > Other : UTF-8 선택
 	
 ### 개행문자 (LF 사용, Not CRLF) ###
 

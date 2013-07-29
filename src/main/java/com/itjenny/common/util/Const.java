@@ -4,7 +4,7 @@ public class Const {
 	// URL
 	public static final String MAIN = "";
 	public static final String ARTICLE = "article";
-	
+
 	// ID
 	public static final String CHAPTER = "chapter";
 	public static final String SECTION = "section";
