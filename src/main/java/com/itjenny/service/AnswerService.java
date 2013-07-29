@@ -12,7 +12,7 @@ public class AnswerService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AnswerService.class);
 
 	@Autowired
-	HtmlArticleService htmlArticleService;
+	private HtmlArticleService htmlArticleService;
 
 	public boolean check(Chapter chapter, String answer) {
 		if (chapter.getQuiz().getAnswer().equals(answer)) {

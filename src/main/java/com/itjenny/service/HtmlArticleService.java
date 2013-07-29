@@ -18,9 +18,9 @@ public class HtmlArticleService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(HtmlArticleService.class);
 
 	@Autowired
-	ArticleService articleService;
+	private ArticleService articleService;
 
-	Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
+	private Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
 
 	public HtmlArticle get(String title) {
 		HtmlArticle htmlArticle = htmlArticles.get(title);

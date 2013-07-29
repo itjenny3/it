@@ -12,9 +12,9 @@ import com.itjenny.common.util.Const;
 
 @Data
 public class HtmlArticle {
-	String title;
-	List<Chapter> chapters = new ArrayList<Chapter>();
-	Chapter chapter = null;
+	private String title;
+	private List<Chapter> chapters = new ArrayList<Chapter>();
+	private Chapter chapter = null;
 
 	public HtmlArticle(String title, String content) {
 		this.title = title;
@@ -39,6 +39,8 @@ public class HtmlArticle {
 							case 2:
 								quiz.setContent(contentAndAnswer[0]);
 								quiz.setAnswer(contentAndAnswer[1].split("</p>")[0]);
+								break;
+							default:
 								break;
 							}
 							setQuiz(quiz);
