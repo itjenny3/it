@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS itjenny;
 USE itjenny;
 DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `social_user`;
 
 CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
@@ -8,6 +9,27 @@ CREATE TABLE IF NOT EXISTS `article` (
 	`published` INTEGER DEFAULT 0,
     PRIMARY KEY (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+create table social_user (
+    id bigint not null auto_increment,
+    access_token varchar(255) not null,
+    create_date datetime,
+    display_name varchar(255),
+    expire_time bigint,
+    image_url varchar(255),
+    profile_url varchar(255),
+    provider_id varchar(255) not null,
+    provider_user_id varchar(255),
+    rank integer not null,
+    refresh_token varchar(255),
+    secret varchar(255),
+    user_id varchar(255),
+    email varchar(255),
+    password varchar(255),
+    primary key (id),
+    unique (user_id, provider_id, rank),
+    unique (user_id, provider_id, provider_user_id)
+) ENGINE=InnoDB;
 
 INSERT
 INTO `article` 

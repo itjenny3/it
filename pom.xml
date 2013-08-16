@@ -18,16 +18,16 @@
 		<!-- SPRING MOBILE -->
 		<springmobileframework.version>1.0.0.RELEASE</springmobileframework.version>
 		<!-- SPRING SOCIAL -->
-		<springsocial.version>1.0.2.RELEASE</springsocial.version>
-		<springsocialfacebook.version>1.0.1.RELEASE</springsocialfacebook.version>
-		<springsecuritycrypto.version>3.1.0.RELEASE</springsecuritycrypto.version>
+		<springsocial.version>1.0.3.RELEASE</springsocial.version>
+		<springsocial-google.version>1.0.0.M2</springsocial-google.version>
+		<springsecurity.version>3.1.0.RELEASE</springsecurity.version>
 		<!-- SPRING RELATED LIBRARY -->
 		<cglib.version>2.2.2</cglib.version>
 		<aspectj.version>1.6.9</aspectj.version>
 		<!-- COMMON -->
 		<common-dbcp.version>1.4</common-dbcp.version>
 		<!-- EHCACHE -->
-		<ehcache.version>2.5.1</ehcache.version>
+		<ehcache.version>2.6.6</ehcache.version>
 		<!-- MYSQL -->
 		<mysql.jdbc.version>5.1.20</mysql.jdbc.version>
 
@@ -64,6 +64,8 @@
 		<selenium.version>2.24.1</selenium.version>
 		<!-- GOOGLE GUAVA -->
 		<google-guava.version>14.0.1</google-guava.version>
+		<!-- JAVA-MAIL -->
+		<mail.version>1.4.7</mail.version>
 
 		<!-- PLUGIN -->
 		<!-- SQL-MAVEN -->
@@ -71,6 +73,14 @@
 		<!-- TOMCAT-MAVEN -->
 		<tomcat-maven-plugin.version>1.1</tomcat-maven-plugin.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring.social.google</id>
+			<name>Spring Social Google</name>
+			<url>https://github.com/GabiAxel/maven/raw/master/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<!-- SPRING -->
@@ -131,13 +141,34 @@
 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-facebook</artifactId>
-			<version>${springsocialfacebook.version}</version>
+			<version>${springsocial.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-twitter</artifactId>
+			<version>${springsocial.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-google</artifactId>
+			<version>${springsocial-google.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-crypto</artifactId>
-			<version>${springsecuritycrypto.version}</version>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springsecurity.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+
 
 		<!-- SPRING FRAMEWORK JDBC -->
 		<dependency>
@@ -158,6 +189,21 @@
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-core</artifactId>
 			<version>${ehcache.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>${hibernate-jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
 
 		<!-- MYSQL -->
@@ -313,12 +359,19 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 		</dependency>
-		
+
 		<!-- GOOGLE GUAVA -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${google-guava.version}</version>
+		</dependency>
+
+		<!-- MAIL -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${mail.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -437,14 +490,34 @@
 					<path>/ROOT</path>
 				</configuration>
 			</plugin>
+
+			<!-- source attach하는 기능 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<resources>
 			<resource>
-				<directory>src/main/resources-${env}</directory>
+				<directory>src/main/resources</directory>
 			</resource>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources-${env}</directory>
 			</resource>
 		</resources>
 

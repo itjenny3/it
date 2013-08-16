@@ -1,7 +1,7 @@
 Skill Set
 ---------
  - Spring : Java Framework
- - Spring Social : Social Login (facebook)
+ - Spring Social : Social Login (facebook, twitter, googleplus)
  - Spring Mobile : Spring Mobile MVC
  - Mybatis : SQL mapping Framework
  - Ehcache : cache Framework
@@ -190,6 +190,7 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
  - Preference > Java > Code Style > Formatter > Edit > Line Wrapping > Maximum line width : 120
  - Preference > JavaScript > Code Style > Formatter > Line width : 120
  - Preference > XML > XML Files > Editor > Line width : 120
+ - Preference > Web > HTML Files > Editor > Line Width : 120 
  - Preference > Web > JSP Files > Editor > Line Width : 120 
 
 ### Tab Indent 설정 ###
@@ -243,6 +244,9 @@ Project Properties > Java Build Path > Order and Export 에서 아래와 같은 
 	src/main/resources-local
 	src/main/resources-dev
 	src/main/resources-release
+
+### 검색 시 특정 폴더 제외 ###
+프로젝트 우클릭 -> 속성 -> resource -> resource filter -> exclude all, folder 선택
 	
 운영 서버 설치
 -----------------------------------

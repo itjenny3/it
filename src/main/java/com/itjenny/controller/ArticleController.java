@@ -2,6 +2,7 @@ package com.itjenny.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itjenny.common.util.Const;
-import com.itjenny.model.Article;
-import com.itjenny.model.Chapter;
-import com.itjenny.service.AnswerService;
-import com.itjenny.service.ArticleService;
+import com.itjenny.domain.Article;
+import com.itjenny.domain.Chapter;
 import com.itjenny.service.AuthService;
-import com.itjenny.service.HtmlArticleService;
+import com.itjenny.service.article.AnswerService;
+import com.itjenny.service.article.ArticleService;
+import com.itjenny.service.article.HtmlArticleService;
+import com.itjenny.support.Const;
+import com.itjenny.support.security.SessionService;
 
 @Controller
 public class ArticleController {
@@ -37,6 +39,9 @@ public class ArticleController {
 	@Autowired
 	private AnswerService answerService;
 
+	@Autowired
+	private SessionService sessionService;
+
 	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
@@ -48,6 +53,11 @@ public class ArticleController {
 		mav.setViewName("article");
 		mav.addAllObjects(model);
 		return mav;
+	}
+	
+	@RequestMapping(value = StringUtils.EMPTY, method = RequestMethod.GET)
+	public ModelAndView listTemp() {
+		return list();
 	}
 
 	@RequestMapping(value = Const.ARTICLE, method = RequestMethod.GET)
