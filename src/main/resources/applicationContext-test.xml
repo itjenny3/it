@@ -12,6 +12,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+	<bean id="applicationProperties" class="com.itjenny.support.util.ConvenientProperties">
+		<constructor-arg>
+			<util:properties location="classpath:application-properties.xml" />
+		</constructor-arg>
+	</bean>
+	
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
@@ -30,10 +36,4 @@
 	<jpa:repositories base-package="com.itjenny.repository" factory-class="com.itjenny.support.jpa.ItRepositoryFactoryBean" />
 
 	<context:property-placeholder location="classpath*:application-properties.xml" />
-
-	<bean id="applicationProperties" class="com.itjenny.support.util.ConvenientProperties">
-		<constructor-arg index="0">
-			<util:properties location="classpath:application-properties.xml" />
-		</constructor-arg>
-	</bean>
 </beans>
