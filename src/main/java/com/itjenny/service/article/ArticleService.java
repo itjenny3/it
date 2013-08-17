@@ -2,9 +2,10 @@ package com.itjenny.service.article;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itjenny.domain.Article;
@@ -14,7 +15,7 @@ import com.itjenny.repository.ArticleRepository;
 public class ArticleService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
 
-	@Autowired
+    @Resource(name = "articleRepository")
 	private ArticleRepository articleRepository;
 	
 	public void save(Article article) {

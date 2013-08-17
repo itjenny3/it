@@ -17,7 +17,7 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" p:driverClassName="${database.driverClassName}"
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
 		p:url="${database.url}" p:username="${database.username}" p:password="${database.password}" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />

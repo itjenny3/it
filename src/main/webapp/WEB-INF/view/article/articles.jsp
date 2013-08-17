@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
-${loginUser.url}
+${loginUser.userId}
 <form action="/signin/facebook" method="POST">
 	<input type="hidden" name="scope" value="publish_stream" />
 	<button type="submit" class="btn-login-facebook">
