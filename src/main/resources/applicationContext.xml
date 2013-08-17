@@ -17,7 +17,7 @@
 
 	<bean id="applicationProperties" class="com.itjenny.support.util.ConvenientProperties">
 		<constructor-arg>
-			<util:properties location="classpath:application-properties.xml" />
+			<util:properties location="classpath:application.properties" />
 		</constructor-arg>
 	</bean>
 
