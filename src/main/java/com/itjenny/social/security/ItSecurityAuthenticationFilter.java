@@ -49,7 +49,7 @@ public class ItSecurityAuthenticationFilter extends AbstractAuthenticationProces
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-			throws AuthenticationException, IOException, ServletException {
+			throws IOException, ServletException {
 		if (sessionService.isAuthenticated()) {
 			log.debug("already authentication userId is : {}", sessionService.getAuthentication().getPrincipal());
 			return sessionService.getAuthentication();

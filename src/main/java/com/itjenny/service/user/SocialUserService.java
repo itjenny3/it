@@ -32,7 +32,7 @@ public class SocialUserService {
 	private SocialUserRepository socialUserRepository;
 
 	@Resource(name = "passwordEncoder")
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 
 	@Resource(name = "passwordGenerator")
 	private PasswordGenerator passwordGenerator;

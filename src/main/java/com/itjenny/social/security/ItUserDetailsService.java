@@ -30,7 +30,7 @@ public class ItUserDetailsService implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) {
 		SocialUser socialUser = socialUserService.findByUserId(username);
 		if (socialUser == null) {
 			throw new UsernameNotFoundException(String.format("%s not found!", username));
@@ -40,7 +40,7 @@ public class ItUserDetailsService implements UserDetailsService {
 				createGrantedAuthorities(username));
 	}
 
-	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByEmail(String email) {
 		SocialUser socialUser = socialUserService.findByEmail(email);
 		if (socialUser == null) {
 			throw new UsernameNotFoundException(String.format("%s not found!", email));

@@ -51,9 +51,10 @@ public class SocialUsersConnectionRepository implements UsersConnectionRepositor
 
 		if (connectionSignUp != null) {
 			String newUserId = connectionSignUp.execute(connection);
-			if (newUserId == null)
+			if (newUserId == null) {
 				// auto signup failed, so we need to go to a sign up form
 				return usrs;
+			}
 			createConnectionRepository(newUserId).addConnection(connection);
 			usrs.add(newUserId);
 		}

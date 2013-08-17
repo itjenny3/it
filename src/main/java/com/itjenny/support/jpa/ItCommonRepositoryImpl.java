@@ -35,9 +35,9 @@ import com.google.common.collect.Iterables;
 
 /**
  * Archeage전용 Repository 메소드를 추가한 공통 Repository 구현체
- *
+ * 
  * @author kwon37xi
- *
+ * 
  */
 @NoRepositoryBean
 public class ItCommonRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID> implements
@@ -81,12 +81,12 @@ public class ItCommonRepositoryImpl<T, ID extends Serializable> extends SimpleJp
 	}
 
 	@Override
-	public T getFirstSortingData(Specification<T> spec, Sort sort){
-		return Iterables.getFirst( getAmountSortingData(spec, sort, 1) , null);
+	public T getFirstSortingData(Specification<T> spec, Sort sort) {
+		return Iterables.getFirst(getAmountSortingData(spec, sort, 1), null);
 	}
 
 	@Override
-	public List<T> getAmountSortingData(Specification<T> spec, Sort sort, int amount){
+	public List<T> getAmountSortingData(Specification<T> spec, Sort sort, int amount) {
 		Pageable pageable = new PageRequest(0, amount, sort);
 		return findMore(spec, pageable);
 	}

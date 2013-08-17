@@ -284,72 +284,99 @@ public class SocialUser {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		SocialUser other = (SocialUser) obj;
 		if (accessToken == null) {
-			if (other.accessToken != null)
+			if (other.accessToken != null) {
 				return false;
-		} else if (!accessToken.equals(other.accessToken))
+			}
+		} else if (!accessToken.equals(other.accessToken)) {
 			return false;
+		}
 		if (createDate == null) {
-			if (other.createDate != null)
+			if (other.createDate != null) {
 				return false;
-		} else if (!createDate.equals(other.createDate))
+			}
+		} else if (!createDate.equals(other.createDate)) {
 			return false;
+		}
 		if (displayName == null) {
-			if (other.displayName != null)
+			if (other.displayName != null) {
 				return false;
-		} else if (!displayName.equals(other.displayName))
+			}
+		} else if (!displayName.equals(other.displayName)) {
 			return false;
+		}
 		if (expireTime == null) {
-			if (other.expireTime != null)
+			if (other.expireTime != null) {
 				return false;
-		} else if (!expireTime.equals(other.expireTime))
+			}
+		} else if (!expireTime.equals(other.expireTime)) {
 			return false;
-		if (id != other.id)
+		}
+		if (id != other.id) {
 			return false;
+		}
 		if (imageUrl == null) {
-			if (other.imageUrl != null)
+			if (other.imageUrl != null) {
 				return false;
-		} else if (!imageUrl.equals(other.imageUrl))
+			}
+		} else if (!imageUrl.equals(other.imageUrl)) {
 			return false;
+		}
 		if (profileUrl == null) {
-			if (other.profileUrl != null)
+			if (other.profileUrl != null) {
 				return false;
-		} else if (!profileUrl.equals(other.profileUrl))
+			}
+		} else if (!profileUrl.equals(other.profileUrl)) {
 			return false;
+		}
 		if (providerId == null) {
-			if (other.providerId != null)
+			if (other.providerId != null) {
 				return false;
-		} else if (!providerId.equals(other.providerId))
+			}
+		} else if (!providerId.equals(other.providerId)) {
 			return false;
+		}
 		if (providerUserId == null) {
-			if (other.providerUserId != null)
+			if (other.providerUserId != null) {
 				return false;
-		} else if (!providerUserId.equals(other.providerUserId))
+			}
+		} else if (!providerUserId.equals(other.providerUserId)) {
 			return false;
-		if (rank != other.rank)
+		}
+		if (rank != other.rank) {
 			return false;
+		}
 		if (refreshToken == null) {
-			if (other.refreshToken != null)
+			if (other.refreshToken != null) {
 				return false;
-		} else if (!refreshToken.equals(other.refreshToken))
+			}
+		} else if (!refreshToken.equals(other.refreshToken)) {
 			return false;
+		}
 		if (secret == null) {
-			if (other.secret != null)
+			if (other.secret != null) {
 				return false;
-		} else if (!secret.equals(other.secret))
+			}
+		} else if (!secret.equals(other.secret)) {
 			return false;
+		}
 		if (userId == null) {
-			if (other.userId != null)
+			if (other.userId != null) {
 				return false;
-		} else if (!userId.equals(other.userId))
+			}
+		} else if (!userId.equals(other.userId)) {
 			return false;
+		}
 		return true;
 	}
 }

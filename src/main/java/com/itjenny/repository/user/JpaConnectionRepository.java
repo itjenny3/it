@@ -123,21 +123,22 @@ public class JpaConnectionRepository implements ConnectionRepository {
 		String providerId = getProviderId(apiType);
 		return (Connection<A>) findPrimaryConnection(providerId);
 	}
-	
+
 	private Connection<?> findPrimaryConnection(String providerId) {
-		List<Connection<?>> connections = connectionMapper.mapEntities(socialUserRepository.findsPrimary(userId, providerId));
+		List<Connection<?>> connections = connectionMapper.mapEntities(socialUserRepository.findsPrimary(userId,
+				providerId));
 		if (connections.size() > 0) {
 			return connections.get(0);
 		} else {
 			return null;
-		}		
+		}
 	}
 
 	@Override
 	public void addConnection(Connection<?> connection) {
 		try {
 			ConnectionData data = connection.createData();
-			int rank = getRank(data.getProviderId()) ;
+			int rank = getRank(data.getProviderId());
 			SocialUser socialUser = new SocialUser();
 			socialUser.setUserId(userId);
 			socialUser.setProviderId(data.getProviderId());
@@ -158,17 +159,19 @@ public class JpaConnectionRepository implements ConnectionRepository {
 
 	private int getRank(String providerId) {
 		List<Integer> result = socialUserRepository.findsRank(userId, providerId);
-		if (result.isEmpty() || result.get(0) == null)
+		if (result.isEmpty() || result.get(0) == null) {
 			return 1;
+		}
 		return result.get(0) + 1;
 	}
 
 	@Override
 	public void updateConnection(Connection<?> connection) {
 		ConnectionData data = connection.createData();
-		
-		SocialUser su = socialUserRepository.findByUserIdAndProviderIdAndProviderUserId(userId, data.getProviderId(),data.getProviderUserId());
-		if(su != null){
+
+		SocialUser su = socialUserRepository.findByUserIdAndProviderIdAndProviderUserId(userId, data.getProviderId(),
+				data.getProviderUserId());
+		if (su != null) {
 			su.setDisplayName(data.getDisplayName());
 			su.setProfileUrl(data.getProfileUrl());
 			su.setImageUrl(data.getImageUrl());
@@ -176,7 +179,7 @@ public class JpaConnectionRepository implements ConnectionRepository {
 			su.setSecret(encrypt(data.getSecret()));
 			su.setRefreshToken(encrypt(data.getRefreshToken()));
 			su.setExpireTime(data.getExpireTime());
-			
+
 			socialUserRepository.save(su);
 		}
 	}
@@ -189,7 +192,8 @@ public class JpaConnectionRepository implements ConnectionRepository {
 
 	@Override
 	public void removeConnection(ConnectionKey connectionKey) {
-		SocialUser socialUser = socialUserRepository.findByUserIdAndProviderIdAndProviderUserId(userId, connectionKey.getProviderId(), connectionKey.getProviderUserId());
+		SocialUser socialUser = socialUserRepository.findByUserIdAndProviderIdAndProviderUserId(userId,
+				connectionKey.getProviderId(), connectionKey.getProviderUserId());
 		socialUserRepository.delete(socialUser);
 	}
 

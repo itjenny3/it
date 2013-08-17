@@ -8,7 +8,6 @@ import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.PlaintextPasswordEncoder;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.NullAuthoritiesMapper;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,7 +29,7 @@ public class ItDaoAuthenticationProvider extends AbstractUserDetailsAuthenticati
 
 	@SuppressWarnings("deprecation")
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
-			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+			UsernamePasswordAuthenticationToken authentication) {
 		Object salt = null;
 
 		if (this.saltSource != null) {
@@ -67,8 +66,7 @@ public class ItDaoAuthenticationProvider extends AbstractUserDetailsAuthenticati
 		Assert.notNull(this.userDetailsService, "A UserDetailsService must be set");
 	}
 
-	protected final UserDetails retrieveUser(String email, UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
+	protected final UserDetails retrieveUser(String email, UsernamePasswordAuthenticationToken authentication) {
 		UserDetails loadedUser;
 
 		try {

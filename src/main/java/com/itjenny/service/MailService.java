@@ -23,7 +23,7 @@ public class MailService {
     private static Logger log = LoggerFactory.getLogger(MailService.class);
 
     @Resource(name = "mailSender")
-    JavaMailSender mailSender;
+    private JavaMailSender mailSender;
 
     @Async
     public void sendPasswordInformation(final SocialUser user) {
