@@ -8,7 +8,23 @@ ${loginUser.userId}
 		<i class="foundicon-facebook"></i>facebook
 	</button>
 </form>
-<a href="/users/logout" title="logout">logout</a>
+
+<form action="/signin/google?scope=https://www.googleapis.com/auth/userinfo.profile" method="POST">
+	<button type="submit" class="btn-login-google">
+		<i class="foundicon-google-plus"></i>google
+	</button>
+</form>
+
+
+<form action="/signin/twitter" method="POST">
+	<button type="submit" class="btn-login-twitter">
+		<i class="foundicon-twitter"></i>twitter
+	</button>
+</form>
+
+<div class=backgroudTitle>
+	<a href="/users/logout" title="logout">logout</a>
+</div>
 
 <div class=backgroundTitle>
 	<c:forEach var="article" items="${articles}">
