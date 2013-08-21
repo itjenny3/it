@@ -500,7 +500,7 @@
 				<version>${tomcat-maven-plugin.version}</version>
 				<configuration>
 					<server>tomcat6</server>
-					<url>http://14.33.43.57:8080/manager</url>
+					<url>http://itjenny.com:8080/manager</url>
 					<path>/ROOT</path>
 				</configuration>
 			</plugin>

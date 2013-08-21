@@ -18,7 +18,7 @@ import com.itjenny.support.security.SessionService;
  * {@link LoginUser} 어노테이션이 있는 컨트롤러 메소드에 로그인 사용자 객체를 주입해준다.
  */
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
-	private Logger log = LoggerFactory.getLogger(LoginUserHandlerMethodArgumentResolver.class);
+	private final Logger logger = LoggerFactory.getLogger(LoginUserHandlerMethodArgumentResolver.class);
 
 	@Resource (name = "sessionService")
 	private SessionService sessionService;
@@ -38,7 +38,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 		LoginUser loginUserAnnotation = parameter.getParameterAnnotation(LoginUser.class);
 
 		SocialUser loginUser = sessionService.getLoginUser();
-		log.debug("@LoginUser : {}", loginUser);
+		logger.debug("@LoginUser : {}", loginUser);
 
 		if (loginUserAnnotation.required() && loginUser.isGuest()) {
 			throw new LoginRequiredException();

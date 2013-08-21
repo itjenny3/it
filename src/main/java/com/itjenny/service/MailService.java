@@ -20,7 +20,7 @@ import com.itjenny.domain.user.SocialUser;
 
 @Service
 public class MailService {
-    private static Logger log = LoggerFactory.getLogger(MailService.class);
+    private final Logger logger = LoggerFactory.getLogger(MailService.class);
 
     @Resource(name = "mailSender")
     private JavaMailSender mailSender;

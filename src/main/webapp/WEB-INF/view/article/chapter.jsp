@@ -8,7 +8,7 @@
 </c:forEach>
 <c:if test="${not empty chapter.quiz}">
 	<div id=${chapter.quiz.id } class=${chapter.quiz.css}>
-		<a href=#${chapter.quiz.nextid} class=anchorLink><h1>${chapter.quiz.subtitle}</h1></a>
-		${chapter.quiz.content} <input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id }')">
+		<a href=#${chapter.quiz.nextid} class=anchorLink><h1>${chapter.quiz.subtitle}</h1></a> ${chapter.quiz.content} <input
+			id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
 	</div>
 </c:if>

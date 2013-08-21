@@ -13,7 +13,6 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
@@ -23,7 +22,7 @@ import com.itjenny.domain.user.SocialUser;
 import com.itjenny.support.security.SessionService;
 
 public class ItSecurityAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-	private static Logger log = LoggerFactory.getLogger(ItSecurityAuthenticationFilter.class);
+	private final Logger logger = LoggerFactory.getLogger(ItSecurityAuthenticationFilter.class);
 
 	public final static String DEFAULT_AUTHENTICATION_URL = "/authenticate";
 
@@ -51,19 +50,19 @@ public class ItSecurityAuthenticationFilter extends AbstractAuthenticationProces
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		if (sessionService.isAuthenticated()) {
-			log.debug("already authentication userId is : {}", sessionService.getAuthentication().getPrincipal());
+			logger.debug("already authentication userId is : {}", sessionService.getAuthentication().getPrincipal());
 			return sessionService.getAuthentication();
 		} else {
 			SocialUser signInDetails = (SocialUser) request.getSession().getAttribute(
 					ItSecuritySignInAdapter.SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME);
 
 			if (signInDetails == null) {
-				log.debug("sns login failed. so login anonymous!");
+				logger.debug("sns login failed. so login anonymous!");
 				return new AnonymousAuthenticationToken("itAnonymousAuthenticationToken", "anonymousUser",
 						AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS"));
 			}
 
-			log.debug("sns login success. login userId : {}", signInDetails.getUserId());
+			logger.debug("sns login success. login userId : {}", signInDetails.getUserId());
 
 			ItUser userDetails;
 			if (signInDetails.isItUser()) {

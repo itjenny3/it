@@ -18,7 +18,7 @@ import com.itjenny.domain.user.SocialUser;
 import com.itjenny.service.user.SocialUserService;
 
 public class ItUserDetailsService implements UserDetailsService {
-	private static Logger logger = LoggerFactory.getLogger(ItUserDetailsService.class);
+	private final Logger logger = LoggerFactory.getLogger(ItUserDetailsService.class);
 
 	@Resource(name = "socialUserService")
 	private SocialUserService socialUserService;

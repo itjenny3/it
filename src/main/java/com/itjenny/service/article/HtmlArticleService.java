@@ -15,7 +15,7 @@ import com.itjenny.domain.HtmlArticle;
 
 @Service
 public class HtmlArticleService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(HtmlArticleService.class);
+	private final Logger logger = LoggerFactory.getLogger(HtmlArticleService.class);
 
 	@Autowired
 	private ArticleService articleService;

@@ -16,8 +16,7 @@ import org.springframework.util.Assert;
  * System Property값으로 변환하여 저장하도록 처리한다.
  */
 public class ConvenientProperties extends Properties {
-
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3157860063906636195L;
 
 	private Logger log = LoggerFactory.getLogger(ConvenientProperties.class);
 

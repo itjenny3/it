@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(AuthService.class);
+	private final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
 	public Integer getPage(String loginId) {
 		return 1;

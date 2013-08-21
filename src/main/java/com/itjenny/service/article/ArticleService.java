@@ -13,7 +13,7 @@ import com.itjenny.repository.ArticleRepository;
 
 @Service
 public class ArticleService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
+	private final Logger logger = LoggerFactory.getLogger(ArticleService.class);
 
     @Resource(name = "articleRepository")
 	private ArticleRepository articleRepository;

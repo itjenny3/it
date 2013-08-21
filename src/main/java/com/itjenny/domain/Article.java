@@ -13,5 +13,5 @@ public class Article {
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
-	private Integer published;
+	private Boolean published;
 }

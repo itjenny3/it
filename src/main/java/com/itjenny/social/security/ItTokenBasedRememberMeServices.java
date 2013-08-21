@@ -25,7 +25,7 @@ import org.springframework.util.StringUtils;
 import com.itjenny.domain.ProviderType;
 
 public class ItTokenBasedRememberMeServices extends AbstractRememberMeServices {
-	private static Logger log = LoggerFactory.getLogger(ItTokenBasedRememberMeServices.class);
+	private final Logger logger = LoggerFactory.getLogger(ItTokenBasedRememberMeServices.class);
 
 	private GrantedAuthoritiesMapper authoritiesMapper = new NullAuthoritiesMapper();
 
@@ -45,7 +45,7 @@ public class ItTokenBasedRememberMeServices extends AbstractRememberMeServices {
 					+ Arrays.asList(cookieTokens) + "'");
 		}
 
-		log.debug("cookieTokens userId : {}", cookieTokens[0]);
+		logger.debug("cookieTokens userId : {}", cookieTokens[0]);
 
 		long tokenExpiryTime;
 

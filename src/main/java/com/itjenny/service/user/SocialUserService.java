@@ -133,9 +133,7 @@ public class SocialUserService {
 		if (user == null) {
 			return null;
 		}
-
 		user.changePassword(passwordEncoder, password.getOldPassword(), password.getNewPassword());
-
 		return user;
 	}
 }

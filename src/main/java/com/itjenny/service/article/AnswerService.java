@@ -9,7 +9,7 @@ import com.itjenny.domain.Chapter;
 
 @Service
 public class AnswerService {
-	private static final Logger LOGGER = LoggerFactory.getLogger(AnswerService.class);
+	private final Logger logger = LoggerFactory.getLogger(AnswerService.class);
 
 	@Autowired
 	private HtmlArticleService htmlArticleService;

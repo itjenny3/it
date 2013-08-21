@@ -17,21 +17,27 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
 import com.itjenny.service.AuthService;
+import com.itjenny.service.BookmarkService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.HtmlArticleService;
 import com.itjenny.support.Const;
+import com.itjenny.support.URL;
+import com.itjenny.support.VIEW;
 import com.itjenny.support.security.SessionService;
 
 @Controller
 public class ArticleController {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ArticleController.class);
+	private final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
 	@Autowired
 	private HtmlArticleService htmlArticleService;
 
 	@Autowired
 	private ArticleService articleService;
+
+	@Autowired
+	private BookmarkService bookmarkService;
 
 	@Autowired
 	private AuthService authService;
@@ -42,7 +48,7 @@ public class ArticleController {
 	@Autowired
 	private SessionService sessionService;
 
-	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.POST)
+	@RequestMapping(value = URL.ARTICLE + "/{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -50,66 +56,69 @@ public class ArticleController {
 		article.setTitle(title);
 		article.setContent(content);
 		articleService.save(article);
-		mav.setViewName("article");
+		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = StringUtils.EMPTY, method = RequestMethod.GET)
 	public ModelAndView listTemp() {
 		return list();
 	}
 
-	@RequestMapping(value = Const.ARTICLE, method = RequestMethod.GET)
+	@RequestMapping(value = URL.ARTICLE, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		List<Article> articles = articleService.getAll();
 		model.addAttribute("articles", articles);
-		mav.setViewName("articles");
+		mav.setViewName(VIEW.ARTICLES);
 		mav.addAllObjects(model);
 		return mav;
 	}
 
-	@RequestMapping(value = Const.ARTICLE + "/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = URL.ARTICLE + "/{title}", method = RequestMethod.GET)
 	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		List<Chapter> chapters = htmlArticleService.getToChapter(title, authService.getPage("loginId"));
 		if (chapters == null) {
-			LOGGER.info("title isn't existed");
+			logger.info("title isn't existed");
 			return new ModelAndView("redirect:/article");
 		}
 		model.addAttribute("title", title);
 		model.addAttribute("chapters", chapters);
-		mav.setViewName("article");
+		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
+		bookmarkService.update(title, 0);
 		return mav;
 	}
 
-	@RequestMapping(value = Const.ARTICLE + "/{title}/{chapterId}", method = RequestMethod.POST)
+	@RequestMapping(value = URL.ARTICLE + "/{title}/{chapterId}", method = RequestMethod.POST)
 	public ModelAndView answer(@PathVariable String title, @PathVariable String chapterId, @RequestParam String answer) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		Chapter chapter = htmlArticleService.getChapter(title, Integer.parseInt(chapterId.replace(Const.CHAPTER, "")));
+		Integer chapterIndex = Integer.valueOf(chapterId.replace(Const.CHAPTER, StringUtils.EMPTY));
+		Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
 		if (answerService.check(chapter, answer)) {
 			model.addAttribute("chapter", chapter);
-			mav.setViewName("chapter");
+			mav.setViewName(VIEW.CHAPTER);
 			mav.addAllObjects(model);
+			bookmarkService.update(title, chapterIndex + 1);
 		} else {
-			mav.setViewName("wrong");
+			mav.setViewName(VIEW.WRONG);
 			mav.addAllObjects(model);
 		}
 		return mav;
 	}
 
-	@RequestMapping(value = Const.ARTICLE + "/{title}/license", method = RequestMethod.GET)
+	@RequestMapping(value = URL.ARTICLE + "/{title}/license", method = RequestMethod.GET)
 	public ModelAndView completed(@PathVariable String title, @RequestParam String id) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		model.addAttribute("title", title);
 		model.addAttribute("id", id);
-		mav.setViewName("license");
+		mav.setViewName(VIEW.LICENSE);
 		mav.addAllObjects(model);
 		return mav;
 	}
