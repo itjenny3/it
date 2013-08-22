@@ -1,6 +1,10 @@
 package com.itjenny.support;
 
 public class Const {
+	// COMPLETE
+	public static final Integer BOOKMARK_COMPLETED = 10000;
+	
+	
 	// ID
 	public static final String CHAPTER = "chapter";
 	public static final String SECTION = "section";

@@ -15,6 +15,8 @@ public class AnswerService {
 	private HtmlArticleService htmlArticleService;
 
 	public boolean check(Chapter chapter, String answer) {
+		logger.info(chapter.getQuiz().getAnswer());
+		logger.info(answer);
 		if (chapter.getQuiz().getAnswer().equals(answer)) {
 			return true;
 		}

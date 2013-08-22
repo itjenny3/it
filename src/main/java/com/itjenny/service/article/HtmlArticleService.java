@@ -44,12 +44,22 @@ public class HtmlArticleService {
 		}
 	}
 
-	public Chapter getChapter(String title, Integer index) {
+	public Chapter getChapter(String title, int index) {
 		HtmlArticle htmlArticle = get(title);
 		if (htmlArticle != null) {
 			return htmlArticle.getChapters().get(index);
 		} else {
 			return null;
 		}
+	}
+	
+	public boolean isChapterExisted(String title, int index) {
+		HtmlArticle htmlArticle = get(title);
+		if (htmlArticle != null) {
+			if (htmlArticle.getChapters().size() <= index) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

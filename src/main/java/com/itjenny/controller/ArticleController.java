@@ -90,7 +90,7 @@ public class ArticleController {
 		model.addAttribute("chapters", chapters);
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
-		bookmarkService.update(title, 0);
+		bookmarkService.updateChapter(title, 0);
 		return mav;
 	}
 
@@ -101,10 +101,14 @@ public class ArticleController {
 		Integer chapterIndex = Integer.valueOf(chapterId.replace(Const.CHAPTER, StringUtils.EMPTY));
 		Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
 		if (answerService.check(chapter, answer)) {
-			model.addAttribute("chapter", chapter);
+			if (htmlArticleService.isChapterExisted(title, chapterIndex + 1) == false) {
+				bookmarkService.complete(title);
+				return new ModelAndView("redirect:/article/" + title + "/license");
+			}
+			model.addAttribute("chapter", htmlArticleService.getChapter(title, chapterIndex + 1));
 			mav.setViewName(VIEW.CHAPTER);
 			mav.addAllObjects(model);
-			bookmarkService.update(title, chapterIndex + 1);
+			bookmarkService.updateChapter(title, chapterIndex + 1);
 		} else {
 			mav.setViewName(VIEW.WRONG);
 			mav.addAllObjects(model);
@@ -113,11 +117,10 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = URL.ARTICLE + "/{title}/license", method = RequestMethod.GET)
-	public ModelAndView completed(@PathVariable String title, @RequestParam String id) {
+	public ModelAndView completed(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		model.addAttribute("title", title);
-		model.addAttribute("id", id);
 		mav.setViewName(VIEW.LICENSE);
 		mav.addAllObjects(model);
 		return mav;

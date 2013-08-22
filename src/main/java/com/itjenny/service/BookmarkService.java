@@ -9,6 +9,7 @@ import com.google.common.base.Strings;
 import com.itjenny.domain.Bookmark;
 import com.itjenny.domain.user.SocialUser;
 import com.itjenny.repository.BookmarkRepository;
+import com.itjenny.support.Const;
 import com.itjenny.support.security.SessionService;
 
 @Service
@@ -21,7 +22,7 @@ public class BookmarkService {
 	@Autowired
 	private BookmarkRepository bookmarkRepository;
 
-	public void update(String title, Integer chapterIndex) {
+	public void updateChapter(String title, Integer chapterIndex) {
 		SocialUser loginUser = sessionService.getLoginUser();
 		if (Strings.isNullOrEmpty(loginUser.getProviderUserId())) {
 			return;
@@ -30,6 +31,18 @@ public class BookmarkService {
 		bookmark.setProviderUserId(loginUser.getProviderUserId());
 		bookmark.setTitle(title);
 		bookmark.setChapterIndex(chapterIndex);
+		bookmarkRepository.save(bookmark);
+	}
+	
+	public void complete(String title) {
+		SocialUser loginUser = sessionService.getLoginUser();
+		if (Strings.isNullOrEmpty(loginUser.getProviderUserId())) {
+			return;
+		}
+		Bookmark bookmark = new Bookmark();
+		bookmark.setProviderUserId(loginUser.getProviderUserId());
+		bookmark.setTitle(title);
+		bookmark.setChapterIndex(Const.BOOKMARK_COMPLETED);
 		bookmarkRepository.save(bookmark);
 	}
 }
