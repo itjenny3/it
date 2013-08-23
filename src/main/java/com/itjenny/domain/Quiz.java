@@ -2,7 +2,7 @@ package com.itjenny.domain;
 
 import lombok.Data;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 @Data
 public class Quiz {

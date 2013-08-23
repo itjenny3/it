@@ -1,6 +1,6 @@
 package com.itjenny.domain;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import lombok.Data;
 

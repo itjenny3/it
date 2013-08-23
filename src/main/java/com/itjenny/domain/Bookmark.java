@@ -6,7 +6,7 @@ import javax.persistence.IdClass;
 
 import lombok.Data;
 
-import com.itjenny.service.BookmarkPK;
+import com.itjenny.service.article.BookmarkPK;
 
 @Data
 @Entity

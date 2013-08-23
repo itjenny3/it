@@ -6,6 +6,8 @@ import java.util.List;
 
 import lombok.Data;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.markdown4j.Markdown4jProcessor;
 
 import com.itjenny.support.Const;
@@ -22,29 +24,32 @@ public class HtmlArticle {
 			String[] parts = new Markdown4jProcessor().process(content).split("<h1>|<h2>");
 			int i = 0;
 			for (String part : parts) {
-				if (!"".equals(part)) {
+				if (StringUtils.isNotEmpty(part)) {
 					String[] subtitleAndContent = part.split("</h1>|</h2>");
 					if (subtitleAndContent.length == 2) {
+						// title exists.
 						if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
+							// quiz
 							Quiz quiz = new Quiz();
 							quiz.setId(Const.SECTION + i);
 							quiz.setNextid(Const.SECTION + (i + 1));
 							quiz.setCss(Const.CSS[i % Const.CSS.length]);
 							quiz.setSubtitle(subtitleAndContent[0]);
-							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER);
+							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
 							switch (contentAndAnswer.length) {
 							case 1:
 								quiz.setContent(contentAndAnswer[0]);
 								break;
 							case 2:
 								quiz.setContent(contentAndAnswer[0]);
-								quiz.setAnswer(contentAndAnswer[1].split("</p>")[0]);
+								quiz.setAnswer(contentAndAnswer[1].split(Const.ANSWER_END_TAG)[0]);
 								break;
 							default:
 								break;
 							}
 							setQuiz(quiz);
 						} else {
+							// section (not quiz)
 							Section section = new Section();
 							section.setId(Const.SECTION + i);
 							section.setNextid(Const.SECTION + (i + 1));
@@ -80,16 +85,12 @@ public class HtmlArticle {
 	}
 
 	private void add(Section section) {
-		if (chapter == null) {
-			chapter = new Chapter();
-		}
+		chapter = ObjectUtils.defaultIfNull(chapter, new Chapter());
 		chapter.add(section);
 	}
 
 	private void setQuiz(Quiz quiz) {
-		if (chapter == null) {
-			chapter = new Chapter();
-		}
+		chapter = ObjectUtils.defaultIfNull(chapter, new Chapter());
 		chapter.setQuiz(quiz);
 		add(chapter);
 		chapter = null;

@@ -1,4 +1,4 @@
-package com.itjenny.service;
+package com.itjenny.service.article;
 
 import java.io.Serializable;
 		

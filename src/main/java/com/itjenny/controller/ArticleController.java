@@ -2,7 +2,7 @@ package com.itjenny.controller;
 
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
-import com.itjenny.service.AuthService;
-import com.itjenny.service.BookmarkService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
+import com.itjenny.service.article.BookmarkService;
 import com.itjenny.service.article.HtmlArticleService;
 import com.itjenny.support.Const;
 import com.itjenny.support.URL;
@@ -27,6 +26,7 @@ import com.itjenny.support.VIEW;
 import com.itjenny.support.security.SessionService;
 
 @Controller
+@RequestMapping(value = URL.ARTICLE)
 public class ArticleController {
 	private final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
@@ -40,15 +40,12 @@ public class ArticleController {
 	private BookmarkService bookmarkService;
 
 	@Autowired
-	private AuthService authService;
-
-	@Autowired
 	private AnswerService answerService;
 
 	@Autowired
 	private SessionService sessionService;
 
-	@RequestMapping(value = URL.ARTICLE + "/{title}", method = RequestMethod.POST)
+	@RequestMapping(value = "{title}", method = RequestMethod.POST)
 	public ModelAndView save(@PathVariable String title, @RequestParam String content) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -61,12 +58,7 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = StringUtils.EMPTY, method = RequestMethod.GET)
-	public ModelAndView listTemp() {
-		return list();
-	}
-
-	@RequestMapping(value = URL.ARTICLE, method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
@@ -77,31 +69,34 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = URL.ARTICLE + "/{title}", method = RequestMethod.GET)
+	@RequestMapping(value = "{title}", method = RequestMethod.GET)
 	public ModelAndView getArticle(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		List<Chapter> chapters = htmlArticleService.getToChapter(title, authService.getPage("loginId"));
+		Integer chapterIndex = bookmarkService.getChapterIndex(title);
+		List<Chapter> chapters = htmlArticleService.getChaptersToIndex(title, chapterIndex);
 		if (chapters == null) {
-			logger.info("title isn't existed");
-			return new ModelAndView("redirect:/article");
+			logger.info("title({}) isn't existed", title);
+			return new ModelAndView("redirect:/" + URL.ARTICLE);
 		}
 		model.addAttribute("title", title);
 		model.addAttribute("chapters", chapters);
+		model.addAttribute("license", (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
 		bookmarkService.updateChapter(title, 0);
 		return mav;
 	}
 
-	@RequestMapping(value = URL.ARTICLE + "/{title}/{chapterId}", method = RequestMethod.POST)
-	public ModelAndView answer(@PathVariable String title, @PathVariable String chapterId, @RequestParam String answer) {
+	@RequestMapping(value = "{title}/{chapterCssId}", method = RequestMethod.POST)
+	public ModelAndView answer(@PathVariable String title, @PathVariable String chapterCssId,
+			@RequestParam String answer) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		Integer chapterIndex = Integer.valueOf(chapterId.replace(Const.CHAPTER, StringUtils.EMPTY));
+		Integer chapterIndex = Integer.valueOf(chapterCssId.replace(Const.CHAPTER, StringUtils.EMPTY));
 		Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
 		if (answerService.check(chapter, answer)) {
-			if (htmlArticleService.isChapterExisted(title, chapterIndex + 1) == false) {
+			if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
 				bookmarkService.complete(title);
 				return new ModelAndView("redirect:/article/" + title + "/license");
 			}
@@ -116,8 +111,8 @@ public class ArticleController {
 		return mav;
 	}
 
-	@RequestMapping(value = URL.ARTICLE + "/{title}/license", method = RequestMethod.GET)
-	public ModelAndView completed(@PathVariable String title) {
+	@RequestMapping(value = "{title}/license", method = RequestMethod.GET)
+	public ModelAndView license(@PathVariable String title) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		model.addAttribute("title", title);

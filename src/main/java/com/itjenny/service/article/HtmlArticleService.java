@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
 import com.itjenny.domain.HtmlArticle;
+import com.itjenny.support.Const;
 
 @Service
 public class HtmlArticleService {
@@ -26,39 +27,40 @@ public class HtmlArticleService {
 		HtmlArticle htmlArticle = htmlArticles.get(title);
 		if (htmlArticle == null) {
 			Article article = articleService.get(title);
-			if (article != null) {
-				htmlArticles.put(title, new HtmlArticle(title, article.getContent()));
-			} else {
+			if (article == null) {
 				return null;
 			}
+			htmlArticles.put(title, new HtmlArticle(title, article.getContent()));
 		}
 		return htmlArticles.get(title);
 	}
 
-	public List<Chapter> getToChapter(String title, Integer toIndex) {
+	public List<Chapter> getChaptersToIndex(String title, Integer toIndex) {
 		HtmlArticle htmlArticle = get(title);
-		if (htmlArticle != null) {
-			return htmlArticle.getChapters().subList(0, toIndex);
-		} else {
+		if (htmlArticle == null) {
 			return null;
 		}
+		if (toIndex.equals(Const.BOOKMARK_LICENSE)) {
+			return htmlArticle.getChapters();
+		}
+		return htmlArticle.getChapters().subList(0, toIndex + 1);
 	}
 
 	public Chapter getChapter(String title, int index) {
 		HtmlArticle htmlArticle = get(title);
-		if (htmlArticle != null) {
-			return htmlArticle.getChapters().get(index);
-		} else {
+		if (htmlArticle == null) {
 			return null;
 		}
+		return htmlArticle.getChapters().get(index);
 	}
-	
+
 	public boolean isChapterExisted(String title, int index) {
 		HtmlArticle htmlArticle = get(title);
-		if (htmlArticle != null) {
-			if (htmlArticle.getChapters().size() <= index) {
-				return false;
-			}
+		if (htmlArticle == null) {
+			return false;
+		}
+		if (htmlArticle.getChapters().size() <= index) {
+			return false;
 		}
 		return true;
 	}

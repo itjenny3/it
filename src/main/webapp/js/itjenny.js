@@ -39,7 +39,9 @@ function sendAnswer(id) {
 				answer : $("#answer").val()
 			},
 			success : function(content) {
-				$("#answer").remove();
+				$("#answer").replaceWith(
+						"<blockquote><p>" + $("#answer").val()
+								+ "</p></blockquote>");
 				$("#nextChapter").before(content);
 			}
 		});
