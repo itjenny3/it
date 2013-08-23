@@ -25,6 +25,12 @@ jQuery.fn.anchorAnimate = function(settings) {
 	})
 }
 
+function moveLastChapter() {
+	$('#html,body').animate({
+		scrollTop : $('.lastChapter').offset().top
+	}, 'slow');
+}
+
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
 		if ($("#answer").val() === "") {
@@ -39,10 +45,12 @@ function sendAnswer(id) {
 				answer : $("#answer").val()
 			},
 			success : function(content) {
+				$(".lastChapter").removeClass("lastChapter");
 				$("#answer").replaceWith(
 						"<blockquote><p>" + $("#answer").val()
 								+ "</p></blockquote>");
 				$("#nextChapter").before(content);
+				moveLastChapter();
 			}
 		});
 	}

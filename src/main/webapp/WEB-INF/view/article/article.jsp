@@ -9,7 +9,7 @@
 	<c:forEach var="section" varStatus="innerLoop" items="${chapter.sections}">
 		<c:choose>
 			<c:when test="${loop.last and innerLoop.first}">
-				<div id="started" id="${section.id}" class="${section.css}">
+				<div id="${section.id}" class="lastChapter ${section.css}">
 					<a href="#${section.nextid}" class="anchorLink"><h1>${section.subtitle}</h1></a> ${section.content}
 				</div>
 			</c:when>
@@ -46,8 +46,6 @@
 
 <script>
 	$(document).ready(function() {
-		$('#html,body').animate({
-			scrollTop : $('#started').offset().top
-		}, 'slow');
+		moveLastChapter();
 	});
 </script>
