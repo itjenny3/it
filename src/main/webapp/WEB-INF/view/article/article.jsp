@@ -5,14 +5,19 @@
 	<a href=#section0 class=anchorLink><h1 id=title>${title}</h1></a>
 </div>
 
+<%-- chapters --%>
 <c:forEach var="chapter" varStatus="loop" items="${chapters}">
+	<%-- sections --%>
 	<c:forEach var="section" varStatus="innerLoop" items="${chapter.sections}">
 		<c:choose>
-			<c:when test="${loop.last and innerLoop.first}">
+			<%-- first section in last chapter.  And must be not first section in first chapter --%>
+			<c:when test="${!loop.first and loop.last and innerLoop.first}">
 				<div id="${section.id}" class="lastChapter ${section.css}">
 					<a href="#${section.nextid}" class="anchorLink"><h1>${section.subtitle}</h1></a> ${section.content}
 				</div>
 			</c:when>
+			
+			<%-- normal section --%>
 			<c:otherwise>
 				<div id="${section.id}" class="${section.css}">
 					<a href="#${section.nextid}" class="anchorLink"><h1>${section.subtitle}</h1></a> ${section.content}
@@ -21,6 +26,7 @@
 		</c:choose>
 	</c:forEach>
 	<c:choose>
+		<%-- ask answer --%>
 		<c:when test="${loop.last and not license}">
 			<c:if test="${not empty chapter.quiz}">
 				<div id="${chapter.quiz.id}" class="${chapter.quiz.css}">
@@ -29,6 +35,8 @@
 				</div>
 			</c:if>
 		</c:when>
+		
+		<%-- display answer --%>
 		<c:otherwise>
 			<c:if test="${not empty chapter.quiz}">
 				<div id="${chapter.quiz.id}" class="${chapter.quiz.css}">
