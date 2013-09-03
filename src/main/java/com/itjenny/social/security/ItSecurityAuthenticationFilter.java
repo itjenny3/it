@@ -26,15 +26,15 @@ public class ItSecurityAuthenticationFilter extends AbstractAuthenticationProces
 
 	public final static String DEFAULT_AUTHENTICATION_URL = "/authenticate";
 
-	protected ItSecurityAuthenticationFilter() {
-		super(DEFAULT_AUTHENTICATION_URL);
-	}
-
 	@Autowired
 	private SessionService sessionService;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
+
+	protected ItSecurityAuthenticationFilter() {
+		super(DEFAULT_AUTHENTICATION_URL);
+	}
 
 	@Autowired
 	public void setAuthenticationManager(AuthenticationManager authenticationManager) {

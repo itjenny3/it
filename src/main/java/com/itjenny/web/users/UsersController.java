@@ -1,11 +1,10 @@
-package com.itjenny.web.user;
+package com.itjenny.web.users;
 
 import java.net.URLEncoder;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +22,12 @@ import com.itjenny.web.UserForm;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
-	private static final int DEFAULT_SUMMARY_PAGE_SIZE = 5;
-	private static final int DEFAULT_PAGE_SIZE = 15;
+	private final Logger logger = LoggerFactory.getLogger(UsersController.class);
 
-	@Resource(name = "socialUserService")
+	@Autowired
 	private SocialUserService userService;
 
-	@Resource(name = "autoLoginAuthenticator")
+	@Autowired
 	private AutoLoginAuthenticator autoLoginAuthenticator;
 
 	@RequestMapping("/login")
@@ -37,17 +35,12 @@ public class UsersController {
 		model.addAttribute("user", new UserForm());
 		return "users/login";
 	}
-
+	
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String create(UserForm user, HttpServletRequest request, HttpServletResponse response) {
+    public String create(UserForm user) {
 		SocialUser socialUser = userService.createItUser(user.getUserId(), user.getEmail());
 		autoLoginAuthenticator.login(socialUser.getEmail(), socialUser.getRawPassword());
 		return "redirect:/";
-	}
-
-	@RequestMapping("/fblogout")
-	public String logout() {
-		return "users/fblogout";
 	}
 
 	@RequestMapping("/{id}")
@@ -56,44 +49,17 @@ public class UsersController {
 		return String.format("redirect:/users/%d/%s", id, URLEncoder.encode(socialUser.getUserId(), "UTF-8"));
 	}
 
-	// @RequestMapping("/{id}/{userId}")
-	// public String profile(@PathVariable Long id, @PathVariable String userId,
-	// Model model) throws Exception {
-	// model.addAttribute("questions", qnaService.findsQuestionByWriter(id,
-	// createPageableByQuestionUpdatedDate(DEFAULT_PAGE_NO,
-	// DEFAULT_SUMMARY_PAGE_SIZE)));
-	// model.addAttribute("answers", qnaService.findsAnswerByWriter(id,
-	// createPageableByAnswerCreatedDate(DEFAULT_PAGE_NO,
-	// DEFAULT_SUMMARY_PAGE_SIZE)));
-	// model.addAttribute("socialUser", userService.findById(id));
-	// return "users/profile";
-	// }
-
-	// @RequestMapping("/{id}/{userId}/questions")
-	// public String questions(@PathVariable Long id, Integer page, Model model)
-	// throws Exception {
-	// page = revisedPage(page);
-	// model.addAttribute("questions", qnaService.findsQuestionByWriter(id,
-	// createPageableByQuestionUpdatedDate(page, DEFAULT_PAGE_SIZE)));
-	// model.addAttribute("socialUser", userService.findById(id));
-	// return "users/questions";
-	// }
-
-	// @RequestMapping("/{id}/{userId}/answers")
-	// public String answers(@PathVariable Long id, Integer page, Model model)
-	// throws Exception {
-	// page = revisedPage(page);
-	// model.addAttribute("answers", qnaService.findsAnswerByWriter(id,
-	// createPageableByAnswerCreatedDate(page, DEFAULT_PAGE_SIZE)));
-	// model.addAttribute("socialUser", userService.findById(id));
-	// return "users/answers";
-	// }
+	@RequestMapping("/{id}/{userId}")
+	public String profile(@PathVariable Long id, @PathVariable String userId, Model model) throws Exception {
+		model.addAttribute("socialUser", userService.findById(id));
+		return "users/profile";
+	}
 
 	@RequestMapping("{id}/form")
 	public String updateForm(@LoginUser SocialUser loginUser, @PathVariable Long id, Model model) throws Exception {
 		SocialUser socialUser = userService.findById(id);
 		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You cann't change another user!");
+			throw new IllegalArgumentException("You can't change another user!");
 		}
 
 		model.addAttribute("user", new UserForm(socialUser.getUserId(), socialUser.getEmail()));
@@ -105,7 +71,7 @@ public class UsersController {
 	public String update(@LoginUser SocialUser loginUser, @PathVariable Long id, UserForm userForm) throws Exception {
 		SocialUser socialUser = userService.findById(id);
 		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You cann't change another user!");
+			throw new IllegalArgumentException("You can't change another user!");
 		}
 
 		userService.updateItUser(loginUser, userForm.getEmail(), userForm.getUserId());

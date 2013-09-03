@@ -24,7 +24,7 @@
 	</mvc:interceptors>
 	
 	<!-- @Controller만 빈으로 등록함 -->
-	<context:component-scan base-package="com.itjenny.controller">
+	<context:component-scan base-package="com.itjenny.web">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<context:annotation-config />

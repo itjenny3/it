@@ -55,3 +55,11 @@ function sendAnswer(id) {
 		});
 	}
 }
+
+$(window).scroll(function() {
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+    	if ($("#myModal").attr('class') ==  "modal fade hide") {
+			$("#login").click();
+	    }
+    }
+});

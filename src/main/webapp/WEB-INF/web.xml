@@ -68,10 +68,10 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<error-page>
+<!-- 	<error-page>
 		<error-code>404</error-code>
 		<location>/article</location>
-	</error-page>
+	</error-page> -->
 
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>

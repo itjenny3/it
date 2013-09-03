@@ -1,11 +1,9 @@
 package com.itjenny.social.security;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionData;
 import org.springframework.social.connect.web.ProviderSignInUtils;
-import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,11 +20,11 @@ import com.itjenny.service.user.SocialUserService;
 public class ItSecuritySignUpController {
 	private String authenticateUrl = ItSecurityAuthenticationFilter.DEFAULT_AUTHENTICATION_URL;
 
-	@Resource(name = "socialUserService")
+	@Autowired
 	private SocialUserService socialUserService;
 
-	@Resource(name = "signInAdapter")
-	private SignInAdapter signInAdapter;
+	@Autowired
+	private ItSecuritySignInAdapter itSecuritySignInAdapter;
 
 	public void setAuthenticateUrl(String authenticateUrl) {
 		this.authenticateUrl = authenticateUrl;
@@ -38,7 +36,7 @@ public class ItSecuritySignUpController {
 		ConnectionData connectionData = connection.createData();
 		SignUpForm signUpForm = new SignUpForm(connectionData.getDisplayName());
 		model.addAttribute("signUpForm", signUpForm);
-		return "signUpForm";
+		return "users/signUpForm";
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
@@ -46,12 +44,12 @@ public class ItSecuritySignUpController {
 		Connection<?> connection = ProviderSignInUtils.getConnection(request);
 		try {
 			socialUserService.createNewSocialUser(signUpForm.getUserId(), connection);
-			signInAdapter.signIn(signUpForm.getUserId(), connection, request);
+			itSecuritySignInAdapter.signIn(signUpForm.getUserId(), connection, request);
 			return "redirect:" + authenticateUrl;
 		} catch (ExistedUserException e) {
 			result.addError(new FieldError("signUpForm", "userId", signUpForm.getUserId()
 					+ " is already existed."));
-			return "signUpForm";
+			return "users/signUpForm";
 		}
 	}
 }

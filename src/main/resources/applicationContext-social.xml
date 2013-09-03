@@ -47,8 +47,4 @@
 	</bean>
 
 	<bean id="textEncryptor" class="org.springframework.security.crypto.encrypt.Encryptors" factory-method="noOpText" />
-
-	<bean id="itUserDetailsService" class="com.itjenny.social.security.ItUserDetailsService" p:adminUsers="jenny:tiny657" />
-
-	<bean id="signInAdapter" class="com.itjenny.social.security.ItSecuritySignInAdapter" />
 </beans>

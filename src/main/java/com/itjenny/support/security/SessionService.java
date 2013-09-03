@@ -1,21 +1,17 @@
 package com.itjenny.support.security;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import com.itjenny.domain.ProviderType;
 import com.itjenny.domain.user.SocialUser;
 import com.itjenny.service.user.SocialUserService;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-
-/**
- * 로그인 사용자를 관리한다.
- */
-@Service("sessionService")
+@Service
 public class SessionService {
-    @Resource(name = "socialUserService")
+    @Autowired
     private SocialUserService socialUserService;
 
     public SocialUser getLoginUser() {

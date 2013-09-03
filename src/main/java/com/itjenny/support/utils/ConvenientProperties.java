@@ -1,4 +1,4 @@
-package com.itjenny.support.util;
+package com.itjenny.support.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -10,17 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
-/**
- * 편리한 Properties - Properties 클래스를 상속하여 Properties에서 문자열,숫자,boolean 등의 값을 직접 뽑아
- * 낼 수 있으며, 또한, SystemProperties의 경우 ${system.property.name} 형태로 만들어서, 이 값을 실제
- * System Property값으로 변환하여 저장하도록 처리한다.
- */
 public class ConvenientProperties extends Properties {
-	private static final long serialVersionUID = -3157860063906636195L;
-
+	private static final long serialVersionUID = -233079090593813635L;
 	private Logger log = LoggerFactory.getLogger(ConvenientProperties.class);
-
-	private static Pattern SYSTEM_PROPERTY_NAME_PATTERN = Pattern.compile("\\$\\{([\\w\\.]+)\\}");
+	private static final Pattern SYSTEM_PROPERTY_NAME_PATTERN = Pattern.compile("\\$\\{([\\w\\.]+)\\}");
 
 	public ConvenientProperties(Properties properties) {
 		super(properties);
@@ -52,7 +45,7 @@ public class ConvenientProperties extends Properties {
 
 		log.debug("sysProperty Name: {}, Value: {}", sysPropertyName, sysPropertyValue);
 		if (sysPropertyValue == null) {
-			throw new NullPointerException(sysPropertyName + " 이 존재하지 않습니다.");
+			throw new NullPointerException(sysPropertyName + " isn't existed.");
 		}
 		matcher.appendReplacement(sb, sysPropertyValue.replaceAll("\\\\", "\\\\\\\\").replaceAll("\\$", "\\\\\\$"));
 	}

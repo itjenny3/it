@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
+<script src="/js/article.js?20130903"></script>
+
+<%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
 <div class=backgroundTitle>
 	<a href=#section0 class=anchorLink><h1 id=title>${title}</h1></a>

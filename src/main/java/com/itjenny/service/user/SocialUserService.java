@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;
@@ -20,24 +23,26 @@ import com.itjenny.domain.user.PasswordDto;
 import com.itjenny.domain.user.SocialUser;
 import com.itjenny.repository.user.SocialUserRepository;
 import com.itjenny.service.MailService;
-import com.itjenny.support.util.MD5Util;
+import com.itjenny.support.utils.MD5Util;
 
 @Service
 @Transactional
 public class SocialUserService {
+	private final Logger logger = LoggerFactory.getLogger(SocialUserService.class);
+	
 	@Resource(name = "usersConnectionRepository")
 	private UsersConnectionRepository usersConnectionRepository;
 
-	@Resource(name = "socialUserRepository")
+	@Autowired
 	private SocialUserRepository socialUserRepository;
 
 	@Resource(name = "passwordEncoder")
 	private PasswordEncoder passwordEncoder;
 
-	@Resource(name = "passwordGenerator")
+	@Autowired
 	private PasswordGenerator passwordGenerator;
 
-	@Resource(name = "mailService")
+	@Autowired
 	private MailService mailService;
 
 	public void createNewSocialUser(String userId, Connection<?> connection) throws ExistedUserException {
@@ -89,16 +94,13 @@ public class SocialUserService {
 
 	public SocialUser createItUser(String userId, String email) {
 		SocialUser existedUser = findByUserId(userId);
-		if (existedUser != null) {
-			throw new IllegalArgumentException(userId + " userId already is existed User.");
-		}
+		Assert.isNull(existedUser, userId + " userId already is existed User.");
 
 		existedUser = findByEmail(email);
-		if (existedUser != null) {
-			throw new IllegalArgumentException(email + " email address already is existed User.");
-		}
+		Assert.isNull(existedUser, email + " userId already is existed User.");
 
 		String rawPassword = passwordGenerator.generate();
+		logger.info("rawPassword : " + rawPassword);
 		String uuid = UUID.randomUUID().toString();
 		SocialUser socialUser = new SocialUser();
 		socialUser.setUserId(userId);

@@ -1,4 +1,4 @@
-package com.itjenny.support.util;
+package com.itjenny.support.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

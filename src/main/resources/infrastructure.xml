@@ -22,8 +22,9 @@
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" p:host="itjenny.com" p:port="465"
-		p:username="jenny" p:password="">
+	<!-- TODO: password delete -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" p:host="smtp.gmail.com" p:port="587"
+		p:username="tiny657@gmail.com" p:password="">
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>

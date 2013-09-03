@@ -17,7 +17,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 
 import com.itjenny.domain.ProviderType;
-import com.itjenny.support.util.MD5Util;
+import com.itjenny.support.utils.MD5Util;
 
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "userId", "providerId", "providerUserId" }),
