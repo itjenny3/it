@@ -67,6 +67,7 @@
 		<!-- APACHE COMMONS -->
 		<apache-commons-lang3.version>3.1</apache-commons-lang3.version>
 		<apache-commons-collections.version>3.2.1</apache-commons-collections.version>
+		<apache-commons-io.version>2.4</apache-commons-io.version>
 		<!-- JAVA-MAIL -->
 		<mail.version>1.4.7</mail.version>
 
@@ -383,7 +384,7 @@
 			<artifactId>guava</artifactId>
 			<version>${google-guava.version}</version>
 		</dependency>
-		
+
 		<!-- APACHE COMMONS -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -395,6 +396,12 @@
 			<artifactId>commons-collections</artifactId>
 			<version>${apache-commons-collections.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${apache-commons-io.version}</version>
+		</dependency>
+
 
 		<!-- MAIL -->
 		<dependency>
