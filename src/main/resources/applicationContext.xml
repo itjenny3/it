@@ -66,7 +66,7 @@
 		</constructor-arg>
 	</bean>
 
-	<!-- Start Spring Social Security -->
+	<!-- Spring Social Security -->
 	<bean id="springSocialSecurityEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
 		<constructor-arg value="/users/login" />
 	</bean>

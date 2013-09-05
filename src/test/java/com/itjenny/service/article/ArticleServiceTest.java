@@ -3,6 +3,8 @@ package com.itjenny.service.article;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
+import org.junit.Ignore;
+
 import com.itjenny.common.CommonTest;
 
 public class ArticleServiceTest extends CommonTest {

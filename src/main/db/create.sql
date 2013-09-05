@@ -1,12 +1,10 @@
 CREATE DATABASE IF NOT EXISTS itjenny;
 USE itjenny;
-DROP TABLE IF EXISTS `article`;
-DROP TABLE IF EXISTS `bookmark`;
-DROP TABLE IF EXISTS `social_user`;
 
 CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
 	`content` TEXT,
+	`tag` TEXT,
 	`published` BOOLEAN DEFAULT 0,
     PRIMARY KEY (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -15,11 +13,11 @@ CREATE TABLE IF NOT EXISTS `bookmark` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255),
     `provider_user_id` VARCHAR(255),
-    `chapter` INTEGER,
+    `chapter_index` INTEGER,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE `social_user` (
+CREATE TABLE IF NOT EXISTS `social_user` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `access_token` VARCHAR(255) NOT NULL,
     `create_date` DATETIME,
@@ -40,11 +38,36 @@ CREATE TABLE `social_user` (
     UNIQUE (`user_id`, `provider_id`, `provider_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
+CREATE TABLE IF NOT EXISTS `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tag` varchar(255) DEFAULT NULL,
+  `article` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tag` (`tag`),
+  KEY `article` (`article`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT
 INTO `article` 
 	(`title`,
 	`content`,
+	`tag`,
 	`published`)
 VALUES ("QA",
 		"Skill Set0\n---------\n - Spring : 자바 Framework\n\nSkill Set\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer\n\nSkill Set2\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer2\n\nSkill Set3\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer3\n\n",
+		"tag1;tag2",
 		1);
+		
+INSERT
+INTO `tag` 
+	(`tag`,
+	`article`)
+VALUES ("tag1",
+		"QA");
+		
+INSERT
+INTO `tag` 
+	(`tag`,
+	`article`)
+VALUES ("tag2",
+		"QA");

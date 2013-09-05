@@ -489,21 +489,6 @@
 					</dependency>
 				</dependencies>
 
-				<!-- mvn test 수행 시 mvn sql:execute 을 process-test-resources 다음에 수행 -->
-				<executions>
-					<execution>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<srcFiles>
-								<srcFile>src/main/db/create.sql</srcFile>
-							</srcFiles>
-						</configuration>
-					</execution>
-				</executions>
-
 				<configuration>
 					<driver>com.mysql.jdbc.Driver</driver>
 					<url>jdbc:mysql://localhost:3306?characterEncoding=UTF-8</url>
@@ -511,8 +496,24 @@
 					<password></password>
 					<encoding>utf-8</encoding>
 					<autocommit>true</autocommit>
-					<sqlCommand>CREATE DATABASE IF NOT EXISTS itjenny</sqlCommand>
 				</configuration>
+				
+				<!-- mvn test 수행 시 mvn sql:execute 을 process-test-resources 다음에 수행 -->
+				<executions>
+					<execution>
+						<id>create table</id>
+						<phase>process-test-resources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>src/main/db/create.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- mvn tomcat:deploy 배포 가능 -->

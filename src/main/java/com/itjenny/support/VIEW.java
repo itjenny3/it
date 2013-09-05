@@ -7,4 +7,6 @@ public class VIEW {
 	public static final String WRONG = "wrong";
 	public static final String CHAPTER = "chapter";
 	public static final String LICENSE = "license";
+	
+	public static final String TAGS = "tags";
 }

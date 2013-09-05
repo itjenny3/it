@@ -13,5 +13,7 @@ public class Article {
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
+	@Column(columnDefinition = "TEXT")
+	private String tag;
 	private Boolean published;
 }

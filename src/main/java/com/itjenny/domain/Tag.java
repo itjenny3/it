@@ -1,0 +1,23 @@
+package com.itjenny.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Index;
+
+import lombok.Data;
+
+
+@Entity
+@Data
+public class Tag {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	@Index(name = "tag")
+	private String tag;
+	@Index(name = "article")
+	private String article;
+}
