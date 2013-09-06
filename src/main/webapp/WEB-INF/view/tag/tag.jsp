@@ -5,7 +5,7 @@
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
 <div class=backgroundTitle>
-	<c:forEach var="tag" items="${tags}">
-		<a href="/tag/${tag}"><h1>${tag}</h1></a>
+	<c:forEach var="article" items="${articles}">
+		<a href="/article/${article}"><h1>${article}</h1></a>
 	</c:forEach>
 </div>

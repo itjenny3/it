@@ -9,4 +9,5 @@ public class VIEW {
 	public static final String LICENSE = "license";
 	
 	public static final String TAGS = "tags";
+	public static final String TAG = "tag";
 }

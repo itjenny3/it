@@ -32,7 +32,7 @@ public class TagServiceTest extends CommonTest {
 		tagRepository.save(tag);
 		
 		// When
-		List<Tag> articles = tagRepository.findByTag(TAG1);
+		List<String> articles = tagRepository.findByTag(TAG1);
 		
 		// Then
 		assertThat(articles.size() - savedSize, is(2));

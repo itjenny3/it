@@ -24,14 +24,19 @@ public class TagService {
 	public List<Tag> getAll() {
 		return tagRepository.findAll();
 	}
-
-	public List<Tag> getTags(String article) {
-		List<Tag> tags = tagRepository.findByArticle(article);
+	
+	public List<String> getTags() {
+		List<String> tags = tagRepository.findTags();
 		return tags;
 	}
 
-	public List<Tag> getArticles(String tag) {
-		List<Tag> articles = tagRepository.findByArticle(tag);
+	public List<String> getTags(String article) {
+		List<String> tags = tagRepository.findByArticle(article);
+		return tags;
+	}
+
+	public List<String> getArticles(String tag) {
+		List<String> articles = tagRepository.findByTag(tag);
 		return articles;
 	}
 }

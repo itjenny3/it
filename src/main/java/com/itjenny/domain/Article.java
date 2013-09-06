@@ -3,6 +3,7 @@ package com.itjenny.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -13,7 +14,8 @@ public class Article {
 	private String title;
 	@Column(columnDefinition = "TEXT")
 	private String content;
-	@Column(columnDefinition = "TEXT")
+	@Transient
 	private String tag;
 	private Boolean published;
+	private String userId;
 }

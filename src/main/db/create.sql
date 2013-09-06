@@ -4,8 +4,8 @@ USE itjenny;
 CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
 	`content` TEXT,
-	`tag` TEXT,
 	`published` BOOLEAN DEFAULT 0,
+	`user_id` VARCHAR(256),
     PRIMARY KEY (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
@@ -51,12 +51,12 @@ INSERT
 INTO `article` 
 	(`title`,
 	`content`,
-	`tag`,
-	`published`)
+	`published`,
+	`user_id`)
 VALUES ("QA",
 		"Skill Set0\n---------\n - Spring : 자바 Framework\n\nSkill Set\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer\n\nSkill Set2\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer2\n\nSkill Set3\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer3\n\n",
-		"tag1;tag2",
-		1);
+		1,
+		"tiny657");
 		
 INSERT
 INTO `tag` 

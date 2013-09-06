@@ -29,7 +29,7 @@ public class TagController {
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		List<Tag> tags = tagService.getAll();
+		List<String> tags = tagService.getTags();
 		model.addAttribute("tags", tags);
 		mav.setViewName(VIEW.TAGS);
 		mav.addAllObjects(model);
@@ -40,6 +40,10 @@ public class TagController {
 	public ModelAndView getTag(@PathVariable String tag) {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
+		List<String> articles = tagService.getArticles(tag);
+		model.addAttribute("articles", articles);
+		mav.setViewName(VIEW.TAG);
+		mav.addAllObjects(model);
 		return mav;
 	}
 }
