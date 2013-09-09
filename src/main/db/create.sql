@@ -1,6 +1,11 @@
 CREATE DATABASE IF NOT EXISTS itjenny;
 USE itjenny;
 
+DROP TABLE IF EXISTS `article`;
+DROP TABLE IF EXISTS `tag`;
+DROP TABLE IF EXISTS `bookmark`;
+DROP TABLE IF EXISTS `social_user`;
+
 CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
 	`content` TEXT,
