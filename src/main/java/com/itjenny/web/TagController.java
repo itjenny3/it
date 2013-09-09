@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itjenny.domain.Tag;
 import com.itjenny.service.article.TagService;
 import com.itjenny.support.URL;
 import com.itjenny.support.VIEW;

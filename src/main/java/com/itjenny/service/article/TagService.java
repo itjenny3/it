@@ -7,15 +7,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Lists;
+import com.itjenny.domain.Article;
 import com.itjenny.domain.Tag;
+import com.itjenny.repository.ArticleRepository;
 import com.itjenny.repository.TagRepository;
+import com.itjenny.support.security.SessionService;
 
 @Service
 public class TagService {
 	private final Logger logger = LoggerFactory.getLogger(TagService.class);
 
 	@Autowired
+	private SessionService sessionService;
+
+	@Autowired
 	private TagRepository tagRepository;
+
+	@Autowired
+	private ArticleRepository articleRepository;
 
 	public void save(Tag tag) {
 		tagRepository.save(tag);
@@ -36,7 +46,14 @@ public class TagService {
 	}
 
 	public List<String> getArticles(String tag) {
-		List<String> articles = tagRepository.findByTag(tag);
-		return articles;
+		List<String> titles = tagRepository.findByTag(tag);
+		List<Article> articles = articleRepository.findSome(titles);
+		List<String> permittedArticles = Lists.newArrayList();
+		for (Article article : articles) {
+			if (article.getPublished() || article.getUserId().equals(sessionService.getLoginUser().getUserId())) {
+				permittedArticles.add(article.getTitle());
+			}
+		}
+		return permittedArticles;
 	}
 }

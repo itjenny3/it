@@ -6,7 +6,9 @@ CREATE TABLE IF NOT EXISTS `article` (
 	`content` TEXT,
 	`published` BOOLEAN DEFAULT 0,
 	`user_id` VARCHAR(256),
-    PRIMARY KEY (`title`)
+    PRIMARY KEY (`title`),
+    KEY `published` (`published`),
+    KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `bookmark` (
@@ -59,6 +61,17 @@ VALUES ("QA",
 		"tiny657");
 		
 INSERT
+INTO `article` 
+	(`title`,
+	`content`,
+	`published`,
+	`user_id`)
+VALUES ("private",
+		"private content",
+		0,
+		"tiny657");
+		
+INSERT
 INTO `tag` 
 	(`tag`,
 	`article`)
@@ -71,3 +84,10 @@ INTO `tag`
 	`article`)
 VALUES ("tag2",
 		"QA");
+		
+INSERT
+INTO `tag` 
+	(`tag`,
+	`article`)
+VALUES ("tag2",
+		"private");

@@ -5,9 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Index;
-
 import lombok.Data;
+
+import org.hibernate.annotations.Index;
 
 
 @Entity
