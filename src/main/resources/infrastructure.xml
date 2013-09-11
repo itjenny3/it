@@ -24,7 +24,7 @@
 
 	<!-- TODO: password delete -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" p:host="smtp.gmail.com" p:port="587"
-		p:username="tiny657@gmail.com" p:password="">
+		p:username="tiny657@gmail.com" p:password="iyw657">
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>

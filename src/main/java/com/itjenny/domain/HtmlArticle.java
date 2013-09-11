@@ -27,12 +27,10 @@ public class HtmlArticle {
 				if (StringUtils.isNotEmpty(part)) {
 					String[] subtitleAndContent = part.split("</h1>|</h2>");
 					if (subtitleAndContent.length == 2) {
-						// title exists.
+						// TITLE exists.
 						if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
-							// quiz
+							// QUIZ
 							Quiz quiz = new Quiz();
-							quiz.setId(Const.SECTION + i);
-							quiz.setNextid(Const.SECTION + (i + 1));
 							quiz.setCss(Const.CSS[i % Const.CSS.length]);
 							quiz.setSubtitle(subtitleAndContent[0]);
 							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
@@ -51,8 +49,6 @@ public class HtmlArticle {
 						} else {
 							// section (not quiz)
 							Section section = new Section();
-							section.setId(Const.SECTION + i);
-							section.setNextid(Const.SECTION + (i + 1));
 							section.setCss(Const.CSS[i % Const.CSS.length]);
 							section.setSubtitle(subtitleAndContent[0]);
 							section.setContent(subtitleAndContent[1]);
