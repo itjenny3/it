@@ -180,6 +180,14 @@ Preference > Java > Code Style > Formatter > Java Convention를 선택 후 New�
 	Indentation/Tab size : 4
 	Line Wrapping/Maximum line width : 120
 
+### JavaScript Convention을 기본 템플릿으로 사용함 ###
+
+Preference > JavaScript > Code Style > Formatter > JavaScript Convention를 선택 후 New를 클릭 후 아래와 같이 설정한다.  
+
+	Tab policy: Tabs only
+	Indentation/Tab size : 4
+	Line Wrapping/Maximum line width : 120
+
 ### Checkstyle 설정파일 불러오기 ###
 
 Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.

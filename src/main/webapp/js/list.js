@@ -8,13 +8,17 @@ function saveMyDoc() {
 	if ($("#newMyDoc").val() === "") {
 		return;
 	}
-	
+
 	$.ajax({
 		type : "POST",
 		url : "/myDoc",
-		dataType: "text",
-		data: {"myDocId": $("#newest").text(), "title": $("#newMyDocTitle").val(), "rawContent": $("#newMyDoc").val()},
-		beforeSend: function() {
+		dataType : "text",
+		data : {
+			"myDocId" : $("#newest").text(),
+			"title" : $("#newMyDocTitle").val(),
+			"rawContent" : $("#newMyDoc").val()
+		},
+		beforeSend : function() {
 			$("#saveRawContent").attr("onclick", "");
 			$("#waitingMyDoc").css("display", "");
 		},
@@ -33,7 +37,7 @@ function saveMyDoc() {
 function enableCloseEditContentOfMyDoc(myDocId) {
 	$(document).bind("click", function(event) {
 		var id = event.target.id;
-		if(id != "rawContent" + myDocId && id != "updateRawContent" + myDocId && id != "deleteRawContent" + myDocId) {
+		if (id != "rawContent" + myDocId && id != "updateRawContent" + myDocId && id != "deleteRawContent" + myDocId) {
 			$("#divContent" + myDocId).css("display", "");
 			$("#editContent" + myDocId).css("display", "none");
 			$(document).unbind("click");
@@ -57,27 +61,34 @@ function updateMyDoc(myDocId) {
 	$.ajax({
 		type : "POST",
 		url : "/myDoc",
-		dataType: "text",
-		data: {"myDocId" : myDocId, "rawContent": $("#rawContent" + myDocId).val(), _method: "PUT"},
-		beforeSend: function() {
-		 	$("#updateRawContent" + myDocId).html("Updating...");
+		dataType : "text",
+		data : {
+			"myDocId" : myDocId,
+			"rawContent" : $("#rawContent" + myDocId).val(),
+			_method : "PUT"
+		},
+		beforeSend : function() {
+			$("#updateRawContent" + myDocId).html("Updating...");
 		},
 		success : function(content) {
-		 	$("#updateRawContent" + myDocId).html("Update");
-		  	$("#editContent" + myDocId).css("display", "none");
+			$("#updateRawContent" + myDocId).html("Update");
+			$("#editContent" + myDocId).css("display", "none");
 			$("#divContent" + myDocId).css("display", "");
 			$("#content" + myDocId).html(content);
 			$(document).unbind("click");
 		}
 	});
-}	
+}
 
 function deleteMyDoc(myDocId) {
 	$.ajax({
 		type : "POST",
 		url : "/myDoc",
-		dataType: "text",
-		data: {"myDocId": myDocId, _method: "DELETE"},
+		dataType : "text",
+		data : {
+			"myDocId" : myDocId,
+			_method : "DELETE"
+		},
 		success : function() {
 			$("#myDoc" + myDocId).remove();
 			$(document).unbind("click");
@@ -95,13 +106,16 @@ function saveDocument() {
 	if ($("#newDocument").val() === "") {
 		return;
 	}
-	
+
 	$.ajax({
 		type : "POST",
 		url : "/document",
-		dataType: "text",
-		data: {"documentId": $("#newest").text(), "rawContent": $("#newDocument").val()},
-		beforeSend: function() {
+		dataType : "text",
+		data : {
+			"documentId" : $("#newest").text(),
+			"rawContent" : $("#newDocument").val()
+		},
+		beforeSend : function() {
 			$("#saveRawContent").attr("onclick", "");
 			$("#waitingDocument").css("display", "");
 		},
@@ -118,14 +132,17 @@ function saveDocument() {
 }
 
 function enableCloseEditContent(documentId) {
-	$(document).bind("click", function(event) {
-		var id = event.target.id;
-		if(id != "rawContent" + documentId && id != "updateRawContent" + documentId && id != "deleteRawContent" + documentId) {
-			$("#divContent" + documentId).css("display", "");
-			$("#editContent" + documentId).css("display", "none");
-			$(document).unbind("click");
-		}
-	});
+	$(document).bind(
+			"click",
+			function(event) {
+				var id = event.target.id;
+				if (id != "rawContent" + documentId && id != "updateRawContent" + documentId
+						&& id != "deleteRawContent" + documentId) {
+					$("#divContent" + documentId).css("display", "");
+					$("#editContent" + documentId).css("display", "none");
+					$(document).unbind("click");
+				}
+			});
 }
 
 function clickMyDocument(documentId) {
@@ -144,27 +161,34 @@ function updateDocument(documentId) {
 	$.ajax({
 		type : "POST",
 		url : "/document",
-		dataType: "text",
-		data: {"documentId" : documentId, "rawContent": $("#rawContent" + documentId).val(), _method: "PUT"},
-		beforeSend: function() {
-		 	$("#updateRawContent" + documentId).html("Updating...");
+		dataType : "text",
+		data : {
+			"documentId" : documentId,
+			"rawContent" : $("#rawContent" + documentId).val(),
+			_method : "PUT"
+		},
+		beforeSend : function() {
+			$("#updateRawContent" + documentId).html("Updating...");
 		},
 		success : function(content) {
-		 	$("#updateRawContent" + documentId).html("Update");
-		  	$("#editContent" + documentId).css("display", "none");
+			$("#updateRawContent" + documentId).html("Update");
+			$("#editContent" + documentId).css("display", "none");
 			$("#divContent" + documentId).css("display", "");
 			$("#content" + documentId).html(content);
 			$(document).unbind("click");
 		}
 	});
-}	
+}
 
 function deleteDocument(documentId) {
 	$.ajax({
 		type : "POST",
 		url : "/document",
-		dataType: "text",
-		data: {"documentId": documentId, _method: "DELETE"},
+		dataType : "text",
+		data : {
+			"documentId" : documentId,
+			_method : "DELETE"
+		},
 		success : function() {
 			$("#document" + documentId).remove();
 			$(document).unbind("click");
@@ -178,9 +202,12 @@ function saveComment(documentId) {
 	$.ajax({
 		type : "POST",
 		url : "/comment",
-		dataType: "text",
-		data: {"documentId": documentId, "content": $("#newComment" + documentId).val()},
-		beforeSend: function() {
+		dataType : "text",
+		data : {
+			"documentId" : documentId,
+			"content" : $("#newComment" + documentId).val()
+		},
+		beforeSend : function() {
 			$("#waitingComment" + documentId).css("display", "inline");
 		},
 		success : function(content) {
@@ -201,9 +228,13 @@ function deleteComment(documentId, commentId) {
 	$.ajax({
 		type : "POST",
 		url : "/comment",
-		dataType: "text",
-		data: {"documentId": documentId, "commentId": commentId, _method: "DELETE"},
-		beforeSend: function() {
+		dataType : "text",
+		data : {
+			"documentId" : documentId,
+			"commentId" : commentId,
+			_method : "DELETE"
+		},
+		beforeSend : function() {
 		},
 		success : function() {
 			$("#commentBox" + commentId).remove();
@@ -215,31 +246,36 @@ function post(documentId) {
 	$.ajax({
 		type : "POST",
 		url : "/post",
-		dataType: "text",
-		data: {"documentId" : documentId, "content": $("#content" + documentId).text()},
-		beforeSend: function() {
+		dataType : "text",
+		data : {
+			"documentId" : documentId,
+			"content" : $("#content" + documentId).text()
+		},
+		beforeSend : function() {
 		},
 		success : function(content) {
 			$("#alert").replaceWith(content);
 		}
 	});
 }
-		
+
 function like(documentId) {
 	$.ajax({
 		type : "GET",
 		url : "/like",
-		dataType: "text",
-		data: {"documentId": documentId},
+		dataType : "text",
+		data : {
+			"documentId" : documentId
+		},
 		success : function(isSuccess) {
 			if (isSuccess === "true") {
 				var like = parseInt($("#like" + documentId).text());
 				$("#like" + documentId).text(like + 1);
 				$("#cancelLike" + documentId).css("display", "");
 				$("#alert").removeClass("alert alert-error").html("");
-			}
-			else {
-				$("#alert").addClass("alert alert-error").html("<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Fail to like.");
+			} else {
+				$("#alert").addClass("alert alert-error").html(
+						"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Fail to like.");
 			}
 		}
 	});
@@ -249,8 +285,10 @@ function cancelLike(documentId) {
 	$.ajax({
 		type : "GET",
 		url : "/cancelLike",
-		dataType: "text",
-		data: {"documentId": documentId},
+		dataType : "text",
+		data : {
+			"documentId" : documentId
+		},
 		success : function(isSuccess) {
 			if (isSuccess === "true") {
 				var like = parseInt($("#like" + documentId).text());
@@ -266,17 +304,19 @@ function dislike(documentId) {
 	$.ajax({
 		type : "GET",
 		url : "/dislike",
-		dataType: "text",
-		data: {"documentId": documentId},
+		dataType : "text",
+		data : {
+			"documentId" : documentId
+		},
 		success : function(isSuccess) {
 			if (isSuccess === "true") {
 				var dislike = parseInt($("#dislike" + documentId).text());
 				$("#dislike" + documentId).text(dislike + 1);
 				$("#cancelDislike" + documentId).css("display", "");
 				$("#alert").removeClass("alert alert-error").html("");
-			}
-			else {
-				$("#alert").addClass("alert alert-error").html("<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Fail to dislike.");
+			} else {
+				$("#alert").addClass("alert alert-error").html(
+						"<button type=\"button\" class=\"close\" data-dismiss=\"alert\">x</button>Fail to dislike.");
 			}
 		}
 	});
@@ -286,8 +326,10 @@ function cancelDislike(documentId) {
 	$.ajax({
 		type : "GET",
 		url : "/cancelDislike",
-		dataType: "text",
-		data: {"documentId": documentId},
+		dataType : "text",
+		data : {
+			"documentId" : documentId
+		},
 		success : function(isSuccess) {
 			if (isSuccess === "true") {
 				var dislike = parseInt($("#dislike" + documentId).text());
@@ -304,8 +346,11 @@ function isRefreshPosition() {
 		$.ajax({
 			type : "GET",
 			url : "/list",
-			dataType: "text",
-			data: {"documentId": $("#newest").text(), "viewRecently": true},
+			dataType : "text",
+			data : {
+				"documentId" : $("#newest").text(),
+				"viewRecently" : true
+			},
 			success : function(content) {
 				$("#newest").text(computeDocumentIdFromHtml(content));
 				$("#waitingDocument").after(content);
@@ -333,8 +378,10 @@ function more() {
 	$.ajax({
 		type : "GET",
 		url : "/list",
-		dataType: "text",
-		data: {"documentId": $("#oldest").text()},
+		dataType : "text",
+		data : {
+			"documentId" : $("#oldest").text()
+		},
 		success : function(content) {
 			$("#moreDocument").replaceWith(content);
 			isMorePosition();
