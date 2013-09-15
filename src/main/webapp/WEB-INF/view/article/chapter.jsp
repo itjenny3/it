@@ -2,13 +2,14 @@
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
 <c:forEach var="section" items="${chapter.sections}">
-	<div id="${section.id}" class="lastChapter ${section.css}">
-		<a href="#${section.nextid}" class="anchorLink"><h1>${section.subtitle}</h1></a> ${section.content}
+	<div class="section lastChapter ${section.css}">
+		<h1>${section.subtitle}</h1>
+		${section.content}
 	</div>
 </c:forEach>
 <c:if test="${not empty chapter.quiz}">
-	<div id="${chapter.quiz.id}" class="${chapter.quiz.css}">
-		<a href="#${chapter.quiz.nextid}" class="anchorLink"><h1>${chapter.quiz.subtitle}</h1></a> ${chapter.quiz.content} <input
-			id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
+	<div class="section ${chapter.quiz.css}">
+		<h1>${chapter.quiz.subtitle}</h1>
+		${chapter.quiz.content} <input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
 	</div>
 </c:if>

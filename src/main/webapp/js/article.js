@@ -45,10 +45,14 @@ function sendAnswer(id) {
 				answer : $("#answer").val()
 			},
 			success : function(content) {
-				$(".lastChapter").removeClass("lastChapter");
-				$("#answer").replaceWith("<blockquote><p>" + $("#answer").val() + "</p></blockquote>");
-				$("#nextChapter").before(content);
-				moveLastChapter();
+				if (content.search("wrong") == -1) {
+					$(".lastChapter").removeClass("lastChapter");
+					$("#answer").replaceWith("<blockquote><p>" + $("#answer").val() + "</p></blockquote>");
+					$("#nextChapter").before(content);
+					moveLastChapter();
+				} else {
+					alert("wrong");
+				}
 			}
 		});
 	}
