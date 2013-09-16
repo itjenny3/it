@@ -14,9 +14,10 @@ public class ConvenientProperties extends Properties {
 	private static final long serialVersionUID = -233079090593813635L;
 	private Logger log = LoggerFactory.getLogger(ConvenientProperties.class);
 	private static final Pattern SYSTEM_PROPERTY_NAME_PATTERN = Pattern.compile("\\$\\{([\\w\\.]+)\\}");
-
+	
 	public ConvenientProperties(Properties properties) {
 		super(properties);
+		
 		Assert.notNull(properties, "properties should not be null");
 		processSystemProperties();
 		logProperties();
