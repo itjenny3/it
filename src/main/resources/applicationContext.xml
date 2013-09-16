@@ -15,7 +15,7 @@
 	<import resource="applicationContext-social.xml" />
 	<import resource="applicationContext-profile.xml" />
 
-	<bean id="applicationProperties" class="com.itjenny.support.utils.ConvenientProperties">
+	<bean id="applicationProperties" class="com.itjenny.support.utils.ServerProperties">
 		<constructor-arg>
 			<util:properties location="classpath:application.properties" />
 		</constructor-arg>

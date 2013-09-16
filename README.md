@@ -113,6 +113,22 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
  - Internet Explorer
  - Chrome
  - Firefox
+ 
+### private.properties 생성 ###
+
+/src/main/resources 에 private.properties 파일에 소셜 로그인을 위한 앱 설정 및 이메일 발송을 위해 설정한다.
+
+	twitter.consumerKey=
+	twitter.consumerSecret=
+	facebook.clientId=
+	facebook.clientSecret=
+	google.clientId=
+	google.clientSecret=
+	
+	email.smtp=smtp.gmail.com
+	email.port=587
+	email.id=
+	email.password=
 
 ### 타켓 서버에 publickey 설정 ###
 

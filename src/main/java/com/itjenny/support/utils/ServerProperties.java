@@ -10,14 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
-public class ConvenientProperties extends Properties {
-	private static final long serialVersionUID = -233079090593813635L;
-	private Logger log = LoggerFactory.getLogger(ConvenientProperties.class);
+public class ServerProperties extends Properties {
+	private static final long serialVersionUID = 6915989066469802719L;
+	private Logger log = LoggerFactory.getLogger(ServerProperties.class);
 	private static final Pattern SYSTEM_PROPERTY_NAME_PATTERN = Pattern.compile("\\$\\{([\\w\\.]+)\\}");
-	
-	public ConvenientProperties(Properties properties) {
+
+	public ServerProperties(Properties properties) {
 		super(properties);
-		
 		Assert.notNull(properties, "properties should not be null");
 		processSystemProperties();
 		logProperties();
@@ -26,11 +25,9 @@ public class ConvenientProperties extends Properties {
 	private void processSystemProperties() {
 		for (String key : stringPropertyNames()) {
 			String value = getProperty(key);
-
 			Matcher matcher = SYSTEM_PROPERTY_NAME_PATTERN.matcher(value);
-
 			StringBuffer sb = new StringBuffer();
-
+			
 			while (matcher.find()) {
 				convertSystemPropertyToValue(matcher, sb);
 			}
@@ -95,13 +92,11 @@ public class ConvenientProperties extends Properties {
 	}
 
 	public void logProperties() {
-		if (log.isDebugEnabled()) {
-			StringWriter sw = new StringWriter();
-			PrintWriter pw = new PrintWriter(sw);
-			this.list(pw);
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		this.list(pw);
+		pw.close();
 
-			log.debug("Convinient Properties loaded : {}", sw.toString());
-			pw.close();
-		}
+		log.debug("Server Properties loaded : {}", sw.toString());
 	}
 }

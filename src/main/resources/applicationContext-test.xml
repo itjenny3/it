@@ -11,7 +11,7 @@
 
 	<context:property-placeholder location="classpath:application.properties" />
 
-	<bean id="applicationProperties" class="com.itjenny.support.utils.ConvenientProperties">
+	<bean id="applicationProperties" class="com.itjenny.support.utils.ServerProperties">
 		<constructor-arg>
 			<util:properties location="classpath:application.properties" />
 		</constructor-arg>
