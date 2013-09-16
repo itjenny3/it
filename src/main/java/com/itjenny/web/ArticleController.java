@@ -52,6 +52,8 @@ public class ArticleController {
 		Article article = new Article();
 		article.setTitle(title);
 		article.setContent(content);
+		article.setUserId(StringUtils.EMPTY);
+		article.setPublished(true);
 		articleService.save(article);
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
@@ -83,6 +85,7 @@ public class ArticleController {
 		model.addAttribute("chapters", chapters);
 		model.addAttribute("license", (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
 		model.addAttribute("loginUserId", sessionService.getLoginUser().getUserId());
+		model.addAttribute("totalSection", htmlArticleService.geTotalSection(title));
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
 		bookmarkService.updateChapter(title, 0);

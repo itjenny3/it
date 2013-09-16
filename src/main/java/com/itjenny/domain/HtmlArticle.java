@@ -38,10 +38,12 @@ public class HtmlArticle {
 							case 1:
 								quiz.setContent(contentAndAnswer[0]);
 								break;
+
 							case 2:
 								quiz.setContent(contentAndAnswer[0]);
 								quiz.setAnswer(contentAndAnswer[1].split(Const.ANSWER_END_TAG)[0]);
 								break;
+
 							default:
 								break;
 							}
@@ -69,15 +71,11 @@ public class HtmlArticle {
 		add(chapter);
 	}
 
-	public void add(Chapter chapter) {
+	private void add(Chapter chapter) {
 		if (chapter != null) {
 			chapter.setId(Const.CHAPTER + chapters.size());
 			chapters.add(chapter);
 		}
-	}
-
-	public Chapter get(Integer index) {
-		return chapters.get(index);
 	}
 
 	private void add(Section section) {

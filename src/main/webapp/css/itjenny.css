@@ -48,15 +48,15 @@ code,pre {
 }
 
 .backgroundTitle a:link {
-	text-decoration: none color:   #000;
+	text-decoration: none color:       #000;
 }
 
 .backgroundTitle a:visited {
-	text-decoration: none color:   #000;
+	text-decoration: none color:       #000;
 }
 
 .backgroundTitle a:active {
-	text-decoration: none color:   #000;
+	text-decoration: none color:       #000;
 }
 
 .backgroundTitle a:hover {
@@ -66,9 +66,7 @@ code,pre {
 
 .backgroundTitle {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #000;
 	background-color: #FFF;
 }
@@ -78,15 +76,15 @@ a {
 }
 
 a:link {
-	text-decoration: none color:   #fff;
+	text-decoration: none color:       #fff;
 }
 
 a:visited {
-	text-decoration: none color:   #fff;
+	text-decoration: none color:       #fff;
 }
 
 a:active {
-	text-decoration: none color:   #fff;
+	text-decoration: none color:       #fff;
 }
 
 a:hover {
@@ -96,9 +94,7 @@ a:hover {
 
 .background1 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #D82546;
 }
@@ -111,9 +107,7 @@ a:hover {
 
 .background2 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #B71735;
 }
@@ -126,9 +120,7 @@ a:hover {
 
 .background3 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #0b9be1;
 }
@@ -141,9 +133,7 @@ a:hover {
 
 .background4 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #066c9e;
 }
@@ -156,9 +146,7 @@ a:hover {
 
 .background5 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #B72256;
 }
@@ -171,9 +159,7 @@ a:hover {
 
 .background6 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #911D43;
 }
@@ -186,9 +172,7 @@ a:hover {
 
 .background7 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #26B1AA;
 }
@@ -201,9 +185,7 @@ a:hover {
 
 .background8 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #0F9B92;
 }
@@ -216,9 +198,7 @@ a:hover {
 
 .background9 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #FD6632;
 }
@@ -231,9 +211,7 @@ a:hover {
 
 .background10 {
 	min-height: 100%;
-	padding: 0 0 50px 0;
 	text-align: center;
-	padding: 10px 0;
 	color: #FFF;
 	background-color: #D64F21;
 }

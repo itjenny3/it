@@ -61,6 +61,12 @@
 	</c:choose>
 </c:forEach>
 
+<%-- pagination --%>
+<div class="navbar navbar-fixed-bottom">
+	<div id="pagination"></div>
+	<div>/ ${totalSection}</div>
+</div>
+
 <c:choose>
 	<%-- already has license --%>
 	<c:when test="${license}">

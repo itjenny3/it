@@ -60,6 +60,7 @@ function sendAnswer(id) {
 
 $(window).scroll(
 		function() {
+			var chapterIndex = -1;
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 				if ($("#myModal").attr('class') == "modal fade hide") {
 					$("#login").click();
@@ -67,10 +68,12 @@ $(window).scroll(
 			}
 
 			$.each($(".section"), function() {
+				chapterIndex++;
 				$(".current").removeClass("current");
 				if ($(this).offset().top <= $(window).scrollTop()
 						&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
 					$(this).addClass("current");
+					 $("#pagination").text(chapterIndex);
 					return false;
 				}
 			});

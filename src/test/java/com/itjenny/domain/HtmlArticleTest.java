@@ -6,7 +6,6 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.itjenny.common.CommonTest;
@@ -30,7 +29,7 @@ public class HtmlArticleTest extends CommonTest {
 			assertThat(sections.get(i).getCss(), is(Const.CSS[i % Const.CSS.length]));
 		}
 	}
-
+	
 	@Test
 	public void testQuiz() {
 		// Given

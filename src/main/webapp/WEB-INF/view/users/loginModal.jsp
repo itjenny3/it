@@ -17,9 +17,12 @@
 <sec:authorize access="!hasRole('ROLE_USER')">
 	<a data-target="#myModal" role="button" id="login" class="btn" data-toggle="modal">Login</a>
 </sec:authorize>
-<sec:authorize access="hasRole('ROLE_USER')">
-	${loginUser.userId}
-	<div class=backgroundTitle>
-		<a href="/users/logout" title="logout">Logout</a>
-	</div>
-</sec:authorize>
+
+<div class="navbar navbar-fixed-top">
+	<sec:authorize access="hasRole('ROLE_USER')">
+		${loginUser.userId}
+		<div class=backgroundTitle>
+			<a href="/users/logout" title="logout">Logout</a>
+		</div>
+	</sec:authorize>
+</div>

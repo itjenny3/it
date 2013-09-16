@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 	`title` VARCHAR(255),
 	`content` TEXT,
 	`published` BOOLEAN DEFAULT 0,
-	`user_id` VARCHAR(256),
+	`user_id` VARCHAR(256) DEFAULT '',
     PRIMARY KEY (`title`),
     KEY `published` (`published`),
     KEY `user_id` (`user_id`)

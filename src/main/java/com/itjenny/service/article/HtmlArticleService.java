@@ -23,6 +23,17 @@ public class HtmlArticleService {
 
 	private Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
 
+	public int geTotalSection(String title) {
+		int totalSection = 0;
+		for (Chapter chapter : htmlArticles.get(title).getChapters()) {
+			totalSection += chapter.getSections().size();
+			if (chapter.getQuiz() != null) {
+				totalSection++;
+			}
+		}
+		return totalSection;
+	}
+
 	public HtmlArticle get(String title) {
 		HtmlArticle htmlArticle = htmlArticles.get(title);
 		if (htmlArticle == null) {
