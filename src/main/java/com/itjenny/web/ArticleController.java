@@ -85,7 +85,7 @@ public class ArticleController {
 		model.addAttribute("chapters", chapters);
 		model.addAttribute("license", (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
 		model.addAttribute("loginUserId", sessionService.getLoginUser().getUserId());
-		model.addAttribute("totalSection", htmlArticleService.geTotalSection(title));
+		model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
 		bookmarkService.updateChapter(title, 0);
@@ -105,6 +105,7 @@ public class ArticleController {
 				return new ModelAndView("redirect:/article/" + title + "/license");
 			}
 			model.addAttribute("chapter", htmlArticleService.getChapter(title, chapterIndex + 1));
+			model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
 			mav.setViewName(VIEW.CHAPTER);
 			mav.addAllObjects(model);
 			bookmarkService.updateChapter(title, chapterIndex + 1);

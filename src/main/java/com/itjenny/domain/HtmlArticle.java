@@ -16,9 +16,10 @@ import com.itjenny.support.Const;
 public class HtmlArticle {
 	private String title;
 	private List<Chapter> chapters = new ArrayList<Chapter>();
-	private Chapter chapter = null;
+	private Chapter currentChapter = null;
 
 	public HtmlArticle(String title, String content) {
+		int index = 0;
 		this.title = title;
 		try {
 			String[] parts = new Markdown4jProcessor().process(content).split("<h1>|<h2>");
@@ -31,6 +32,7 @@ public class HtmlArticle {
 						if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
 							// QUIZ
 							Quiz quiz = new Quiz();
+							quiz.setIndex(++index);
 							quiz.setCss(Const.CSS[i % Const.CSS.length]);
 							quiz.setSubtitle(subtitleAndContent[0]);
 							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
@@ -51,14 +53,16 @@ public class HtmlArticle {
 						} else {
 							// section (not quiz)
 							Section section = new Section();
+							section.setIndex(++index);
 							section.setCss(Const.CSS[i % Const.CSS.length]);
 							section.setSubtitle(subtitleAndContent[0]);
 							section.setContent(subtitleAndContent[1]);
 							add(section);
 						}
 					} else {
-						// no title
+						// TITLE isn't existed.
 						Section section = new Section();
+						section.setIndex(++index);
 						section.setContent(subtitleAndContent[0]);
 						add(section);
 					}
@@ -68,7 +72,7 @@ public class HtmlArticle {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		add(chapter);
+		add(currentChapter);
 	}
 
 	private void add(Chapter chapter) {
@@ -79,14 +83,14 @@ public class HtmlArticle {
 	}
 
 	private void add(Section section) {
-		chapter = ObjectUtils.defaultIfNull(chapter, new Chapter());
-		chapter.add(section);
+		currentChapter = ObjectUtils.defaultIfNull(currentChapter, new Chapter());
+		currentChapter.add(section);
 	}
 
 	private void setQuiz(Quiz quiz) {
-		chapter = ObjectUtils.defaultIfNull(chapter, new Chapter());
-		chapter.setQuiz(quiz);
-		add(chapter);
-		chapter = null;
+		currentChapter = ObjectUtils.defaultIfNull(currentChapter, new Chapter());
+		currentChapter.setQuiz(quiz);
+		add(currentChapter);
+		currentChapter = null;
 	}
 }

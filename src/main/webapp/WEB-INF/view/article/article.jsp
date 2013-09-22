@@ -22,6 +22,9 @@
 				<div class="section lastChapter ${section.css}">
 					<h1>${section.subtitle}</h1>
 					${section.content}
+
+					<%-- pagination --%>
+					<p class="pagination">${section.index} / ${totalSection}</p>
 				</div>
 			</c:when>
 
@@ -30,6 +33,9 @@
 				<div class="section ${section.css}">
 					<h1>${section.subtitle}</h1>
 					${section.content}
+
+					<%-- pagination --%>
+					<p class="pagination">${section.index} / ${totalSection}</p>
 				</div>
 			</c:otherwise>
 		</c:choose>
@@ -42,6 +48,9 @@
 				<div class="section ${chapter.quiz.css}">
 					<h1>${chapter.quiz.subtitle}</h1>
 					${chapter.quiz.content} <input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
+
+					<%-- pagination --%>
+					<p class="pagination">${chapter.quiz.index} / ${totalSection}</p>
 				</div>
 			</c:if>
 		</c:when>
@@ -55,17 +64,14 @@
 					<blockquote>
 						<p>${chapter.quiz.answer}</p>
 					</blockquote>
+
+					<%-- pagination --%>
+					<p class="pagination">${chapter.quiz.index} / ${totalSection}</p>
 				</div>
 			</c:if>
 		</c:otherwise>
 	</c:choose>
 </c:forEach>
-
-<%-- pagination --%>
-<div class="navbar navbar-fixed-bottom">
-	<div id="pagination"></div>
-	<div>/ ${totalSection}</div>
-</div>
 
 <c:choose>
 	<%-- already has license --%>

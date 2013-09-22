@@ -23,7 +23,7 @@ public class HtmlArticleService {
 
 	private Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
 
-	public int geTotalSection(String title) {
+	public int getTotalSection(String title) {
 		int totalSection = 0;
 		for (Chapter chapter : htmlArticles.get(title).getChapters()) {
 			totalSection += chapter.getSections().size();
@@ -34,7 +34,7 @@ public class HtmlArticleService {
 		return totalSection;
 	}
 
-	public HtmlArticle get(String title) {
+	public HtmlArticle getArticle(String title) {
 		HtmlArticle htmlArticle = htmlArticles.get(title);
 		if (htmlArticle == null) {
 			Article article = articleService.get(title);
@@ -47,7 +47,7 @@ public class HtmlArticleService {
 	}
 
 	public List<Chapter> getChaptersToIndex(String title, Integer toIndex) {
-		HtmlArticle htmlArticle = get(title);
+		HtmlArticle htmlArticle = getArticle(title);
 		if (htmlArticle == null) {
 			return null;
 		}
@@ -58,7 +58,7 @@ public class HtmlArticleService {
 	}
 
 	public Chapter getChapter(String title, int index) {
-		HtmlArticle htmlArticle = get(title);
+		HtmlArticle htmlArticle = getArticle(title);
 		if (htmlArticle == null) {
 			return null;
 		}
@@ -66,7 +66,7 @@ public class HtmlArticleService {
 	}
 
 	public boolean isChapterExisted(String title, int index) {
-		HtmlArticle htmlArticle = get(title);
+		HtmlArticle htmlArticle = getArticle(title);
 		if (htmlArticle == null) {
 			return false;
 		}
