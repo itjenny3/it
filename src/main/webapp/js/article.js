@@ -90,6 +90,10 @@ $(document).ready(function() {
 			}, 'slow');
 			break;
 
+		case 27:	// esc
+			$('#stop').click();
+			break;
+			
 		case 13: // enter
 		case 32: // space
 		case 39: // right arrow

@@ -4,6 +4,7 @@
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
+
 <div class="section backgroundTitle">
 	<h1 id=title>${title}</h1>
 </div>

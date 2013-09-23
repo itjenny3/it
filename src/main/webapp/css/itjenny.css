@@ -221,3 +221,22 @@ a:hover {
 	color: #FFF;
 	background-color: #FD6632;
 }
+
+.top_fixed {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+}
+
+.menu {
+	line-height: 45px;
+	width: 30px;
+	height: 30px;
+	border: none;
+	display: inline-block;
+	opacity: 0.4;
+	border-radius: 5px;
+	background-color: #fcfcfc;
+	z-index: 1;
+	cursor: pointer;
+}
