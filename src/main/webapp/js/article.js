@@ -39,7 +39,7 @@ function sendAnswer(id) {
 
 		$.ajax({
 			type : "POST",
-			url : $("#title").text() + "/" + id,
+			url : "/article/" + $("#title").text() + "/" + id,
 			dataType : "text",
 			data : {
 				answer : $("#answer").val()
@@ -73,7 +73,7 @@ $(window).scroll(
 				if ($(this).offset().top <= $(window).scrollTop()
 						&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
 					$(this).addClass("current");
-					 $("#pagination").text(chapterIndex);
+					$("#pagination").text(chapterIndex);
 					return false;
 				}
 			});
@@ -90,10 +90,6 @@ $(document).ready(function() {
 			}, 'slow');
 			break;
 
-		case 27:	// esc
-			$('#stop').click();
-			break;
-			
 		case 13: // enter
 		case 32: // space
 		case 39: // right arrow
@@ -103,6 +99,16 @@ $(document).ready(function() {
 				scrollTop : $(".current").next().offset().top
 			}, 'slow');
 			break;
+
+		case 27: // esc
+			$('#stop').click();
+			break;
+
+		case 187: // +
+			break;
+		case 189: // -
+			break;
+
 		}
 	});
 });

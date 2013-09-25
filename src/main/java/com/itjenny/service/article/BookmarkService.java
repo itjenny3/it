@@ -35,20 +35,20 @@ public class BookmarkService {
 	}
 	
 	public void updateChapter(String title, Integer chapterIndex) {
-		String providerUserId = sessionService.getLoginUser().getProviderUserId();
-		if (Strings.isNullOrEmpty(providerUserId)) {
+		String userId = sessionService.getLoginUser().getUserId();
+		if (Strings.isNullOrEmpty(userId)) {
 			return;
 		}
-		Bookmark existedBookmark = bookmarkRepository.findOne(new BookmarkPK(providerUserId, title));
+		Bookmark existedBookmark = bookmarkRepository.findOne(new BookmarkPK(userId, title));
 		if (existedBookmark == null) {
 			Bookmark bookmark = new Bookmark();
-			bookmark.setProviderUserId(providerUserId);
+			bookmark.setUserId(userId);
 			bookmark.setTitle(title);
 			bookmark.setChapterIndex(chapterIndex);
 			bookmarkRepository.save(bookmark);
 		} else if (existedBookmark.getChapterIndex() < chapterIndex) {
 			Bookmark bookmark = new Bookmark();
-			bookmark.setProviderUserId(providerUserId);
+			bookmark.setUserId(userId);
 			bookmark.setTitle(title);
 			bookmark.setChapterIndex(chapterIndex);
 			bookmarkRepository.save(bookmark);
@@ -57,11 +57,11 @@ public class BookmarkService {
 
 	public void complete(String title) {
 		SocialUser loginUser = sessionService.getLoginUser();
-		if (Strings.isNullOrEmpty(loginUser.getProviderUserId())) {
+		if (Strings.isNullOrEmpty(loginUser.getUserId())) {
 			return;
 		}
 		Bookmark bookmark = new Bookmark();
-		bookmark.setProviderUserId(loginUser.getProviderUserId());
+		bookmark.setUserId(loginUser.getUserId());
 		bookmark.setTitle(title);
 		bookmark.setChapterIndex(Const.BOOKMARK_LICENSE);
 		bookmarkRepository.save(bookmark);

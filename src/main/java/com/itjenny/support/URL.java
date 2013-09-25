@@ -6,4 +6,5 @@ public class URL {
 	public static final String WRONG = "wrong";
 	
 	public static final String TAG = "tag";
+	public static final String SETTING = "setting";
 }

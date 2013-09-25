@@ -11,47 +11,55 @@ CREATE TABLE IF NOT EXISTS `article` (
 	`content` TEXT,
 	`published` BOOLEAN DEFAULT 0,
 	`user_id` VARCHAR(256) DEFAULT '',
-    PRIMARY KEY (`title`),
-    KEY `published` (`published`),
-    KEY `user_id` (`user_id`)
+	PRIMARY KEY (`title`),
+	KEY `published` (`published`),
+	KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `bookmark` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255),
-    `provider_user_id` VARCHAR(255),
-    `chapter_index` INTEGER,
-    PRIMARY KEY (`id`)
+	`user_id` VARCHAR(255),
+	`chapter_index` INTEGER,
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `social_user` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `access_token` VARCHAR(255) NOT NULL,
-    `create_date` DATETIME,
-    `display_name` VARCHAR(255),
-    `expire_time` BIGINT,
-    `image_url` VARCHAR(255),
-    `profile_url` VARCHAR(255),
-    `provider_id` VARCHAR(255) not null,
-    `provider_user_id` VARCHAR(255),
-    `rank` INTEGER NOT NULL,
-    `refresh_token` VARCHAR(255),
-    `secret` VARCHAR(255),
-    `user_id` VARCHAR(255),
-    `email` VARCHAR(255),
-    `password` VARCHAR(255),
-    PRIMARY KEY (`id`),
-    UNIQUE (`user_id`, `provider_id`, `rank`),
-    UNIQUE (`user_id`, `provider_id`, `provider_user_id`)
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`access_token` VARCHAR(255) NOT NULL,
+	`create_date` DATETIME,
+	`display_name` VARCHAR(255),
+	`expire_time` BIGINT,
+	`image_url` VARCHAR(255),
+	`profile_url` VARCHAR(255),
+	`provider_id` VARCHAR(255) not null,
+	`provider_user_id` VARCHAR(255),
+	`rank` INTEGER NOT NULL,
+	`refresh_token` VARCHAR(255),
+	`secret` VARCHAR(255),
+	`user_id` VARCHAR(255),
+	`email` VARCHAR(255),
+	`password` VARCHAR(255),
+	PRIMARY KEY (`id`),
+	UNIQUE (`user_id`, `provider_id`, `rank`),
+	UNIQUE (`user_id`, `provider_id`, `provider_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tag` varchar(255) DEFAULT NULL,
-  `article` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tag` (`tag`),
-  KEY `article` (`article`)
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`tag` VARCHAR(255) DEFAULT NULL,
+	`article` VARCHAR(255) DEFAULT NULL,
+	PRIMARY KEY (`id`),
+	KEY `tag` (`tag`),
+	KEY `article` (`article`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `setting` (
+	`user_id` VARCHAR(255),
+	`pagination` BOOLEAN,
+	`oneline` BOOLEAN,
+	`fontsize` INTEGER,
+	PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
-<%-- Modal --%>
+<%-- Login Modal --%>
 <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
 	data-remote="/users/login">
 	<div class="modal-header">
@@ -18,7 +18,19 @@
 
 <%-- Top Menu --%>
 <div id="word" class="top_fixed">
-	<a id="play" class="menu"><i class="icon-play"></i></a><a id="setting" class="menu"><i class="icon-cog"></i></a>
+	<a id="play" class="menu"><i class="icon-play"></i></a>
+
+	<div class="btn-group">
+		<button class="btn dropdown-toggle" data-toggle="dropdown">
+			<i class="icon-cog"></i></span>
+		</button>
+		<ul class="dropdown-menu pull-right">
+			<li>Pagination <a id="settingPagination">${setting.pagination}</a></li>
+			<li>Oneline <a id="settingOneline">${setting.oneline}</a></li>
+			<li>Fontsize <a id="settingFontsize">${setting.fontsize}</a></li>
+		</ul>
+	</div>
+	<!-- 	<a id="setting" class="menu"><i class="icon-cog"></i></a> -->
 
 	<%-- Login --%>
 	<sec:authorize access="!hasRole('ROLE_USER')">
@@ -41,9 +53,38 @@
 		$('#word').hide();
 		$('#keynote').show();
 	});
-	
+
 	$('#stop').click(function() {
 		$('#word').show();
 		$('#keynote').hide();
+	});
+
+	function sendSetting(option, value) {
+		$.ajax({
+			type : "POST",
+			url : "/setting/" + option + "/" + value,
+			beforeSend : function() {
+			}
+		});
+	}
+
+	$('#settingPagination').click(function() {
+		if ($("#settingPagination").text() == "true") {
+			$("#settingPagination").text("false");
+			sendSetting("pagination", 0);
+		} else {
+			$("#settingPagination").text("true");
+			sendSetting("pagination", 1);
+		}
+	});
+
+	$('#settingOneline').click(function() {
+		if ($("#settingOneline").text() == "true") {
+			$("#settingOneline").text("false");
+			sendSetting("oneline", 0);
+		} else {
+			$("#settingOneline").text("true");
+			sendSetting("oneline", 1);
+		}
 	});
 </script>

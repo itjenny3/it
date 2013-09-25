@@ -1,15 +1,18 @@
 package com.itjenny.service.article;
 
 import java.io.Serializable;
-		
+
 public class BookmarkPK implements Serializable {
-    protected String providerUserId;
-    protected String title;
+	private static final long serialVersionUID = -3043169746607384796L;
 
-    public BookmarkPK() {}
+	protected String userId;
+	protected String title;
 
-    public BookmarkPK(String providerUserId, String title) {
-        this.providerUserId = providerUserId;
-        this.title = title;
-    }
+	public BookmarkPK() {
+	}
+
+	public BookmarkPK(String userId, String title) {
+		this.userId = userId;
+		this.title = title;
+	}
 }
