@@ -28,9 +28,10 @@ body {
 	line-height: 200%;
 }
 
-h1,h2 {
+/* h1,h2 {
+	font-family: 'HU엣지고딕110';
 	font-family: 'HU젠120';
-}
+} */
 
 code,pre {
 	text-align: left;

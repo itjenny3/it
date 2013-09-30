@@ -25,6 +25,11 @@
 			<i class="icon-cog"></i></span>
 		</button>
 		<ul class="dropdown-menu pull-right">
+			<li>
+				<div class="make-switch switch-small">
+					<input type="checkbox" checked>
+				</div>
+			</li>
 			<li>Pagination <a id="settingPagination">${setting.pagination}</a></li>
 			<li>Oneline <a id="settingOneline">${setting.oneline}</a></li>
 			<li>Fontsize <a id="settingFontsize">${setting.fontsize}</a></li>
