@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("a.anchorLink").anchorAnimate()
+	$('a.anchorLink').anchorAnimate();
 });
 
 jQuery.fn.anchorAnimate = function(settings) {
@@ -12,10 +12,10 @@ jQuery.fn.anchorAnimate = function(settings) {
 		$(caller).click(function(event) {
 			event.preventDefault()
 			var locationHref = window.location.href
-			var elementClick = $(caller).attr("href")
+			var elementClick = $(caller).attr('href')
 
 			var destination = $(elementClick).offset().top;
-			$("html:not(:animated),body:not(:animated)").animate({
+			$('html:not(:animated),body:not(:animated)').animate({
 				scrollTop : destination
 			}, settings.speed, function() {
 				window.location.hash = elementClick
@@ -33,25 +33,25 @@ function moveLastChapter() {
 
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
-		if ($("#answer").val() === "") {
+		if ($('#answer').val() === '') {
 			return;
 		}
 
 		$.ajax({
-			type : "POST",
-			url : "/article/" + $("#title").text() + "/" + id,
-			dataType : "text",
+			type : 'POST',
+			url : '/article/' + $('#title').text() + '/' + id,
+			dataType : 'text',
 			data : {
-				answer : $("#answer").val()
+				answer : $('#answer').val()
 			},
 			success : function(content) {
-				if (content.search("wrong") == -1) {
-					$(".lastChapter").removeClass("lastChapter");
-					$("#answer").replaceWith("<blockquote><p>" + $("#answer").val() + "</p></blockquote>");
-					$("#nextChapter").before(content);
+				if (content.search('wrong') == -1) {
+					$('.lastChapter').removeClass('lastChapter');
+					$('#answer').replaceWith('<blockquote><p>' + $('#answer').val() + '</p></blockquote>');
+					$('#nextChapter').before(content);
 					moveLastChapter();
 				} else {
-					alert("wrong");
+					alert('wrong');
 				}
 			}
 		});
@@ -62,22 +62,48 @@ $(window).scroll(
 		function() {
 			var chapterIndex = -1;
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				if ($("#myModal").attr('class') == "modal fade hide") {
-					$("#login").click();
+				if ($('#myModal').attr('class') == 'modal fade hide') {
+					$('#login').click();
 				}
 			}
 
-			$.each($(".section"), function() {
+			$.each($('.section'), function() {
 				chapterIndex++;
-				$(".current").removeClass("current");
+				$('.current').removeClass('current');
 				if ($(this).offset().top <= $(window).scrollTop()
 						&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
-					$(this).addClass("current");
-					$("#pagination").text(chapterIndex);
+					$(this).addClass('current');
+					$('#pagination').text(chapterIndex);
 					return false;
 				}
 			});
 		});
+
+function getCookie(key) {
+	var allcookies = document.cookie;
+	var cookies = allcookies.split('; ');
+	for ( var i = 0; i < cookies.length; i++) {
+		var keyValues = cookies[i].split('=');
+		if (keyValues[0] == key) {
+			return unescape(keyValues[1]);
+		}
+	}
+	return '';
+}
+
+function setCookie(key, value) {
+	var date = new Date();
+	var validity = 100;
+	date.setDate(date.getDate() + validity);
+	document.cookie = key + '=' + escape(value) + ';expires=' + date.toGMTString();
+}
+
+function removeCookie(key) {
+	var date = new Date();
+	var validity = -1;
+	date.setDate(date.getDate() + validity);
+	document.cookie = key + '=;expires=' + date.toGMTString();
+}
 
 $(document).ready(function() {
 	$(document).keydown(function(e) {
@@ -86,7 +112,7 @@ $(document).ready(function() {
 		case 38: // up arrow
 			e.preventDefault();
 			$('#html,body').animate({
-				scrollTop : $(".current").prev().offset().top
+				scrollTop : $('.current').prev().offset().top
 			}, 'slow');
 			break;
 
@@ -96,7 +122,7 @@ $(document).ready(function() {
 		case 40: // down arrow
 			e.preventDefault();
 			$('#html,body').animate({
-				scrollTop : $(".current").next().offset().top
+				scrollTop : $('.current').next().offset().top
 			}, 'slow');
 			break;
 
@@ -105,10 +131,26 @@ $(document).ready(function() {
 			break;
 
 		case 187: // +
-			break;
-		case 189: // -
+			if (getCookie('fontsize') < 5) {
+				$('h1,h2,h3,h4,h5,h6,p,code,li').css({
+					'font-size' : '+=10'
+				});
+				setCookie('fontsize', parseInt(getCookie('fontsize')) + 1);
+				$('#settingFontsize').text(getCookie('fontsize'));
+				sendSetting('fontsize', getCookie('fontsize'));
+			}
 			break;
 
+		case 189: // -
+			if (getCookie('fontsize') > 1) {
+				$('h1,h2,h3,h4,h5,h6,p,code,li').css({
+					'font-size' : '-=10'
+				});
+				setCookie('fontsize', parseInt(getCookie('fontsize')) - 1);
+				$('#settingFontsize').text(getCookie('fontsize'));
+				sendSetting('fontsize', getCookie('fontsize'));
+			}
+			break;
 		}
 	});
-});
+})

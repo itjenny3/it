@@ -53,6 +53,14 @@
 	<a id="stop" class="menu"><i class="icon-pause"></i></a>
 </div>
 
+<sec:authorize access="hasRole('ROLE_USER')">
+	<script>
+		setCookie("pagination", ${setting.pagination});
+		setCookie("oneline", ${setting.oneline});
+		setCookie("fontsize", ${setting.fontsize});
+	</script>
+</sec:authorize>
+
 <script>
 	$('#play').click(function() {
 		$('#word').hide();
@@ -64,6 +72,10 @@
 		$('#keynote').hide();
 	});
 
+	$('#settingPagination').click(function() {
+		$('.pagination').toggle();
+	});
+	
 	function sendSetting(option, value) {
 		$.ajax({
 			type : "POST",
@@ -74,22 +86,43 @@
 	}
 
 	$('#settingPagination').click(function() {
-		if ($("#settingPagination").text() == "true") {
-			$("#settingPagination").text("false");
-			sendSetting("pagination", 0);
+		if ($('#settingPagination').text() == "true") {
+			$('#settingPagination').text("false");
+			setCookie('pagination', false);
+			sendSetting('pagination', 0);
 		} else {
-			$("#settingPagination").text("true");
-			sendSetting("pagination", 1);
+			$('#settingPagination').text("true");
+			setCookie('pagination', true);
+			sendSetting('pagination', 1);
 		}
 	});
 
 	$('#settingOneline').click(function() {
-		if ($("#settingOneline").text() == "true") {
-			$("#settingOneline").text("false");
-			sendSetting("oneline", 0);
+		if ($('#settingOneline').text() == "true") {
+			$('#settingOneline').text("false");
+			setCookie('oneline', false);
+			sendSetting('oneline', 0);
 		} else {
-			$("#settingOneline").text("true");
-			sendSetting("oneline", 1);
+			$('#settingOneline').text('true');
+			setCookie('oneline', true);
+			sendSetting('oneline', 1);
+		}
+	});
+	
+	$('#settingPagination').text(getCookie('pagination'));
+	$('#settingOneline').text(getCookie('oneline'));
+	$('#settingFontsize').text(getCookie('fontsize'));
+	
+	$(document).ready(function() {
+		if (getCookie('pagination') == 'false') {
+			$('.pagination').hide();
+		}
+		
+		var fontsize = getCookie('fontsize');
+		if (0 < fontsize && fontsize < 6) {
+			$('h1,h2,h3,h4,h5,h6,p,code,li').css({
+				'font-size' : '+=' + (10 * (parseInt(getCookie('fontsize')) - 3))
+			});
 		}
 	});
 </script>
