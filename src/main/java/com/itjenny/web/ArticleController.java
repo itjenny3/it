@@ -16,18 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
+import com.itjenny.domain.Tag;
 import com.itjenny.service.SettingService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.BookmarkService;
 import com.itjenny.service.article.HtmlArticleService;
+import com.itjenny.service.article.TagService;
 import com.itjenny.support.Const;
 import com.itjenny.support.URL;
 import com.itjenny.support.VIEW;
 import com.itjenny.support.security.SessionService;
 
 @Controller
-@RequestMapping(value = {"", URL.ARTICLE})
+@RequestMapping(value = { "", URL.ARTICLE })
 public class ArticleController {
 	private final Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
@@ -36,6 +38,9 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+
+	@Autowired
+	private TagService tagService;
 
 	@Autowired
 	private BookmarkService bookmarkService;
@@ -93,7 +98,9 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		List<Article> articles = articleService.getAll();
+		List<String> tags = tagService.getTags();
 		model.addAttribute("articles", articles);
+		model.addAttribute("tags", tags);
 		mav.setViewName(VIEW.ARTICLES);
 		mav.addAllObjects(model);
 		return mav;

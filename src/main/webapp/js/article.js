@@ -110,6 +110,7 @@ $(document).ready(function() {
 		switch (e.which) {
 		case 37: // left arrow
 		case 38: // up arrow
+		case 75: // k
 			e.preventDefault();
 			$('#html,body').animate({
 				scrollTop : $('.current').prev().offset().top
@@ -120,6 +121,7 @@ $(document).ready(function() {
 		case 32: // space
 		case 39: // right arrow
 		case 40: // down arrow
+		case 74: // j
 			e.preventDefault();
 			$('#html,body').animate({
 				scrollTop : $('.current').next().offset().top
