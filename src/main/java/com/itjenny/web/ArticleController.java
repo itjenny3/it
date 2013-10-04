@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
-import com.itjenny.domain.Tag;
 import com.itjenny.service.SettingService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;

@@ -23,11 +23,11 @@ public class BookmarkService {
 	private BookmarkRepository bookmarkRepository;
 
 	public Integer getChapterIndex(String title) {
-		String providerUserId = sessionService.getLoginUser().getProviderUserId();
-		if (providerUserId == null) {
+		String userId = sessionService.getLoginUser().getUserId();
+		if (userId == null) {
 			return 0;
 		}
-		Bookmark bookmark = bookmarkRepository.findOne(new BookmarkPK(providerUserId, title));
+		Bookmark bookmark = bookmarkRepository.findOne(new BookmarkPK(userId, title));
 		if (bookmark == null) {
 			return 0;
 		}
