@@ -4,10 +4,21 @@
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
-
-<div class="section backgroundTitle">
-	<h1 id=title>${title}</h1>
-</div>
+<c:choose>
+	<%-- 1 chapter --%>
+	<c:when test="${fn:length(chapters) == '1'}">
+		<div class="section lastChapter backgroundTitle">
+			<h1 id=title>${title}</h1>
+		</div>
+	</c:when>
+	
+	<%-- 2 more chapter --%>
+	<c:otherwise>
+		<div class="section backgroundTitle">
+			<h1 id=title>${title}</h1>
+		</div>
+	</c:otherwise>
+</c:choose>
 
 <%-- chapters --%>
 <c:forEach var="chapter" varStatus="loop" items="${chapters}">

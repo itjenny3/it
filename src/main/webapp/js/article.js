@@ -31,6 +31,12 @@ function moveLastChapter() {
 	}, 'slow');
 }
 
+function moveCurrentSection() {
+	$('#html,body').animate({
+		scrollTop : $('.current').offset().top
+	}, 'slow');
+}
+
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
 		if ($('#answer').val() === '') {
@@ -61,6 +67,8 @@ function sendAnswer(id) {
 $(window).scroll(
 		function() {
 			var chapterIndex = -1;
+
+			// reach last page
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 				if ($('#myModal').attr('class') == 'modal fade hide') {
 					$('#login').click();

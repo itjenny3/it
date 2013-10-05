@@ -65,6 +65,7 @@
 	$('#play').click(function() {
 		$('#word').hide();
 		$('#keynote').show();
+		moveCurrentSection();
 	});
 
 	$('#stop').click(function() {
