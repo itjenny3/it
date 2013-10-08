@@ -37,6 +37,10 @@ function moveCurrentSection() {
 	}, 'slow');
 }
 
+function login() {
+	$('#login').click();
+}
+
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
 		if ($('#answer').val() === '') {
@@ -71,7 +75,7 @@ $(window).scroll(
 			// reach last page
 			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 				if ($('#myModal').attr('class') == 'modal fade hide') {
-					$('#login').click();
+					$('#answer').focus();
 				}
 			}
 

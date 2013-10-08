@@ -35,7 +35,6 @@
 			<li>Fontsize <a id="settingFontsize">${setting.fontsize}</a></li>
 		</ul>
 	</div>
-	<!-- 	<a id="setting" class="menu"><i class="icon-cog"></i></a> -->
 
 	<%-- Login --%>
 	<sec:authorize access="!hasRole('ROLE_USER')">
@@ -55,9 +54,9 @@
 
 <sec:authorize access="hasRole('ROLE_USER')">
 	<script>
-		setCookie("pagination", ${setting.pagination});
-		setCookie("oneline", ${setting.oneline});
-		setCookie("fontsize", ${setting.fontsize});
+		setCookie('pagination', ${setting.pagination});
+		setCookie('oneline', ${setting.oneline});
+		setCookie('fontsize', ${setting.fontsize});
 	</script>
 </sec:authorize>
 

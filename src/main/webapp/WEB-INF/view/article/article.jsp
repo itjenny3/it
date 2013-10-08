@@ -11,7 +11,7 @@
 			<h1 id=title>${title}</h1>
 		</div>
 	</c:when>
-	
+
 	<%-- 2 more chapter --%>
 	<c:otherwise>
 		<div class="section backgroundTitle">
@@ -59,7 +59,15 @@
 			<c:if test="${not empty chapter.quiz}">
 				<div class="section ${chapter.quiz.css}">
 					<h1>${chapter.quiz.subtitle}</h1>
-					${chapter.quiz.content} <input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
+					${chapter.quiz.content}
+
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
+					</sec:authorize>
+
+					<sec:authorize access="!hasRole('ROLE_USER')">
+						<input id="answer" type="text" onFocus="login()">
+					</sec:authorize>
 
 					<%-- pagination --%>
 					<p class="pagination">${chapter.quiz.index} / ${totalSection}</p>
