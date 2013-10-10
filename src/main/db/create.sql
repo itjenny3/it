@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS `bookmark` (
 	`title` VARCHAR(255),
 	`user_id` VARCHAR(255),
 	`chapter_index` INTEGER,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	UNIQUE (`title`, `user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `social_user` (

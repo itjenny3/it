@@ -33,7 +33,7 @@ public class BookmarkService {
 		}
 		return bookmark.getChapterIndex();
 	}
-	
+
 	public void updateChapter(String title, Integer chapterIndex) {
 		String userId = sessionService.getLoginUser().getUserId();
 		if (Strings.isNullOrEmpty(userId)) {

@@ -2,6 +2,9 @@ package com.itjenny.web;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,11 +72,37 @@ public class ArticleController {
 	}
 
 	@RequestMapping(value = "{title}/{chapterCssId}", method = RequestMethod.POST)
-	public ModelAndView answer(@PathVariable String title, @PathVariable String chapterCssId,
-			@RequestParam String answer) {
+	public ModelAndView checkAnswer(HttpServletRequest request, @PathVariable String title,
+			@PathVariable String chapterCssId, @RequestParam String answer) {
+		Integer chapterIndex = Integer.valueOf(chapterCssId.replace(Const.CHAPTER, StringUtils.EMPTY));
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
-		Integer chapterIndex = Integer.valueOf(chapterCssId.replace(Const.CHAPTER, StringUtils.EMPTY));
+		for (Cookie cookie : request.getCookies()) {
+			if (cookie.getName().equals("keynote")) {
+				Article article = articleService.get(title);
+				if (article == null || !article.getUserId().equals(sessionService.getLoginUser().getUserId())) {
+					break;
+				}
+
+				// keynote mode
+				if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
+					// TODO :: fix ConstraintViolationException
+					// bookmarkService.complete(title);
+					return new ModelAndView("redirect:/article/" + title + "/license");
+				}
+				model.addAttribute("chapter", htmlArticleService.getChapter(title, chapterIndex + 1));
+				model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
+				model.addAttribute("answer", htmlArticleService.getChapter(title, chapterIndex).getQuiz().getAnswer());
+				mav.setViewName(VIEW.CHAPTER);
+				mav.addAllObjects(model);
+
+				// TODO :: fix ConstraintViolationException
+				// bookmarkService.updateChapter(title, chapterIndex + 1);
+				return mav;
+			}
+		}
+
+		// not keynote mode
 		Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
 		if (answerService.check(chapter, answer)) {
 			if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
@@ -82,9 +111,12 @@ public class ArticleController {
 			}
 			model.addAttribute("chapter", htmlArticleService.getChapter(title, chapterIndex + 1));
 			model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
+			model.addAttribute("answer", htmlArticleService.getChapter(title, chapterIndex).getQuiz().getAnswer());
 			mav.setViewName(VIEW.CHAPTER);
 			mav.addAllObjects(model);
-			bookmarkService.updateChapter(title, chapterIndex + 1);
+
+			// TODO :: fix ConstraintViolationException
+			// bookmarkService.updateChapter(title, chapterIndex + 1);
 		} else {
 			mav.setViewName(VIEW.WRONG);
 			mav.addAllObjects(model);
@@ -118,7 +150,6 @@ public class ArticleController {
 		model.addAttribute("title", title);
 		model.addAttribute("chapters", chapters);
 		model.addAttribute("license", (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
-		model.addAttribute("loginUserId", sessionService.getLoginUser().getUserId());
 		model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
 		model.addAttribute("setting", settingService.get(sessionService.getLoginUser().getUserId()));
 		mav.setViewName(VIEW.ARTICLE);
@@ -132,7 +163,6 @@ public class ArticleController {
 		ModelAndView mav = new ModelAndView();
 		ModelMap model = new ModelMap();
 		model.addAttribute("title", title);
-		model.addAttribute("loginUserId", sessionService.getLoginUser().getUserId());
 		mav.setViewName(VIEW.LICENSE);
 		mav.addAllObjects(model);
 		return mav;

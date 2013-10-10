@@ -108,6 +108,7 @@
 
 <script>
 	$(document).ready(function() {
+		setCurrent();
 		moveLastChapter();
 	});
 </script>

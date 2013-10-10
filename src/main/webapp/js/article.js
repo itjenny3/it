@@ -8,22 +8,22 @@ jQuery.fn.anchorAnimate = function(settings) {
 	}, settings);
 
 	return this.each(function() {
-		var caller = this
+		var caller = this;
 		$(caller).click(function(event) {
-			event.preventDefault()
-			var locationHref = window.location.href
-			var elementClick = $(caller).attr('href')
+			event.preventDefault();
+			var locationHref = window.location.href;
+			var elementClick = $(caller).attr('href');
 
 			var destination = $(elementClick).offset().top;
 			$('html:not(:animated),body:not(:animated)').animate({
 				scrollTop : destination
 			}, settings.speed, function() {
-				window.location.hash = elementClick
+				window.location.hash = elementClick;
 			});
 			return false;
-		})
-	})
-}
+		});
+	});
+};
 
 function moveLastChapter() {
 	$('#html,body').animate({
@@ -43,10 +43,6 @@ function login() {
 
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
-		if ($('#answer').val() === '') {
-			return;
-		}
-
 		$.ajax({
 			type : 'POST',
 			url : '/article/' + $('#title').text() + '/' + id,
@@ -57,8 +53,9 @@ function sendAnswer(id) {
 			success : function(content) {
 				if (content.search('wrong') == -1) {
 					$('.lastChapter').removeClass('lastChapter');
-					$('#answer').replaceWith('<blockquote><p>' + $('#answer').val() + '</p></blockquote>');
 					$('#nextChapter').before(content);
+					$('#answer').replaceWith('<blockquote><p>' + $('#previousAnswer').text() + '</p></blockquote>');
+					$('#previousAnswer').remove();
 					moveLastChapter();
 				} else {
 					alert('wrong');
@@ -68,28 +65,31 @@ function sendAnswer(id) {
 	}
 }
 
-$(window).scroll(
-		function() {
-			var chapterIndex = -1;
+$(window).scroll(function() {
+	setCurrent();
+});
 
-			// reach last page
-			if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-				if ($('#myModal').attr('class') == 'modal fade hide') {
-					$('#answer').focus();
-				}
-			}
+function setCurrent() {
+	var chapterIndex = -1;
 
-			$.each($('.section'), function() {
-				chapterIndex++;
-				$('.current').removeClass('current');
-				if ($(this).offset().top <= $(window).scrollTop()
-						&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
-					$(this).addClass('current');
-					$('#pagination').text(chapterIndex);
-					return false;
-				}
-			});
-		});
+	// reach last page
+	if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+		if ($('#myModal').attr('class') == 'modal fade hide') {
+			$('#answer').focus();
+		}
+	}
+
+	$.each($('.section'), function() {
+		chapterIndex++;
+		$('.current').removeClass('current');
+		if ($(this).offset().top <= $(window).scrollTop()
+				&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
+			$(this).addClass('current');
+			$('#pagination').text(chapterIndex);
+			return false;
+		}
+	});
+}
 
 function getCookie(key) {
 	var allcookies = document.cookie;

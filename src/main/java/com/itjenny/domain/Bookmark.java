@@ -16,8 +16,8 @@ import com.itjenny.service.article.BookmarkPK;
 public class Bookmark {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
+	private Integer id;
+
 	@Id
 	private String userId;
 	@Id

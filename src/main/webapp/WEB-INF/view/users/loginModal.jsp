@@ -15,7 +15,6 @@
 	</div>
 </div>
 
-
 <%-- Top Menu --%>
 <div id="word" class="top_fixed">
 	<a id="play" class="menu"><i class="icon-play"></i></a>
@@ -64,13 +63,19 @@
 	$('#play').click(function() {
 		$('#word').hide();
 		$('#keynote').show();
+		setCookie('keynote', true);
 		moveCurrentSection();
 	});
 
 	$('#stop').click(function() {
 		$('#word').show();
 		$('#keynote').hide();
+		removeCookie('keynote');
 	});
+	
+	if (getCookie('keynote')) {
+		$('#play').click();
+	}
 
 	$('#settingPagination').click(function() {
 		$('.pagination').toggle();
@@ -79,7 +84,7 @@
 	function sendSetting(option, value) {
 		$.ajax({
 			type : "POST",
-			url : "/setting/" + option + "/" + value,
+			url : '/setting/' + option + '/' + value,
 			beforeSend : function() {
 			}
 		});
