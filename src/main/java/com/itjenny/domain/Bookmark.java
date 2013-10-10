@@ -1,8 +1,6 @@
 package com.itjenny.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 
@@ -14,9 +12,9 @@ import com.itjenny.service.article.BookmarkPK;
 @Entity
 @IdClass(BookmarkPK.class)
 public class Bookmark {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private Integer id;
 
 	@Id
 	private String userId;

@@ -86,8 +86,7 @@ public class ArticleController {
 
 				// keynote mode
 				if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
-					// TODO :: fix ConstraintViolationException
-					// bookmarkService.complete(title);
+					bookmarkService.complete(title);
 					return new ModelAndView("redirect:/article/" + title + "/license");
 				}
 				model.addAttribute("chapter", htmlArticleService.getChapter(title, chapterIndex + 1));
@@ -96,8 +95,7 @@ public class ArticleController {
 				mav.setViewName(VIEW.CHAPTER);
 				mav.addAllObjects(model);
 
-				// TODO :: fix ConstraintViolationException
-				// bookmarkService.updateChapter(title, chapterIndex + 1);
+				bookmarkService.updateChapter(title, chapterIndex + 1);
 				return mav;
 			}
 		}
@@ -115,8 +113,7 @@ public class ArticleController {
 			mav.setViewName(VIEW.CHAPTER);
 			mav.addAllObjects(model);
 
-			// TODO :: fix ConstraintViolationException
-			// bookmarkService.updateChapter(title, chapterIndex + 1);
+			bookmarkService.updateChapter(title, chapterIndex + 1);
 		} else {
 			mav.setViewName(VIEW.WRONG);
 			mav.addAllObjects(model);

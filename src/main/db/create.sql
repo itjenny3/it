@@ -17,16 +17,14 @@ CREATE TABLE IF NOT EXISTS `article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `bookmark` (
-	`id` INTEGER NOT NULL AUTO_INCREMENT,
 	`title` VARCHAR(255),
 	`user_id` VARCHAR(255),
 	`chapter_index` INTEGER,
-	PRIMARY KEY (`id`),
-	UNIQUE (`title`, `user_id`)
+	KEY (`title`, `user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS `social_user` (
-	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`access_token` VARCHAR(255) NOT NULL,
 	`create_date` DATETIME,
 	`display_name` VARCHAR(255),
