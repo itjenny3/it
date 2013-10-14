@@ -476,7 +476,6 @@
 				<version>${findbugs.version}</version>
 			</plugin>
 
-			<!-- mvn test 수행 시 create.sql 수행 -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>
@@ -498,22 +497,6 @@
 					<autocommit>true</autocommit>
 				</configuration>
 				
-				<!-- mvn test 수행 시 mvn sql:execute 을 process-test-resources 다음에 수행 -->
-				<executions>
-					<execution>
-						<id>create table</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<autocommit>true</autocommit>
-							<srcFiles>
-								<srcFile>src/main/db/create.sql</srcFile>
-							</srcFiles>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 
 			<!-- mvn tomcat:deploy 배포 가능 -->

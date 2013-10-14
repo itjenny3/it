@@ -3,6 +3,7 @@ Skill Set
  - Spring : Java Framework
  - Spring Social : Social Login (facebook, twitter, google+)
  - Spring Mobile : Spring Mobile MVC
+ - Spring Security : Authentication, Authorization
  - Hibernate : SQL mapping Framework
  - Maven : Build & Dependency Management
  - Bootstrap : CSS Framework
