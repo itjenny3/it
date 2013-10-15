@@ -41,6 +41,45 @@ function login() {
 	$('#login').click();
 }
 
+function changeTheme() {
+	// Header
+	$('h1').css('font-size', '100px');
+	$('h2').css('font-size', '90px');
+	$('h3').css('font-size', '80px');
+	$('h4').css('font-size', '70px');
+	$('h5').css('font-size', '60px');
+	$('h6').css('font-size', '50px');
+
+	// Emphasis
+	// Bold
+	$('strong').css('color', '#008800');
+	// Italic
+	$('em').css('color', '#000099');
+	// Strike
+	$('s').css('color', '#990099');
+
+	// List
+	$('li').css('color', '#009999');
+
+	// Link
+	$('a').css('color', '#009999');
+
+	// Image
+	$('img').css('color', '#009999');
+
+	// `Inner Code`
+	$('code').css('color', '#009999');
+
+	// Code
+	$('p').css('color', '#002200');
+
+	// Blockquotes
+	$('blockquote').css('color', '#009999');
+
+	// Horizontal Rule
+	$('hr').css('color', '#009999');
+}
+
 function sendAnswer(id) {
 	if (event.keyCode == 13) {
 		$.ajax({
@@ -167,4 +206,5 @@ $(document).ready(function() {
 			break;
 		}
 	});
+	changeTheme();
 })
