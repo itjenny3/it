@@ -96,12 +96,6 @@ Package Explorer에서 template 우클릭 > Configure > Convert To Maven Project
 
 	$ mvn eclipse:clean eclipse:eclipse
 
-### markdown4j 추가 ###
-
-markdown4j.jar 파일을 로컬 저장소에 아래 스크립트를 수행하여 저장한다.
-
-	$ ./src/main/lib/deploy-lib.sh
-
 ### 한글 처리 ###
 	
 TC server를 사용하는 경우 Spring으로 유입되는 parameter의 한글을 UTF-8로 처리하기 위해서는 server.xml을 다음과 같이 수정한다.

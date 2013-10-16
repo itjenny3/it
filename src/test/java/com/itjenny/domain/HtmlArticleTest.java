@@ -7,18 +7,22 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 import java.util.List;
 
 import org.junit.Test;
+import org.pegdown.Extensions;
+import org.pegdown.PegDownProcessor;
 
 import com.itjenny.common.CommonTest;
 import com.itjenny.support.Const;
 
 public class HtmlArticleTest extends CommonTest {
+	private PegDownProcessor pegDownProcessor = new PegDownProcessor(Extensions.ALL);
+	
 	@Test
 	public void testSection() {
 		// Given
 		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.";
 
 		// When
-		HtmlArticle htmlArticle = new HtmlArticle("", content);
+		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -36,7 +40,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content = "# QUIZ\nquestion1\n>answer1\n";
 
 		// When
-		HtmlArticle htmlArticle = new HtmlArticle("", content);
+		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -55,7 +59,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
 
 		// When
-		HtmlArticle htmlArticle = new HtmlArticle("", content);
+		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(1));
@@ -68,7 +72,7 @@ public class HtmlArticleTest extends CommonTest {
 		String content2 = content + content;
 
 		// When
-		HtmlArticle htmlArticle = new HtmlArticle("", content2);
+		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content2);
 
 		// Then
 		assertThat(htmlArticle.getChapters().size(), is(2));
