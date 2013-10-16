@@ -1,6 +1,5 @@
 package com.itjenny.domain;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ import lombok.Data;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.markdown4j.Markdown4jProcessor;
+import org.pegdown.PegDownProcessor;
 
 import com.itjenny.support.Const;
 
@@ -18,59 +17,55 @@ public class HtmlArticle {
 	private List<Chapter> chapters = new ArrayList<Chapter>();
 	private Chapter currentChapter = null;
 
-	public HtmlArticle(String title, String content) {
-		int index = 0;
+	public HtmlArticle(PegDownProcessor pegDownProcessor, String title, String content) {
+		int sectionIndex = 0;
 		this.title = title;
-		try {
-			String[] parts = new Markdown4jProcessor().process(content).split("<h1>|<h2>");
-			int i = 0;
-			for (String part : parts) {
-				if (StringUtils.isNotEmpty(part)) {
-					String[] subtitleAndContent = part.split("</h1>|</h2>");
-					if (subtitleAndContent.length == 2) {
-						// TITLE exists.
-						if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
-							// QUIZ
-							Quiz quiz = new Quiz();
-							quiz.setIndex(++index);
-							quiz.setCss(Const.CSS[i % Const.CSS.length]);
-							quiz.setSubtitle(subtitleAndContent[0]);
-							String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
-							switch (contentAndAnswer.length) {
-							case 1:
-								quiz.setContent(contentAndAnswer[0]);
-								break;
 
-							case 2:
-								quiz.setContent(contentAndAnswer[0]);
-								quiz.setAnswer(contentAndAnswer[1].split(Const.ANSWER_END_TAG)[0]);
-								break;
+		String[] parts = pegDownProcessor.markdownToHtml(content).split("<h1>|<h2>");
+		for (String part : parts) {
+			if (StringUtils.isNotEmpty(part)) {
+				String[] subtitleAndContent = part.split("</h1>|</h2>");
+				if (subtitleAndContent.length == 2) {
+					// TITLE exists.
+					if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
+						// QUIZ
+						Quiz quiz = new Quiz();
+						quiz.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
+						quiz.setIndex(++sectionIndex);
+						quiz.setSubtitle(subtitleAndContent[0]);
+						String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
+						switch (contentAndAnswer.length) {
+						case 1:
+							quiz.setContent(contentAndAnswer[0]);
+							break;
 
-							default:
-								break;
-							}
-							setQuiz(quiz);
-						} else {
-							// section (not quiz)
-							Section section = new Section();
-							section.setIndex(++index);
-							section.setCss(Const.CSS[i % Const.CSS.length]);
-							section.setSubtitle(subtitleAndContent[0]);
-							section.setContent(subtitleAndContent[1]);
-							add(section);
+						case 2:
+							quiz.setContent(contentAndAnswer[0]);
+							quiz.setAnswer(contentAndAnswer[1].split(Const.ANSWER_END_TAG)[0]);
+							break;
+
+						default:
+							break;
 						}
+						setQuiz(quiz);
 					} else {
-						// TITLE isn't existed.
+						// SECTION (not QUIZ)
 						Section section = new Section();
-						section.setIndex(++index);
-						section.setContent(subtitleAndContent[0]);
+						section.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
+						section.setIndex(++sectionIndex);
+						section.setSubtitle(subtitleAndContent[0]);
+						section.setContent(subtitleAndContent[1]);
 						add(section);
 					}
-					i++;
+				} else {
+					// TITLE isn't existed.
+					Section section = new Section();
+					section.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
+					section.setIndex(++sectionIndex);
+					section.setContent(subtitleAndContent[0]);
+					add(section);
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		add(currentChapter);
 	}

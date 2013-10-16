@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.pegdown.Extensions;
+import org.pegdown.PegDownProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class HtmlArticleService {
 	private ArticleService articleService;
 
 	private Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
+	private PegDownProcessor pegDownProcessor = new PegDownProcessor(Extensions.ALL);
 
 	public int getTotalSection(String title) {
 		int totalSection = 0;
@@ -41,7 +44,7 @@ public class HtmlArticleService {
 			if (article == null) {
 				return null;
 			}
-			htmlArticles.put(title, new HtmlArticle(title, article.getContent()));
+			htmlArticles.put(title, new HtmlArticle(pegDownProcessor, title, article.getContent()));
 		}
 		return htmlArticles.get(title);
 	}

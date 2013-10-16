@@ -55,8 +55,6 @@ function changeTheme() {
 	$('strong').css('color', '#008800');
 	// Italic
 	$('em').css('color', '#000099');
-	// Strike
-	$('s').css('color', '#990099');
 
 	// List
 	$('li').css('color', '#009999');
@@ -78,6 +76,8 @@ function changeTheme() {
 
 	// Horizontal Rule
 	$('hr').css('color', '#009999');
+	
+	// Table
 }
 
 function sendAnswer(id) {

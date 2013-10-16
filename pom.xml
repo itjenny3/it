@@ -23,7 +23,6 @@
 		<springsecurity.version>3.1.0.RELEASE</springsecurity.version>
 		<!-- SPRING RELATED LIBRARY -->
 		<cglib.version>2.2.2</cglib.version>
-		<aspectj.version>1.6.9</aspectj.version>
 		<!-- COMMON -->
 		<common-dbcp.version>1.4</common-dbcp.version>
 		<!-- EHCACHE -->
@@ -70,6 +69,9 @@
 		<apache-commons-io.version>2.4</apache-commons-io.version>
 		<!-- JAVA-MAIL -->
 		<mail.version>1.4.7</mail.version>
+		<!-- MARKDOWN -->
+ 		<markdown-pegdown.version>1.4.1</markdown-pegdown.version>
+		<markdown-parboiled.version>1.1.6</markdown-parboiled.version>
 
 		<!-- PLUGIN -->
 		<!-- SQL-MAVEN -->
@@ -266,7 +268,7 @@
 		<!-- SPRING RELATED LIBRARY -->
 		<dependency>
 			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
+			<artifactId>cglib-nodep</artifactId>
 			<version>${cglib.version}</version>
 		</dependency>
 
@@ -364,13 +366,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Markdown4j -->
-		<dependency>
-			<groupId>org.markdown4j</groupId>
-			<artifactId>markdown4jprocessor</artifactId>
-			<version>2.2</version>
-		</dependency>
-
 		<!-- LOMBOK -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -408,6 +403,18 @@
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>${mail.version}</version>
+		</dependency>
+
+		<!-- MARKDOWN -->
+		<dependency>
+			<groupId>org.pegdown</groupId>
+			<artifactId>pegdown</artifactId>
+			<version>${markdown-pegdown.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.parboiled</groupId>
+			<artifactId>parboiled-java</artifactId>
+			<version>${markdown-parboiled.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -496,7 +503,7 @@
 					<encoding>utf-8</encoding>
 					<autocommit>true</autocommit>
 				</configuration>
-				
+
 			</plugin>
 
 			<!-- mvn tomcat:deploy 배포 가능 -->
