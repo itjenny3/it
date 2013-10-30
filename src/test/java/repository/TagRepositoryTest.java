@@ -1,4 +1,4 @@
-package com.itjenny.service.tag;
+package repository;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

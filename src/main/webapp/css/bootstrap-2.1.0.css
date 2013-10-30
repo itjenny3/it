@@ -577,10 +577,6 @@ a:hover {
   clear: both;
 }
 
-/* itjenny */
-p {
-  margin: 0;
-}
 
 .lead {
   margin-bottom: 20px;
@@ -609,92 +605,10 @@ cite {
   color: #999999;
 }
 
-/* itjenny */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 50px 0 40px 0;
-  font-family: inherit;
-  font-weight: bold;
-  line-height: 1;
-  color: inherit;
-  text-rendering: optimizelegibility;
-}
-
-h1 small,
-h2 small,
-h3 small,
-h4 small,
-h5 small,
-h6 small {
-  font-weight: normal;
-  line-height: 1;
-  color: #999999;
-}
-
-/* itjenny */
-h1 {
-  font-size: 90px;
-  line-height: 100px;
-}
-
-h2 {
-  font-size: 70px;
-  line-height: 80px;
-}
-
-h3 {
-  font-size: 60px;
-  line-height: 70px;
-}
-
-h4 {
-  font-size: 50px;
-  line-height: 60px;
-}
-
-h5 {
-  font-size: 40px;
-  line-height: 50px;
-}
-
-h6 {
-  font-size: 30px;
-  line-height: 40px;
-}
-
-h1 small {
-  font-size: 80px;
-}
-
-h2 small {
-  font-size: 70px;
-}
-
-h3 small {
-  font-size: 60px;
-}
-
-h4 small {
-  font-size: 50px;
-}
-
 .page-header {
   padding-bottom: 9px;
   margin: 20px 0 30px;
   border-bottom: 1px solid #eeeeee;
-}
-
-/* itjenny */
-ul,
-ol {
-  padding: 0;
-  display: inline;
-  text-align: left;
 }
 
 ul ul,
@@ -702,12 +616,6 @@ ul ol,
 ol ol,
 ol ul {
   margin-bottom: 0;
-}
-
-/* itjenny */
-li {
-  list-style-position: inside;
-  text-align: center;
 }
 
 ul.unstyled,
@@ -773,13 +681,6 @@ blockquote {
   display:table
 }
 
-/* itjenny */
-blockquote p {
-  margin-bottom: 0;
-  font-size: 30px;
-  font-weight: 300;
-}
-
 blockquote small {
   display: block;
   line-height: 20px;
@@ -825,40 +726,11 @@ address {
   line-height: 20px;
 }
 
-/* itjenny */
-code,
-pre {
-  padding: 0 3px 2px;
-  font-size: 12px;
-  color: #333333;
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-
 code {
   padding: 2px 4px;
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
-}
-
-/* itjenny */
-pre {
-  display: inline-block;
-  padding: 6px 15px;
-  margin: 15x 0;
-  font-size: 13px;
-  word-break: break-all;
-  word-wrap: break-word;
-  white-space: pre;
-  white-space: pre-wrap;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
 }
 
 pre.prettyprint {

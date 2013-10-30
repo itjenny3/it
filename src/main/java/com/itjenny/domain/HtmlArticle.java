@@ -30,7 +30,6 @@ public class HtmlArticle {
 					if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
 						// QUIZ
 						Quiz quiz = new Quiz();
-						quiz.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
 						quiz.setIndex(++sectionIndex);
 						quiz.setSubtitle(subtitleAndContent[0]);
 						String[] contentAndAnswer = subtitleAndContent[1].split(Const.ANSWER_START_TAG);
@@ -51,7 +50,6 @@ public class HtmlArticle {
 					} else {
 						// SECTION (not QUIZ)
 						Section section = new Section();
-						section.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
 						section.setIndex(++sectionIndex);
 						section.setSubtitle(subtitleAndContent[0]);
 						section.setContent(subtitleAndContent[1]);
@@ -60,7 +58,6 @@ public class HtmlArticle {
 				} else {
 					// TITLE isn't existed.
 					Section section = new Section();
-					section.setCss(Const.CSS[sectionIndex % Const.CSS.length]);
 					section.setIndex(++sectionIndex);
 					section.setContent(subtitleAndContent[0]);
 					add(section);

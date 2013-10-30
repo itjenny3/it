@@ -100,7 +100,7 @@ public class ArticleController {
 			}
 		}
 
-		// not keynote mode
+		// word mode
 		Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
 		if (answerService.check(chapter, answer)) {
 			if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
@@ -149,6 +149,7 @@ public class ArticleController {
 		model.addAttribute("license", (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
 		model.addAttribute("totalSection", htmlArticleService.getTotalSection(title));
 		model.addAttribute("setting", settingService.get(sessionService.getLoginUser().getUserId()));
+		model.addAttribute("css",articleService.get(title).getCss());
 		mav.setViewName(VIEW.ARTICLE);
 		mav.addAllObjects(model);
 		bookmarkService.updateChapter(title, 0);

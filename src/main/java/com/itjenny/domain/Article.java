@@ -22,4 +22,6 @@ public class Article {
 	private Boolean published;
 	@Index(name = "userId")
 	private String userId;
+	@Column(columnDefinition = "TEXT")
+	private String css;
 }

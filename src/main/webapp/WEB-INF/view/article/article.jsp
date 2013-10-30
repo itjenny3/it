@@ -4,6 +4,10 @@
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
+<style>
+	${css}
+</style>
+
 <c:choose>
 	<%-- 1 chapter --%>
 	<c:when test="${fn:length(chapters) == '1'}">
@@ -31,23 +35,23 @@
 				3. doesn't has license
 			--%>
 			<c:when test="${!loop.first and loop.last and innerLoop.first and !license}">
-				<div class="section lastChapter ${section.css}">
+				<div class="section lastChapter background">
 					<h1>${section.subtitle}</h1>
 					${section.content}
 
 					<%-- pagination --%>
-					<p class="pagination">${section.index} / ${totalSection}</p>
+					<p class="page">${section.index} / ${totalSection}</p>
 				</div>
 			</c:when>
 
 			<%-- normal section --%>
 			<c:otherwise>
-				<div class="section ${section.css}">
+				<div class="section background">
 					<h1>${section.subtitle}</h1>
 					${section.content}
 
 					<%-- pagination --%>
-					<p class="pagination">${section.index} / ${totalSection}</p>
+					<p class="page">${section.index} / ${totalSection}</p>
 				</div>
 			</c:otherwise>
 		</c:choose>
@@ -57,7 +61,7 @@
 		<%-- ask answer when doesn't have license. --%>
 		<c:when test="${loop.last and !license}">
 			<c:if test="${not empty chapter.quiz}">
-				<div class="section ${chapter.quiz.css}">
+				<div class="section background">
 					<h1>${chapter.quiz.subtitle}</h1>
 					${chapter.quiz.content}
 
@@ -70,7 +74,7 @@
 					</sec:authorize>
 
 					<%-- pagination --%>
-					<p class="pagination">${chapter.quiz.index} / ${totalSection}</p>
+					<p class="page">${chapter.quiz.index} / ${totalSection}</p>
 				</div>
 			</c:if>
 		</c:when>
@@ -78,7 +82,7 @@
 		<%-- display answer --%>
 		<c:otherwise>
 			<c:if test="${not empty chapter.quiz}">
-				<div class="section ${chapter.quiz.css}">
+				<div class="section background">
 					<h1>${chapter.quiz.subtitle}</h1>
 					${chapter.quiz.content}
 					<blockquote>
@@ -86,7 +90,7 @@
 					</blockquote>
 
 					<%-- pagination --%>
-					<p class="pagination">${chapter.quiz.index} / ${totalSection}</p>
+					<p class="page">${chapter.quiz.index} / ${totalSection}</p>
 				</div>
 			</c:if>
 		</c:otherwise>

@@ -124,7 +124,7 @@ function setCurrent() {
 		if ($(this).offset().top <= $(window).scrollTop()
 				&& $(window).scrollTop() < $(this).offset().top + $(this).height()) {
 			$(this).addClass('current');
-			$('#pagination').text(chapterIndex);
+			$('#page').text(chapterIndex);
 			return false;
 		}
 	});

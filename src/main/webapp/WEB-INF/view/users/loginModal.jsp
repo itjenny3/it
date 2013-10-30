@@ -78,7 +78,7 @@
 	}
 
 	$('#settingPagination').click(function() {
-		$('.pagination').toggle();
+		$('.page').toggle();
 	});
 	
 	function sendSetting(option, value) {
@@ -120,7 +120,7 @@
 	
 	$(document).ready(function() {
 		if (getCookie('pagination') == 'false') {
-			$('.pagination').hide();
+			$('.page').hide();
 		}
 		
 		var fontsize = getCookie('fontsize');
