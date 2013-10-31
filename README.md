@@ -65,7 +65,7 @@ Skill Set
 
 ### Spring Tool Suite ###
 
-[다운로드](http://www.springsource.org/downloads/sts)
+[다운로드](http://spring.io/tools/sts)
  
 ### Maven ###
 
