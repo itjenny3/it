@@ -66,6 +66,8 @@ Skill Set
 ### Eclipse EE ###
 
 [다운로드](http://www.eclipse.org/downloads/)
+
+설치 후 eclipse.ini에서 -Xms512m로 변경
  
 ### Maven ###
 
@@ -78,6 +80,7 @@ Skill Set
 ### Lombok ###
 
 [다운로드](http://projectlombok.org/mavenrepo/index.html)
+
 lombok.jar를 더블클릭하여 수행하여 설치한다.
 
 ### Project 생성 ###
@@ -85,14 +88,15 @@ lombok.jar를 더블클릭하여 수행하여 설치한다.
 	$ git clone https://github.com/itjenny3/it.git
 	$ mvn eclipse:clean eclipse:eclipse
 
-STS의 Package Explorer에 우클릭 후 Import > General > Existing Projects into Workspace 선택 후 Browser를 클릭한다.
+ - STS의 Package Explorer에 우클릭 후 Import > General > Existing Projects into Workspace 선택 후 Browser를 클릭한다.
 
-Package Explorer에서 it 우클릭 > Configure > Convert To Maven Project를 수행하여 maven project로 생성한다.
+ - Package Explorer에서 it 우클릭 > Configure > Convert To Maven Project를 수행하여 maven project로 생성한다.
 
 
 ### 브라우저 설치 ###
 
 Selenium 테스트를 위해 아래 브라우저 설치한다.
+
  - Internet Explorer
  - Chrome
  - Firefox
@@ -137,7 +141,7 @@ Eclipse Setting
 
  - Preference > Server > Runtime Environments > Add 하여 Tomcat 다운로드 경로 추가
 
-### Eclipse Plugin 설치 ###
+### Plugin 설치 ###
 
 Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다.
 
@@ -179,49 +183,52 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 		설치하면 상단에 V 모양의 이미지가 추가된다.
  		
 
-### Java Convention을 기본 템플릿으로 사용함 ###
+### 설정 ###
 
-### JavaScript Convention을 기본 템플릿으로 사용함 ###
+ - Java Convention을 기본 템플릿으로 사용함
 
-### Checkstyle 설정파일 불러오기 ###
+ - JavaScript Convention을 기본 템플릿으로 사용함
 
-Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
+ - Checkstyle 설정파일 불러오기
 
-	Type : External Configuration File
-	Name : tinyCheckstyle
-	Location : tinyCheckstyle.xml
+		Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
 
-### Encoding 설정 ###
+		Type : External Configuration File
+		Name : tinyCheckstyle
+		Location : tinyCheckstyle.xml
 
- - Preference > Web > CSS Files > Encoding : ISO 10646/Unicode(UTF-8)
- - Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
- - Preference > Web > JSP Files > Encoding : ISO 10646/Unicode(UTF-8)
- - Preference > General > Content Types > Text > *.txt 선택 후 UTF-8을 입력 후 Update
- - Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 입력 후 Update
- - Preference > General > Content Types > Text > Javascript Source File > *.js > UTF-8을 입력 후 Update
- - Project 우클릭 > properties > Resource > Text file encoding > Other : UTF-8 선택
+ - Encoding 설정
+
+		Preference > Web > CSS Files > Encoding : ISO 10646/Unicode(UTF-8)
+		Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
+		Preference > Web > JSP Files > Encoding : ISO 10646/Unicode(UTF-8)
+		Preference > General > Content Types > Text > *.txt 선택 후 UTF-8을 입력 후 Update
+		Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 입력 후 Update
+		Preference > General > Content Types > Text > Javascript Source File > *.js > UTF-8을 입력 후 Update
+		Project 우클릭 > properties > Resource > Text file encoding > Other : UTF-8 선택
 	
-### 개행문자 (LF 사용, Not CRLF) ###
+ - 개행문자 (LF 사용, Not CRLF)
 
- - Preference > General > Workspace > New text file line delimiter : Unix
+		Preference > General > Workspace > New text file line delimiter : Unix
 
-### md 파일 editor 설정 ###
+ - md 파일 editor 설정
 
- - Preferences/General/Editors/File Associations/*.md 파일에 Text Editor 추가한다.
+		Preferences/General/Editors/File Associations/*.md 파일에 Text Editor 추가한다.
 
-### 자주 쓰는 static import 등록 ###
+ - 자주 쓰는 static import 등록
 
-Preference > Java > Editor > Templates > New Type에 클릭 후 아래 내용 추가한다.
+		Preference > Java > Editor > Templates > New Type에 클릭 후 아래 내용 추가한다.
 
-	name : ti
-	context : java
-	description : ti 입력 후 Ctrl + Space 입력 시 아래 package가 자동 import
-	pattern : 
-	import static org.hamcrest.Matchers.*;
-	import static org.junit.Assert.*;
-	import static org.junit.matchers.JUnitMatchers.*;
-	import static org.mockito.Matchers.*;
-	import static org.mockito.Mockito.*;
+		name : ti
+		context : java
+		description : ti 입력 후 Ctrl + Space 입력 시 아래 package가 자동 import
+	
+		pattern : 
+		import static org.hamcrest.Matchers.*;
+		import static org.junit.Assert.*;
+		import static org.junit.matchers.JUnitMatchers.*;
+		import static org.mockito.Matchers.*;
+		import static org.mockito.Mockito.*;
 
 ### static import 에서 *이 풀리지 않게 설정 ###
 
