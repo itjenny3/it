@@ -12,3 +12,4 @@ target/
 # Package Files #
 *.war
 *.ear
+/target

@@ -12,7 +12,7 @@ Skill Set
  - JUnit : Java Test Framework
  - Mockito : Mocking Framework
  - Hamcrest : library of matchers
- - Lombok : Getter/Setter 등 불필요한 코드 생략 가능한 Library
+ - Lombok : Getter/Setter 생략 가능한 Library
  - Guava, Apache-Commons : Collection 라이브러리
  - Logback : log 프레임워크
  - MoreUnit : Code, Test Code 이동 툴
@@ -63,9 +63,9 @@ Skill Set
 
 	$ mysql -u root < src/main/db/create.sql
 
-### Spring Tool Suite ###
+### Eclipse ###
 
-[다운로드](http://spring.io/tools/sts)
+[다운로드](http://www.eclipse.org/downloads/)
  
 ### Maven ###
 
@@ -74,33 +74,17 @@ Skill Set
 ### Lombok ###
 
 [다운로드](http://projectlombok.org/mavenrepo/index.html)
+lombok.jar를 더블클릭하여 수행하여 설치한다.
 
-### Project clone ###
+### Project 생성 ###
 
-STS의 File > Import > Projects from Git > URI 선택 후 아래 설정값을 입력한다.
-
-	URI : ssh://git@github.com:[ID]/it.git
-	Host : github.com
-	Repository path : [ID]/it.git
-	Protocol : ssh
-	Port : 없음
-	User : git
-	Password : 없음
-
-Import existing projects 시 No projects found 라는 에러가 발생하면 아래 단계를 수행 후 다시 시도한다.  
-Package Explorer에서 template 우클릭 > Configure > Convert To Maven Project를 수행하여 maven project로 생성한다.
-
-### Eclipse project 생성 ###
-
-다운로드 받아진 template project에서 경로에서 아래와 같이 입력하여 eclipse project를 생성한다.
-
+	$ git clone https://github.com/itjenny3/it.git
 	$ mvn eclipse:clean eclipse:eclipse
 
-### 한글 처리 ###
-	
-TC server를 사용하는 경우 Spring으로 유입되는 parameter의 한글을 UTF-8로 처리하기 위해서는 server.xml을 다음과 같이 수정한다.
+STS의 Package Explorer에 우클릭 후 Import > General > Existing Projects into Workspace 선택 후 Browser를 클릭한다.
 
-	<Connector ... useBodyEncodingForURI="true" URIEncoding="UTF-8"/>
+Package Explorer에서 it 우클릭 > Configure > Convert To Maven Project를 수행하여 maven project로 생성한다.
+
 
 ### 브라우저 설치 ###
 
@@ -143,17 +127,14 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
 		 sudo pip install fabric
 
 
-STS Setting
------------
+Eclipse Setting
+---------------
 ### Eclipse Plugin 설치 ###
 
-STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plugin URL을 입력한다.
+Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다.
 
  - MoreUnit
  
- 		검색 : Help > Eclipse Marketplace > MoreUnit 검색 후 설치
- 		URL : http://moreunit.sourceforge.net/update-site
-
 		[사용법]
 		Ctrl + j : 구현 코드와 테스트 코드 간 이동한다.
 		Ctrl + r : 구현 코드에서 테스트코드를 수행한다.
@@ -181,6 +162,11 @@ STS > Help > Install New Software... 클릭 후 work with에 설치하고자 plu
 
 		Help > Eclipse Marketplace > terminal 검색 후 설치
 		Project 우클릭 > Open Terminal Here
+
+ - Vrapper (optional)
+
+ 		Vim plugin
+		설치하면 상단에 V 모양의 이미지가 추가된다.
  		
 
 ### Java Convention을 기본 템플릿으로 사용함 ###
@@ -334,29 +320,3 @@ local의 maven폴더/conf/settings.xml에 아래 내용 추가한다.
 /etc/sudoers 파일에 아래 부분 주석 처리한다.
 
 	Defaults    requiretty
-
-CloudBees 연동
------------------------------------
-
-### MySQL 연동 ###
-
-Build의 Execute shell에 아래 두 개 항목을 추가한다.  
-Execute shell
-
-	mkdir -p ~/mysql
-	cat > ~/.my.cnf <<EOF
-	[mysqld]
-	datadir=/home/jenkins/mysql/data
-	user=jenkins
-	socket=/home/jenkins/mysql/mysql.sock
-	EOF
-
-	export MYSQL_HOME=~/mysql
-	mysql_install_db
-	/usr/libexec/mysqld &
-
-Execute shell
-
-	mvn clean install:install-file -Dfile=./src/main/lib/markdown4j-2.2.jar -DgroupId=org.markdown4j -DartifactId=markdown4jprocessor -Dversion=2.2 -Dpackaging=jar test
-
-### Jenkins plugin 설치 ###

@@ -76,7 +76,7 @@ function changeTheme() {
 
 	// Horizontal Rule
 	$('hr').css('color', '#009999');
-	
+
 	// Table
 }
 
@@ -113,7 +113,7 @@ function setCurrent() {
 
 	// reach last page
 	if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-		if ($('#myModal').attr('class') == 'modal fade hide') {
+		if ($('#myModal').attr('class') == 'modal fade') {
 			$('#answer').focus();
 		}
 	}
@@ -206,5 +206,12 @@ $(document).ready(function() {
 			break;
 		}
 	});
+
+	if (getCookie('keynote') == true) {
+		$('#container').attr('class', 'keynote');
+	} else {
+		$('#container').attr('class', 'word');
+	}
+
 	changeTheme();
 })

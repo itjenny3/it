@@ -5,8 +5,7 @@
 
 <%-- Login Modal --%>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	data-remote="/users/login">
-</div>
+	data-remote="/users/login"></div>
 
 <%-- Top Menu --%>
 <div id="word" class="top_fixed">
@@ -68,10 +67,6 @@
 		removeCookie('keynote');
 	});
 	
-	if (getCookie('keynote')) {
-		$('#play').click();
-	}
-
 	$('#settingPagination').click(function() {
 		$('.page').toggle();
 	});

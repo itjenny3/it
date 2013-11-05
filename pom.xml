@@ -14,7 +14,7 @@
 		<!-- ENCODING -->
 		<source-encoding>UTF-8</source-encoding>
 		<!-- SPRING -->
-		<springframework.version>3.1.0.RELEASE</springframework.version>
+		<springframework.version>3.1.2.RELEASE</springframework.version>
 		<!-- SPRING MOBILE -->
 		<springmobileframework.version>1.0.0.RELEASE</springmobileframework.version>
 		<!-- SPRING SOCIAL -->
@@ -50,7 +50,7 @@
 		<junit.version>4.8.2</junit.version>
 		<mockito.version>1.9.0</mockito.version>
 		<!-- LOMBOK -->
-		<lombok.version>0.11.0</lombok.version>
+		<lombok.version>1.12.2</lombok.version>
 		<!-- COBERTURA -->
 		<cobertura.version>2.5.2</cobertura.version>
 		<!-- PMD -->
@@ -70,7 +70,7 @@
 		<!-- JAVA-MAIL -->
 		<mail.version>1.4.7</mail.version>
 		<!-- MARKDOWN -->
- 		<markdown-pegdown.version>1.4.1</markdown-pegdown.version>
+		<markdown-pegdown.version>1.4.1</markdown-pegdown.version>
 		<markdown-parboiled.version>1.1.6</markdown-parboiled.version>
 
 		<!-- PLUGIN -->
@@ -550,8 +550,10 @@
 
 		<pluginManagement>
 			<plugins>
-				<!-- sql-maven-plugin 사용 시 eclipse에 <phase>에서 error가 발생하는 것 display하지 않게 함 -->
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself -->
+				<!-- sql-maven-plugin 사용 시 eclipse에 <phase>에서 error가 발생하는 것 display하지 
+					않게 함 -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
