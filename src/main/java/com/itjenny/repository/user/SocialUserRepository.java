@@ -9,32 +9,40 @@ import org.springframework.data.repository.query.Param;
 
 import com.itjenny.domain.user.SocialUser;
 
-public interface SocialUserRepository extends CrudRepository<SocialUser, Long>, SocialUserRepositoryCustom {
-	@Query("SELECT u FROM SocialUser u WHERE u.userId = :userId ORDER BY u.providerId DESC, u.rank DESC")
-	List<SocialUser> findsByUserId(@Param("userId") String userId);
+public interface SocialUserRepository extends CrudRepository<SocialUser, Long>,
+	SocialUserRepositoryCustom {
+    @Query("SELECT u FROM SocialUser u WHERE u.userId = :userId ORDER BY u.providerId DESC, u.rank DESC")
+    List<SocialUser> findsByUserId(@Param("userId") String userId);
 
-	@Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId ORDER BY u.rank DESC")
-	List<SocialUser> findsByUserIdAndProviderId(@Param("userId") String userId, @Param("providerId") String providerId);
+    @Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId ORDER BY u.rank DESC")
+    List<SocialUser> findsByUserIdAndProviderId(@Param("userId") String userId,
+	    @Param("providerId") String providerId);
 
-	@Query("SELECT u FROM SocialUser u WHERE u.providerId = :providerId AND u.providerUserId = :providerUserId")
-	List<SocialUser> findsByProviderIdAndProviderUserId(@Param("providerId") String providerId,
-			@Param("providerUserId") String providerUserId);
+    @Query("SELECT u FROM SocialUser u WHERE u.providerId = :providerId AND u.providerUserId = :providerUserId")
+    List<SocialUser> findsByProviderIdAndProviderUserId(
+	    @Param("providerId") String providerId,
+	    @Param("providerUserId") String providerUserId);
 
-	@Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId")
-	SocialUser findByUserIdAndProviderId(@Param("userId") String userId, @Param("providerId") String providerId);
+    @Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId")
+    SocialUser findByUserIdAndProviderId(@Param("userId") String userId,
+	    @Param("providerId") String providerId);
 
-	SocialUser findByUserIdAndProviderIdAndProviderUserId(@Param("userId") String userId,
-			@Param("providerId") String providerId, @Param("providerUserId") String providerUserId);
+    SocialUser findByUserIdAndProviderIdAndProviderUserId(
+	    @Param("userId") String userId,
+	    @Param("providerId") String providerId,
+	    @Param("providerUserId") String providerUserId);
 
-	@Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId AND rank = 1")
-	List<SocialUser> findsPrimary(@Param("userId") String userId, @Param("providerId") String providerId);
+    @Query("SELECT u FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId AND rank = 1")
+    List<SocialUser> findsPrimary(@Param("userId") String userId,
+	    @Param("providerId") String providerId);
 
-	@Query("SELECT max(rank) as rank FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId ")
-	List<Integer> findsRank(@Param("userId") String userId, @Param("providerId") String providerId);
+    @Query("SELECT max(rank) as rank FROM SocialUser u WHERE u.userId = :userId AND u.providerId = :providerId ")
+    List<Integer> findsRank(@Param("userId") String userId,
+	    @Param("providerId") String providerId);
 
-	@Query("SELECT distinct u.userId FROM SocialUser u where u.providerId = :providerId and u.providerUserId in (:providerUserIds)")
-	List<String> findUsersConnectedTo(@Param("providerId") String providerId,
-			@Param("providerUserIds") Set<String> providerUserIds);
+    @Query("SELECT distinct u.userId FROM SocialUser u where u.providerId = :providerId and u.providerUserId in (:providerUserIds)")
+    List<String> findUsersConnectedTo(@Param("providerId") String providerId,
+	    @Param("providerUserIds") Set<String> providerUserIds);
 
-	SocialUser findByEmail(String email);
+    SocialUser findByEmail(String email);
 }

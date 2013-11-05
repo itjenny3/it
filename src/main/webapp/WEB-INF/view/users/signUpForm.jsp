@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 <head>
 <title>로그인 :: itjenny</title>
@@ -7,7 +8,8 @@
 <section class="login-content">
 	<div class="content-main">
 		<p>welcome</p>
-		<form:form action="" method="post" cssClass="sign-in-with-sns" modelAttribute="signUpForm">
+		<form:form action="" method="post" cssClass="sign-in-with-sns"
+			modelAttribute="signUpForm">
 			<p>nickname</p>
 			<form:input path="userId" cssClass="inp_nickname focused" />
 			<br />

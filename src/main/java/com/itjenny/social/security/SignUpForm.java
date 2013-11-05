@@ -7,20 +7,19 @@ public class SignUpForm {
     }
 
     public SignUpForm(String userId) {
-        this.userId = userId;
+	this.userId = userId;
     }
 
-
     public String getUserId() {
-        return userId;
+	return userId;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
+	this.userId = userId;
     }
 
     @Override
     public String toString() {
-        return "SignUpForm [userId=" + userId + "]";
+	return "SignUpForm [userId=" + userId + "]";
     }
 }

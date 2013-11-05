@@ -10,26 +10,26 @@ import java.io.InputStream;
  */
 public class ClasspathResourceUtils {
 
-	/**
-	 * 클래스패스내에 있는 파일을 읽어 File 객체로 반환한다.
-	 * 
-	 * @param resourcePath
-	 *            클래스패스내의 리소스 경로
-	 * @return
-	 */
-	public static File getResource(String resourcePath) {
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		return new File(loader.getResource(resourcePath).getFile());
-	}
+    /**
+     * 클래스패스내에 있는 파일을 읽어 File 객체로 반환한다.
+     * 
+     * @param resourcePath
+     *            클래스패스내의 리소스 경로
+     * @return
+     */
+    public static File getResource(String resourcePath) {
+	ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	return new File(loader.getResource(resourcePath).getFile());
+    }
 
-	/**
-	 * 클래스패스내에 있는 파일을 읽어 InputStream으로 반환한다.
-	 * 
-	 * @param resourcePath
-	 * @return
-	 */
-	public static InputStream getResourceAsStream(String resourcePath) {
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		return loader.getResourceAsStream(resourcePath);
-	}
+    /**
+     * 클래스패스내에 있는 파일을 읽어 InputStream으로 반환한다.
+     * 
+     * @param resourcePath
+     * @return
+     */
+    public static InputStream getResourceAsStream(String resourcePath) {
+	ClassLoader loader = Thread.currentThread().getContextClassLoader();
+	return loader.getResourceAsStream(resourcePath);
+    }
 }

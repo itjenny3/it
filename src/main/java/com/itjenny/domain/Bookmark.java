@@ -12,14 +12,10 @@ import com.itjenny.service.article.BookmarkPK;
 @Entity
 @IdClass(BookmarkPK.class)
 public class Bookmark {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private Integer id;
+    @Id
+    private String userId;
+    @Id
+    private String title;
 
-	@Id
-	private String userId;
-	@Id
-	private String title;
-
-	private Integer chapterIndex;
+    private Integer chapterIndex;
 }

@@ -14,65 +14,69 @@ import com.itjenny.common.CommonTest;
 import com.itjenny.support.Const;
 
 public class HtmlArticleTest extends CommonTest {
-	private PegDownProcessor pegDownProcessor = new PegDownProcessor(Extensions.ALL);
-	
-	@Test
-	public void testSection() {
-		// Given
-		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.";
+    private PegDownProcessor pegDownProcessor = new PegDownProcessor(
+	    Extensions.ALL);
 
-		// When
-		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
+    @Test
+    public void testSection() {
+	// Given
+	String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.";
 
-		// Then
-		assertThat(htmlArticle.getChapters().size(), is(1));
-		List<Section> sections = htmlArticle.getChapters().get(0).getSections();
-		for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
-			assertThat(sections.get(i).getSubtitle(), is("title" + i));
-			assertThat(sections.get(i).getContent(), containsString("this is first"));
-		}
+	// When
+	HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
+
+	// Then
+	assertThat(htmlArticle.getChapters().size(), is(1));
+	List<Section> sections = htmlArticle.getChapters().get(0).getSections();
+	for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
+	    assertThat(sections.get(i).getSubtitle(), is("title" + i));
+	    assertThat(sections.get(i).getContent(),
+		    containsString("this is first"));
 	}
-	
-	@Test
-	public void testQuiz() {
-		// Given
-		String content = "# QUIZ\nquestion1\n>answer1\n";
+    }
 
-		// When
-		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
+    @Test
+    public void testQuiz() {
+	// Given
+	String content = "# QUIZ\nquestion1\n>answer1\n";
 
-		// Then
-		assertThat(htmlArticle.getChapters().size(), is(1));
-		List<Chapter> chapters = htmlArticle.getChapters();
-		for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
-			assertThat(chapters.get(i).getQuiz().getSubtitle(), is(Const.QUIZ));
-			assertThat(chapters.get(i).getQuiz().getContent(), containsString("question1"));
-			assertThat(chapters.get(i).getQuiz().getAnswer(), is("answer1"));
-		}
+	// When
+	HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
+
+	// Then
+	assertThat(htmlArticle.getChapters().size(), is(1));
+	List<Chapter> chapters = htmlArticle.getChapters();
+	for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
+	    assertThat(chapters.get(i).getQuiz().getSubtitle(), is(Const.QUIZ));
+	    assertThat(chapters.get(i).getQuiz().getContent(),
+		    containsString("question1"));
+	    assertThat(chapters.get(i).getQuiz().getAnswer(), is("answer1"));
 	}
+    }
 
-	@Test
-	public void testChapter() {
-		// Given
-		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
+    @Test
+    public void testChapter() {
+	// Given
+	String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
 
-		// When
-		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
+	// When
+	HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content);
 
-		// Then
-		assertThat(htmlArticle.getChapters().size(), is(1));
-	}
+	// Then
+	assertThat(htmlArticle.getChapters().size(), is(1));
+    }
 
-	@Test
-	public void testChapter2() {
-		// Given
-		String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
-		String content2 = content + content;
+    @Test
+    public void testChapter2() {
+	// Given
+	String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
+	String content2 = content + content;
 
-		// When
-		HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", content2);
+	// When
+	HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "",
+		content2);
 
-		// Then
-		assertThat(htmlArticle.getChapters().size(), is(2));
-	}
+	// Then
+	assertThat(htmlArticle.getChapters().size(), is(2));
+    }
 }

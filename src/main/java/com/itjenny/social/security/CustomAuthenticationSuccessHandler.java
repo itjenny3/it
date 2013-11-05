@@ -11,16 +11,19 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-	@Override
-	protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
-		setUseReferer(true);
-		return super.determineTargetUrl(request, response);
-	}
+public class CustomAuthenticationSuccessHandler extends
+	SavedRequestAwareAuthenticationSuccessHandler {
+    @Override
+    protected String determineTargetUrl(HttpServletRequest request,
+	    HttpServletResponse response) {
+	setUseReferer(true);
+	return super.determineTargetUrl(request, response);
+    }
 
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
-		super.onAuthenticationSuccess(request, response, authentication);
-	}
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request,
+	    HttpServletResponse response, Authentication authentication)
+	    throws IOException, ServletException {
+	super.onAuthenticationSuccess(request, response, authentication);
+    }
 }

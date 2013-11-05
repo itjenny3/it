@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PasswordGenerator {
-	private static final int DEFAULT_RANDOM_PASSWORD_LENGTH = 12;
+    private static final int DEFAULT_RANDOM_PASSWORD_LENGTH = 12;
 
-	public String generate() {
-		return RandomStringUtils.randomAlphanumeric(DEFAULT_RANDOM_PASSWORD_LENGTH);
-	}
+    public String generate() {
+	return RandomStringUtils
+		.randomAlphanumeric(DEFAULT_RANDOM_PASSWORD_LENGTH);
+    }
 }

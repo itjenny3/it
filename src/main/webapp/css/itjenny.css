@@ -3,8 +3,9 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url('/font/HU엣지고딕110.eot');
-	src: url('/font/HU엣지고딕110.eot?#iefix') format('embedded-opentype'), url('/font/HU엣지고딕110.woff') format('woff'),
-		url('/font/HU엣지고딕110.ttf') format('truetype');
+	src: url('/font/HU엣지고딕110.eot?#iefix') format('embedded-opentype'),
+		url('/font/HU엣지고딕110.woff') format('woff'), url('/font/HU엣지고딕110.ttf')
+		format('truetype');
 }
 
 @font-face {
@@ -12,8 +13,9 @@
 	font-style: normal;
 	font-weight: normal;
 	src: url('/font/HU젠120.eot');
-	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'), url('/font/HU젠120.woff') format('woff'),
-		url('/font/HU젠120.ttf') format('truetype');
+	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'),
+		url('/font/HU젠120.woff') format('woff'), url('/font/HU젠120.ttf')
+		format('truetype');
 }
 
 html {

@@ -13,28 +13,29 @@ import com.itjenny.repository.SettingRepository;
 
 @Service
 public class SettingService {
-	private final Logger logger = LoggerFactory.getLogger(SettingService.class);
+    private final Logger logger = LoggerFactory.getLogger(SettingService.class);
 
-	@Autowired
-	private SettingRepository settingRepository;
+    @Autowired
+    private SettingRepository settingRepository;
 
-	private Setting defaultSetting = new Setting();
+    private Setting defaultSetting = new Setting();
 
-	public void save(Setting setting) {
-		settingRepository.save(setting);
+    public void save(Setting setting) {
+	settingRepository.save(setting);
+    }
+
+    public List<Setting> getAll() {
+	return settingRepository.findAll();
+    }
+
+    public Setting get(String userId) {
+	Setting setting;
+	if (userId == null) {
+	    return defaultSetting;
 	}
+	setting = (Setting) ObjectUtils.defaultIfNull(
+		settingRepository.findOne(userId), defaultSetting);
 
-	public List<Setting> getAll() {
-		return settingRepository.findAll();
-	}
-
-	public Setting get(String userId) {
-		Setting setting;
-		if (userId == null) {
-			return defaultSetting;
-		}
-		setting = (Setting) ObjectUtils.defaultIfNull(settingRepository.findOne(userId), defaultSetting);
-
-		return setting;
-	}
+	return setting;
+    }
 }

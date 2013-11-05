@@ -13,16 +13,18 @@ import com.itjenny.service.user.SocialUserService;
 
 @Component
 public class ItSecuritySignInAdapter implements SignInAdapter {
-	public static final String SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME = "com.itjenny.social.security.signInDetails";
+    public static final String SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME = "com.itjenny.social.security.signInDetails";
 
-	@Autowired
-	private SocialUserService socialUserService;
+    @Autowired
+    private SocialUserService socialUserService;
 
-	public String signIn(String localUserId, Connection<?> connection, NativeWebRequest nativeWebRequest) {
-		ConnectionKey connectionKey = connection.getKey();
-		SocialUser socialUser = socialUserService.findByUserIdAndConnectionKey(localUserId, connectionKey);
-		nativeWebRequest.setAttribute(SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME, socialUser,
-				RequestAttributes.SCOPE_SESSION);
-		return null;
-	}
+    public String signIn(String localUserId, Connection<?> connection,
+	    NativeWebRequest nativeWebRequest) {
+	ConnectionKey connectionKey = connection.getKey();
+	SocialUser socialUser = socialUserService.findByUserIdAndConnectionKey(
+		localUserId, connectionKey);
+	nativeWebRequest.setAttribute(SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME,
+		socialUser, RequestAttributes.SCOPE_SESSION);
+	return null;
+    }
 }

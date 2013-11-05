@@ -18,38 +18,41 @@ import com.itjenny.service.user.SocialUserService;
 @Controller
 @RequestMapping("/signup")
 public class ItSecuritySignUpController {
-	private String authenticateUrl = ItSecurityAuthenticationFilter.DEFAULT_AUTHENTICATION_URL;
+    private String authenticateUrl = ItSecurityAuthenticationFilter.DEFAULT_AUTHENTICATION_URL;
 
-	@Autowired
-	private SocialUserService socialUserService;
+    @Autowired
+    private SocialUserService socialUserService;
 
-	@Autowired
-	private ItSecuritySignInAdapter itSecuritySignInAdapter;
+    @Autowired
+    private ItSecuritySignInAdapter itSecuritySignInAdapter;
 
-	public void setAuthenticateUrl(String authenticateUrl) {
-		this.authenticateUrl = authenticateUrl;
+    public void setAuthenticateUrl(String authenticateUrl) {
+	this.authenticateUrl = authenticateUrl;
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String signUpForm(ServletWebRequest request, Model model) {
+	Connection<?> connection = ProviderSignInUtils.getConnection(request);
+	ConnectionData connectionData = connection.createData();
+	SignUpForm signUpForm = new SignUpForm(connectionData.getDisplayName());
+	model.addAttribute("signUpForm", signUpForm);
+	return "users/signUpForm";
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String signUpSubmit(ServletWebRequest request,
+	    SignUpForm signUpForm, BindingResult result) {
+	Connection<?> connection = ProviderSignInUtils.getConnection(request);
+	try {
+	    socialUserService.createNewSocialUser(signUpForm.getUserId(),
+		    connection);
+	    itSecuritySignInAdapter.signIn(signUpForm.getUserId(), connection,
+		    request);
+	    return "redirect:" + authenticateUrl;
+	} catch (ExistedUserException e) {
+	    result.addError(new FieldError("signUpForm", "userId", signUpForm
+		    .getUserId() + " is already existed."));
+	    return "users/signUpForm";
 	}
-
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String signUpForm(ServletWebRequest request, Model model) {
-		Connection<?> connection = ProviderSignInUtils.getConnection(request);
-		ConnectionData connectionData = connection.createData();
-		SignUpForm signUpForm = new SignUpForm(connectionData.getDisplayName());
-		model.addAttribute("signUpForm", signUpForm);
-		return "users/signUpForm";
-	}
-
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String signUpSubmit(ServletWebRequest request, SignUpForm signUpForm, BindingResult result) {
-		Connection<?> connection = ProviderSignInUtils.getConnection(request);
-		try {
-			socialUserService.createNewSocialUser(signUpForm.getUserId(), connection);
-			itSecuritySignInAdapter.signIn(signUpForm.getUserId(), connection, request);
-			return "redirect:" + authenticateUrl;
-		} catch (ExistedUserException e) {
-			result.addError(new FieldError("signUpForm", "userId", signUpForm.getUserId()
-					+ " is already existed."));
-			return "users/signUpForm";
-		}
-	}
+    }
 }

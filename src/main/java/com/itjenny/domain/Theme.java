@@ -9,9 +9,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Theme {
-	@Id
-	private String title;
-	@Column(columnDefinition = "TEXT")
-	private String css;
-	private String userId;
+    @Id
+    private String title;
+    @Column(columnDefinition = "TEXT")
+    private String css;
+    private String userId;
 }

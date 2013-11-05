@@ -2,7 +2,8 @@
 <configuration scan="true" scanPeriod="30 seconds">
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{MM-dd HH:mm:ss.SSS} %.-1level [%thread] [%logger{0}:%L] %msg%n</pattern>
+			<pattern>%d{MM-dd HH:mm:ss.SSS} %.-1level [%thread] [%logger{0}:%L]
+				%msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -10,7 +11,7 @@
 		<level value="debug" />
 		<appender-ref ref="CONSOLE" />
 	</logger>
-	
+
 	<logger name="org.springframework" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="CONSOLE" />

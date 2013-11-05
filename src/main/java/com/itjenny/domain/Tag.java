@@ -9,15 +9,14 @@ import lombok.Data;
 
 import org.hibernate.annotations.Index;
 
-
 @Entity
 @Data
 public class Tag {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Index(name = "tag")
-	private String tag;
-	@Index(name = "article")
-	private String article;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Index(name = "tag")
+    private String tag;
+    @Index(name = "article")
+    private String article;
 }

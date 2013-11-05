@@ -22,93 +22,105 @@ import com.itjenny.web.UserForm;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
-	private final Logger logger = LoggerFactory.getLogger(UsersController.class);
+    private final Logger logger = LoggerFactory
+	    .getLogger(UsersController.class);
 
-	@Autowired
-	private SocialUserService userService;
+    @Autowired
+    private SocialUserService userService;
 
-	@Autowired
-	private AutoLoginAuthenticator autoLoginAuthenticator;
+    @Autowired
+    private AutoLoginAuthenticator autoLoginAuthenticator;
 
-	@RequestMapping("/login")
-	public String login(Model model) {
-		model.addAttribute("user", new UserForm());
-		return "users/login";
-	}
-	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping("/login")
+    public String login(Model model) {
+	model.addAttribute("user", new UserForm());
+	return "users/login";
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public String create(UserForm user) {
-		SocialUser socialUser = userService.createItUser(user.getUserId(), user.getEmail());
-		autoLoginAuthenticator.login(socialUser.getEmail(), socialUser.getRawPassword());
-		return "redirect:/";
+	SocialUser socialUser = userService.createItUser(user.getUserId(),
+		user.getEmail());
+	autoLoginAuthenticator.login(socialUser.getEmail(),
+		socialUser.getRawPassword());
+	return "redirect:/";
+    }
+
+    @RequestMapping("/{id}")
+    public String profileById(@PathVariable Long id) throws Exception {
+	SocialUser socialUser = userService.findById(id);
+	return String.format("redirect:/users/%d/%s", id,
+		URLEncoder.encode(socialUser.getUserId(), "UTF-8"));
+    }
+
+    @RequestMapping("/{id}/{userId}")
+    public String profile(@PathVariable Long id, @PathVariable String userId,
+	    Model model) throws Exception {
+	model.addAttribute("socialUser", userService.findById(id));
+	return "users/profile";
+    }
+
+    @RequestMapping("{id}/form")
+    public String updateForm(@LoginUser SocialUser loginUser,
+	    @PathVariable Long id, Model model) throws Exception {
+	SocialUser socialUser = userService.findById(id);
+	if (!loginUser.isSameUser(socialUser)) {
+	    throw new IllegalArgumentException("You can't change another user!");
 	}
 
-	@RequestMapping("/{id}")
-	public String profileById(@PathVariable Long id) throws Exception {
-		SocialUser socialUser = userService.findById(id);
-		return String.format("redirect:/users/%d/%s", id, URLEncoder.encode(socialUser.getUserId(), "UTF-8"));
+	model.addAttribute("user", new UserForm(socialUser.getUserId(),
+		socialUser.getEmail()));
+	model.addAttribute("socialUser", socialUser);
+	return "users/form";
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public String update(@LoginUser SocialUser loginUser,
+	    @PathVariable Long id, UserForm userForm) throws Exception {
+	SocialUser socialUser = userService.findById(id);
+	if (!loginUser.isSameUser(socialUser)) {
+	    throw new IllegalArgumentException("You can't change another user!");
 	}
 
-	@RequestMapping("/{id}/{userId}")
-	public String profile(@PathVariable Long id, @PathVariable String userId, Model model) throws Exception {
-		model.addAttribute("socialUser", userService.findById(id));
-		return "users/profile";
+	userService.updateItUser(loginUser, userForm.getEmail(),
+		userForm.getUserId());
+
+	return "redirect:/users/logout";
+    }
+
+    @RequestMapping("{id}/changepassword")
+    public String changePasswordForm(@LoginUser SocialUser loginUser,
+	    @PathVariable Long id, Model model) throws Exception {
+	SocialUser socialUser = userService.findById(id);
+	if (!loginUser.isSameUser(socialUser)) {
+	    throw new IllegalArgumentException(
+		    "You cann't change another user!");
 	}
 
-	@RequestMapping("{id}/form")
-	public String updateForm(@LoginUser SocialUser loginUser, @PathVariable Long id, Model model) throws Exception {
-		SocialUser socialUser = userService.findById(id);
-		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You can't change another user!");
-		}
+	model.addAttribute("socialUser", socialUser);
+	model.addAttribute("password", new PasswordDto(id));
+	return "users/changepassword";
+    }
 
-		model.addAttribute("user", new UserForm(socialUser.getUserId(), socialUser.getEmail()));
-		model.addAttribute("socialUser", socialUser);
-		return "users/form";
+    @RequestMapping(value = "{id}/changepassword", method = RequestMethod.POST)
+    public String changePassword(@LoginUser SocialUser loginUser,
+	    @PathVariable Long id, PasswordDto password, Model model)
+	    throws Exception {
+	SocialUser socialUser = userService.findById(id);
+
+	if (!loginUser.isSameUser(socialUser)) {
+	    throw new IllegalArgumentException(
+		    "You cann't change another user!");
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
-	public String update(@LoginUser SocialUser loginUser, @PathVariable Long id, UserForm userForm) throws Exception {
-		SocialUser socialUser = userService.findById(id);
-		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You can't change another user!");
-		}
-
-		userService.updateItUser(loginUser, userForm.getEmail(), userForm.getUserId());
-
-		return "redirect:/users/logout";
+	try {
+	    userService.changePassword(loginUser, password);
+	    return "redirect:/users/logout";
+	} catch (BadCredentialsException e) {
+	    model.addAttribute("errorMessage", e.getMessage());
+	    model.addAttribute("socialUser", socialUser);
+	    model.addAttribute("password", new PasswordDto(id));
+	    return "users/changepassword";
 	}
-
-	@RequestMapping("{id}/changepassword")
-	public String changePasswordForm(@LoginUser SocialUser loginUser, @PathVariable Long id, Model model)
-			throws Exception {
-		SocialUser socialUser = userService.findById(id);
-		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You cann't change another user!");
-		}
-
-		model.addAttribute("socialUser", socialUser);
-		model.addAttribute("password", new PasswordDto(id));
-		return "users/changepassword";
-	}
-
-	@RequestMapping(value = "{id}/changepassword", method = RequestMethod.POST)
-	public String changePassword(@LoginUser SocialUser loginUser, @PathVariable Long id, PasswordDto password,
-			Model model) throws Exception {
-		SocialUser socialUser = userService.findById(id);
-
-		if (!loginUser.isSameUser(socialUser)) {
-			throw new IllegalArgumentException("You cann't change another user!");
-		}
-
-		try {
-			userService.changePassword(loginUser, password);
-			return "redirect:/users/logout";
-		} catch (BadCredentialsException e) {
-			model.addAttribute("errorMessage", e.getMessage());
-			model.addAttribute("socialUser", socialUser);
-			model.addAttribute("password", new PasswordDto(id));
-			return "users/changepassword";
-		}
-	}
+    }
 }

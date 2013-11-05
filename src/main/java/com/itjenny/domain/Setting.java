@@ -10,10 +10,10 @@ import lombok.Data;
 @Data
 @Entity
 public class Setting {
-	@Id
-	private String userId = StringUtils.EMPTY;
+    @Id
+    private String userId = StringUtils.EMPTY;
 
-	private Boolean pagination = true;
-	private Boolean oneline = true;
-	private Integer fontsize = 3;
+    private Boolean pagination = true;
+    private Boolean oneline = true;
+    private Integer fontsize = 3;
 }

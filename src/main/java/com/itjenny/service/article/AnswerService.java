@@ -9,21 +9,21 @@ import com.itjenny.domain.Chapter;
 
 @Service
 public class AnswerService {
-	private final Logger logger = LoggerFactory.getLogger(AnswerService.class);
+    private final Logger logger = LoggerFactory.getLogger(AnswerService.class);
 
-	@Autowired
-	private HtmlArticleService htmlArticleService;
+    @Autowired
+    private HtmlArticleService htmlArticleService;
 
-	public boolean check(Chapter chapter, String answer) {
-		if (trim(chapter.getQuiz().getAnswer()).equals(trim(answer))) {
-			return true;
-		}
-		return false;
+    public boolean check(Chapter chapter, String answer) {
+	if (trim(chapter.getQuiz().getAnswer()).equals(trim(answer))) {
+	    return true;
 	}
+	return false;
+    }
 
-	public String trim(String answer) {
-		answer = answer.replace(" ", "");
-		answer = answer.toLowerCase();
-		return answer;
-	}
+    public String trim(String answer) {
+	answer = answer.replace(" ", "");
+	answer = answer.toLowerCase();
+	return answer;
+    }
 }

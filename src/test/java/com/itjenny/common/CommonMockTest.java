@@ -6,7 +6,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CommonMockTest {
-	@Test
-	public void test() {
-	}
+    @Test
+    public void test() {
+    }
 }

@@ -13,27 +13,29 @@ import com.itjenny.support.security.SessionService;
 
 @Service
 public class ArticleService {
-	private final Logger logger = LoggerFactory.getLogger(ArticleService.class);
+    private final Logger logger = LoggerFactory.getLogger(ArticleService.class);
 
-	@Autowired
-	private SessionService sessionService;
+    @Autowired
+    private SessionService sessionService;
 
-	@Autowired
-	private ArticleRepository articleRepository;
+    @Autowired
+    private ArticleRepository articleRepository;
 
-	public void save(Article article) {
-		articleRepository.save(article);
+    public void save(Article article) {
+	articleRepository.save(article);
+    }
+
+    public List<Article> getAll() {
+	return articleRepository.findAll(sessionService.getLoginUser()
+		.getUserId());
+    }
+
+    public Article get(String title) {
+	Article article = null;
+	if (articleRepository.exists(title)) {
+	    article = articleRepository.findOne(title, sessionService
+		    .getLoginUser().getUserId());
 	}
-
-	public List<Article> getAll() {
-		return articleRepository.findAll(sessionService.getLoginUser().getUserId());
-	}
-
-	public Article get(String title) {
-		Article article = null;
-		if (articleRepository.exists(title)) {
-			article = articleRepository.findOne(title, sessionService.getLoginUser().getUserId());
-		}
-		return article;
-	}
+	return article;
+    }
 }

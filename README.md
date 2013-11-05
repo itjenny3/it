@@ -63,13 +63,17 @@ Skill Set
 
 	$ mysql -u root < src/main/db/create.sql
 
-### Eclipse ###
+### Eclipse EE ###
 
 [다운로드](http://www.eclipse.org/downloads/)
  
 ### Maven ###
 
 [다운로드](http://maven.apache.org/download.html)
+
+### Tomcat ###
+
+[다운로드](http://tomcat.apache.org/download-60.cgi)
 
 ### Lombok ###
 
@@ -129,9 +133,15 @@ Selenium 테스트를 위해 아래 브라우저 설치한다.
 
 Eclipse Setting
 ---------------
+### Tomcat 연동 ###
+
+ - Preference > Server > Runtime Environments > Add 하여 Tomcat 다운로드 경로 추가
+
 ### Eclipse Plugin 설치 ###
 
 Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다.
+
+ - Maven integration for eclipse
 
  - MoreUnit
  
@@ -142,7 +152,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
  - Checkstyle
 
 		URL : http://eclipse-cs.sf.net/update
-		Help > Eclipse Marketplace > FindBugs 검색 후 설치
+		Help > Eclipse Marketplace > Checkstyle 검색 후 설치
 		활성화 : 프로젝트 이름을 우클릭 후 Checkstyle > Activate Checkstyle
 		View : Window > Show View > Others > Checkstyle > Checkstyle violations
 	
@@ -171,19 +181,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 
 ### Java Convention을 기본 템플릿으로 사용함 ###
 
-Preference > Java > Code Style > Formatter > Java Convention를 선택 후 New를 클릭 후 아래와 같이 설정한다.  
-
-	Tab policy: Tabs only
-	Indentation/Tab size : 4
-	Line Wrapping/Maximum line width : 120
-
 ### JavaScript Convention을 기본 템플릿으로 사용함 ###
-
-Preference > JavaScript > Code Style > Formatter > JavaScript Convention를 선택 후 New를 클릭 후 아래와 같이 설정한다.  
-
-	Tab policy: Tabs only
-	Indentation/Tab size : 4
-	Line Wrapping/Maximum line width : 120
 
 ### Checkstyle 설정파일 불러오기 ###
 
@@ -192,19 +190,6 @@ Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.
 	Type : External Configuration File
 	Name : tinyCheckstyle
 	Location : tinyCheckstyle.xml
-
-### Line Width : 120 설정 ###
-
- - Preference > Java > Code Style > Formatter > Edit > Line Wrapping > Maximum line width : 120
- - Preference > JavaScript > Code Style > Formatter > Line width : 120
- - Preference > XML > XML Files > Editor > Line width : 120
- - Preference > Web > HTML Files > Editor > Line Width : 120 
- - Preference > Web > JSP Files > Editor > Line Width : 120 
-
-### Tab Indent 설정 ###
-
- - Preference > Java > Code Style > Formatter > edit > Indentation > 4
- - Preference > Java > Code Style > Formatter > edit > Indentation > Tab policy > Tabs only
 
 ### Encoding 설정 ###
 
@@ -244,17 +229,16 @@ Preference > Java > Editor > Templates > New Type에 클릭 후 아래 내용 �
 
 ### resources 순서 변경 ###
 
-STS에서 local 설정을 적용하기 위해 다음과 같이 설정한다.  
+eclipse에서 local 설정을 적용하기 위해 다음과 같이 설정한다.  
 Project Properties > Java Build Path > Order and Export 에서 아래와 같은 순서로 설정 변경한다.
  	
 	src/main/java
 	src/main/resources
 	src/main/resources-local
-	src/main/resources-dev
-	src/main/resources-release
+	src/main/resources
 
 ### 검색 시 특정 폴더 제외 ###
-프로젝트 우클릭 -> 속성 -> resource -> resource filter -> exclude all, folder 선택
+Project Properties -> Resource -> resource filter -> exclude all, folder 선택
 	
 운영 서버 설치
 -----------------------------------

@@ -3,9 +3,12 @@
 <tiles-definitions>
 	<!-- DEFAULT LAYOUT -->
 	<definition name="defaultLayout" template="/WEB-INF/view/layout/defaultLayout.jsp">
-		<put-attribute name="header" value="/WEB-INF/view/layout/fragment/header.jsp" />
-		<put-attribute name="top" value="/WEB-INF/view/layout/fragment/top.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/view/layout/fragment/footer.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/layout/fragment/header.jsp" />
+		<put-attribute name="top"
+			value="/WEB-INF/view/layout/fragment/top.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/layout/fragment/footer.jsp" />
 	</definition>
 
 	<!-- FRAGMENT LAYOUT -->

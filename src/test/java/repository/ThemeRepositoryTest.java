@@ -12,22 +12,22 @@ import com.itjenny.domain.Theme;
 import com.itjenny.repository.ThemeRepository;
 
 public class ThemeRepositoryTest extends CommonTest {
-	@Rule
+    @Rule
     public ResourceFile css1 = new ResourceFile("/default.css");
-	
-	@Autowired
-	ThemeRepository themeRepository;
 
-	private static final String TITLE1 = "Default";
-	private static final String USERID = "itjenny";
+    @Autowired
+    ThemeRepository themeRepository;
 
-	@Test
-	public void setInit() throws IOException {
-		// Given
-		Theme theme = new Theme();
-		theme.setTitle(TITLE1);
-		theme.setCss(css1.getContent());
-		theme.setUserId(USERID);
-		themeRepository.save(theme);
-	}
+    private static final String TITLE1 = "Default";
+    private static final String USERID = "itjenny";
+
+    @Test
+    public void setInit() throws IOException {
+	// Given
+	Theme theme = new Theme();
+	theme.setTitle(TITLE1);
+	theme.setCss(css1.getContent());
+	theme.setUserId(USERID);
+	themeRepository.save(theme);
+    }
 }

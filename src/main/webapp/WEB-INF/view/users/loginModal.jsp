@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
 
 
 <%-- Login Modal --%>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
 	data-remote="/users/login"></div>
 
 <%-- Top Menu --%>
@@ -30,14 +32,15 @@
 
 	<%-- Login --%>
 	<sec:authorize access="!hasRole('ROLE_USER')">
-		<a data-target="#myModal" role="button" id="login" class="menu btn" data-toggle="modal"><span
-			class="glyphicon glyphicon-off"></span></a>
+		<a data-target="#myModal" role="button" id="login" class="menu btn"
+			data-toggle="modal"><span class="glyphicon glyphicon-off"></span></a>
 	</sec:authorize>
 
 	<%-- Logout --%>
 	<sec:authorize access="hasRole('ROLE_USER')">
 		${loginUser.userId}
-		<a href="/users/logout" class="menu" title="logout"><span class="glyphicon glyphicon-off"></span></a>
+		<a href="/users/logout" class="menu" title="logout"><span
+			class="glyphicon glyphicon-off"></span></a>
 	</sec:authorize>
 </div>
 

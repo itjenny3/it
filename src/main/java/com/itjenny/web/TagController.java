@@ -19,30 +19,30 @@ import com.itjenny.support.VIEW;
 @Controller
 @RequestMapping(URL.TAG)
 public class TagController {
-	private final Logger logger = LoggerFactory.getLogger(TagController.class);
-	
-	@Autowired
-	TagService tagService;
+    private final Logger logger = LoggerFactory.getLogger(TagController.class);
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView();
-		ModelMap model = new ModelMap();
-		List<String> tags = tagService.getTags();
-		model.addAttribute("tags", tags);
-		mav.setViewName(VIEW.TAGS);
-		mav.addAllObjects(model);
-		return mav;
-	}
+    @Autowired
+    TagService tagService;
 
-	@RequestMapping(value = "{tag}", method = RequestMethod.GET)
-	public ModelAndView getTag(@PathVariable String tag) {
-		ModelAndView mav = new ModelAndView();
-		ModelMap model = new ModelMap();
-		List<String> articles = tagService.getArticles(tag);
-		model.addAttribute("articles", articles);
-		mav.setViewName(VIEW.TAG);
-		mav.addAllObjects(model);
-		return mav;
-	}
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ModelAndView list() {
+	ModelAndView mav = new ModelAndView();
+	ModelMap model = new ModelMap();
+	List<String> tags = tagService.getTags();
+	model.addAttribute("tags", tags);
+	mav.setViewName(VIEW.TAGS);
+	mav.addAllObjects(model);
+	return mav;
+    }
+
+    @RequestMapping(value = "{tag}", method = RequestMethod.GET)
+    public ModelAndView getTag(@PathVariable String tag) {
+	ModelAndView mav = new ModelAndView();
+	ModelMap model = new ModelMap();
+	List<String> articles = tagService.getArticles(tag);
+	model.addAttribute("articles", articles);
+	mav.setViewName(VIEW.TAG);
+	mav.addAllObjects(model);
+	return mav;
+    }
 }

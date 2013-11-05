@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 <script src="/js/article.js?20130903"></script>
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
 <style>
-${css}
+${
+css
+}
 </style>
 
 <div id="container" class="word">
@@ -28,20 +31,22 @@ ${css}
 	<%-- chapters --%>
 	<c:forEach var="chapter" varStatus="loop" items="${chapters}">
 		<%-- sections --%>
-		<c:forEach var="section" varStatus="innerLoop" items="${chapter.sections}">
+		<c:forEach var="section" varStatus="innerLoop"
+			items="${chapter.sections}">
 			<c:choose>
 				<%-- 
 				1. first section in last chapter.  
 				2. not first section in first chapter 
 				3. doesn't has license
 			--%>
-				<c:when test="${!loop.first and loop.last and innerLoop.first and !license}">
+				<c:when
+					test="${!loop.first and loop.last and innerLoop.first and !license}">
 					<div class="section lastChapter background">
 						<h1>${section.subtitle}</h1>
 						${section.content}
 
 						<%-- pagination --%>
-						<p class="page">${section.index} / ${totalSection}</p>
+						<p class="page">${section.index}/ ${totalSection}</p>
 					</div>
 				</c:when>
 
@@ -52,7 +57,7 @@ ${css}
 						${section.content}
 
 						<%-- pagination --%>
-						<p class="page">${section.index} / ${totalSection}</p>
+						<p class="page">${section.index}/ ${totalSection}</p>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -67,7 +72,8 @@ ${css}
 						${chapter.quiz.content}
 
 						<sec:authorize access="hasRole('ROLE_USER')">
-							<input id="answer" type="text" onKeyDown="sendAnswer('${chapter.id}')">
+							<input id="answer" type="text"
+								onKeyDown="sendAnswer('${chapter.id}')">
 						</sec:authorize>
 
 						<sec:authorize access="!hasRole('ROLE_USER')">
@@ -75,7 +81,7 @@ ${css}
 						</sec:authorize>
 
 						<%-- pagination --%>
-						<p class="page">${chapter.quiz.index} / ${totalSection}</p>
+						<p class="page">${chapter.quiz.index}/ ${totalSection}</p>
 					</div>
 				</c:if>
 			</c:when>
@@ -91,7 +97,7 @@ ${css}
 						</blockquote>
 
 						<%-- pagination --%>
-						<p class="page">${chapter.quiz.index} / ${totalSection}</p>
+						<p class="page">${chapter.quiz.index}/ ${totalSection}</p>
 					</div>
 				</c:if>
 			</c:otherwise>
@@ -113,8 +119,8 @@ ${css}
 
 
 <script>
-	$(document).ready(function() {
-		setCurrent();
-		moveLastChapter();
-	});
+    $(document).ready(function() {
+	setCurrent();
+	moveLastChapter();
+    });
 </script>

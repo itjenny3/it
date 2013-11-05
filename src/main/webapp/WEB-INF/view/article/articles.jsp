@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
@@ -10,11 +11,11 @@
 </div>
 
 <script>
-	<c:forEach var="tag" items="${tags}">
-	$('#tag${tag}').click(function() {
-		// TODO :: find article with selected tag.
-	});
-	</c:forEach>
+    <c:forEach var="tag" items="${tags}">
+    $('#tag${tag}').click(function() {
+	// TODO :: find article with selected tag.
+    });
+    </c:forEach>
 </script>
 
 <div id="selectedArticles" class="backgroundTitle">

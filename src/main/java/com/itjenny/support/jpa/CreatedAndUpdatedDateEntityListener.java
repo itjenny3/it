@@ -7,20 +7,20 @@ import javax.persistence.PreUpdate;
 
 public class CreatedAndUpdatedDateEntityListener {
 
-	@PrePersist
-	public void prePersist(HasCreatedAndUpdatedDate hcud) {
-		Date currentDate = getCurrentDate();
-		hcud.setCreatedDate(currentDate);
-		hcud.setUpdatedDate(currentDate);
-	}
+    @PrePersist
+    public void prePersist(HasCreatedAndUpdatedDate hcud) {
+	Date currentDate = getCurrentDate();
+	hcud.setCreatedDate(currentDate);
+	hcud.setUpdatedDate(currentDate);
+    }
 
-	private Date getCurrentDate() {
-		return new Date();
-	}
+    private Date getCurrentDate() {
+	return new Date();
+    }
 
-	@PreUpdate
-	public void preUpdate(HasCreatedAndUpdatedDate hcud) {
-		Date currentDate = getCurrentDate();
-		hcud.setUpdatedDate(currentDate);
-	}
+    @PreUpdate
+    public void preUpdate(HasCreatedAndUpdatedDate hcud) {
+	Date currentDate = getCurrentDate();
+	hcud.setUpdatedDate(currentDate);
+    }
 }

@@ -14,19 +14,22 @@ import org.springframework.util.Assert;
 
 @Component
 public class AutoLoginAuthenticator {
-	@Resource(name = "authenticationManager")
-	private AuthenticationManager authenticationManager;
+    @Resource(name = "authenticationManager")
+    private AuthenticationManager authenticationManager;
 
-	@Resource(name = "itRememberMeServices")
-	private RememberMeServices rememberMeServices;
+    @Resource(name = "itRememberMeServices")
+    private RememberMeServices rememberMeServices;
 
-	public void login(String email, String password) {
-		Assert.notNull(email, "UserId cannot be null!");
-		Assert.notNull(password, "Password cannot be null!");
+    public void login(String email, String password) {
+	Assert.notNull(email, "UserId cannot be null!");
+	Assert.notNull(password, "Password cannot be null!");
 
-		UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(email, password);
-		authRequest.setDetails(ProviderType.it);
-		Authentication successfulAuthentication = authenticationManager.authenticate(authRequest);
-		SecurityContextHolder.getContext().setAuthentication(successfulAuthentication);
-	}
+	UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
+		email, password);
+	authRequest.setDetails(ProviderType.it);
+	Authentication successfulAuthentication = authenticationManager
+		.authenticate(authRequest);
+	SecurityContextHolder.getContext().setAuthentication(
+		successfulAuthentication);
+    }
 }
