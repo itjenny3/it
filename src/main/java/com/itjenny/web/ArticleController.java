@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
 import com.itjenny.service.SettingService;
+import com.itjenny.service.ThemeService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.BookmarkService;
@@ -41,6 +42,9 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private ThemeService themeService;
 
     @Autowired
     private TagService tagService;
@@ -170,7 +174,13 @@ public class ArticleController {
 		htmlArticleService.getTotalSection(title));
 	model.addAttribute("setting",
 		settingService.get(sessionService.getLoginUser().getUserId()));
-	model.addAttribute("css", articleService.get(title).getCss());
+	String css = articleService.get(title).getCss();
+	if (StringUtils.isEmpty(css)) {
+	    model.addAttribute("css", themeService.getDefault().getCss());
+	} else {
+	    model.addAttribute("css", css);
+	}
+
 	mav.setViewName(VIEW.ARTICLE);
 	mav.addAllObjects(model);
 	bookmarkService.updateChapter(title, 0);

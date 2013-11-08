@@ -163,6 +163,12 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 
 ### 설정 ###
  - Java Convention을 기본 템플릿으로 사용함
+
+        New를 클릭하여 새로운 profile 생성 후 Edit를 눌러 아래 내용 수정한다.
+        Indentation > General settings > Tab policy: spaces only
+        Indentation > General settings > Indentation size: 4
+        Indentation > General settings > Tab size: 4
+    
  - JavaScript Convention을 기본 템플릿으로 사용함
 
  - Checkstyle 설정파일 불러오기

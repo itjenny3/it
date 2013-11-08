@@ -81,7 +81,7 @@
 	}
 
 	$('#settingPagination').click(function() {
-		if ($('#settingPagination').text() == "true") {
+		if ($('#settingPagination').text() == 'true') {
 			$('#settingPagination').text("false");
 			setCookie('pagination', false);
 			sendSetting('pagination', 0);
@@ -93,7 +93,7 @@
 	});
 
 	$('#settingOneline').click(function() {
-		if ($('#settingOneline').text() == "true") {
+		if ($('#settingOneline').text() == 'true') {
 			$('#settingOneline').text("false");
 			setCookie('oneline', false);
 			sendSetting('oneline', 0);

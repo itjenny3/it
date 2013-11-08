@@ -18,7 +18,7 @@ public class ThemeRepositoryTest extends CommonTest {
     @Autowired
     ThemeRepository themeRepository;
 
-    private static final String TITLE1 = "Default";
+    private static final String TITLE1 = "default";
     private static final String USERID = "itjenny";
 
     @Test
