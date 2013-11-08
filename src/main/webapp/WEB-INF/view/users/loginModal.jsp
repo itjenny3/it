@@ -23,7 +23,6 @@
 			</li>
 			<li>Pagination <a id="settingPagination">${setting.pagination}</a></li>
 			<li>Oneline <a id="settingOneline">${setting.oneline}</a></li>
-			<li>Fontsize <a id="settingFontsize">${setting.fontsize}</a></li>
 		</ul>
 	</div>
 
@@ -49,7 +48,6 @@
 	<script>
 		setCookie('pagination', ${setting.pagination});
 		setCookie('oneline', ${setting.oneline});
-		setCookie('fontsize', ${setting.fontsize});
 	</script>
 </sec:authorize>
 
@@ -109,7 +107,6 @@
 	if (getCookie('pagination') == null) {
 		$('#settingPagination').text(getCookie('pagination'));
 		$('#settingOneline').text(getCookie('oneline'));
-		$('#settingFontsize').text(getCookie('fontsize'));
 	}
 	
 	$(document).ready(function() {
@@ -118,13 +115,6 @@
 		}
 		if (getCookie('mode') == 'keynote') {
 			$('#play').click();
-		}
-		
-		var fontsize = getCookie('fontsize');
-		if (0 < fontsize && fontsize < 6) {
-			$('h1,h2,h3,h4,h5,h6,p,code,li').css({
-				'font-size' : '+=' + (10 * (parseInt(getCookie('fontsize')) - 3))
-			});
 		}
 	});
 </script>

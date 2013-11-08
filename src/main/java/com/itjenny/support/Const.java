@@ -16,5 +16,4 @@ public class Const {
     // SETTING
     public static final String PAGINATION = "pagination";
     public static final String ONELINE = "oneline";
-    public static final String FONTSIZE = "fontsize";
 }

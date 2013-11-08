@@ -42,8 +42,6 @@ public class SettingController {
 	    setting.setPagination(value == 1);
 	} else if (option.equals(Const.ONELINE)) {
 	    setting.setOneline(value == 1);
-	} else if (option.equals(Const.FONTSIZE)) {
-	    setting.setFontsize(value);
 	}
 	settingService.save(setting);
 	return;

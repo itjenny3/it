@@ -15,5 +15,4 @@ public class Setting {
 
     private Boolean pagination = true;
     private Boolean oneline = true;
-    private Integer fontsize = 3;
 }

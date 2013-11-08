@@ -150,28 +150,6 @@ $(document).ready(function() {
 	case 27: // esc
 	    $('#stop').click();
 	    break;
-
-	case 187: // +
-	    if (getCookie('fontsize') < 5) {
-		$('h1,h2,h3,h4,h5,h6,p,code,li').css({
-		    'font-size' : '+=10'
-		});
-		setCookie('fontsize', parseInt(getCookie('fontsize')) + 1);
-		$('#settingFontsize').text(getCookie('fontsize'));
-		sendSetting('fontsize', getCookie('fontsize'));
-	    }
-	    break;
-
-	case 189: // -
-	    if (getCookie('fontsize') > 1) {
-		$('h1,h2,h3,h4,h5,h6,p,code,li').css({
-		    'font-size' : '-=10'
-		});
-		setCookie('fontsize', parseInt(getCookie('fontsize')) - 1);
-		$('#settingFontsize').text(getCookie('fontsize'));
-		sendSetting('fontsize', getCookie('fontsize'));
-	    }
-	    break;
 	}
     });
 })
