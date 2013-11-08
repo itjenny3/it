@@ -13,6 +13,13 @@ import com.itjenny.support.Const;
 
 @Data
 public class HtmlArticle {
+    private static final String H1 = "<h1>";
+    private static final String H2 = "<h2>";
+    private static final String H1H2 = "<h1>|<h2>";
+    private static final String H1END = "</h1>";
+    private static final String H2END = "</h2>";
+    private static final String H1H2END = "</h1>|</h2>";
+
     private String title;
     private List<Chapter> chapters = new ArrayList<Chapter>();
     private Chapter currentChapter = null;
@@ -22,11 +29,10 @@ public class HtmlArticle {
 	int sectionIndex = 0;
 	this.title = title;
 
-	String[] parts = pegDownProcessor.markdownToHtml(content).split(
-		"<h1>|<h2>");
+	String[] parts = pegDownProcessor.markdownToHtml(content).split(H1H2);
 	for (String part : parts) {
 	    if (StringUtils.isNotEmpty(part)) {
-		String[] subtitleAndContent = part.split("</h1>|</h2>");
+		String[] subtitleAndContent = part.split(H1H2END);
 		if (subtitleAndContent.length == 2) {
 		    // TITLE exists.
 		    if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
@@ -60,11 +66,20 @@ public class HtmlArticle {
 			add(section);
 		    }
 		} else {
-		    // TITLE isn't existed.
-		    Section section = new Section();
-		    section.setIndex(++sectionIndex);
-		    section.setContent(subtitleAndContent[0]);
-		    add(section);
+		    if (StringUtils.endsWith(part, H1END)
+			    || StringUtils.endsWith(part, H2END)) {
+			// only TITLE
+			Section section = new Section();
+			section.setIndex(++sectionIndex);
+			section.setSubtitle(subtitleAndContent[0]);
+			add(section);
+		    } else {
+			// only CONTENTS
+			Section section = new Section();
+			section.setIndex(++sectionIndex);
+			section.setContent(subtitleAndContent[0]);
+			add(section);
+		    }
 		}
 	    }
 	}

@@ -10,7 +10,7 @@
 		${section.content}
 
 		<%-- pagination --%>
-		<p class="page">${section.index}/ ${totalSection}</p>
+		<p class="page">${section.index}/${totalSection}</p>
 	</div>
 </c:forEach>
 
@@ -21,6 +21,6 @@
 			onKeyDown="sendAnswer('${chapter.id}')">
 
 		<%-- pagination --%>
-		<p class="page">${chapter.quiz.index}/ ${totalSection}</p>
+		<p class="page">${chapter.quiz.index}/${totalSection}</p>
 	</div>
 </c:if>

@@ -212,10 +212,6 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 		import static org.mockito.Matchers.*;
 		import static org.mockito.Mockito.*;
 
-### static import 에서 *이 풀리지 않게 설정 ###
-
- - Preference > Java > Code Style > Organize Imports > Number of static imports를 1로 설정한다.
-
 ### resources 순서 변경 ###
 
 eclipse에서 local 설정을 적용하기 위해 다음과 같이 설정한다.  
