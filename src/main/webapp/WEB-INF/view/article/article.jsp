@@ -6,9 +6,7 @@
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
 <style>
-${
-css
-}
+${css}
 </style>
 
 <div id="container" class="word">
@@ -46,7 +44,7 @@ css
 						${section.content}
 
 						<%-- pagination --%>
-						<p class="page">${section.index}/ ${totalSection}</p>
+						<p class="page">${section.index}/${totalSection}</p>
 					</div>
 				</c:when>
 
@@ -57,7 +55,7 @@ css
 						${section.content}
 
 						<%-- pagination --%>
-						<p class="page">${section.index}/ ${totalSection}</p>
+						<p class="page">${section.index}/${totalSection}</p>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -81,7 +79,7 @@ css
 						</sec:authorize>
 
 						<%-- pagination --%>
-						<p class="page">${chapter.quiz.index}/ ${totalSection}</p>
+						<p class="page">${chapter.quiz.index}/${totalSection}</p>
 					</div>
 				</c:if>
 			</c:when>
@@ -97,7 +95,7 @@ css
 						</blockquote>
 
 						<%-- pagination --%>
-						<p class="page">${chapter.quiz.index}/ ${totalSection}</p>
+						<p class="page">${chapter.quiz.index}/${totalSection}</p>
 					</div>
 				</c:if>
 			</c:otherwise>

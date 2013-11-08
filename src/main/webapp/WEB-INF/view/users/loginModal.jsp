@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/taglib.jsp"%>
 
-
-
 <%-- Login Modal --%>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true"
@@ -12,7 +10,6 @@
 <%-- Top Menu --%>
 <div id="word" class="top_fixed">
 	<a id="play" class="menu"><span class="glyphicon glyphicon-play"></span></a>
-
 
 	<div class="btn-group">
 		<button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -60,14 +57,16 @@
 	$('#play').click(function() {
 		$('#word').hide();
 		$('#keynote').show();
-		setCookie('keynote', true);
+		$('#container').attr('class', 'keynote');
+		setCookie('mode', 'keynote');
 		moveCurrentSection();
 	});
 
 	$('#stop').click(function() {
 		$('#word').show();
 		$('#keynote').hide();
-		removeCookie('keynote');
+		$('#container').attr('class', 'word');
+		setCookie('mode', 'word');
 	});
 	
 	$('#settingPagination').click(function() {
@@ -107,13 +106,18 @@
 		}
 	});
 	
-	$('#settingPagination').text(getCookie('pagination'));
-	$('#settingOneline').text(getCookie('oneline'));
-	$('#settingFontsize').text(getCookie('fontsize'));
+	if (getCookie('pagination') == null) {
+		$('#settingPagination').text(getCookie('pagination'));
+		$('#settingOneline').text(getCookie('oneline'));
+		$('#settingFontsize').text(getCookie('fontsize'));
+	}
 	
 	$(document).ready(function() {
 		if (getCookie('pagination') == 'false') {
 			$('.page').hide();
+		}
+		if (getCookie('mode') == 'keynote') {
+			$('#play').click();
 		}
 		
 		var fontsize = getCookie('fontsize');

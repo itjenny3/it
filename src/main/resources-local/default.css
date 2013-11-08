@@ -14,36 +14,37 @@ h1 small,h2 small,h3 small,h4 small,h5 small,h6 small {
 	color: #999999;
 }
 
-h1 {
+.keynote h1 {
 	font-size: 90px;
 	line-height: 100px;
 }
 
-h2 {
+.keynote h2 {
 	font-size: 70px;
 	line-height: 80px;
 }
 
-h3 {
+.keynote h3 {
 	font-size: 60px;
 	line-height: 70px;
 }
 
-h4 {
+.keynote h4 {
 	font-size: 50px;
 	line-height: 60px;
 }
 
-h5 {
+.keynote h5 {
 	font-size: 40px;
 	line-height: 50px;
 }
 
-h6 {
+.keynote h6 {
 	font-size: 30px;
 	line-height: 40px;
 }
 
+/*
 h1 small {
 	font-size: 80px;
 }
@@ -58,6 +59,37 @@ h3 small {
 
 h4 small {
 	font-size: 50px;
+}
+*/
+
+.word h1 {
+	font-size: 40px;
+	line-height: 50px;
+}
+
+.word h2 {
+	font-size: 35px;
+	line-height: 45px;
+}
+
+.word h3 {
+	font-size: 30px;
+	line-height: 40px;
+}
+
+.word h4 {
+	font-size: 25px;
+	line-height: 35px;
+}
+
+.word h5 {
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.word h6 {
+	font-size: 15px;
+	line-height: 25px;
 }
 
 p {
@@ -114,8 +146,8 @@ pre {
 	background-color: #D64F21;
 }
 
-.background pre {
+/* .background pre {
 	border: 0px;
 	color: #FFF;
 	background-color: #FD6632;
-}
+ */}

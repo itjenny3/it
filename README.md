@@ -24,44 +24,14 @@ Skill Set
  
  
 개발 환경 세팅
----------------
+--------------
 ### JDK ###
 
-설치하기
-
-	$ yum install java-1.6.0-openjdk.x86_64 java-1.6.0-openjdk-devel.x86_64
-	
-[Java 다운로드 참조](http://www.oracle.com/technetwork/java/javaee/downloads/index.html)
+    [설치하기](http://support.apple.com/kb/DL1572
 
 ### MySQL ###
 
-설치하기
-
-	$ yum install mysql-server
-
-/etc/my.cnf 파일에 다음 내용 추가하여 한글 지원
-	
-	[mysqld]
-	character-set-server=utf8
-	collation-server=utf8_general_ci
-	init_connect=SET collation_connection=utf8_general_ci
-	init_connect=SET NAMES utf8
-
-	[client]
-	default-character-set=utf8
-
-	[mysql]
-	default-character-set=utf8
-	
-[MySQL 다운로드 참고](http://dev.mysql.com/downloads/mysql)
-
-시작하기
-
-	$ service mysqld start
-
-기본 DB, Table 생성하기
-
-	$ mysql -u root < src/main/db/create.sql
+    [설치하기](http://dev.mysql.com/downloads/mysql/)
 
 ### Eclipse EE ###
 
@@ -72,6 +42,9 @@ Skill Set
 ### Maven ###
 
 [다운로드](http://maven.apache.org/download.html)
+
+    2.2.1 버전 다운로드
+    /etc/paths에 maven의 bin 폴더를 PATH로 추가
 
 ### Tomcat ###
 
@@ -88,7 +61,7 @@ lombok.jar를 더블클릭하여 수행하여 설치한다.
 	$ git clone https://github.com/itjenny3/it.git
 	$ mvn eclipse:clean eclipse:eclipse
 
- - STS의 Package Explorer에 우클릭 후 Import > General > Existing Projects into Workspace 선택 후 Browser를 클릭한다.
+ - Eclipse의 Package Explorer에 우클릭 후 Import > General > Existing Projects into Workspace 선택 후 Browser를 클릭한다.
 
  - Package Explorer에서 it 우클릭 > Configure > Convert To Maven Project를 수행하여 maven project로 생성한다.
 
@@ -141,6 +114,11 @@ Eclipse Setting
 
  - Preference > Server > Runtime Environments > Add 하여 Tomcat 다운로드 경로 추가
 
+### Maven 연동 ###
+
+ - Eclipse > Preference > Maven > Installations > Add 하여 Maven 다운로드 경로 추가
+
+
 ### Plugin 설치 ###
 
 Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다.
@@ -156,7 +134,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
  - Checkstyle
 
 		URL : http://eclipse-cs.sf.net/update
-		Help > Eclipse Marketplace > Checkstyle 검색 후 설치
+		Help > Eclipse Marketplace > Checkstyle 검색 후 설치 (5.x 버전만 설치함)
 		활성화 : 프로젝트 이름을 우클릭 후 Checkstyle > Activate Checkstyle
 		View : Window > Show View > Others > Checkstyle > Checkstyle violations
 	
@@ -180,13 +158,11 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
  - Vrapper (optional)
 
  		Vim plugin
-		설치하면 상단에 V 모양의 이미지가 추가된다.
+		설치하면 상단에 V 모양의 이미지가 추가된다.  클릭하면 vim 모드이다.
  		
 
 ### 설정 ###
-
  - Java Convention을 기본 템플릿으로 사용함
-
  - JavaScript Convention을 기본 템플릿으로 사용함
 
  - Checkstyle 설정파일 불러오기
@@ -211,7 +187,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 
 		Preference > General > Workspace > New text file line delimiter : Unix
 
- - md 파일 editor 설정
+ - colors and Fonts/Basic
 
 		Preferences/General/Editors/File Associations/*.md 파일에 Text Editor 추가한다.
 
@@ -242,13 +218,47 @@ Project Properties > Java Build Path > Order and Export 에서 아래와 같은 
 	src/main/java
 	src/main/resources
 	src/main/resources-local
-	src/main/resources
+	src/test/java
 
 ### 검색 시 특정 폴더 제외 ###
+
 Project Properties -> Resource -> resource filter -> exclude all, folder 선택
 	
+
 운영 서버 설치
 -----------------------------------
+### JDK ###
+
+설치하기
+
+    $ yum install java-1.6.0-openjdk.x86_64 java-1.6.0-openjdk-devel.x86_64
+    [Java 다운로드 참조](http://www.oracle.com/technetwork/java/javaee/downloads/index.html)
+
+### MySQL ###
+
+설치하기
+
+	$ yum install mysql-server
+
+/etc/my.cnf 파일에 다음 내용 추가하여 한글 지원
+	
+	[mysqld]
+	character-set-server=utf8
+	collation-server=utf8_general_ci
+	init_connect=SET collation_connection=utf8_general_ci
+	init_connect=SET NAMES utf8
+
+	[client]
+	default-character-set=utf8
+
+	[mysql]
+	default-character-set=utf8
+	
+[MySQL 다운로드 참고](http://dev.mysql.com/downloads/mysql)
+
+시작하기
+
+	$ service mysqld start
 ### Tomcat ###
 
 설치하기
