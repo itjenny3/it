@@ -9,8 +9,8 @@ import lombok.Data;
 
 import org.hibernate.annotations.Index;
 
-@Entity
 @Data
+@Entity
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

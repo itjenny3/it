@@ -27,7 +27,7 @@ Skill Set
 --------------
 ### JDK ###
 
-    [설치하기](http://support.apple.com/kb/DL1572
+    [설치하기](http://support.apple.com/kb/DL1572)
 
 ### MySQL ###
 

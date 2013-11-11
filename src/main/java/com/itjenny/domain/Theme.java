@@ -6,8 +6,8 @@ import javax.persistence.Id;
 
 import lombok.Data;
 
-@Entity
 @Data
+@Entity
 public class Theme {
     @Id
     private String title;
