@@ -23,7 +23,7 @@ public class ArticleRepositoryTest extends CommonTest {
     private static final String TITLE3 = "table";
     private static final String CONTENT1 = "Skill Set0\n---------\n - Spring : JAVA Framework\n\nSkill Set\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer\n\nSkill Set2\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer2\n\nSkill Set3\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer3\n\nSkill Set4\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer4\n\nSkill Set5\n---------\n - Spring : Java Framework\n\nquiz\n--------\nquestion\n> answer5\n\n";
     private static final String CONTENT2 = "private";
-    private static final String CONTENT3 = "| Tables        | Are           | Cool  |\n| ------------- |:-------------:| -----:|\n | col 3 is      | right-aligned | $1600 |\n | col 2 is      | centered      |   $12 |\n | zebra stripes | are neat      |    $1 |";
+    private static final String CONTENT3 = "| Tables        | Are           | Cool  |\n| ------------- |:-------------:| -----:|\n| col 3 is      | right-aligned | $1600 |\n| col 2 is      | centered      |   $12 |\n| zebra stripes | are neat      |    $1 |";
     private static final String USERID1 = "itjenny";
 
     @Test
