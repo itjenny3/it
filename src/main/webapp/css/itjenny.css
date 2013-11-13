@@ -1,20 +1,20 @@
 @font-face {
-	font-family: 'HU엣지고딕110';
+	font-family: 'HUedgeGothic110';
 	font-style: normal;
 	font-weight: normal;
-	src: url('/font/HU엣지고딕110.eot');
-	src: url('/font/HU엣지고딕110.eot?#iefix') format('embedded-opentype'),
-		url('/font/HU엣지고딕110.woff') format('woff'), url('/font/HU엣지고딕110.ttf')
+	src: url('/font/HUedgeGothic110.eot');
+	src: url('/font/HUedgeGothic110.eot?#iefix') format('embedded-opentype'),
+		url('/font/HUedgeGothic110.woff') format('woff'), url('/font/HUedgeGothic110.ttf')
 		format('truetype');
 }
 
 @font-face {
-	font-family: 'HU젠120';
+	font-family: 'HUzen120';
 	font-style: normal;
 	font-weight: normal;
-	src: url('/font/HU젠120.eot');
-	src: url('/font/HU젠120.eot?#iefix') format('embedded-opentype'),
-		url('/font/HU젠120.woff') format('woff'), url('/font/HU젠120.ttf')
+	src: url('/font/HUzen120.eot');
+	src: url('/font/HUzen120.eot?#iefix') format('embedded-opentype'),
+		url('/font/HUzen120.woff') format('woff'), url('/font/HUzen120.ttf')
 		format('truetype');
 }
 
@@ -24,14 +24,14 @@ html {
 
 body {
 	height: 100%;
-	font-family: 'HU엣지고딕110';
+	font-family: 'HUedgeGothic110';
 	font-size: 30px;
 	line-height: 200%;
 }
 
 code,pre {
 	text-align: left;
-	font-family: 'HU엣지고딕110';
+	font-family: 'HUedgeGothic110';
 	font-size: 25px;
 	line-height: 200%;
 }
