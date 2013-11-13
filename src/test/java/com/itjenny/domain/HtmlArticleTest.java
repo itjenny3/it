@@ -4,21 +4,36 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.pegdown.Extensions;
 import org.pegdown.PegDownProcessor;
 
 import com.itjenny.common.CommonTest;
+import com.itjenny.common.ResourceFile;
 import com.itjenny.support.Const;
 
 public class HtmlArticleTest extends CommonTest {
+    @Rule
+    public ResourceFile md1 = new ResourceFile("/sample/1.md");
+
+    @Rule
+    public ResourceFile md2 = new ResourceFile("/sample/2.md");
+
     private PegDownProcessor pegDownProcessor = new PegDownProcessor(
 	    Extensions.ALL);
+    
+    @Test
+    public void convertArticle() throws IOException {
+	HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "", md2.getContent());
+	System.out.println(htmlArticle.getChapters().toString());
+    }
 
     @Test
-    public void testSection() {
+    public void convertSection() {
 	// Given
 	String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.";
 
@@ -36,7 +51,7 @@ public class HtmlArticleTest extends CommonTest {
     }
 
     @Test
-    public void testQuiz() {
+    public void convertQuiz() {
 	// Given
 	String content = "# QUIZ\nquestion1\n>answer1\n";
 
@@ -55,7 +70,7 @@ public class HtmlArticleTest extends CommonTest {
     }
 
     @Test
-    public void testChapter() {
+    public void convertChapter() {
 	// Given
 	String content = "# title0\nthis is first\nthis is second\n# title1\nthis is first\nthis is second.\n# QUIZ\nquestion1\n>answer1\n";
 

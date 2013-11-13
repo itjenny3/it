@@ -68,7 +68,7 @@ function sendAnswer(id) {
 }
 
 $(window).scroll(function() {
-    setCurrent();
+    //setCurrent();
 });
 
 function setCurrent() {

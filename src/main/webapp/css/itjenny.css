@@ -24,7 +24,6 @@ html {
 
 body {
 	height: 100%;
-	text-align: center;
 	font-family: 'HU엣지고딕110';
 	font-size: 30px;
 	line-height: 200%;
@@ -35,10 +34,6 @@ code,pre {
 	font-family: 'HU엣지고딕110';
 	font-size: 25px;
 	line-height: 200%;
-}
-
-.current {
-	cursor: pointer;
 }
 
 .backgroundTitle a {

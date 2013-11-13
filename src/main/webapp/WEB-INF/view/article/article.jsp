@@ -59,6 +59,7 @@ ${css}
 					</div>
 				</c:otherwise>
 			</c:choose>
+			<div style="clear: both"></div>
 		</c:forEach>
 
 		<c:choose>

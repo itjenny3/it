@@ -8,19 +8,13 @@ h1,h2,h3,h4,h5,h6 {
 	text-rendering: optimizelegibility;
 }
 
-h1 small,h2 small,h3 small,h4 small,h5 small,h6 small {
-	font-weight: normal;
-	line-height: 1;
-	color: #999999;
-}
-
 .keynote h1 {
 	font-size: 90px;
 	line-height: 100px;
 }
 
 .keynote h2 {
-	font-size: 70px;
+	font-size: 90px;
 	line-height: 80px;
 }
 
@@ -44,23 +38,6 @@ h1 small,h2 small,h3 small,h4 small,h5 small,h6 small {
 	line-height: 40px;
 }
 
-/*
-h1 small {
-	font-size: 80px;
-}
-
-h2 small {
-	font-size: 70px;
-}
-
-h3 small {
-	font-size: 60px;
-}
-
-h4 small {
-	font-size: 50px;
-}
-*/
 .word h1 {
 	font-size: 40px;
 	line-height: 50px;
@@ -92,18 +69,22 @@ h4 small {
 }
 
 p {
-	margin: 0;
-}
-
-ul,ol {
-	padding: 0;
-	display: inline;
 	text-align: left;
+	margin: 0 10%;
 }
 
 li {
-	list-style-position: inside;
-	text-align: center;
+	text-align: left;
+	margin: 0 10%;
+}
+
+li p {
+	text-align: left;
+	margin: 0 0;
+}
+
+blockquote {
+	text-align: left;
 }
 
 blockquote p {
@@ -114,7 +95,6 @@ blockquote p {
 
 code,pre {
 	padding: 0 3px 2px;
-	font-size: 12px;
 	color: #333333;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -125,7 +105,6 @@ pre {
 	display: inline-block;
 	padding: 6px 15px;
 	margin: 15x 0;
-	font-size: 13px;
 	word-break: break-all;
 	word-wrap: break-word;
 	white-space: pre;
@@ -138,16 +117,14 @@ pre {
 	border-radius: 4px;
 }
 
-.background {
-	min-height: 100%;
+#container {
+	background-color: #26B1AA;
 	text-align: center;
-	color: #FFF;
-	background-color: #D64F21;
 }
 
-/* .background pre {
-	border: 0px;
+.background {
+	display: inline-block;
+	min-height: 100%;
 	color: #FFF;
-	background-color: #FD6632;
- */
+	/* 	background-color: #D64F21; */
 }
