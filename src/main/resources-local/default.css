@@ -1,11 +1,15 @@
 h1,h2,h3,h4,h5,h6 {
-	margin: 0;
-	padding: 50px 0 40px 0;
+	margin: 50px 0 40px 0;
+	padding: 0;
 	font-family: inherit;
 	font-weight: bold;
 	line-height: 1;
 	color: inherit;
 	text-rendering: optimizelegibility;
+}
+
+.keynote {
+	height: 100%;
 }
 
 .keynote h1 {
@@ -69,22 +73,29 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
+	display: table;
+	margin: 0 auto;
+}
+
+ul,ol {
 	text-align: left;
-	margin: 0 10%;
+	display: table;
+	margin: 0 auto;
 }
 
 li {
 	text-align: left;
-	margin: 0 10%;
 }
 
 li p {
-	text-align: left;
+	display: inline-block;
 	margin: 0 0;
 }
 
 blockquote {
 	text-align: left;
+	display: table;
+	margin: 0 auto;
 }
 
 blockquote p {
@@ -101,29 +112,20 @@ li pre {
 	margin: 0;
 }
 
-/* pre {
-	display: inline-block;
-	padding: 6px 15px;
-	margin: 15x 0;
-	word-break: break-all;
-	word-wrap: break-word;
-	white-space: pre;
-	white-space: pre-wrap;
-	background-color: #f5f5f5;
-	border: 1px solid #ccc;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-} */
-
 #container {
-	background-color: #26B1AA;
 	text-align: center;
+	padding: 0 5%;
 }
 
-.background {
-	min-height: 100%;
-	color: #FFF;
-	/* 	background-color: #D64F21; */
+.keynote .background {
+	text-align: center;
+	background-color: #26B1AA;
+	height: 100%;
+	padding-bottom: 5%;
+}
+
+.word .background {
+	text-align: center;
+	background-color: #26B1AA;
+	height: 100%;
 }

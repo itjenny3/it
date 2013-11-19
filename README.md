@@ -185,6 +185,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 		Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
 		Preference > Web > JSP Files > Encoding : ISO 10646/Unicode(UTF-8)
 		Preference > General > Content Types > Text > *.txt 선택 후 UTF-8을 입력 후 Update
+		Preference > General > Content Types > Text > *.md 추가 후 UTF-8을 입력
 		Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 입력 후 Update
 		Preference > General > Content Types > Text > Javascript Source File > *.js > UTF-8을 입력 후 Update
 		Project 우클릭 > properties > Resource > Text file encoding > Other : UTF-8 선택
