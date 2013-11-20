@@ -27,11 +27,11 @@ Skill Set
 --------------
 ### JDK ###
 
-    [설치하기](http://support.apple.com/kb/DL1572)
+[설치하기](http://support.apple.com/kb/DL1572)
 
 ### MySQL ###
 
-    [설치하기](http://dev.mysql.com/downloads/mysql/)
+[설치하기](http://dev.mysql.com/downloads/mysql/)
 
 ### Eclipse EE ###
 
@@ -157,14 +157,14 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 
  - Vrapper (optional)
 
- 		Vim plugin
+		Vim plugin
 		설치하면 상단에 V 모양의 이미지가 추가된다.  클릭하면 vim 모드이다.
  		
 
 ### 설정 ###
  - Java Convention을 기본 템플릿으로 사용함
 
-        New를 클릭하여 새로운 profile 생성 후 Edit를 눌러 아래 내용 수정한다.
+        Preference > Java > Code Style > Formatter에서 New를 클릭하여 새로운 profile 생성 후 Edit를 눌러 아래 내용을 수정한다.
         Indentation > General settings > Tab policy: spaces only
         Indentation > General settings > Indentation size: 4
         Indentation > General settings > Tab size: 4
@@ -184,6 +184,7 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
 		Preference > Web > CSS Files > Encoding : ISO 10646/Unicode(UTF-8)
 		Preference > Web > HTML Files > Encoding : ISO 10646/Unicode(UTF-8)
 		Preference > Web > JSP Files > Encoding : ISO 10646/Unicode(UTF-8)
+        Preference > General > Workspace > Text file encoding : UTF-8 선택
 		Preference > General > Content Types > Text > *.txt 선택 후 UTF-8을 입력 후 Update
 		Preference > General > Content Types > Text > *.md 추가 후 UTF-8을 입력
 		Preference > General > Content Types > Text > Java Properties Files > *.properties > UTF-8을 입력 후 Update

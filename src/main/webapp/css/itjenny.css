@@ -36,37 +36,6 @@ code,pre {
 	line-height: 200%;
 }
 
-.backgroundTitle {
-	min-height: 100%;
-	text-align: center;
-	color: #000;
-	background-color: #FFF;
-}
-
-/* a {
-	color: #fff;
-}
-
-a:link {
-	text-decoration: none;
-	color: #fff;
-}
-
-a:visited {
-	text-decoration: none;
-	color: #fff;
-}
-
-a:active {
-	text-decoration: none;
-	color: #fff;
-}
-
-a:hover {
-	text-decoration: none;
-	color: #fff;
-} */
-
 .background1 {
 	min-height: 100%;
 	text-align: center;

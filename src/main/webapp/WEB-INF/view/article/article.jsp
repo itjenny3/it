@@ -40,7 +40,14 @@ ${css}
 				<c:when
 					test="${!loop.first and loop.last and innerLoop.first and !license}">
 					<div class="section lastChapter background">
-						<h1>${section.subtitle}</h1>
+						<c:choose>
+							<c:when test="${section.subtitleSize == 1}">
+								<h1>${section.subtitle}</h1>
+							</c:when>
+							<c:otherwise>
+								<h2>${section.subtitle}</h2>
+							</c:otherwise>
+						</c:choose>
 						${section.content}
 
 						<%-- pagination --%>
@@ -51,7 +58,14 @@ ${css}
 				<%-- normal section --%>
 				<c:otherwise>
 					<div class="section background">
-						<h1>${section.subtitle}</h1>
+						<c:choose>
+							<c:when test="${section.subtitleSize == 1}">
+								<h1>${section.subtitle}</h1>
+							</c:when>
+							<c:otherwise>
+								<h2>${section.subtitle}</h2>
+							</c:otherwise>
+						</c:choose>
 						${section.content}
 
 						<%-- pagination --%>

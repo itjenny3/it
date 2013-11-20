@@ -8,5 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 public class Section {
     private Integer index;
     private String subtitle = StringUtils.EMPTY;
+    private Integer subtitleSize = 1;
     private String content = StringUtils.EMPTY;
 }

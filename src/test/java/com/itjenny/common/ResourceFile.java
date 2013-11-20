@@ -36,11 +36,11 @@ public class ResourceFile extends ExternalResource {
     }
 
     public String getContent() throws IOException {
-	StringBuilder contents = new StringBuilder();
+	StringBuilder content = new StringBuilder();
 	String line;
 	while ((line = buffer.readLine()) != null) {
-	    contents.append(line).append('\n');
+	    content.append(line).append('\n');
 	}
-	return contents.toString();
+	return content.toString();
     }
 }

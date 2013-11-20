@@ -8,6 +8,10 @@ h1,h2,h3,h4,h5,h6 {
 	text-rendering: optimizelegibility;
 }
 
+body {
+	background-image: url(/img/background1.jpg);
+}
+
 .keynote {
 	height: 100%;
 }
@@ -88,7 +92,7 @@ li {
 }
 
 li p {
-	display: inline-block;
+	display: block;
 	margin: 0 0;
 }
 
@@ -117,15 +121,19 @@ li pre {
 	padding: 0 5%;
 }
 
+.backgroundTitle {
+	text-align: center;
+	min-height: 100%;
+	padding-bottom: 5%;
+}
+
 .keynote .background {
 	text-align: center;
-	background-color: #26B1AA;
-	height: 100%;
+	min-height: 100%;
 	padding-bottom: 5%;
 }
 
 .word .background {
 	text-align: center;
-	background-color: #26B1AA;
 	height: 100%;
 }
