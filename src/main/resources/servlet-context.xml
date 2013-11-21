@@ -1,106 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:device="http://www.springframework.org/schema/mobile/device"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/mobile/device http://www.springframework.org/schema/mobile/device/spring-mobile-device-1.0.xsd
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:device="http://www.springframework.org/schema/mobile/device"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/mobile/device http://www.springframework.org/schema/mobile/device/spring-mobile-device-1.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<context:property-placeholder location="classpath:application.properties" />
+    <context:property-placeholder location="classpath:application.properties" />
 
-	<mvc:annotation-driven>
-		<mvc:argument-resolvers>
-			<bean
-				class="com.itjenny.support.web.argumentresolver.LoginUserHandlerMethodArgumentResolver"
-				p:sessionService-ref="sessionService" />
-		</mvc:argument-resolvers>
-	</mvc:annotation-driven>
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <bean
+                class="com.itjenny.support.web.argumentresolver.LoginUserHandlerMethodArgumentResolver"
+                p:sessionService-ref="sessionService" />
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
 
-	<mvc:interceptors>
-		<bean class="com.itjenny.support.web.GlobalRequestAttributesInterceptor" />
-	</mvc:interceptors>
+    <mvc:interceptors>
+        <bean class="com.itjenny.support.web.GlobalRequestAttributesInterceptor" />
+    </mvc:interceptors>
 
-	<!-- @Controller만 빈으로 등록함 -->
-	<context:component-scan base-package="com.itjenny.web">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-	<context:annotation-config />
+    <!-- @Controller만 빈으로 등록함 -->
+    <context:component-scan base-package="com.itjenny.web">
+        <context:include-filter type="annotation"
+            expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <context:annotation-config />
 
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-		<property name="order" value="1" />
-	</bean>
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="order" value="2" />
-	</bean>
+    <bean
+        class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="order" value="1" />
+    </bean>
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="2" />
+    </bean>
 
-	<!-- Spring Message -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>classpath:messages</value>
-			</list>
-		</property>
-		<property name="cacheSeconds" value="60" />
-		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
+    <!-- Spring Message -->
+    <bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:messages</value>
+            </list>
+        </property>
+        <property name="cacheSeconds" value="60" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
 
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+    <bean id="localeResolver"
+        class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
 
-	<!-- TILES2 LAYOUT -->
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/view/**/tiles.xml</value>
-			</list>
-		</property>
-		<property name="preparerFactoryClass"
-			value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
-	</bean>
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles2.TilesView" />
-		<property name="contentType" value="text/html; charset=UTF-8" />
-	</bean>
+    <!-- TILES2 LAYOUT -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/view/**/tiles.xml</value>
+            </list>
+        </property>
+        <property name="preparerFactoryClass"
+            value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
+    </bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass"
+            value="org.springframework.web.servlet.view.tiles2.TilesView" />
+        <property name="contentType" value="text/html; charset=UTF-8" />
+    </bean>
 
-	<mvc:resources mapping="/font/**" location="/font/" />
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/js/**" location="/js/" />
-	<mvc:resources mapping="/img/**" location="/img/" />
-	<mvc:resources mapping="/*.html" location="/" />
+    <mvc:resources mapping="/font/**" location="/font/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/img/**" location="/img/" />
+    <mvc:resources mapping="/*.html" location="/" />
 
-	<!-- AJAX를 사용하기 위해서 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean
-					class="org.springframework.http.converter.StringHttpMessageConverter">
-					<property name="supportedMediaTypes">
-						<list>
-							<value>text/plain;charset=utf-8</value>
-						</list>
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
+    <!-- AJAX를 사용하기 위해서 -->
+    <bean
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean
+                    class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/plain;charset=utf-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
 
-	<bean class="org.springframework.social.connect.web.ProviderSignInController">
-		<constructor-arg value="${application.url}" />
-		<property name="signUpUrl" value="/signup" />
-		<property name="applicationUrl" value="${application.url}" />
-		<property name="postSignInUrl" value="/authenticate" />
-	</bean>
+    <bean class="org.springframework.social.connect.web.ProviderSignInController">
+        <constructor-arg value="${application.url}" />
+        <property name="signUpUrl" value="/signup" />
+        <property name="applicationUrl" value="${application.url}" />
+        <property name="postSignInUrl" value="/authenticate" />
+    </bean>
 
-	<bean class="com.itjenny.social.security.ItSecuritySignUpController" />
+    <bean class="com.itjenny.social.security.ItSecuritySignUpController" />
 </beans>

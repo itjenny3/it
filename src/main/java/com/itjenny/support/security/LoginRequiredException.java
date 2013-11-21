@@ -9,6 +9,6 @@ public class LoginRequiredException extends Exception implements ErrorCoded {
 
     @Override
     public String getErrorCode() {
-	return ERROR_CODE;
+        return ERROR_CODE;
     }
 }

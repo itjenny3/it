@@ -19,12 +19,12 @@ public class ItSecuritySignInAdapter implements SignInAdapter {
     private SocialUserService socialUserService;
 
     public String signIn(String localUserId, Connection<?> connection,
-	    NativeWebRequest nativeWebRequest) {
-	ConnectionKey connectionKey = connection.getKey();
-	SocialUser socialUser = socialUserService.findByUserIdAndConnectionKey(
-		localUserId, connectionKey);
-	nativeWebRequest.setAttribute(SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME,
-		socialUser, RequestAttributes.SCOPE_SESSION);
-	return null;
+            NativeWebRequest nativeWebRequest) {
+        ConnectionKey connectionKey = connection.getKey();
+        SocialUser socialUser = socialUserService.findByUserIdAndConnectionKey(
+                localUserId, connectionKey);
+        nativeWebRequest.setAttribute(SIGN_IN_DETAILS_SESSION_ATTRIBUTE_NAME,
+                socialUser, RequestAttributes.SCOPE_SESSION);
+        return null;
     }
 }

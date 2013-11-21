@@ -21,15 +21,15 @@ public class AutoLoginAuthenticator {
     private RememberMeServices rememberMeServices;
 
     public void login(String email, String password) {
-	Assert.notNull(email, "UserId cannot be null!");
-	Assert.notNull(password, "Password cannot be null!");
+        Assert.notNull(email, "UserId cannot be null!");
+        Assert.notNull(password, "Password cannot be null!");
 
-	UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
-		email, password);
-	authRequest.setDetails(ProviderType.it);
-	Authentication successfulAuthentication = authenticationManager
-		.authenticate(authRequest);
-	SecurityContextHolder.getContext().setAuthentication(
-		successfulAuthentication);
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
+                email, password);
+        authRequest.setDetails(ProviderType.it);
+        Authentication successfulAuthentication = authenticationManager
+                .authenticate(authRequest);
+        SecurityContextHolder.getContext().setAuthentication(
+                successfulAuthentication);
     }
 }

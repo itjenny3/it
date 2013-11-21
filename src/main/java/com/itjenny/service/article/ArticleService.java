@@ -22,20 +22,20 @@ public class ArticleService {
     private ArticleRepository articleRepository;
 
     public void save(Article article) {
-	articleRepository.save(article);
+        articleRepository.save(article);
     }
 
     public List<Article> getAll() {
-	return articleRepository.findAll(sessionService.getLoginUser()
-		.getUserId());
+        return articleRepository.findAll(sessionService.getLoginUser()
+                .getUserId());
     }
 
     public Article get(String title) {
-	Article article = null;
-	if (articleRepository.exists(title)) {
-	    article = articleRepository.findOne(title, sessionService
-		    .getLoginUser().getUserId());
-	}
-	return article;
+        Article article = null;
+        if (articleRepository.exists(title)) {
+            article = articleRepository.findOne(title, sessionService
+                    .getLoginUser().getUserId());
+        }
+        return article;
     }
 }

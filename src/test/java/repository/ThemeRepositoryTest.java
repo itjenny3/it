@@ -23,11 +23,11 @@ public class ThemeRepositoryTest extends CommonTest {
 
     @Test
     public void setInit() throws IOException {
-	// Given
-	Theme theme = new Theme();
-	theme.setTitle(TITLE1);
-	theme.setCss(css1.getContent());
-	theme.setUserId(USERID);
-	themeRepository.save(theme);
+        // Given
+        Theme theme = new Theme();
+        theme.setTitle(TITLE1);
+        theme.setCss(css1.getContent());
+        theme.setUserId(USERID);
+        themeRepository.save(theme);
     }
 }

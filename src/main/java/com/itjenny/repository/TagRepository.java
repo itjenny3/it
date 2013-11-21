@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import com.itjenny.domain.Tag;
 
-
 public interface TagRepository extends JpaRepository<Tag, String> {
     @Query("select distinct tag from Tag")
     List<String> findTags();

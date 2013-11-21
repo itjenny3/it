@@ -1,139 +1,139 @@
 h1,h2,h3,h4,h5,h6 {
-	margin: 50px 0 40px 0;
-	padding: 0;
-	font-family: inherit;
-	font-weight: bold;
-	line-height: 1;
-	color: inherit;
-	text-rendering: optimizelegibility;
+    margin: 50px 0 40px 0;
+    padding: 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+    text-rendering: optimizelegibility;
 }
 
 body {
-	background-image: url(/img/background1.jpg);
+    background-image: url(/img/background1.jpg);
 }
 
 .keynote {
-	height: 100%;
+    height: 100%;
 }
 
 .keynote h1 {
-	font-size: 90px;
-	line-height: 100px;
+    font-size: 90px;
+    line-height: 100px;
 }
 
 .keynote h2 {
-	font-size: 90px;
-	line-height: 80px;
+    font-size: 90px;
+    line-height: 80px;
 }
 
 .keynote h3 {
-	font-size: 60px;
-	line-height: 70px;
+    font-size: 60px;
+    line-height: 70px;
 }
 
 .keynote h4 {
-	font-size: 50px;
-	line-height: 60px;
+    font-size: 50px;
+    line-height: 60px;
 }
 
 .keynote h5 {
-	font-size: 40px;
-	line-height: 50px;
+    font-size: 40px;
+    line-height: 50px;
 }
 
 .keynote h6 {
-	font-size: 30px;
-	line-height: 40px;
+    font-size: 30px;
+    line-height: 40px;
 }
 
 .word h1 {
-	font-size: 40px;
-	line-height: 50px;
+    font-size: 40px;
+    line-height: 50px;
 }
 
 .word h2 {
-	font-size: 35px;
-	line-height: 45px;
+    font-size: 35px;
+    line-height: 45px;
 }
 
 .word h3 {
-	font-size: 30px;
-	line-height: 40px;
+    font-size: 30px;
+    line-height: 40px;
 }
 
 .word h4 {
-	font-size: 25px;
-	line-height: 35px;
+    font-size: 25px;
+    line-height: 35px;
 }
 
 .word h5 {
-	font-size: 20px;
-	line-height: 30px;
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .word h6 {
-	font-size: 15px;
-	line-height: 25px;
+    font-size: 15px;
+    line-height: 25px;
 }
 
 p {
-	display: table;
-	margin: 0 auto;
+    display: table;
+    margin: 0 auto;
 }
 
 ul,ol {
-	text-align: left;
-	display: table;
-	margin: 0 auto;
+    text-align: left;
+    display: table;
+    margin: 0 auto;
 }
 
 li {
-	text-align: left;
+    text-align: left;
 }
 
 li p {
-	display: block;
-	margin: 0 0;
+    display: block;
+    margin: 0 0;
 }
 
 blockquote {
-	text-align: left;
-	display: table;
-	margin: 0 auto;
+    text-align: left;
+    display: table;
+    margin: 0 auto;
 }
 
 blockquote p {
-	margin-bottom: 0;
-	font-size: 30px;
-	font-weight: 300;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: 300;
 }
 
 pre {
-	margin: 0 10%;
+    margin: 0 10%;
 }
 
 li pre {
-	margin: 0;
+    margin: 0;
 }
 
 #container {
-	text-align: center;
-	padding: 0 5%;
+    text-align: center;
+    padding: 0 5%;
 }
 
 .backgroundTitle {
-	text-align: center;
-	min-height: 100%;
-	padding-bottom: 5%;
+    text-align: center;
+    min-height: 100%;
+    padding-bottom: 5%;
 }
 
 .keynote .background {
-	text-align: center;
-	min-height: 100%;
-	padding-bottom: 5%;
+    text-align: center;
+    min-height: 100%;
+    padding-bottom: 5%;
 }
 
 .word .background {
-	text-align: center;
-	height: 100%;
+    text-align: center;
+    height: 100%;
 }

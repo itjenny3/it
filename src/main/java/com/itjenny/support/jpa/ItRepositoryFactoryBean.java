@@ -14,53 +14,53 @@ import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
 
 public class ItRepositoryFactoryBean<T extends Repository<S, ID>, S, ID extends Serializable>
-	extends JpaRepositoryFactoryBean<T, S, ID> {
+        extends JpaRepositoryFactoryBean<T, S, ID> {
 
     @Override
     protected RepositoryFactorySupport createRepositoryFactory(
-	    EntityManager entityManager) {
-	return new ItCommonRepositoryFactory(entityManager);
+            EntityManager entityManager) {
+        return new ItCommonRepositoryFactory(entityManager);
     }
 
     protected static class ItCommonRepositoryFactory extends
-	    JpaRepositoryFactory {
+            JpaRepositoryFactory {
 
-	public ItCommonRepositoryFactory(EntityManager entityManager) {
-	    super(entityManager);
-	}
+        public ItCommonRepositoryFactory(EntityManager entityManager) {
+            super(entityManager);
+        }
 
-	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected <T, ID extends Serializable> JpaRepository<?, ?> getTargetRepository(
-		RepositoryMetadata metadata, EntityManager entityManager) {
+        @Override
+        @SuppressWarnings({ "unchecked", "rawtypes" })
+        protected <T, ID extends Serializable> JpaRepository<?, ?> getTargetRepository(
+                RepositoryMetadata metadata, EntityManager entityManager) {
 
-	    Class<?> repositoryInterface = metadata.getRepositoryInterface();
+            Class<?> repositoryInterface = metadata.getRepositoryInterface();
 
-	    if (!isItCommonRepository(repositoryInterface)) {
-		return super.getTargetRepository(metadata, entityManager);
-	    }
+            if (!isItCommonRepository(repositoryInterface)) {
+                return super.getTargetRepository(metadata, entityManager);
+            }
 
-	    JpaEntityInformation<?, Serializable> entityInformation = getEntityInformation(metadata
-		    .getDomainType());
-	    ItCommonRepositoryImpl<?, ?> repo = new ItCommonRepositoryImpl(
-		    entityInformation, entityManager);
-	    repo.setLockMetadataProvider(LockModeRepositoryPostProcessor.INSTANCE
-		    .getLockMetadataProvider());
-	    return repo;
-	}
+            JpaEntityInformation<?, Serializable> entityInformation = getEntityInformation(metadata
+                    .getDomainType());
+            ItCommonRepositoryImpl<?, ?> repo = new ItCommonRepositoryImpl(
+                    entityInformation, entityManager);
+            repo.setLockMetadataProvider(LockModeRepositoryPostProcessor.INSTANCE
+                    .getLockMetadataProvider());
+            return repo;
+        }
 
-	@Override
-	protected Class<?> getRepositoryBaseClass(RepositoryMetadata metadata) {
-	    if (isItCommonRepository(metadata.getRepositoryInterface())) {
-		return ItCommonRepositoryImpl.class;
-	    }
-	    return super.getRepositoryBaseClass(metadata);
-	}
+        @Override
+        protected Class<?> getRepositoryBaseClass(RepositoryMetadata metadata) {
+            if (isItCommonRepository(metadata.getRepositoryInterface())) {
+                return ItCommonRepositoryImpl.class;
+            }
+            return super.getRepositoryBaseClass(metadata);
+        }
 
-	protected boolean isItCommonRepository(Class<?> repositoryInterface) {
+        protected boolean isItCommonRepository(Class<?> repositoryInterface) {
 
-	    return ItCommonRepository.class
-		    .isAssignableFrom(repositoryInterface);
-	}
+            return ItCommonRepository.class
+                    .isAssignableFrom(repositoryInterface);
+        }
     }
 }

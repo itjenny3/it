@@ -10,6 +10,6 @@ public class UpdatedDateEntityListener {
     @PreUpdate
     @PrePersist
     public void prePersistAndUpdate(HasUpdatedDate hud) {
-	hud.setUpdatedDate(new Date());
+        hud.setUpdatedDate(new Date());
     }
 }

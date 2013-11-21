@@ -8,6 +8,6 @@ public class CreatedDateEntityListener {
 
     @PrePersist
     public void prePersist(HasCreatedDate hcd) {
-	hcd.setCreatedDate(new Date());
+        hcd.setCreatedDate(new Date());
     }
 }

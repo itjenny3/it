@@ -18,8 +18,8 @@ public class ClasspathResourceUtils {
      * @return
      */
     public static File getResource(String resourcePath) {
-	ClassLoader loader = Thread.currentThread().getContextClassLoader();
-	return new File(loader.getResource(resourcePath).getFile());
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        return new File(loader.getResource(resourcePath).getFile());
     }
 
     /**
@@ -29,7 +29,7 @@ public class ClasspathResourceUtils {
      * @return
      */
     public static InputStream getResourceAsStream(String resourcePath) {
-	ClassLoader loader = Thread.currentThread().getContextClassLoader();
-	return loader.getResourceAsStream(resourcePath);
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        return loader.getResourceAsStream(resourcePath);
     }
 }

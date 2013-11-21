@@ -15,50 +15,50 @@ public class SessionService {
     private SocialUserService socialUserService;
 
     public SocialUser getLoginUser() {
-	if (!isAuthenticated()) {
-	    return SocialUser.GUEST_USER;
-	}
+        if (!isAuthenticated()) {
+            return SocialUser.GUEST_USER;
+        }
 
-	SocialUser socialUser;
-	if (isItUser()) {
-	    socialUser = socialUserService
-		    .findByEmail(getAuthenticatedUserName());
-	} else {
-	    socialUser = socialUserService
-		    .findByUserId(getAuthenticatedUserName());
-	}
-	if (socialUser == null) {
-	    return SocialUser.GUEST_USER;
-	}
-	return socialUser;
+        SocialUser socialUser;
+        if (isItUser()) {
+            socialUser = socialUserService
+                    .findByEmail(getAuthenticatedUserName());
+        } else {
+            socialUser = socialUserService
+                    .findByUserId(getAuthenticatedUserName());
+        }
+        if (socialUser == null) {
+            return SocialUser.GUEST_USER;
+        }
+        return socialUser;
     }
 
     public boolean isAuthenticated() {
-	return getAuthentication() == null ? false : getAuthentication()
-		.isAuthenticated();
+        return getAuthentication() == null ? false : getAuthentication()
+                .isAuthenticated();
     }
 
     public boolean isItUser() {
-	Authentication authentication = getAuthentication();
-	Object details = authentication.getDetails();
-	if (!(details instanceof ProviderType)) {
-	    return false;
-	}
+        Authentication authentication = getAuthentication();
+        Object details = authentication.getDetails();
+        if (!(details instanceof ProviderType)) {
+            return false;
+        }
 
-	ProviderType providerType = (ProviderType) details;
-	if (providerType == ProviderType.it) {
-	    return true;
-	}
+        ProviderType providerType = (ProviderType) details;
+        if (providerType == ProviderType.it) {
+            return true;
+        }
 
-	return false;
+        return false;
     }
 
     public Authentication getAuthentication() {
-	return SecurityContextHolder.getContext().getAuthentication();
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 
     private String getAuthenticatedUserName() {
-	return getAuthentication() == null ? null : getAuthentication()
-		.getName();
+        return getAuthentication() == null ? null : getAuthentication()
+                .getName();
     }
 }

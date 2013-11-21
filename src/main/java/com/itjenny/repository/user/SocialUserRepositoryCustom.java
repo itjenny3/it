@@ -8,5 +8,5 @@ import org.springframework.util.MultiValueMap;
 
 public interface SocialUserRepositoryCustom {
     List<SocialUser> findsByUserIdAndProviderUserIds(String userId,
-	    MultiValueMap<String, String> providerUserIds);
+            MultiValueMap<String, String> providerUserIds);
 }

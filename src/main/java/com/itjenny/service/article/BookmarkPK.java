@@ -12,7 +12,7 @@ public class BookmarkPK implements Serializable {
     }
 
     public BookmarkPK(String userId, String title) {
-	this.userId = userId;
-	this.title = title;
+        this.userId = userId;
+        this.title = title;
     }
 }

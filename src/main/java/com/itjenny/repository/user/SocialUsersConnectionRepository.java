@@ -17,7 +17,7 @@ import org.springframework.util.Assert;
 import com.itjenny.domain.user.SocialUser;
 
 public class SocialUsersConnectionRepository implements
-	UsersConnectionRepository {
+        UsersConnectionRepository {
     private SocialUserRepository socialUserRepository;
 
     private final ConnectionFactoryLocator connectionFactoryLocator;
@@ -27,57 +27,57 @@ public class SocialUsersConnectionRepository implements
     private ConnectionSignUp connectionSignUp;
 
     public SocialUsersConnectionRepository(
-	    SocialUserRepository socialUserRepository,
-	    ConnectionFactoryLocator connectionFactoryLocator,
-	    TextEncryptor textEncryptor) {
-	this.socialUserRepository = socialUserRepository;
-	this.connectionFactoryLocator = connectionFactoryLocator;
-	this.textEncryptor = textEncryptor;
+            SocialUserRepository socialUserRepository,
+            ConnectionFactoryLocator connectionFactoryLocator,
+            TextEncryptor textEncryptor) {
+        this.socialUserRepository = socialUserRepository;
+        this.connectionFactoryLocator = connectionFactoryLocator;
+        this.textEncryptor = textEncryptor;
     }
 
     public void setConnectionSignUp(ConnectionSignUp connectionSignUp) {
-	this.connectionSignUp = connectionSignUp;
+        this.connectionSignUp = connectionSignUp;
     }
 
     @Override
     public List<String> findUserIdsWithConnection(Connection<?> connection) {
-	List<String> usrs = new ArrayList<String>();
-	ConnectionKey key = connection.getKey();
-	List<SocialUser> users = socialUserRepository
-		.findsByProviderIdAndProviderUserId(key.getProviderId(),
-			key.getProviderUserId());
-	if (!users.isEmpty()) {
-	    for (SocialUser user : users) {
-		usrs.add(user.getUserId());
-	    }
-	    return usrs;
-	}
+        List<String> usrs = new ArrayList<String>();
+        ConnectionKey key = connection.getKey();
+        List<SocialUser> users = socialUserRepository
+                .findsByProviderIdAndProviderUserId(key.getProviderId(),
+                        key.getProviderUserId());
+        if (!users.isEmpty()) {
+            for (SocialUser user : users) {
+                usrs.add(user.getUserId());
+            }
+            return usrs;
+        }
 
-	if (connectionSignUp != null) {
-	    String newUserId = connectionSignUp.execute(connection);
-	    if (newUserId == null) {
-		// auto signup failed, so we need to go to a sign up form
-		return usrs;
-	    }
-	    createConnectionRepository(newUserId).addConnection(connection);
-	    usrs.add(newUserId);
-	}
-	// if empty we should go to the sign up form
-	return usrs;
+        if (connectionSignUp != null) {
+            String newUserId = connectionSignUp.execute(connection);
+            if (newUserId == null) {
+                // auto signup failed, so we need to go to a sign up form
+                return usrs;
+            }
+            createConnectionRepository(newUserId).addConnection(connection);
+            usrs.add(newUserId);
+        }
+        // if empty we should go to the sign up form
+        return usrs;
     }
 
     @Override
     public Set<String> findUserIdsConnectedTo(String providerId,
-	    Set<String> providerUserIds) {
-	List<String> userIds = socialUserRepository.findUsersConnectedTo(
-		providerId, providerUserIds);
-	return new HashSet<String>(userIds);
+            Set<String> providerUserIds) {
+        List<String> userIds = socialUserRepository.findUsersConnectedTo(
+                providerId, providerUserIds);
+        return new HashSet<String>(userIds);
     }
 
     @Override
     public ConnectionRepository createConnectionRepository(String userId) {
-	Assert.notNull(userId, "userId cannot be null.");
-	return new JpaConnectionRepository(userId, socialUserRepository,
-		connectionFactoryLocator, textEncryptor);
+        Assert.notNull(userId, "userId cannot be null.");
+        return new JpaConnectionRepository(userId, socialUserRepository,
+                connectionFactoryLocator, textEncryptor);
     }
 }

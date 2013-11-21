@@ -17,30 +17,30 @@ public class ResourceFile extends ExternalResource {
 
     @Override
     protected void before() throws Throwable {
-	super.before();
-	stream = getClass().getResourceAsStream(res);
-	reader = new InputStreamReader(stream, Charset.forName("utf-8"));
-	buffer = new BufferedReader(reader);
+        super.before();
+        stream = getClass().getResourceAsStream(res);
+        reader = new InputStreamReader(stream, Charset.forName("utf-8"));
+        buffer = new BufferedReader(reader);
     }
 
     @Override
     protected void after() {
-	IOUtils.closeQuietly(stream);
-	IOUtils.closeQuietly(buffer);
-	IOUtils.closeQuietly(reader);
-	super.after();
+        IOUtils.closeQuietly(stream);
+        IOUtils.closeQuietly(buffer);
+        IOUtils.closeQuietly(reader);
+        super.after();
     }
 
     public ResourceFile(String res) {
-	this.res = res;
+        this.res = res;
     }
 
     public String getContent() throws IOException {
-	StringBuilder content = new StringBuilder();
-	String line;
-	while ((line = buffer.readLine()) != null) {
-	    content.append(line).append('\n');
-	}
-	return content.toString();
+        StringBuilder content = new StringBuilder();
+        String line;
+        while ((line = buffer.readLine()) != null) {
+            content.append(line).append('\n');
+        }
+        return content.toString();
     }
 }

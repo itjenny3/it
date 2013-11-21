@@ -19,7 +19,7 @@ import org.springframework.social.ResourceNotFoundException;
  * @param <ID>
  */
 public interface ItCommonRepository<T, ID extends Serializable> extends
-	JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
+        JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
 
     /**
      * 엔티티를 ID기준으로 하나 검색한다. 단, 엔티티가 존재하지 않을 경우 {@link ResourceNotFoundException

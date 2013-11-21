@@ -18,7 +18,7 @@ import org.springframework.util.Assert;
 import com.itjenny.domain.ProviderType;
 
 public class ItDaoAuthenticationProvider extends
-	AbstractUserDetailsAuthenticationProvider {
+        AbstractUserDetailsAuthenticationProvider {
 
     private PasswordEncoder passwordEncoder = new PlaintextPasswordEncoder();
 
@@ -30,67 +30,67 @@ public class ItDaoAuthenticationProvider extends
 
     @SuppressWarnings("deprecation")
     protected void additionalAuthenticationChecks(UserDetails userDetails,
-	    UsernamePasswordAuthenticationToken authentication) {
-	Object salt = null;
+            UsernamePasswordAuthenticationToken authentication) {
+        Object salt = null;
 
-	if (this.saltSource != null) {
-	    salt = this.saltSource.getSalt(userDetails);
-	}
+        if (this.saltSource != null) {
+            salt = this.saltSource.getSalt(userDetails);
+        }
 
-	if (authentication.getCredentials() == null) {
-	    logger.debug("Authentication failed: no credentials provided");
+        if (authentication.getCredentials() == null) {
+            logger.debug("Authentication failed: no credentials provided");
 
-	    throw new BadCredentialsException(messages.getMessage(
-		    "AbstractUserDetailsAuthenticationProvider.badCredentials",
-		    "Bad credentials"), userDetails);
-	}
+            throw new BadCredentialsException(messages.getMessage(
+                    "AbstractUserDetailsAuthenticationProvider.badCredentials",
+                    "Bad credentials"), userDetails);
+        }
 
-	String presentedPassword = authentication.getCredentials().toString();
+        String presentedPassword = authentication.getCredentials().toString();
 
-	if (!passwordEncoder.isPasswordValid(userDetails.getPassword(),
-		presentedPassword, salt)) {
-	    logger.debug("Authentication failed: password does not match stored value");
+        if (!passwordEncoder.isPasswordValid(userDetails.getPassword(),
+                presentedPassword, salt)) {
+            logger.debug("Authentication failed: password does not match stored value");
 
-	    throw new BadCredentialsException(messages.getMessage(
-		    "AbstractUserDetailsAuthenticationProvider.badCredentials",
-		    "Bad credentials"), userDetails);
-	}
+            throw new BadCredentialsException(messages.getMessage(
+                    "AbstractUserDetailsAuthenticationProvider.badCredentials",
+                    "Bad credentials"), userDetails);
+        }
     }
 
     protected Authentication createSuccessAuthentication(Object principal,
-	    Authentication authentication, UserDetails user) {
-	UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(
-		principal, authentication.getCredentials(),
-		authoritiesMapper.mapAuthorities(user.getAuthorities()));
-	result.setDetails(ProviderType.it);
+            Authentication authentication, UserDetails user) {
+        UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(
+                principal, authentication.getCredentials(),
+                authoritiesMapper.mapAuthorities(user.getAuthorities()));
+        result.setDetails(ProviderType.it);
 
-	return result;
+        return result;
     }
 
     protected void doAfterPropertiesSet() throws Exception {
-	Assert.notNull(this.userDetailsService,
-		"A UserDetailsService must be set");
+        Assert.notNull(this.userDetailsService,
+                "A UserDetailsService must be set");
     }
 
     protected final UserDetails retrieveUser(String email,
-	    UsernamePasswordAuthenticationToken authentication) {
-	UserDetails loadedUser;
+            UsernamePasswordAuthenticationToken authentication) {
+        UserDetails loadedUser;
 
-	try {
-	    ItUserDetailsService itUserDetailsService = (ItUserDetailsService) getUserDetailsService();
-	    loadedUser = itUserDetailsService.loadUserByEmail(email);
-	} catch (UsernameNotFoundException notFound) {
-	    throw notFound;
-	} catch (Exception repositoryProblem) {
-	    throw new AuthenticationServiceException(
-		    repositoryProblem.getMessage(), repositoryProblem);
-	}
+        try {
+            ItUserDetailsService itUserDetailsService = (ItUserDetailsService) getUserDetailsService();
+            loadedUser = itUserDetailsService.loadUserByEmail(email);
+        } catch (UsernameNotFoundException notFound) {
+            throw notFound;
+        } catch (Exception repositoryProblem) {
+            throw new AuthenticationServiceException(
+                    repositoryProblem.getMessage(), repositoryProblem);
+        }
 
-	if (loadedUser == null) {
-	    throw new AuthenticationServiceException(
-		    "UserDetailsService returned null, which is an interface contract violation");
-	}
-	return loadedUser;
+        if (loadedUser == null) {
+            throw new AuthenticationServiceException(
+                    "UserDetailsService returned null, which is an interface contract violation");
+        }
+        return loadedUser;
     }
 
     /**
@@ -108,42 +108,42 @@ public class ItDaoAuthenticationProvider extends
      *            types.
      */
     public void setPasswordEncoder(Object passwordEncoder) {
-	Assert.notNull(passwordEncoder, "passwordEncoder cannot be null");
+        Assert.notNull(passwordEncoder, "passwordEncoder cannot be null");
 
-	if (passwordEncoder instanceof PasswordEncoder) {
-	    this.passwordEncoder = (PasswordEncoder) passwordEncoder;
-	    return;
-	}
+        if (passwordEncoder instanceof PasswordEncoder) {
+            this.passwordEncoder = (PasswordEncoder) passwordEncoder;
+            return;
+        }
 
-	if (passwordEncoder instanceof org.springframework.security.crypto.password.PasswordEncoder) {
-	    final org.springframework.security.crypto.password.PasswordEncoder delegate = (org.springframework.security.crypto.password.PasswordEncoder) passwordEncoder;
-	    this.passwordEncoder = new PasswordEncoder() {
-		public String encodePassword(String rawPass, Object salt) {
-		    checkSalt(salt);
-		    return delegate.encode(rawPass);
-		}
+        if (passwordEncoder instanceof org.springframework.security.crypto.password.PasswordEncoder) {
+            final org.springframework.security.crypto.password.PasswordEncoder delegate = (org.springframework.security.crypto.password.PasswordEncoder) passwordEncoder;
+            this.passwordEncoder = new PasswordEncoder() {
+                public String encodePassword(String rawPass, Object salt) {
+                    checkSalt(salt);
+                    return delegate.encode(rawPass);
+                }
 
-		public boolean isPasswordValid(String encPass, String rawPass,
-			Object salt) {
-		    checkSalt(salt);
-		    return delegate.matches(rawPass, encPass);
-		}
+                public boolean isPasswordValid(String encPass, String rawPass,
+                        Object salt) {
+                    checkSalt(salt);
+                    return delegate.matches(rawPass, encPass);
+                }
 
-		private void checkSalt(Object salt) {
-		    Assert.isNull(salt,
-			    "Salt value must be null when used with crypto module PasswordEncoder");
-		}
-	    };
+                private void checkSalt(Object salt) {
+                    Assert.isNull(salt,
+                            "Salt value must be null when used with crypto module PasswordEncoder");
+                }
+            };
 
-	    return;
-	}
+            return;
+        }
 
-	throw new IllegalArgumentException(
-		"passwordEncoder must be a PasswordEncoder instance");
+        throw new IllegalArgumentException(
+                "passwordEncoder must be a PasswordEncoder instance");
     }
 
     protected PasswordEncoder getPasswordEncoder() {
-	return passwordEncoder;
+        return passwordEncoder;
     }
 
     /**
@@ -161,18 +161,18 @@ public class ItDaoAuthenticationProvider extends
      *            <code>PasswordEncoder</code>
      */
     public void setSaltSource(SaltSource saltSource) {
-	this.saltSource = saltSource;
+        this.saltSource = saltSource;
     }
 
     protected SaltSource getSaltSource() {
-	return saltSource;
+        return saltSource;
     }
 
     public void setUserDetailsService(UserDetailsService userDetailsService) {
-	this.userDetailsService = userDetailsService;
+        this.userDetailsService = userDetailsService;
     }
 
     protected UserDetailsService getUserDetailsService() {
-	return userDetailsService;
+        return userDetailsService;
     }
 }

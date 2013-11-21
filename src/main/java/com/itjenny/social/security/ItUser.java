@@ -12,12 +12,12 @@ public class ItUser extends User {
     private ProviderType providerType;
 
     public ItUser(String username, String password, ProviderType providerType,
-	    Collection<? extends GrantedAuthority> authorities) {
-	super(username, password, authorities);
-	this.providerType = providerType;
+            Collection<? extends GrantedAuthority> authorities) {
+        super(username, password, authorities);
+        this.providerType = providerType;
     }
 
     public ProviderType getProviderType() {
-	return providerType;
+        return providerType;
     }
 }

@@ -18,16 +18,16 @@ public class TagRepositoryTest extends CommonTest {
 
     @Test
     public void setInit() {
-	// Given
-	Tag tag = new Tag();
-	tag.setTag(TAG1);
-	tag.setArticle(ARTICLE1);
-	tagRepository.save(tag);
-	tag.setTag(TAG2);
-	tag.setArticle(ARTICLE1);
-	tagRepository.save(tag);
-	tag.setTag(TAG2);
-	tag.setArticle(ARTICLE2);
-	tagRepository.save(tag);
+        // Given
+        Tag tag = new Tag();
+        tag.setTag(TAG1);
+        tag.setArticle(ARTICLE1);
+        tagRepository.save(tag);
+        tag.setTag(TAG2);
+        tag.setArticle(ARTICLE1);
+        tagRepository.save(tag);
+        tag.setTag(TAG2);
+        tag.setArticle(ARTICLE2);
+        tagRepository.save(tag);
     }
 }

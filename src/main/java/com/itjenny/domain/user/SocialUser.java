@@ -21,9 +21,9 @@ import com.itjenny.support.utils.MD5Util;
 
 @Entity
 @Table(uniqueConstraints = {
-	@UniqueConstraint(columnNames = { "userId", "providerId",
-		"providerUserId" }),
-	@UniqueConstraint(columnNames = { "userId", "providerId", "rank" }) })
+        @UniqueConstraint(columnNames = { "userId", "providerId",
+                "providerUserId" }),
+        @UniqueConstraint(columnNames = { "userId", "providerId", "rank" }) })
 @Cache(region = "socialUser", usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class SocialUser {
     public static final SocialUser GUEST_USER = new GuestSocialUser();
@@ -72,327 +72,327 @@ public class SocialUser {
     }
 
     public SocialUser(long id) {
-	this.id = id;
+        this.id = id;
     }
 
     public long getId() {
-	return id;
+        return id;
     }
 
     public void setId(long id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getUserId() {
-	return userId;
+        return userId;
     }
 
     public void setUserId(String userId) {
-	this.userId = userId;
+        this.userId = userId;
     }
 
     public String getPassword() {
-	return password;
+        return password;
     }
 
     public void setPassword(String password) {
-	this.password = password;
+        this.password = password;
     }
 
     public String getRawPassword() {
-	return rawPassword;
+        return rawPassword;
     }
 
     public void setRawPassword(String rawPassword) {
-	this.rawPassword = rawPassword;
+        this.rawPassword = rawPassword;
     }
 
     public String getEmail() {
-	return email;
+        return email;
     }
 
     public void setEmail(String email) {
-	this.email = email;
+        this.email = email;
     }
 
     public String getProviderId() {
-	return providerId;
+        return providerId;
     }
 
     public ProviderType getProviderIdBySnsType() {
-	return ProviderType.valueOf(providerId);
+        return ProviderType.valueOf(providerId);
     }
 
     public void setProviderId(String providerId) {
-	this.providerId = providerId;
+        this.providerId = providerId;
     }
 
     public String getProviderUserId() {
-	return providerUserId;
+        return providerUserId;
     }
 
     public void setProviderUserId(String providerUserId) {
-	this.providerUserId = providerUserId;
+        this.providerUserId = providerUserId;
     }
 
     public int getRank() {
-	return rank;
+        return rank;
     }
 
     public void setRank(int rank) {
-	this.rank = rank;
+        this.rank = rank;
     }
 
     public String getDisplayName() {
-	return displayName;
+        return displayName;
     }
 
     public void setDisplayName(String displayName) {
-	this.displayName = displayName;
+        this.displayName = displayName;
     }
 
     public String getProfileUrl() {
-	return profileUrl;
+        return profileUrl;
     }
 
     public void setProfileUrl(String profileUrl) {
-	this.profileUrl = profileUrl;
+        this.profileUrl = profileUrl;
     }
 
     public String getImageUrl() {
-	return imageUrl;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-	this.imageUrl = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public String getAccessToken() {
-	return accessToken;
+        return accessToken;
     }
 
     public void setAccessToken(String accessToken) {
-	this.accessToken = accessToken;
+        this.accessToken = accessToken;
     }
 
     public String getSecret() {
-	return secret;
+        return secret;
     }
 
     public void setSecret(String secret) {
-	this.secret = secret;
+        this.secret = secret;
     }
 
     public String getRefreshToken() {
-	return refreshToken;
+        return refreshToken;
     }
 
     public void setRefreshToken(String refreshToken) {
-	this.refreshToken = refreshToken;
+        this.refreshToken = refreshToken;
     }
 
     public Long getExpireTime() {
-	return expireTime;
+        return expireTime;
     }
 
     public void setExpireTime(Long expireTime) {
-	this.expireTime = expireTime;
+        this.expireTime = expireTime;
     }
 
     public Date getCreateDate() {
-	return createDate;
+        return createDate;
     }
 
     public void setCreateDate(Date createDate) {
-	this.createDate = createDate;
+        this.createDate = createDate;
     }
 
     public boolean isGuest() {
-	return false;
+        return false;
     }
 
     public boolean isSameUser(SocialUser socialUser) {
-	if (socialUser == null) {
-	    return false;
-	}
+        if (socialUser == null) {
+            return false;
+        }
 
-	return this.id == socialUser.id;
+        return this.id == socialUser.id;
     }
 
     public boolean isFacebookUser() {
-	return ProviderType.facebook == getProviderIdBySnsType();
+        return ProviderType.facebook == getProviderIdBySnsType();
     }
 
     public boolean isItUser() {
-	return ProviderType.it == getProviderIdBySnsType();
+        return ProviderType.it == getProviderIdBySnsType();
     }
 
     public void changePassword(PasswordEncoder encoder, String oldPassword,
-	    String newPassword) {
-	String oldEncodedPassword = encoder.encodePassword(oldPassword, null);
-	if (!password.equals(oldEncodedPassword)) {
-	    throw new BadCredentialsException("Password is different.");
-	}
+            String newPassword) {
+        String oldEncodedPassword = encoder.encodePassword(oldPassword, null);
+        if (!password.equals(oldEncodedPassword)) {
+            throw new BadCredentialsException("Password is different.");
+        }
 
-	this.password = encoder.encodePassword(newPassword, null);
+        this.password = encoder.encodePassword(newPassword, null);
     }
 
     public void update(String email, String userId) {
-	this.email = email;
-	this.userId = userId;
+        this.email = email;
+        this.userId = userId;
 
-	if (isItUser()) {
-	    this.imageUrl = DEFAULT_IT_USER_PROFILE_SUFFIX
-		    + MD5Util.md5Hex(email);
-	}
+        if (isItUser()) {
+            this.imageUrl = DEFAULT_IT_USER_PROFILE_SUFFIX
+                    + MD5Util.md5Hex(email);
+        }
     }
 
     static class GuestSocialUser extends SocialUser {
-	@Override
-	public boolean isGuest() {
-	    return true;
-	}
+        @Override
+        public boolean isGuest() {
+            return true;
+        }
     }
 
     public String getUrl() {
-	return String.format("/users/%d/%s", id, userId);
+        return String.format("/users/%d/%s", id, userId);
     }
 
     @Override
     public String toString() {
-	return "SocialUser [id=" + id + ", userId=" + userId + ", providerId="
-		+ providerId + ", providerUserId=" + providerUserId + ", rank="
-		+ rank + ", displayName=" + displayName + ", profileUrl="
-		+ profileUrl + ", imageUrl=" + imageUrl + ", accessToken="
-		+ accessToken + ", secret=" + secret + ", refreshToken="
-		+ refreshToken + ", expireTime=" + expireTime + ", createDate="
-		+ createDate + "]";
+        return "SocialUser [id=" + id + ", userId=" + userId + ", providerId="
+                + providerId + ", providerUserId=" + providerUserId + ", rank="
+                + rank + ", displayName=" + displayName + ", profileUrl="
+                + profileUrl + ", imageUrl=" + imageUrl + ", accessToken="
+                + accessToken + ", secret=" + secret + ", refreshToken="
+                + refreshToken + ", expireTime=" + expireTime + ", createDate="
+                + createDate + "]";
     }
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result
-		+ ((accessToken == null) ? 0 : accessToken.hashCode());
-	result = prime * result
-		+ ((createDate == null) ? 0 : createDate.hashCode());
-	result = prime * result
-		+ ((displayName == null) ? 0 : displayName.hashCode());
-	result = prime * result
-		+ ((expireTime == null) ? 0 : expireTime.hashCode());
-	result = prime * result + (int) (id ^ (id >>> 32));
-	result = prime * result
-		+ ((imageUrl == null) ? 0 : imageUrl.hashCode());
-	result = prime * result
-		+ ((profileUrl == null) ? 0 : profileUrl.hashCode());
-	result = prime * result
-		+ ((providerId == null) ? 0 : providerId.hashCode());
-	result = prime * result
-		+ ((providerUserId == null) ? 0 : providerUserId.hashCode());
-	result = prime * result + rank;
-	result = prime * result
-		+ ((refreshToken == null) ? 0 : refreshToken.hashCode());
-	result = prime * result + ((secret == null) ? 0 : secret.hashCode());
-	result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-	return result;
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((accessToken == null) ? 0 : accessToken.hashCode());
+        result = prime * result
+                + ((createDate == null) ? 0 : createDate.hashCode());
+        result = prime * result
+                + ((displayName == null) ? 0 : displayName.hashCode());
+        result = prime * result
+                + ((expireTime == null) ? 0 : expireTime.hashCode());
+        result = prime * result + (int) (id ^ (id >>> 32));
+        result = prime * result
+                + ((imageUrl == null) ? 0 : imageUrl.hashCode());
+        result = prime * result
+                + ((profileUrl == null) ? 0 : profileUrl.hashCode());
+        result = prime * result
+                + ((providerId == null) ? 0 : providerId.hashCode());
+        result = prime * result
+                + ((providerUserId == null) ? 0 : providerUserId.hashCode());
+        result = prime * result + rank;
+        result = prime * result
+                + ((refreshToken == null) ? 0 : refreshToken.hashCode());
+        result = prime * result + ((secret == null) ? 0 : secret.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	SocialUser other = (SocialUser) obj;
-	if (accessToken == null) {
-	    if (other.accessToken != null) {
-		return false;
-	    }
-	} else if (!accessToken.equals(other.accessToken)) {
-	    return false;
-	}
-	if (createDate == null) {
-	    if (other.createDate != null) {
-		return false;
-	    }
-	} else if (!createDate.equals(other.createDate)) {
-	    return false;
-	}
-	if (displayName == null) {
-	    if (other.displayName != null) {
-		return false;
-	    }
-	} else if (!displayName.equals(other.displayName)) {
-	    return false;
-	}
-	if (expireTime == null) {
-	    if (other.expireTime != null) {
-		return false;
-	    }
-	} else if (!expireTime.equals(other.expireTime)) {
-	    return false;
-	}
-	if (id != other.id) {
-	    return false;
-	}
-	if (imageUrl == null) {
-	    if (other.imageUrl != null) {
-		return false;
-	    }
-	} else if (!imageUrl.equals(other.imageUrl)) {
-	    return false;
-	}
-	if (profileUrl == null) {
-	    if (other.profileUrl != null) {
-		return false;
-	    }
-	} else if (!profileUrl.equals(other.profileUrl)) {
-	    return false;
-	}
-	if (providerId == null) {
-	    if (other.providerId != null) {
-		return false;
-	    }
-	} else if (!providerId.equals(other.providerId)) {
-	    return false;
-	}
-	if (providerUserId == null) {
-	    if (other.providerUserId != null) {
-		return false;
-	    }
-	} else if (!providerUserId.equals(other.providerUserId)) {
-	    return false;
-	}
-	if (rank != other.rank) {
-	    return false;
-	}
-	if (refreshToken == null) {
-	    if (other.refreshToken != null) {
-		return false;
-	    }
-	} else if (!refreshToken.equals(other.refreshToken)) {
-	    return false;
-	}
-	if (secret == null) {
-	    if (other.secret != null) {
-		return false;
-	    }
-	} else if (!secret.equals(other.secret)) {
-	    return false;
-	}
-	if (userId == null) {
-	    if (other.userId != null) {
-		return false;
-	    }
-	} else if (!userId.equals(other.userId)) {
-	    return false;
-	}
-	return true;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        SocialUser other = (SocialUser) obj;
+        if (accessToken == null) {
+            if (other.accessToken != null) {
+                return false;
+            }
+        } else if (!accessToken.equals(other.accessToken)) {
+            return false;
+        }
+        if (createDate == null) {
+            if (other.createDate != null) {
+                return false;
+            }
+        } else if (!createDate.equals(other.createDate)) {
+            return false;
+        }
+        if (displayName == null) {
+            if (other.displayName != null) {
+                return false;
+            }
+        } else if (!displayName.equals(other.displayName)) {
+            return false;
+        }
+        if (expireTime == null) {
+            if (other.expireTime != null) {
+                return false;
+            }
+        } else if (!expireTime.equals(other.expireTime)) {
+            return false;
+        }
+        if (id != other.id) {
+            return false;
+        }
+        if (imageUrl == null) {
+            if (other.imageUrl != null) {
+                return false;
+            }
+        } else if (!imageUrl.equals(other.imageUrl)) {
+            return false;
+        }
+        if (profileUrl == null) {
+            if (other.profileUrl != null) {
+                return false;
+            }
+        } else if (!profileUrl.equals(other.profileUrl)) {
+            return false;
+        }
+        if (providerId == null) {
+            if (other.providerId != null) {
+                return false;
+            }
+        } else if (!providerId.equals(other.providerId)) {
+            return false;
+        }
+        if (providerUserId == null) {
+            if (other.providerUserId != null) {
+                return false;
+            }
+        } else if (!providerUserId.equals(other.providerUserId)) {
+            return false;
+        }
+        if (rank != other.rank) {
+            return false;
+        }
+        if (refreshToken == null) {
+            if (other.refreshToken != null) {
+                return false;
+            }
+        } else if (!refreshToken.equals(other.refreshToken)) {
+            return false;
+        }
+        if (secret == null) {
+            if (other.secret != null) {
+                return false;
+            }
+        } else if (!secret.equals(other.secret)) {
+            return false;
+        }
+        if (userId == null) {
+            if (other.userId != null) {
+                return false;
+            }
+        } else if (!userId.equals(other.userId)) {
+            return false;
+        }
+        return true;
     }
 }

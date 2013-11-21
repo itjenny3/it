@@ -22,19 +22,19 @@ public class ThemeService {
     private Theme defaultTheme = null;
 
     public void save(Theme theme) {
-	themeRepository.save(theme);
+        themeRepository.save(theme);
     }
 
     public Theme getDefault() {
-	return get(DEFAULT);
+        return get(DEFAULT);
     }
 
     public Theme get(String title) {
-	Theme theme;
-	theme = (Theme) ObjectUtils.defaultIfNull(
-		themeRepository.findOne(title),
-		themeRepository.findOne(DEFAULT));
+        Theme theme;
+        theme = (Theme) ObjectUtils.defaultIfNull(
+                themeRepository.findOne(title),
+                themeRepository.findOne(DEFAULT));
 
-	return theme;
+        return theme;
     }
 }

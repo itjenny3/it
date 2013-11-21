@@ -171,6 +171,29 @@ Eclipse > Help > Eclipse MarketPlace 클릭 후 아래 키워드를 검색한다
     
  - JavaScript Convention을 기본 템플릿으로 사용함
 
+        Preference > JavaScript > Code Style > Formatter에서 New를 클릭하여 새로운 profile 생성 후 Edit를 눌러 아래 내용을 수정한다.
+        Indentation > General settings > Tab policy: spaces only
+        Indentation > General settings > Indentation size: 4
+        Indentation > General settings > Tab size: 4
+
+ - XML 설정
+
+        Preference > XML > XML Files > Editor : Line width 80으로 설정
+        Preference > XML > XML Files > Editor : Indent using spaces 선택
+        Preference > XML > XML Files > Editor > Indentation size : 4 설정
+
+ - CSS 설정
+
+        Preference > Web > CSS Files > Editor : Line width 80으로 설정
+        Preference > Web > CSS Files > Editor : Indent using spaces 선택
+        Preference > Web > CSS Files > Editor > Indentation size : 4 설정
+
+ - HTML 설정
+
+        Preference > Web > HTML Files > Editor : Line width 80으로 설정
+        Preference > Web > CSS Files > Editor : Indent using spaces 선택
+        Preference > Web > CSS Files > Editor > Indentation size : 4 설정
+
  - Checkstyle 설정파일 불러오기
 
 		Preference > Checkstyle > New 선택하여 아래 설정대로 입력한다.

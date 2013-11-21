@@ -15,15 +15,15 @@ public class AnswerService {
     private HtmlArticleService htmlArticleService;
 
     public boolean check(Chapter chapter, String answer) {
-	if (trim(chapter.getQuiz().getAnswer()).equals(trim(answer))) {
-	    return true;
-	}
-	return false;
+        if (trim(chapter.getQuiz().getAnswer()).equals(trim(answer))) {
+            return true;
+        }
+        return false;
     }
 
     public String trim(String answer) {
-	answer = answer.replace(" ", "");
-	answer = answer.toLowerCase();
-	return answer;
+        answer = answer.replace(" ", "");
+        answer = answer.toLowerCase();
+        return answer;
     }
 }

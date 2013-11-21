@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<definition name="article" extends="defaultLayout">
-		<put-attribute name="body" value="/WEB-INF/view/article/article.jsp" />
-	</definition>
-	<definition name="chapter" extends="fragmentLayout">
-		<put-attribute name="body" value="/WEB-INF/view/article/chapter.jsp" />
-	</definition>
-	<definition name="articles" extends="defaultLayout">
-		<put-attribute name="body" value="/WEB-INF/view/article/articles.jsp" />
-	</definition>
-	<definition name="license" extends="fragmentLayout">
-		<put-attribute name="body" value="/WEB-INF/view/article/license.jsp" />
-	</definition>
-	<definition name="wrong" extends="fragmentLayout">
-		<put-attribute name="body" value="/WEB-INF/view/article/wrong.jsp" />
-	</definition>
+    <definition name="article" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/article.jsp" />
+    </definition>
+    <definition name="chapter" extends="fragmentLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/chapter.jsp" />
+    </definition>
+    <definition name="articles" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/articles.jsp" />
+    </definition>
+    <definition name="license" extends="fragmentLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/license.jsp" />
+    </definition>
+    <definition name="wrong" extends="fragmentLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/wrong.jsp" />
+    </definition>
 </tiles-definitions>

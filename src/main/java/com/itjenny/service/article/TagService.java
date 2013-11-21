@@ -28,34 +28,34 @@ public class TagService {
     private ArticleRepository articleRepository;
 
     public void save(Tag tag) {
-	tagRepository.save(tag);
+        tagRepository.save(tag);
     }
 
     public List<Tag> getAll() {
-	return tagRepository.findAll();
+        return tagRepository.findAll();
     }
 
     public List<String> getTags() {
-	List<String> tags = tagRepository.findTags();
-	return tags;
+        List<String> tags = tagRepository.findTags();
+        return tags;
     }
 
     public List<String> getTags(String article) {
-	List<String> tags = tagRepository.findByArticle(article);
-	return tags;
+        List<String> tags = tagRepository.findByArticle(article);
+        return tags;
     }
 
     public List<String> getArticles(String tag) {
-	List<String> titles = tagRepository.findByTag(tag);
-	List<Article> articles = articleRepository.findSome(titles);
-	List<String> permittedArticles = Lists.newArrayList();
-	for (Article article : articles) {
-	    if (article.getPublished()
-		    || article.getUserId().equals(
-			    sessionService.getLoginUser().getUserId())) {
-		permittedArticles.add(article.getTitle());
-	    }
-	}
-	return permittedArticles;
+        List<String> titles = tagRepository.findByTag(tag);
+        List<Article> articles = articleRepository.findSome(titles);
+        List<String> permittedArticles = Lists.newArrayList();
+        for (Article article : articles) {
+            if (article.getPublished()
+                    || article.getUserId().equals(
+                            sessionService.getLoginUser().getUserId())) {
+                permittedArticles.add(article.getTitle());
+            }
+        }
+        return permittedArticles;
     }
 }

@@ -18,36 +18,36 @@ import com.itjenny.support.security.SessionService;
  * {@link LoginUser} 어노테이션이 있는 컨트롤러 메소드에 로그인 사용자 객체를 주입해준다.
  */
 public class LoginUserHandlerMethodArgumentResolver implements
-	HandlerMethodArgumentResolver {
+        HandlerMethodArgumentResolver {
     private final Logger logger = LoggerFactory
-	    .getLogger(LoginUserHandlerMethodArgumentResolver.class);
+            .getLogger(LoginUserHandlerMethodArgumentResolver.class);
 
     @Resource(name = "sessionService")
     private SessionService sessionService;
 
     public void setSessionService(SessionService sessionService) {
-	this.sessionService = sessionService;
+        this.sessionService = sessionService;
     }
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-	return parameter.hasParameterAnnotation(LoginUser.class);
+        return parameter.hasParameterAnnotation(LoginUser.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter,
-	    ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
-	    WebDataBinderFactory binderFactory) throws Exception {
-	LoginUser loginUserAnnotation = parameter
-		.getParameterAnnotation(LoginUser.class);
+            ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
+            WebDataBinderFactory binderFactory) throws Exception {
+        LoginUser loginUserAnnotation = parameter
+                .getParameterAnnotation(LoginUser.class);
 
-	SocialUser loginUser = sessionService.getLoginUser();
-	logger.debug("@LoginUser : {}", loginUser);
+        SocialUser loginUser = sessionService.getLoginUser();
+        logger.debug("@LoginUser : {}", loginUser);
 
-	if (loginUserAnnotation.required() && loginUser.isGuest()) {
-	    throw new LoginRequiredException();
-	}
+        if (loginUserAnnotation.required() && loginUser.isGuest()) {
+            throw new LoginRequiredException();
+        }
 
-	return loginUser;
+        return loginUser;
     }
 }

@@ -21,21 +21,21 @@ public class SettingService {
     private Setting defaultSetting = new Setting();
 
     public void save(Setting setting) {
-	settingRepository.save(setting);
+        settingRepository.save(setting);
     }
 
     public List<Setting> getAll() {
-	return settingRepository.findAll();
+        return settingRepository.findAll();
     }
 
     public Setting get(String userId) {
-	Setting setting;
-	if (userId == null) {
-	    return defaultSetting;
-	}
-	setting = (Setting) ObjectUtils.defaultIfNull(
-		settingRepository.findOne(userId), defaultSetting);
+        Setting setting;
+        if (userId == null) {
+            return defaultSetting;
+        }
+        setting = (Setting) ObjectUtils.defaultIfNull(
+                settingRepository.findOne(userId), defaultSetting);
 
-	return setting;
+        return setting;
     }
 }

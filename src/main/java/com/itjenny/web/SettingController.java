@@ -18,7 +18,7 @@ import com.itjenny.support.security.SessionService;
 @RequestMapping(URL.SETTING)
 public class SettingController {
     private final Logger logger = LoggerFactory
-	    .getLogger(SettingController.class);
+            .getLogger(SettingController.class);
 
     @Autowired
     private SessionService sessionService;
@@ -29,21 +29,21 @@ public class SettingController {
     @RequestMapping(value = "{option}/{value}")
     public @ResponseBody
     void save(@PathVariable String option, @PathVariable int value) {
-	if (sessionService.getLoginUser().getUserId() == null) {
-	    return;
-	}
+        if (sessionService.getLoginUser().getUserId() == null) {
+            return;
+        }
 
-	Setting setting = settingService.get(sessionService.getLoginUser()
-		.getUserId());
-	setting.setUserId(sessionService.getLoginUser().getUserId());
+        Setting setting = settingService.get(sessionService.getLoginUser()
+                .getUserId());
+        setting.setUserId(sessionService.getLoginUser().getUserId());
 
-	// TODO : change to enum to use switch.
-	if (option.equals(Const.PAGINATION)) {
-	    setting.setPagination(value == 1);
-	} else if (option.equals(Const.ONELINE)) {
-	    setting.setOneline(value == 1);
-	}
-	settingService.save(setting);
-	return;
+        // TODO : change to enum to use switch.
+        if (option.equals(Const.PAGINATION)) {
+            setting.setPagination(value == 1);
+        } else if (option.equals(Const.ONELINE)) {
+            setting.setOneline(value == 1);
+        }
+        settingService.save(setting);
+        return;
     }
 }

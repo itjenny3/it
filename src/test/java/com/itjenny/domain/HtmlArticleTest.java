@@ -25,7 +25,7 @@ public class HtmlArticleTest extends CommonTest {
 
     @Rule
     public ResourceFile mdNoContent = new ResourceFile("/sample/noContent.md");
-    
+
     @Rule
     public ResourceFile mdTest = new ResourceFile("/sample/markdown.md");
 
@@ -36,7 +36,7 @@ public class HtmlArticleTest extends CommonTest {
     public void mdTest() throws IOException {
         HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "",
                 mdTest.getContent());
-        
+
         System.out.println(htmlArticle.getChapters().toString());
     }
 
@@ -45,10 +45,12 @@ public class HtmlArticleTest extends CommonTest {
         // When
         HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "",
                 mdH1h2.getContent());
-        
+
         // Then
-        assertThat(htmlArticle.getChapters().get(0).getSections().get(0).getSubtitleSize(), is(1));
-        assertThat(htmlArticle.getChapters().get(0).getSections().get(1).getSubtitleSize(), is(2));
+        assertThat(htmlArticle.getChapters().get(0).getSections().get(0)
+                .getSubtitleSize(), is(1));
+        assertThat(htmlArticle.getChapters().get(0).getSections().get(1)
+                .getSubtitleSize(), is(2));
     }
 
     @Test
@@ -56,9 +58,10 @@ public class HtmlArticleTest extends CommonTest {
         // When
         HtmlArticle htmlArticle = new HtmlArticle(pegDownProcessor, "",
                 mdNoTitle.getContent());
-        
+
         // Then
-        assertThat(htmlArticle.getChapters().get(0).getSections().get(0).getSubtitle(), is(""));
+        assertThat(htmlArticle.getChapters().get(0).getSections().get(0)
+                .getSubtitle(), is(""));
     }
 
     @Test
@@ -68,7 +71,8 @@ public class HtmlArticleTest extends CommonTest {
                 mdNoContent.getContent());
 
         // Then
-        assertThat(htmlArticle.getChapters().get(0).getSections().get(0).getContent(), is(""));
+        assertThat(htmlArticle.getChapters().get(0).getSections().get(0)
+                .getContent(), is(""));
     }
 
     @Test

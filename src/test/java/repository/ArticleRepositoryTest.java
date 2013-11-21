@@ -28,27 +28,27 @@ public class ArticleRepositoryTest extends CommonTest {
 
     @Test
     public void setInit() throws IOException {
-	// Given
-	Article article = new Article();
-	article.setTitle(TITLE1);
-	article.setContent(CONTENT1);
-	article.setPublished(true);
-	article.setUserId(USERID1);
-	article.setCss(css1.getContent());
-	articleRepository.save(article);
+        // Given
+        Article article = new Article();
+        article.setTitle(TITLE1);
+        article.setContent(CONTENT1);
+        article.setPublished(true);
+        article.setUserId(USERID1);
+        article.setCss(css1.getContent());
+        articleRepository.save(article);
 
-	article.setTitle(TITLE2);
-	article.setContent(CONTENT2);
-	article.setPublished(false);
-	article.setUserId(USERID1);
-	article.setCss(css1.getContent());
-	articleRepository.save(article);
+        article.setTitle(TITLE2);
+        article.setContent(CONTENT2);
+        article.setPublished(false);
+        article.setUserId(USERID1);
+        article.setCss(css1.getContent());
+        articleRepository.save(article);
 
-	article.setTitle(TITLE3);
-	article.setContent(CONTENT3);
-	article.setPublished(true);
-	article.setUserId(USERID1);
-	article.setCss(css1.getContent());
-	articleRepository.save(article);
+        article.setTitle(TITLE3);
+        article.setContent(CONTENT3);
+        article.setPublished(true);
+        article.setUserId(USERID1);
+        article.setCss(css1.getContent());
+        articleRepository.save(article);
     }
 }

@@ -49,58 +49,58 @@ public class UrlTag {
     public static boolean disableJsPack = false;
 
     static {
-	loadProperties(APPLICATION_PROPERTIES, PROPERTIES_RESOURCE_PATH);
-	loadProperties(STATIC_LIB_PROPERTIES,
-		STATIC_LIB_PROPERTEIS_RESOURCE_PATH);
+        loadProperties(APPLICATION_PROPERTIES, PROPERTIES_RESOURCE_PATH);
+        loadProperties(STATIC_LIB_PROPERTIES,
+                STATIC_LIB_PROPERTEIS_RESOURCE_PATH);
 
-	VERSION = populateVersion();
-	STATIC_SERVER_URLS = populateStaticServerUrl();
-	disableJsPack = populateDisableJsPack();
+        VERSION = populateVersion();
+        STATIC_SERVER_URLS = populateStaticServerUrl();
+        disableJsPack = populateDisableJsPack();
     }
 
     private static void loadProperties(Properties properties,
-	    String resourcePath) {
-	InputStream is = null;
-	try {
-	    is = ClasspathResourceUtils.getResourceAsStream(resourcePath);
-	    if (resourcePath.toLowerCase().endsWith(XML_EXTENSION)) {
-		properties.loadFromXML(is);
-	    } else {
-		properties.load(is);
-	    }
-	} catch (Exception ex) {
-	    throw new RuntimeException(ex.getMessage(), ex);
-	} finally {
-	    IOUtils.closeQuietly(is);
-	}
+            String resourcePath) {
+        InputStream is = null;
+        try {
+            is = ClasspathResourceUtils.getResourceAsStream(resourcePath);
+            if (resourcePath.toLowerCase().endsWith(XML_EXTENSION)) {
+                properties.loadFromXML(is);
+            } else {
+                properties.load(is);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex.getMessage(), ex);
+        } finally {
+            IOUtils.closeQuietly(is);
+        }
     }
 
     private static String populateVersion() {
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
-	return sdf.format(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+        return sdf.format(new Date());
     }
 
     private static String[] populateStaticServerUrl() {
-	String staticResourceUrlProperty = APPLICATION_PROPERTIES
-		.getProperty(STATIC_RESOURCE_URL_PROPERTY_KEY);
-	if (staticResourceUrlProperty == null) {
-	    staticResourceUrlProperty = "";
-	}
-	return staticResourceUrlProperty.split(",");
+        String staticResourceUrlProperty = APPLICATION_PROPERTIES
+                .getProperty(STATIC_RESOURCE_URL_PROPERTY_KEY);
+        if (staticResourceUrlProperty == null) {
+            staticResourceUrlProperty = "";
+        }
+        return staticResourceUrlProperty.split(",");
     }
 
     private static boolean populateDisableJsPack() {
-	String disableJsPackStr = APPLICATION_PROPERTIES.getProperty(
-		DISABLE_JS_PACK_PROPERTY_KEY, "false");
-	return Boolean.parseBoolean(disableJsPackStr);
+        String disableJsPackStr = APPLICATION_PROPERTIES.getProperty(
+                DISABLE_JS_PACK_PROPERTY_KEY, "false");
+        return Boolean.parseBoolean(disableJsPackStr);
     }
 
     public String getVersion() {
-	return VERSION;
+        return VERSION;
     }
 
     public static Properties getProperties() {
-	return APPLICATION_PROPERTIES;
+        return APPLICATION_PROPERTIES;
     }
 
     /**
@@ -113,7 +113,7 @@ public class UrlTag {
      * @return
      */
     private static String staticUrl(String url, boolean withVersion) {
-	return staticUrl(url, withVersion, null);
+        return staticUrl(url, withVersion, null);
     }
 
     /**
@@ -126,34 +126,34 @@ public class UrlTag {
      * @return
      */
     private static String staticUrl(String url, boolean withVersion,
-	    Integer serverId) {
-	Assert.hasText(url, "url을 지정해야 합니다.");
+            Integer serverId) {
+        Assert.hasText(url, "url을 지정해야 합니다.");
 
-	if (serverId == null || serverId.intValue() < 0
-		|| serverId.intValue() >= STATIC_SERVER_URLS.length) {
-	    char lastCharExceptExt = getLastCharExceptExt(url);
-	    serverId = lastCharExceptExt % STATIC_SERVER_URLS.length;
-	}
+        if (serverId == null || serverId.intValue() < 0
+                || serverId.intValue() >= STATIC_SERVER_URLS.length) {
+            char lastCharExceptExt = getLastCharExceptExt(url);
+            serverId = lastCharExceptExt % STATIC_SERVER_URLS.length;
+        }
 
-	String finalUrl = STATIC_SERVER_URLS[serverId];
+        String finalUrl = STATIC_SERVER_URLS[serverId];
 
-	if (withVersion) {
-	    finalUrl = finalUrl + RESOURCE_PREFIX + UrlTag.VERSION;
-	}
+        if (withVersion) {
+            finalUrl = finalUrl + RESOURCE_PREFIX + UrlTag.VERSION;
+        }
 
-	finalUrl += url;
-	return ItStringUtils.escapeHtml(finalUrl);
+        finalUrl += url;
+        return ItStringUtils.escapeHtml(finalUrl);
     }
 
     private static char getLastCharExceptExt(String url) {
-	int dotIdx = url.lastIndexOf(".");
-	String nameExceptExt = url;
+        int dotIdx = url.lastIndexOf(".");
+        String nameExceptExt = url;
 
-	if (dotIdx > 0) {
-	    nameExceptExt = url.substring(0, dotIdx);
-	}
+        if (dotIdx > 0) {
+            nameExceptExt = url.substring(0, dotIdx);
+        }
 
-	return nameExceptExt.charAt(nameExceptExt.length() - 1);
+        return nameExceptExt.charAt(nameExceptExt.length() - 1);
 
     }
 
@@ -164,57 +164,57 @@ public class UrlTag {
      * @return
      */
     private static String resourceUrl(String url) {
-	Assert.hasText(url, "url을 지정해야 합니다.");
-	return String.format("%s%s%s", RESOURCE_PREFIX, "", url);
+        Assert.hasText(url, "url을 지정해야 합니다.");
+        return String.format("%s%s%s", RESOURCE_PREFIX, "", url);
     }
 
     /**
      * js는 관리툴에서만 사용할 것.
      */
     public static String js(String url) {
-	return staticUrl(url, true);
+        return staticUrl(url, true);
     }
 
     public static String img(String url) {
-	return staticUrl(url, true);
+        return staticUrl(url, true);
     }
 
     public static String imgFormat(String urlFormat, String value) {
-	String url = String.format(urlFormat, value);
-	return img(url);
+        String url = String.format(urlFormat, value);
+        return img(url);
     }
 
     public static String imgFormat(String urlFormat, String value1,
-	    String value2) {
-	String url = String.format(urlFormat, value1, value2);
-	return img(url);
+            String value2) {
+        String url = String.format(urlFormat, value1, value2);
+        return img(url);
     }
 
     public static String lib(String libName) {
-	String url = STATIC_LIB_PROPERTIES.getProperty(libName);
-	if (StringUtils.isBlank(url)) {
-	    throw new IllegalArgumentException(libName
-		    + "은 존재하지 않는 Static Library 이름입니다.");
-	}
-	return staticUrl(url, false);
+        String url = STATIC_LIB_PROPERTIES.getProperty(libName);
+        if (StringUtils.isBlank(url)) {
+            throw new IllegalArgumentException(libName
+                    + "은 존재하지 않는 Static Library 이름입니다.");
+        }
+        return staticUrl(url, false);
     }
 
     public static String resource(String url) {
-	return resourceUrl(url);
+        return resourceUrl(url);
     }
 
     public static String resourceFormat(String urlFormat, String value) {
-	String url = String.format(urlFormat, value);
-	return resourceUrl(url);
+        String url = String.format(urlFormat, value);
+        return resourceUrl(url);
     }
 
     public static String resourceFormat(String urlFormat, String value1,
-	    String value2) {
-	String url = String.format(urlFormat, value1, value2);
-	return resourceUrl(url);
+            String value2) {
+        String url = String.format(urlFormat, value1, value2);
+        return resourceUrl(url);
     }
 
     public static String style(String url) {
-	return staticUrl(url, true);
+        return staticUrl(url, true);
     }
 }

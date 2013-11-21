@@ -10,7 +10,7 @@ import com.itjenny.domain.user.SocialUser;
 import com.itjenny.support.security.SessionService;
 
 public class GlobalRequestAttributesInterceptor extends
-	HandlerInterceptorAdapter {
+        HandlerInterceptorAdapter {
     public static final String DEFAULT_LOGIN_USER_REQUEST_KEY = "loginUser";
 
     @Resource(name = "sessionService")
@@ -18,15 +18,15 @@ public class GlobalRequestAttributesInterceptor extends
 
     @Override
     public boolean preHandle(HttpServletRequest request,
-	    HttpServletResponse response, Object handler) throws Exception {
-	SocialUser loginUser = sessionService.getLoginUser();
-	request.setAttribute(DEFAULT_LOGIN_USER_REQUEST_KEY, loginUser);
+            HttpServletResponse response, Object handler) throws Exception {
+        SocialUser loginUser = sessionService.getLoginUser();
+        request.setAttribute(DEFAULT_LOGIN_USER_REQUEST_KEY, loginUser);
 
-	if (!loginUser.isGuest()) {
-	    // request.setAttribute("countNotifications",
-	    // notificationService.countByNotifiee(loginUser));
-	}
+        if (!loginUser.isGuest()) {
+            // request.setAttribute("countNotifications",
+            // notificationService.countByNotifiee(loginUser));
+        }
 
-	return super.preHandle(request, response, handler);
+        return super.preHandle(request, response, handler);
     }
 }
