@@ -21,12 +21,14 @@ public class HtmlArticleService {
     private final Logger logger = LoggerFactory
             .getLogger(HtmlArticleService.class);
 
+    private static final long MAX_PARSING_TIME = 10000;
+
     @Autowired
     private ArticleService articleService;
 
     private Map<String, HtmlArticle> htmlArticles = new HashMap<String, HtmlArticle>();
     private PegDownProcessor pegDownProcessor = new PegDownProcessor(
-            Extensions.ALL);
+            Extensions.ALL, MAX_PARSING_TIME);
 
     public int getTotalSection(String title) {
         int totalSection = 0;

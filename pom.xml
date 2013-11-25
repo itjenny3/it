@@ -68,7 +68,6 @@
         <!-- JAVA-MAIL -->
         <mail.version>1.4.7</mail.version>
         <!-- MARKDOWN -->
-        <markdown-pegdown.version>1.4.1</markdown-pegdown.version>
         <markdown-parboiled.version>1.1.6</markdown-parboiled.version>
 
         <!-- PLUGIN -->
@@ -399,11 +398,6 @@
         </dependency>
 
         <!-- MARKDOWN -->
-        <dependency>
-            <groupId>org.pegdown</groupId>
-            <artifactId>pegdown</artifactId>
-            <version>${markdown-pegdown.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.parboiled</groupId>
             <artifactId>parboiled-java</artifactId>

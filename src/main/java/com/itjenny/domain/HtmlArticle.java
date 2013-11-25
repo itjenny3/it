@@ -31,9 +31,6 @@ public class HtmlArticle {
 
         String[] parts = pegDownProcessor.markdownToHtml(content).split(H1H2);
         for (String part : parts) {
-            // Add table css
-            part = part.replace("<table>",
-                    "<table class=\"table table-bordered\">");
             if (StringUtils.isNotEmpty(part)) {
                 String[] subtitleAndContent = part.split(H1H2END);
                 int subtitleSize;
