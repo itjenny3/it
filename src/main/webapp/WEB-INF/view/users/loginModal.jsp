@@ -67,7 +67,9 @@
 	});
 	
 	$('#settingPagination').click(function() {
-		$('.page').toggle();
+	    if (getCookie('mode') == 'keynote') {
+    		$('.page').toggle();
+	    }
 	});
 	
 	function sendSetting(option, value) {
@@ -109,11 +111,13 @@
 	}
 	
 	$(document).ready(function() {
-		if (getCookie('pagination') == 'false') {
-			$('.page').hide();
-		}
-		if (getCookie('mode') == 'keynote') {
-			$('#play').click();
-		}
+	    if (getCookie('mode') == 'keynote') {
+    		if (getCookie('pagination') == 'false') {
+    			$('.page').hide();
+    		}
+    		if (getCookie('mode') == 'keynote') {
+    			$('#play').click();
+    		}
+	    }	
 	});
 </script>

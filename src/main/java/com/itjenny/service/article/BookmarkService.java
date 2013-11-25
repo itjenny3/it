@@ -28,8 +28,7 @@ public class BookmarkService {
         if (userId == null) {
             return 0;
         }
-        Bookmark bookmark = bookmarkRepository.findOne(new BookmarkPK(userId,
-                title));
+        Bookmark bookmark = bookmarkRepository.findOne(title, userId);
         if (bookmark == null) {
             return 0;
         }
@@ -41,8 +40,7 @@ public class BookmarkService {
         if (Strings.isNullOrEmpty(userId)) {
             return;
         }
-        Bookmark existedBookmark = bookmarkRepository.findOne(new BookmarkPK(
-                userId, title));
+        Bookmark existedBookmark = bookmarkRepository.findOne(title, userId);
         if (existedBookmark == null) {
             Bookmark bookmark = new Bookmark();
             bookmark.setUserId(userId);
