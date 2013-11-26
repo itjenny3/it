@@ -1,11 +1,14 @@
 package com.itjenny.service.article;
 
+import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import com.google.common.collect.Lists;
 import com.itjenny.domain.Article;
@@ -45,17 +48,24 @@ public class TagService {
         return tags;
     }
 
-    public List<String> getArticles(String tag) {
-        List<String> titles = tagRepository.findByTag(tag);
+    public List<String> getArticles(String[] tags) {
+        if (ObjectUtils.isEmpty(tags)) {
+            return Lists.newArrayList();
+        }
+        List<String> asList = Arrays.asList(tags);
+        List<String> titles = tagRepository.findSomeByTag(asList);
+        if (titles.isEmpty()) {
+            return Lists.newArrayList();
+        }
         List<Article> articles = articleRepository.findSome(titles);
-        List<String> permittedArticles = Lists.newArrayList();
+        List<String> articlesInTag = Lists.newArrayList();
         for (Article article : articles) {
             if (article.getPublished()
                     || article.getUserId().equals(
                             sessionService.getLoginUser().getUserId())) {
-                permittedArticles.add(article.getTitle());
+                articlesInTag.add(article.getTitle());
             }
         }
-        return permittedArticles;
+        return articlesInTag;
     }
 }
