@@ -249,7 +249,11 @@ Project Properties > Java Build Path > Order and Export 에서 아래와 같은 
 
 ### 검색 시 특정 폴더 제외 ###
 
-Project Properties -> Resource -> resource filter -> exclude all, folder 선택
+Project Properties -> Resource -> resource filter
+
+    exclude all, folder 선택
+    All children (recursive) 클릭
+    File and Folder Attributes에 bin 추가
 	
 
 운영 서버 설치

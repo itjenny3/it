@@ -30,9 +30,10 @@ public class TagController {
             @RequestParam(required = false) String tags) {
         ModelAndView mav = new ModelAndView();
         ModelMap model = new ModelMap();
-        String removedQuotation = StringUtils.replace(tags, "\"", "");
+        String removedQuotationAndSpace = StringUtils.replaceChars(tags, "\" ", "");
         List<String> articles = tagService.getArticles(StringUtils.split(
-                removedQuotation, ","));
+                removedQuotationAndSpace, ","));
+        model.addAttribute("tags", tags);
         model.addAttribute("articles", articles);
         mav.setViewName(VIEW.TAG);
         mav.addAllObjects(model);
