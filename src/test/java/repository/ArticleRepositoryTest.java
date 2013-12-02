@@ -14,11 +14,11 @@ import com.itjenny.domain.Article;
 import com.itjenny.repository.ArticleRepository;
 
 public class ArticleRepositoryTest extends CommonTest {
-    @Rule
-    public ResourceFile css1 = new ResourceFile("/default.css");
-
     @Autowired
     ArticleRepository articleRepository;
+
+    @Rule
+    public ResourceFile css1 = new ResourceFile("/default.css");
 
     @Rule
     public ResourceFile mdSpring = new ResourceFile("/sample/spring.md");
@@ -27,13 +27,19 @@ public class ArticleRepositoryTest extends CommonTest {
     public ResourceFile mdMarkdown = new ResourceFile("/sample/markdown.md");
 
     @Rule
-    public ResourceFile mdYobi= new ResourceFile("/sample/yobi.md");
+    public ResourceFile mdYobi = new ResourceFile("/sample/yobi.md");
+
+    @Rule
+    public ResourceFile mdReadme = new ResourceFile("/sample/README.md");
+
+    @Rule
+    public ResourceFile mdMac = new ResourceFile("/sample/mac.md");
 
     private PegDownProcessor pegDownProcessor = new PegDownProcessor(
             Extensions.ALL);
 
     private static final String USERID1 = "itjenny";
-    
+
     @Test
     public void initMd() throws IOException {
         Article article = new Article();
@@ -53,6 +59,20 @@ public class ArticleRepositoryTest extends CommonTest {
 
         article.setTitle("markdown");
         article.setContent(mdMarkdown.getContent());
+        article.setPublished(true);
+        article.setUserId(USERID1);
+        article.setCss(css1.getContent());
+        articleRepository.save(article);
+
+        article.setTitle("readme");
+        article.setContent(mdReadme.getContent());
+        article.setPublished(true);
+        article.setUserId(USERID1);
+        article.setCss(css1.getContent());
+        articleRepository.save(article);
+
+        article.setTitle("mac");
+        article.setContent(mdMac.getContent());
         article.setPublished(true);
         article.setUserId(USERID1);
         article.setCss(css1.getContent());

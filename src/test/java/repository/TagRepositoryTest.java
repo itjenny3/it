@@ -1,6 +1,5 @@
 package repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -19,14 +18,18 @@ public class TagRepositoryTest extends CommonTest {
     public void setInit() {
         // Given
         Tag tag = new Tag();
-        tag.setTag("server");
-        tag.setArticle("spring");
-        tagRepository.save(tag);
         tag.setTag("basic");
         tag.setArticle("markdown");
         tagRepository.save(tag);
+        tag.setArticle("mac");
+        tagRepository.save(tag);
+
         tag.setTag("server");
+        tag.setArticle("spring");
+        tagRepository.save(tag);
         tag.setArticle("yobi");
+        tagRepository.save(tag);
+        tag.setArticle("readme");
         tagRepository.save(tag);
     }
     

@@ -11,9 +11,6 @@ import com.itjenny.domain.Chapter;
 public class AnswerService {
     private final Logger logger = LoggerFactory.getLogger(AnswerService.class);
 
-    @Autowired
-    private HtmlArticleService htmlArticleService;
-
     public boolean check(Chapter chapter, String answer) {
         if (trim(chapter.getQuiz().getAnswer()).equals(trim(answer))) {
             return true;

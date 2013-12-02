@@ -24,7 +24,6 @@ import com.itjenny.service.ThemeService;
 import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.BookmarkService;
-import com.itjenny.service.article.HtmlArticleService;
 import com.itjenny.service.article.TagService;
 import com.itjenny.support.Const;
 import com.itjenny.support.URL;
@@ -36,9 +35,6 @@ import com.itjenny.support.security.SessionService;
 public class ArticleController {
     private final Logger logger = LoggerFactory
             .getLogger(ArticleController.class);
-
-    @Autowired
-    private HtmlArticleService htmlArticleService;
 
     @Autowired
     private ArticleService articleService;
@@ -95,18 +91,18 @@ public class ArticleController {
                 }
 
                 // keynote mode
-                if (!htmlArticleService.isChapterExisted(title,
+                if (!articleService.isChapterExisted(title,
                         chapterIndex + 1)) {
                     bookmarkService.complete(title);
                     return new ModelAndView("redirect:/article/" + title
                             + "/license");
                 }
                 model.addAttribute("chapter",
-                        htmlArticleService.getChapter(title, chapterIndex + 1));
+                        articleService.getChapter(title, chapterIndex + 1));
                 model.addAttribute("totalSection",
-                        htmlArticleService.getTotalSection(title));
+                        articleService.getTotalSection(title));
                 model.addAttribute("answer",
-                        htmlArticleService.getChapter(title, chapterIndex)
+                        articleService.getChapter(title, chapterIndex)
                                 .getQuiz().getAnswer());
                 mav.setViewName(VIEW.CHAPTER);
                 mav.addAllObjects(model);
@@ -117,19 +113,19 @@ public class ArticleController {
         }
 
         // word mode
-        Chapter chapter = htmlArticleService.getChapter(title, chapterIndex);
+        Chapter chapter = articleService.getChapter(title, chapterIndex);
         if (answerService.check(chapter, answer)) {
-            if (!htmlArticleService.isChapterExisted(title, chapterIndex + 1)) {
+            if (!articleService.isChapterExisted(title, chapterIndex + 1)) {
                 bookmarkService.complete(title);
                 return new ModelAndView("redirect:/article/" + title
                         + "/license");
             }
             model.addAttribute("chapter",
-                    htmlArticleService.getChapter(title, chapterIndex + 1));
+                    articleService.getChapter(title, chapterIndex + 1));
             model.addAttribute("totalSection",
-                    htmlArticleService.getTotalSection(title));
+                    articleService.getTotalSection(title));
             model.addAttribute("answer",
-                    htmlArticleService.getChapter(title, chapterIndex)
+                    articleService.getChapter(title, chapterIndex)
                             .getQuiz().getAnswer());
             mav.setViewName(VIEW.CHAPTER);
             mav.addAllObjects(model);
@@ -160,7 +156,7 @@ public class ArticleController {
         ModelAndView mav = new ModelAndView();
         ModelMap model = new ModelMap();
         Integer chapterIndex = bookmarkService.getChapterIndex(title);
-        List<Chapter> chapters = htmlArticleService.getChaptersToIndex(title,
+        List<Chapter> chapters = articleService.getChaptersToIndex(title,
                 chapterIndex);
         if (chapters == null) {
             logger.info("title({}) isn't existed", title);
@@ -171,7 +167,7 @@ public class ArticleController {
         model.addAttribute("license",
                 (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
         model.addAttribute("totalSection",
-                htmlArticleService.getTotalSection(title));
+                articleService.getTotalSection(title));
         model.addAttribute("setting",
                 settingService.get(sessionService.getLoginUser().getUserId()));
         String css = articleService.get(title).getCss();
