@@ -1,8 +1,13 @@
 package com.itjenny.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PreUpdate;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import lombok.Data;
@@ -24,4 +29,13 @@ public class Article {
     private String userId;
     @Column(columnDefinition = "TEXT")
     private String css;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated", nullable = false)
+    private Date updated;
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated = new Date();
+    }
 }
