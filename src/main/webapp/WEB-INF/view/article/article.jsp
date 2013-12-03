@@ -51,7 +51,10 @@ ${css}
                         ${section.content}
 
                         <%-- pagination --%>
-                        <p class="page">${section.index}/${totalSection}</p>
+                        <p class="page">
+                            <%@ include
+                                file="/WEB-INF/view/article/pagination.jsp"%>
+                        </p>
                     </div>
                 </c:when>
 
@@ -69,7 +72,10 @@ ${css}
                         ${section.content}
 
                         <%-- pagination --%>
-                        <p class="page">${section.index}/${totalSection}</p>
+                        <p class="page">
+                            <%@ include
+                                file="/WEB-INF/view/article/pagination.jsp"%>
+                        </p>
                     </div>
                 </c:otherwise>
             </c:choose>
