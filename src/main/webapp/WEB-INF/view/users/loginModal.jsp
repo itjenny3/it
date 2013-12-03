@@ -118,6 +118,8 @@
     		if (getCookie('mode') == 'keynote') {
     			$('#play').click();
     		}
-	    }	
+	    } else {
+			$('.page').hide();
+	    }
 	});
 </script>

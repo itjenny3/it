@@ -68,7 +68,6 @@ Finder 설정
          Key Repeat > Baasic Configurations > Key Repeat > Delay Until Repeat : 100ms
          Key Repeat > Baasic Configurations > Key Repeat > Key Repeat : 20ms
 
- - Vimium : Chrome pluging(vim)
  - [iTerm2 설치](http://www.iterm2.com/)
 
         Preferences > Appearance > Dim background window : inactive terminal은 dim 처리함.
