@@ -5,9 +5,17 @@
 
 <%@ include file="/WEB-INF/view/users/loginModal.jsp"%>
 
-Tags: ${tags}
+keyword: ${q}
 <div class=backgroundTitle>
-    <c:forEach var="article" items="${articles}">
+    tag searched
+    <c:forEach var="article" items="${articlesInTag}">
+        <a href="/article/${article}"><h1>${article}</h1></a>
+    </c:forEach>
+</div>
+
+<div class=backgroundTitle>
+    content searched
+    <c:forEach var="article" items="${articlesWithKeyword}">
         <a href="/article/${article}"><h1>${article}</h1></a>
     </c:forEach>
 </div>

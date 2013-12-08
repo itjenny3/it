@@ -24,9 +24,7 @@ $(function() {
            event.preventDefault();
         } else if (event.keyCode === $.ui.keyCode.ENTER && !$(this).data("ui-autocomplete").menu.active) {
             var tags = this.value.replace(/[\s]+|[,\s]+$/g, '');
-/*             var tags = this.value.replace(' ', '');
-        	tags = tags.replace(/,+$/, ''); */
-        	window.location = "./tag?tags=" + tags;
+        	window.location = "./search?q=" + tags;
         }
     })
     .autocomplete({
@@ -54,23 +52,7 @@ $(function() {
 });
 </script>
 
-<div class="ui-widget">
-    <label for="search">Search: </label> <input id="search">
-</div>
-
-<div class="btn-group" data-toggle="buttons-checked">
-    <c:forEach var="tag" items="${tags}">
-        <button type="button" id="tag${tag}" class="btn btn-primary">${tag}</button>
-    </c:forEach>
-</div>
-
-<script>
-    <c:forEach var="tag" items="${tags}">
-    $('#tag${tag}').click(function() {
-        // TODO :: find article with selected tag.
-    });
-    </c:forEach>
-</script>
+<input type="text" class="form-control" id="search" placeholder="search">
 
 <div id="selectedArticles" class="backgroundTitle">
     <c:forEach var="article" items="${articles}">

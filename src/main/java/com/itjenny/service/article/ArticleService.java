@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Lists;
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
 import com.itjenny.domain.HtmlArticle;
@@ -74,6 +75,14 @@ public class ArticleService {
                     article.getContent()));
         }
         return htmlArticles.get(title);
+    }
+    
+    public List<String> getArticlesWithKeyword(String q) {
+        List<String> titles = Lists.newArrayList();
+        for (Article article : articleRepository.findWithKeyword(q)) {
+            titles.add(article.getTitle());
+        }
+        return titles;
     }
 
     public List<Chapter> getChaptersToIndex(String title, Integer toIndex) {

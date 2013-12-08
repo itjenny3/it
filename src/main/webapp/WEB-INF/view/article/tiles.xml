@@ -4,6 +4,9 @@
     <definition name="article" extends="defaultLayout">
         <put-attribute name="body" value="/WEB-INF/view/article/article.jsp" />
     </definition>
+    <definition name="search" extends="defaultLayout">
+        <put-attribute name="body" value="/WEB-INF/view/article/search.jsp" />
+    </definition>
     <definition name="chapter" extends="fragmentLayout">
         <put-attribute name="body" value="/WEB-INF/view/article/chapter.jsp" />
     </definition>

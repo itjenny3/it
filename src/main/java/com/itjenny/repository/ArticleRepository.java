@@ -15,6 +15,9 @@ public interface ArticleRepository extends JpaRepository<Article, String> {
     @Query("select a from Article a where a.title in (:titles)")
     List<Article> findSome(@Param("titles") List<String> titles);
 
+    @Query("select a from Article a where a.content LIKE CONCAT('%', :q, '%')")
+    List<Article> findWithKeyword(@Param("q") String q);
+
     @Query("select a from Article a where a.title = :title AND (a.userId = :userId OR a.published = 1)")
     Article findOne(@Param("title") String title, @Param("userId") String userId);
 }

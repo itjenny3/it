@@ -4,7 +4,4 @@
     <definition name="tags" extends="defaultLayout">
         <put-attribute name="body" value="/WEB-INF/view/tag/tags.jsp" />
     </definition>
-    <definition name="tag" extends="defaultLayout">
-        <put-attribute name="body" value="/WEB-INF/view/tag/tag.jsp" />
-    </definition>
 </tiles-definitions>
