@@ -59,3 +59,5 @@ $(function() {
         <a href="/article/${article.title}"><h1>${article.title}</h1></a>
     </c:forEach>
 </div>
+
+<a href="/form/article">new</a>

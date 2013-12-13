@@ -31,7 +31,7 @@ import com.itjenny.support.VIEW;
 import com.itjenny.support.security.SessionService;
 
 @Controller
-@RequestMapping(value = { "", URL.ARTICLE })
+@RequestMapping(value = { URL.ARTICLE })
 public class ArticleController {
     private final Logger logger = LoggerFactory
             .getLogger(ArticleController.class);
