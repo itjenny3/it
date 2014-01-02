@@ -9,7 +9,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.pegdown.PegDownProcessor;
 
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 
 @Data
 public class HtmlArticle {
@@ -42,7 +42,7 @@ public class HtmlArticle {
 
                 if (subtitleAndContent.length == 2) {
                     // TITLE exists.
-                    if (subtitleAndContent[0].equalsIgnoreCase(Const.QUIZ)) {
+                    if (subtitleAndContent[0].equalsIgnoreCase(Consts.QUIZ)) {
                         // QUIZ
                         setQuiz(createQuiz(subtitleAndContent, ++sectionIndex));
                     } else {
@@ -72,7 +72,7 @@ public class HtmlArticle {
         quiz.setIndex(sectionIndex);
         quiz.setSubtitle(subtitleAndContent[0]);
         String[] contentAndAnswer = subtitleAndContent[1]
-                .split(Const.ANSWER_START_TAG);
+                .split(Consts.ANSWER_START_TAG);
         switch (contentAndAnswer.length) {
         case 1:
             quiz.setContent(contentAndAnswer[0]);
@@ -80,7 +80,7 @@ public class HtmlArticle {
 
         case 2:
             quiz.setContent(contentAndAnswer[0]);
-            quiz.setAnswer(contentAndAnswer[1].split(Const.ANSWER_END_TAG)[0]);
+            quiz.setAnswer(contentAndAnswer[1].split(Consts.ANSWER_END_TAG)[0]);
             break;
 
         default:
@@ -117,7 +117,7 @@ public class HtmlArticle {
 
     private void add(Chapter chapter) {
         if (chapter != null) {
-            chapter.setId(Const.CHAPTER + chapters.size());
+            chapter.setId(Consts.CHAPTER + chapters.size());
             chapters.add(chapter);
         }
     }

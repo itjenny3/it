@@ -16,7 +16,7 @@ import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
 import com.itjenny.domain.HtmlArticle;
 import com.itjenny.repository.ArticleRepository;
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 import com.itjenny.support.security.SessionService;
 
 @Service
@@ -90,7 +90,7 @@ public class ArticleService {
         if (htmlArticle == null) {
             return null;
         }
-        if (toIndex.equals(Const.BOOKMARK_LICENSE)) {
+        if (toIndex.equals(Consts.BOOKMARK_LICENSE)) {
             return htmlArticle.getChapters();
         }
         return htmlArticle.getChapters().subList(0, toIndex + 1);

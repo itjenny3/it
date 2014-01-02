@@ -14,7 +14,7 @@ import org.pegdown.PegDownProcessor;
 
 import com.itjenny.common.CommonTest;
 import com.itjenny.common.ResourceFile;
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 
 public class HtmlArticleTest extends CommonTest {
     @Rule
@@ -105,7 +105,7 @@ public class HtmlArticleTest extends CommonTest {
         assertThat(htmlArticle.getChapters().size(), is(1));
         List<Chapter> chapters = htmlArticle.getChapters();
         for (int i = 0; i < htmlArticle.getChapters().size(); i++) {
-            assertThat(chapters.get(i).getQuiz().getSubtitle(), is(Const.QUIZ));
+            assertThat(chapters.get(i).getQuiz().getSubtitle(), is(Consts.QUIZ));
             assertThat(chapters.get(i).getQuiz().getContent(),
                     containsString("question1"));
             assertThat(chapters.get(i).getQuiz().getAnswer(), is("answer1"));

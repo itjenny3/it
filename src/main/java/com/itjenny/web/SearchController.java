@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.TagService;
 import com.itjenny.support.URL;
-import com.itjenny.support.VIEW;
+import com.itjenny.support.View;
 
 @Controller
 @RequestMapping(URL.SEARCH)
@@ -42,7 +42,7 @@ public class SearchController {
         model.addAttribute("q", q);
         model.addAttribute("articlesInTag", articlesInTag);
         model.addAttribute("articlesWithKeyword", articlesWithKeyword);
-        mav.setViewName(VIEW.SEARCH);
+        mav.setViewName(View.SEARCH);
         mav.addAllObjects(model);
         return mav;
     }

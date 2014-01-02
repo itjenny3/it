@@ -1,6 +1,6 @@
 package com.itjenny.support;
 
-public class VIEW {
+public class View {
     public static final String MAIN = "";
     public static final String ARTICLES = "articles";
     public static final String ARTICLE = "article";

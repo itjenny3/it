@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.itjenny.domain.Article;
 import com.itjenny.domain.Chapter;
@@ -25,9 +26,9 @@ import com.itjenny.service.article.AnswerService;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.service.article.BookmarkService;
 import com.itjenny.service.article.TagService;
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 import com.itjenny.support.URL;
-import com.itjenny.support.VIEW;
+import com.itjenny.support.View;
 import com.itjenny.support.security.SessionService;
 
 @Controller
@@ -68,9 +69,10 @@ public class ArticleController {
         article.setUserId(StringUtils.EMPTY);
         article.setPublished(true);
         articleService.save(article);
-        mav.setViewName(VIEW.ARTICLE);
+        mav.setViewName(View.ARTICLE);
         mav.addAllObjects(model);
-        return mav;
+        return new ModelAndView(new RedirectView(URL.makeAbsolutePath(
+                URL.ARTICLE, title)));
     }
 
     @RequestMapping(value = "{title}/{chapterCssId}", method = RequestMethod.POST)
@@ -78,7 +80,7 @@ public class ArticleController {
             @PathVariable String title, @PathVariable String chapterCssId,
             @RequestParam String answer) {
         Integer chapterIndex = Integer.valueOf(chapterCssId.replace(
-                Const.CHAPTER, StringUtils.EMPTY));
+                Consts.CHAPTER, StringUtils.EMPTY));
         ModelAndView mav = new ModelAndView();
         ModelMap model = new ModelMap();
         for (Cookie cookie : request.getCookies()) {
@@ -91,8 +93,7 @@ public class ArticleController {
                 }
 
                 // keynote mode
-                if (!articleService.isChapterExisted(title,
-                        chapterIndex + 1)) {
+                if (!articleService.isChapterExisted(title, chapterIndex + 1)) {
                     bookmarkService.complete(title);
                     return new ModelAndView("redirect:/article/" + title
                             + "/license");
@@ -104,7 +105,7 @@ public class ArticleController {
                 model.addAttribute("answer",
                         articleService.getChapter(title, chapterIndex)
                                 .getQuiz().getAnswer());
-                mav.setViewName(VIEW.CHAPTER);
+                mav.setViewName(View.CHAPTER);
                 mav.addAllObjects(model);
 
                 bookmarkService.updateChapter(title, chapterIndex + 1);
@@ -125,14 +126,14 @@ public class ArticleController {
             model.addAttribute("totalSection",
                     articleService.getTotalSection(title));
             model.addAttribute("answer",
-                    articleService.getChapter(title, chapterIndex)
-                            .getQuiz().getAnswer());
-            mav.setViewName(VIEW.CHAPTER);
+                    articleService.getChapter(title, chapterIndex).getQuiz()
+                            .getAnswer());
+            mav.setViewName(View.CHAPTER);
             mav.addAllObjects(model);
 
             bookmarkService.updateChapter(title, chapterIndex + 1);
         } else {
-            mav.setViewName(VIEW.WRONG);
+            mav.setViewName(View.WRONG);
             mav.addAllObjects(model);
         }
         return mav;
@@ -146,7 +147,7 @@ public class ArticleController {
         List<String> tags = tagService.getTags();
         model.addAttribute("articles", articles);
         model.addAttribute("tags", tags);
-        mav.setViewName(VIEW.ARTICLES);
+        mav.setViewName(View.ARTICLES);
         mav.addAllObjects(model);
         return mav;
     }
@@ -165,7 +166,7 @@ public class ArticleController {
         model.addAttribute("title", title);
         model.addAttribute("chapters", chapters);
         model.addAttribute("license",
-                (chapterIndex.equals(Const.BOOKMARK_LICENSE)));
+                chapterIndex.equals(Consts.BOOKMARK_LICENSE));
         model.addAttribute("totalSection",
                 articleService.getTotalSection(title));
         model.addAttribute("setting",
@@ -177,7 +178,7 @@ public class ArticleController {
             model.addAttribute("css", css);
         }
 
-        mav.setViewName(VIEW.ARTICLE);
+        mav.setViewName(View.ARTICLE);
         mav.addAllObjects(model);
         bookmarkService.updateChapter(title, 0);
         return mav;
@@ -188,7 +189,7 @@ public class ArticleController {
         ModelAndView mav = new ModelAndView();
         ModelMap model = new ModelMap();
         model.addAttribute("title", title);
-        mav.setViewName(VIEW.LICENSE);
+        mav.setViewName(View.LICENSE);
         mav.addAllObjects(model);
         return mav;
     }

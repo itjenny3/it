@@ -16,7 +16,7 @@ import com.google.common.base.Strings;
 import com.itjenny.domain.Article;
 import com.itjenny.service.article.ArticleService;
 import com.itjenny.support.URL;
-import com.itjenny.support.VIEW;
+import com.itjenny.support.View;
 
 @Controller
 @RequestMapping(value = { URL.FORM })
@@ -36,9 +36,10 @@ public class FormController {
         article.setUserId(StringUtils.EMPTY);
         article.setPublished(true);
         articleService.save(article);
-        mav.setViewName(VIEW.ARTICLE);
+        mav.setViewName(View.ARTICLE);
         mav.addAllObjects(model);
-		return new ModelAndView(new RedirectView(URL.makeAbsolutePath(URL.ARTICLE, title)));
+        return new ModelAndView(new RedirectView(URL.makeAbsolutePath(
+                URL.ARTICLE, title)));
     }
 
     @RequestMapping(value = URL.ARTICLE, method = RequestMethod.GET)
@@ -52,7 +53,7 @@ public class FormController {
             article = new Article();
         }
         model.addAttribute("article", article);
-        mav.setViewName(VIEW.ARTICLE_FORM);
+        mav.setViewName(View.ARTICLE_FORM);
         mav.addAllObjects(model);
         return mav;
     }

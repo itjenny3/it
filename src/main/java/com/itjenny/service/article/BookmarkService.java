@@ -9,7 +9,7 @@ import com.google.common.base.Strings;
 import com.itjenny.domain.Bookmark;
 import com.itjenny.domain.user.SocialUser;
 import com.itjenny.repository.BookmarkRepository;
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 import com.itjenny.support.security.SessionService;
 
 @Service
@@ -64,7 +64,7 @@ public class BookmarkService {
         Bookmark bookmark = new Bookmark();
         bookmark.setUserId(loginUser.getUserId());
         bookmark.setTitle(title);
-        bookmark.setChapterIndex(Const.BOOKMARK_LICENSE);
+        bookmark.setChapterIndex(Consts.BOOKMARK_LICENSE);
         bookmarkRepository.save(bookmark);
     }
 }

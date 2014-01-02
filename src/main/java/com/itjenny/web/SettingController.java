@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itjenny.domain.Setting;
 import com.itjenny.service.SettingService;
-import com.itjenny.support.Const;
+import com.itjenny.support.Consts;
 import com.itjenny.support.URL;
 import com.itjenny.support.security.SessionService;
 
@@ -38,9 +38,9 @@ public class SettingController {
         setting.setUserId(sessionService.getLoginUser().getUserId());
 
         // TODO : change to enum to use switch.
-        if (option.equals(Const.PAGINATION)) {
+        if (option.equals(Consts.PAGINATION)) {
             setting.setPagination(value == 1);
-        } else if (option.equals(Const.ONELINE)) {
+        } else if (option.equals(Consts.ONELINE)) {
             setting.setOneline(value == 1);
         }
         settingService.save(setting);

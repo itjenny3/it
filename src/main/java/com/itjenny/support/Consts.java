@@ -1,6 +1,6 @@
 package com.itjenny.support;
 
-public class Const {
+public class Consts {
     // LICENSE
     public static final Integer BOOKMARK_LICENSE = 10000;
 
